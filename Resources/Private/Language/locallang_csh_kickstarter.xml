@@ -1,0 +1,824 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>CSH</type>
+		<csh_table>sav_library_kickstarter</csh_table>
+		<description>Default TCA_DESCR for the kicksarter</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index=".description">SAV Library</label>
+			<label index=".details">
+      </label>
+
+<!-- Types, functions and general attributes -->
+			<label index="all.description"></label>
+			<label index="all.seeAlso">
+        sav_library_kickstarter:checkbox
+        sav_library_kickstarter:checkboxes
+        sav_library_kickstarter:date
+        sav_library_kickstarter:datetime
+        sav_library_kickstarter:files
+        sav_library_kickstarter:functions
+        sav_library_kickstarter:general
+        sav_library_kickstarter:graph
+        sav_library_kickstarter:link
+        sav_library_kickstarter:rel
+        sav_library_kickstarter:radioButtons
+        sav_library_kickstarter:richTextEditor
+        sav_library_kickstarter:selectorbox
+        sav_library_kickstarter:string
+        sav_library_kickstarter:text
+      </label>
+      
+<!-- Types -->
+  <!-- checkbox -->
+			<label index="checkbox.description">Attributes for &quot;checkbox&quot;</label>
+			<label index="checkbox.seeAlso">sav_library_kickstarter:all,sav_library_kickstarter:functions,sav_library_kickstarter:general</label>
+			<label index="checkbox.syntax">
+        &lt;b&gt;displayAsImage = 1;&lt;/b&gt;
+        If set, the check box is displayed as an image instead of a label.
+        
+        &lt;b&gt;doNotDisplayIfNotChecked = 1;&lt;/b&gt;
+        Do not display the checkbox value (that is &quot;No&quot;) if it is not checked (obviously it does not apply when in edit mode)
+      </label>
+  <!-- checkboxes -->
+			<label index="checkboxes.description">Attributes for &quot;checkboxes&quot;</label>
+			<label index="checkboxes.seeAlso">sav_library_kickstarter:all,sav_library_kickstarter:functions,sav_library_kickstarter:general</label>
+			<label index="checkboxes.syntax">
+        &lt;b&gt;cols = integer;&lt;/b&gt;
+        Number of columns to display.
+
+        &lt;b&gt;displayAsImage = 1;&lt;/b&gt;
+        If set, the check box is displayed as an image instead of a label.
+        
+        &lt;b&gt;doNotDisplayIfNotChecked = 1;&lt;/b&gt;
+        Do not display the checkbox if it is not checked (obviously it does not apply when in edit mode).
+
+        &lt;b&gt;nbItems = integer;&lt;/b&gt;
+        Number of items to display.  
+      </label>
+      
+  <!-- date -->
+			<label index="date.description">Attributes for &quot;date&quot;</label>
+			<label index="date.seeAlso">sav_library_kickstarter:all,sav_library_kickstarter:functions,sav_library_kickstarter:general</label>
+			<label index="date.syntax">
+        &lt;b&gt;format = date_format;&lt;/b&gt;
+        Sets a format to display the date. The format is the same as in strftime php function, e.g. format = %d/%m/%Y;
+        
+        &lt;b&gt;noDefault = 1;&lt;/b&gt;
+        Do not display the default date.
+      </label>
+
+  <!-- datetime -->
+			<label index="datetime.description">Attributes for &quot;datetime&quot;</label>
+			<label index="datetime.seeAlso">sav_library_kickstarter:all,sav_library_kickstarter:functions,sav_library_kickstarter:general</label>
+			<label index="datetime.syntax">
+        &lt;b&gt;format = date_format;&lt;/b&gt;
+        Sets a format to display the date. The format is the same as in strftime php function, e.g. format = %d/%m/%Y;
+        
+        &lt;b&gt;noDefault = 1;&lt;/b&gt;
+        Do not display the default date and time.
+      </label>
+  <!-- files -->
+			<label index="files.description">Attributes for &quot;files&quot;</label>
+			<label index="files.seeAlso">sav_library_kickstarter:all,sav_library_kickstarter:functions,sav_library_kickstarter:general</label>
+			<label index="files.syntax">
+        &lt;b&gt;addIcon = 1;&lt;/b&gt;
+        Adds an icon in front of the hyperlink associated with the file.
+
+        &lt;b&gt;uploadFolder = string;&lt;/b&gt;
+        Sets the folder path where the file is stored. It overwrites  the same attribute in the TCA.
+        
+        &lt;b&gt;addToUploadFolder = string;&lt;/b&gt;
+        Adds a subpath to the UploadFolder path.
+        
+        &lt;b&gt;addToUploadFolderFromField = field_name;&lt;/b&gt;
+        Adds the content of the field whose name is given by &quot;field_name&quot; to the uploadFolder attribute. This information is separated with an underscore.
+        Example : if the field_name is &quot;my_field&quot; and its contents is &quot;123&quot;, then
+        AddToUploadFolderFromField = my_field; will add &quot;_123&quot; to the uploadFolder name.
+
+        &lt;b&gt;size = integer;&lt;/b&gt;
+        Sets the size attribute.  It overwrites  the same attribute in the TCA.
+        
+        &lt;b&gt;iframe = 1;&lt;/b&gt;
+        Opens the image in an iframe.
+        
+        &lt;b&gt;width = integer;&lt;/b&gt;
+        Sets the width of an image or of the iframe.
+        
+        &lt;b&gt;height = integer;&lt;/b&gt;
+        Sets the height of an image or of the iframe.
+        
+        &lt;b&gt;message = string;&lt;/b&gt;
+        If the file is not an image, an hyperlink is created with the string.
+        
+        &lt;b&gt;fieldMessage = field_name;&lt;/b&gt;
+        Sets the attribute &quot;message&quot; with the content of the field whose name is given by field_name.
+        
+        &lt;b&gt;alt = string;&lt;/b&gt;
+        Provides the HTML alt attribute for an image.
+        
+        &lt;b&gt;fieldAlt = field_name;&lt;/b&gt;
+        Sets the &quot;alt&quot; attribute with the content of the field whose name is given by field_name.
+        
+        &lt;b&gt;default = string;&lt;/b&gt;
+        Defines the default image if the content of the field is null otherwise the default image is “unknown.gif” taken in the directory sav_library/res/images.
+        
+        &lt;b&gt;tsProperties = string;&lt;/b&gt;
+        It makes it possible to use the graphic possibilities of TYPO3. If set, an IMAGE cObject is generated with the given TS properties.
+        Do not forget that the configuration field is ended by a semi-column, therefore if you need a semi-column in your TS write it &quot;\;&quot;
+      </label>
+  <!-- graph -->
+			<label index="graph.description">Attributes for &quot;XML Graph&quot;</label>
+			<label index="graph.seeAlso">sav_library_kickstarter:all,sav_library_kickstarter:functions,sav_library_kickstarter:general</label>
+			<label index="graph.syntax">
+        &lt;b&gt;graphTemplate = string;&lt;/b&gt;
+        File name of the XML template from the site root.
+        &lt;b&gt;markers = string;&lt;/b&gt;
+        Comma-separated list of definitions. Example: “marker#begin = ###beginPeriod###” means that the “marker” whose id is “begin”
+        in the template will be replaced by the marker “###beginPeriod###”, that is by the alias “beginPeriod”.
+      </label>
+  <!-- link -->
+      <label index="link.description">Attributes for &quot;Link&quot;</label>
+			<label index="link.seeAlso">sav_library_kickstarter:all,sav_library_kickstarter:functions,sav_library_kickstarter:general</label>
+			<label index="link.syntax">
+        &lt;b&gt;generateRTF=1;&lt;/b&gt;
+        Sets the RTF generator.
+        &lt;b&gt;templateRTF=filename;&lt;/b&gt;
+        Defines the template to be used by the RTF generator. Field markers ###tableName.fieldName### or ###fieldName### (for aliases) can be used.
+        &lt;b&gt;saveFileRTF=filename;&lt;/b&gt;
+        Name under which the generated file will be saved. Field markers ###tableName.fieldName### or ###fieldName### (for aliases) can be used.
+        &lt;b&gt;tableName.fieldName=string1-&gt;string2;&lt;/b&gt;
+        In an rtf document, if the field marker ###tableName.fieldName### exists string1 will be replaced by string2. String1 can be NL (for the ASCII character LF).
+        It may be useful when one wants to input data in a textarea and display them in one line with a given separator in the file.
+        &lt;b&gt;link = string;&lt;/b&gt;
+        The string will be used for the link instead of the field value.
+        &lt;b&gt;fieldLink = fieldName;&lt;/b&gt;
+        Sets the attribute &quot;link&quot; with the content of the field whose name is given by fieldName.
+        &lt;b&gt;message = string;&lt;/b&gt;
+        Message associated with the link.
+        &lt;b&gt;fieldMessage = fieldName;&lt;/b&gt;
+        Sets the attribute &quot;message&quot; with the content of the field whose name is given by fieldName.
+      </label>
+  <!-- radioButtons -->
+			<label index="radioButtons.description">Attributes for &quot;radio buttons&quot;</label>
+			<label index="radioButtons.seeAlso">sav_library_kickstarter:all,sav_library_kickstarter:functions,sav_library_kickstarter:general</label>
+			<label index="radioButtons.syntax">
+        &lt;b&gt;cols = integer;&lt;/b&gt;
+        Number of columns to display.
+
+        &lt;b&gt;displayAsImage = 1;&lt;/b&gt;
+        If set, the radio buttons are displayed as images instead of labels.
+      </label>
+  <!-- relationManyToManyAsSubform -->
+			<label index="relationManyToManyAsSubform.description">Attributes for &quot;Database many-to-many relation as subform&quot;</label>
+			<label index="relationManyToManyAsSubform.seeAlso">sav_library_kickstarter:all,sav_library_kickstarter:functions,sav_library_kickstarter:general</label>
+			<label index="relationManyToManyAsSubform.syntax">
+        This type should is used to generate a subform. Special parameters can be added.
+        &lt;b&gt;addDelete = 1;&lt;/b&gt;
+        A delete icon will be added in front of each item.
+        &lt;b&gt;addUpDown = 1;&lt;/b&gt;
+        Two buttons (up and down) will be added. They can be used to reorganize the order of the subform items.
+        &lt;b&gt;addSave = 1;&lt;/b&gt;
+        A save button and an anchor will be added. It simplifies the saving when several items are in the subform and the height of an item is important.
+        &lt;b&gt;maxSubItems = integer;&lt;/b&gt;
+        Number of items that will be displayed in the subform. All items are displayed if set to 0. If not set, the &quot;maxitems&quot; value in the TCA, that is the &quot;Max number of relations&quot; in the Kickstarter, is used.
+        &lt;b&gt;keepFieldsInSubForm = comma-separated list of fields;&lt;/b&gt;
+        The values of the fields (use tableName.fieldName) from the parent form will be kept in the subform. It can be used to deal with these values in the subform.
+        If * is used instead of the comma-separated list of fields, all fields are kept.
+        &lt;b&gt;cutNewButtonIfNotSaved = 1;&lt;/b&gt;
+        The new button of the subform will be cut if the form in which the subform takes place is not saved.
+        &lt;b&gt;labelOnTitle = 1;&lt;/b&gt;
+        The label will be displayed in the title of the subform in input mode.
+        &lt;b&gt;subFormTemplate = string;&lt;/b&gt;
+        Name of the template (e.g. subFormAlt). By default the template &quot;subForm&quot; is used.
+        &lt;b&gt;noFirstLast = 1;&lt;/b&gt;
+        First and last buttons in the browser associated with the &quot;subFormAlt&quot; template will not be shown.
+     </label>
+  <!-- relationManyToManyAsDoubleSelectorbox -->
+			<label index="relationManyToManyAsDoubleSelectorbox.description">Attributes for &quot;Database many-to-many relation as double selectorbox&quot;</label>
+			<label index="relationManyToManyAsDoubleSelectorbox.seeAlso">sav_library_kickstarter:relationOneToManyAsSelectorbox,sav_library_kickstarter:all,sav_library_kickstarter:functions,sav_library_kickstarter:general</label>
+			<label index="relationManyToManyAsDoubleSelectorbox.syntax">
+        The attributes for this type are the same as for Database one-to-many relation (selectorbox)
+      </label>
+  <!-- relationOneToManyAsSelectorbox -->
+			<label index="relationOneToManyAsSelectorbox.description">Attributes for &quot;Database one-to-many relation as selectorbox&quot;</label>
+			<label index="relationOneToManyAsSelectorbox.seeAlso">sav_library_kickstarter:all,sav_library_kickstarter:functions,sav_library_kickstarter:general</label>
+			<label index="relationOneToManyAsSelectorbox.syntax">
+        &lt;b&gt;aliasSelect = field_name;&lt;/b&gt;
+        Defines an alias used in the SELECT query. markers ###fieldname### can be used, fieldname must be in the relation table.
+        &lt;b&gt;labelSelect = field_name;&lt;/b&gt;
+        Defines the label from field_name for the selector.
+        &lt;b&gt;additionalTableSelect = comma-separated table names;&lt;/b&gt;
+        Adds the table names in the select query. It can be used when tables need to be joined.
+        &lt;b&gt;orderSelect = string;&lt;/b&gt;
+        Defines the order clause for the selector. In general : field_name [desc].
+        &lt;b&gt;whereSelect=string;&lt;/b&gt;
+        Defines the WHERE clause for the selector. It can be:
+        . a conventional MySQL clause.
+        - The marker ###user### can be used. It will be replaced by the user uid.
+        - The marker ###uid### can be used. it will be replaced by the main current record.
+        - The marker ###CURRENT_PID### can be used. It will be replaced by the current page uid.
+        - The marker ###STORAGE_PID### can be used. It will be replaced by the storage page uid.
+        . ###group_list = list_of_comma_separed_fe_groups###. To be used with a selector on fe_users. It checks if the user belongs to the group list.
+        . ###group_list != list_of_comma_separed_fe_groups###. To be used with a selector on fe_users. It checks if the user does not belong to the group list.
+        &lt;b&gt;groupBySelect=string;&lt;/b&gt;
+        Defines the GROUP BY clause for the selector.
+        &lt;b&gt;content=SQL select statement;&lt;/b&gt;
+        SQL select statement must have an alias &quot;uid&quot; and an alias &quot;label&quot; which will be used as the value to display.
+        Special markers can be used in the statement :
+        . ###uid### will be replaced by the current record uid.
+        . ###uidSelected### will be replaced by the selected item.
+        . ###user### will be replaced by the user id.
+        . ###cruser### will be replaced by the user id.
+        The following example returns a selectorbox with the usernames that are linked with the user by a MM relation :
+        content = select fe_users.uid as uid, fe_users.name as label
+        from
+          tx_mytable_rel_myfield_mm,fe_users
+	      where
+	       tx_mytable_rel_myfields_mm.uid_local=###user### and
+	       tx_mytable_rel_myfields_mm.uid_foreign=fe_users.uid
+	      order by label;
+        &lt;b&gt;separator = string;&lt;/b&gt;
+        It should be used when the max number of relations is greater than 1 (not true MM-relation) to replace the default &lt; br /&gt; separator between items in showAll or showSingle views.
+        &lt;b&gt;specialFields = comma-separated list of fields;&lt;/b&gt;
+        The value of the fields will be propagated in the ###special[fieldname]### marker when available.
+        &lt;b&gt;singleWindow = 1;&lt;/b&gt;
+        In case of a MM relation, a double window is used to select items. When this option is used, a single selectorbox in multiple mode is used.
+        &lt;b&gt;overrideEnableFields = 1;&lt;/b&gt;
+        If set, the method enableFields of the class tslib_cObj which filters out records with start/end times or hidden/fe_groups fields is not applied to the query associated with the selectorbox.
+        It may be used in specific cases when you needed to retreive all the records.
+        &lt;b&gt;overrideStartingPoint = 1;&lt;/b&gt;
+        By default, when starting points are provided, information associated with the selector is searched in these page. This property overrides the default behavior.
+     </label>
+  <!-- richTextEditor -->
+			<label index="richTextEditor.description">Attributes for &quot;Rich Text Editor&quot;</label>
+			<label index="richTextEditor.seeAlso">sav_library_kickstarter:all,sav_library_kickstarter:functions,sav_library_kickstarter:general</label>
+			<label index="richTextEditor.syntax">
+        &lt;b&gt;height = integer;&lt;/b&gt;
+        Defines the height of the textarea. The integer value represents the height in pixels (45 pixels are automatically added).
+
+        &lt;b&gt;width = integer;&lt;/b&gt;
+        Defines the width of the textarea. The integer value represents the width in pixels.
+      </label>
+  <!-- selectorbox -->
+			<label index="selectorbox.description">Attributes for &quot;selectorbox&quot;</label>
+			<label index="selectorbox.seeAlso">sav_library_kickstarter:all,sav_library_kickstarter:functions,sav_library_kickstarter:general</label>
+			<label index="selectorbox.syntax">
+        &lt;b&gt;func = function_name;&lt;/b&gt;
+        It associates a function with the selectorbox items. The parameter function_name can be:
+        . makeItemLink
+        . makeExtLink
+        . makeLink
+        . makeUrlLink
+        . makeEmailLink
+        See functions for the associated parameters.
+
+        &lt;b&gt;separator = character or string;&lt;/b&gt;
+        It can be used with selector boxes associated with a MM relation to replace the default &lt; br /&gt; separator between items in showAll or showSingle views.
+      </label>
+  <!-- showOnly -->
+			<label index="showOnly.description">Attributes for &quot;Only shown in SAV form&quot;</label>
+			<label index="showOnly.seeAlso">sav_library_kickstarter:all,sav_library_kickstarter:functions,sav_library_kickstarter:general</label>
+  <!-- string -->
+			<label index="string.description">Attributes for &quot;String input&quot;</label>
+			<label index="string.seeAlso">sav_library_kickstarter:all,sav_library_kickstarter:functions,sav_library_kickstarter:general</label>
+			<label index="string.syntax">
+        &lt;b&gt;size = integer;&lt;/b&gt;
+        Size of the field.
+      </label>
+  <!-- text -->
+			<label index="text.description">Attributes for &quot;textarea&quot;</label>
+			<label index="text.seeAlso">sav_library_kickstarter:all,sav_library_kickstarter:functions,sav_library_kickstarter:general</label>
+			<label index="text.syntax">
+        &lt;b&gt;cols = integer;&lt;/b&gt;
+        Defines the number of cols of the textarea. This attribute overwrites the same attribute in the TCA.
+
+        &lt;b&gt;rows = integer;&lt;/b&gt;
+        Defines the number of rows  of the textarea. This attribute overwrites the same attribute in the TCA.
+      </label>
+      
+ <!-- Functions -->
+			<label index="functions.description">Functions attributes</label>
+			<label index="functions.seeAlso">sav_library_kickstarter:all,sav_library_kickstarter:functions,sav_library_kickstarter:general</label>
+			<label index="functions.syntax">
+
+        Functions are applied to the value of the field. It can be also applied to left and right contents.
+        In this case, &quot;Left&quot; or &quot;Right&quot; should be added to the function name and the optional attributes.
+   <!-- makeDateFormat -->
+        &lt;b&gt;func = makeDateFormat;&lt;/b&gt;
+        This function generates a format for a unix time stamp date.
+        Optional attributes can be added:
+        . format = string; The string should be a format that makes sense for the php-function strftime().
+   <!-- makeImage -->
+        &lt;b&gt;func = makeImage;&lt;/b&gt;
+        This function builds an IMG tag where the field value is the name of the image file.
+        Additional parameter can be used.
+        . folder = string; (string will be the folder where the file should be).
+        . width = integer; (width of the image in pixels).
+        . height = integer; (height of the image in pixels);
+        . alt = string; (string will be the &quot;alt&quot; attribute of the image).
+        . fieldAlt = field_name; (the &quot;alt&quot; attribute will be the value of the fieldname for the current record).
+   <!-- makeEmailLink -->
+        &lt;b&gt;func = makeEmailLink;&lt;/b&gt;
+        This function generates an email link associated with the field.
+        Optional attributes can be added:
+        . message = string; Message associated with the link.
+        . fieldMessage = fieldName; Sets the attribute &quot;message&quot; with the content of the field whose name is given by fieldName.
+   <!-- makeNewWindowLink -->
+        &lt;b&gt;func = makeNewWindowLink;&lt;/b&gt;
+        This function generates an hyperlink associated with the value of the field which opens a new window. Paramaters are :
+        . windowUrl = string; string is the url. The marker ###special[fieldname]### from selectors can be used. This parameter is not necessary if the field is an image.
+        Optional attributes can be added:
+        . windowText = string; string will be added above the image. The marker ###special[fieldname]### from selectors can be used.
+        . windowBodyStyle = string; string will be added as the style attribute to the body html tag. Do not forget to use \; for style attributes,
+        since the semi-colon is use to split field attributes, and do not forget to end your definition by a semi-colon
+        Example: windowBodyStyle = fontweight:bold\;font-color:blue\;;
+        . message = string; Message associated with the link.
+        . fieldMessage = fieldName; Sets the attribute &quot;message&quot; with the content of the field whose name is given by fieldName.
+   <!-- makeItemLink -->
+        &lt;b&gt;func = makeItemLink;&lt;/b&gt;
+        This function generates an hyperlink associated with the value of the field. It will open the &quot;showSingle&quot; view associated with the selected item.
+        Optional attributes can be added:
+        . updateForm = 1; makes it possible to open an &quot;update&quot; view instead of the &quot;Show single&quot; view.
+        . inputForm = 1; makes it possible to open an &quot;Input form&quot; view instead of the &quot;Show single&quot; view.
+        . folderTab = string; (string is the folder name, if the extension uses serveral folders).
+        . page = string; (same as folderTab but deprecated).
+   <!-- makeLink -->
+        &lt;b&gt;func = makeLink;&lt;/b&gt;
+        This function generates an internal link (typolink).
+        Optional attributes can be added:
+        . folder = string; The string will be the folder where the file should be).
+        . target = string; The string defines the target parameter.
+        . class = string; Name of the class associated with the link.
+        . message = string; Message associated with the link.
+        . fieldMessage = fieldName; Sets the attribute &quot;message&quot; with the content of the field whose name is given by fieldName.
+        . setUid = integer; the integer defines the page uid associated with the link.
+        . valueIsUid = 1; The field value is used as the uid of the page associated with the link.
+   <!-- makeExtLink -->
+        &lt;b&gt;func = makeExtLink;&lt;/b&gt;
+        This function generates an hyperlink associated with the value of the field. It will open the &quot;showSingle&quot; view associated with the selected item in another extension. The following attributes must be provided:
+        . ext = string; (string is the extension name followedby the form name. Example &quot;myext_intranet&quot;).
+        . pageId = integer; (integer is the page id where the extension is the content element).
+        . contentId = integer; (integer is the content id of the extension).
+        Optional attributes can be added:
+        . folderTab = string; (string is the folder name, if the extension uses serveral folders).
+        . page = string; (same as folderTab but deprecated).
+        . setUid = this; The uid of the record to open, is given by the value of the field.
+        . restrictLinkTo = ###usergroup=group_name###; the link will be displayed if the user belongs to the group_name.
+        . restrictLinkTo = ###usergroup!=group_name###; the link will be displayed if the user does not belong to the group_name.
+   <!-- makeUrlLink -->
+        &lt;b&gt;func = makeUrlLink;&lt;/b&gt;
+        This function generates a link for an external url.
+        Optional attributes can be added:
+        . link = string; The string will be used for the link instead of the field value.
+        . fieldLink = fieldName; Sets the attribute &quot;link&quot; with the content of the field whose name is given by fieldName.
+        . message = string; Message associated with the link.
+        . fieldMessage = fieldName; Sets the attribute &quot;message&quot; with the content of the field whose name is given by fieldName.
+   <!-- makeXmlLink -->
+        &lt;b&gt;func = makeXmlLabel;&lt;/b&gt;
+        This function generates the label from a xml language file. It works with the following parameter:
+        . xmlLabel = string; the string is the label definition. For example, assume that the value comes from a selectorbox whose label definition is in the file locallang_db.xml
+        in the extension &quot;my_ext&quot;. Assume also that the field is &quot;my_field&quot;. Then, to obtain the label one has to write xmlLabel = LLL:EXT:my_ext/locallang_db.xml:tx_myext.my_field.I.;
+      </label>
+
+<!-- General attributes -->
+			<label index="general.description">General Attributes</label>
+			<label index="general.seeAlso">sav_library_kickstarter:all,sav_library_kickstarter:functions,sav_library_kickstarter:general</label>
+			<label index="general.syntax">
+        &lt;b&gt;addEdit = 1;&lt;/b&gt;
+        When the field is used in an &quot;Update form&quot; view, it will add an input element for update that can be used with the marker ###field_name_Edit### where &quot;field_name&quot; is the name of the field.
+        See also the help for Form views (showAllItemTemplate) to see how to use markers ###field[field_name, label]###.
+
+        &lt;b&gt;addEditIfNull = 1;&lt;/b&gt;
+        Same as addEdit but the element will be added only if the field is null.
+
+        &lt;b&gt;addEditIfAdmin = 1;&lt;/b&gt;
+        Same as addEdit but the element will be added only if the user has the input right for the plugin.
+
+        &lt;b&gt;addLeftIfNotNull = string;&lt;/b&gt;
+        String will be added to the left if the field value is not null.
+
+        &lt;b&gt;addLeftIfNull = string;&lt;/b&gt;
+        String will be added to the left if the field value is null.
+
+        &lt;b&gt;addNewIcon = integer;&lt;/b&gt;
+        A new icon, will be displayed in front of the field during the number of days given by the integer.
+
+        &lt;b&gt;addRighIfNotNull = string;&lt;/b&gt;
+        String will be added to the right if the field value is not null.
+
+        &lt;b&gt;addRighIfNull = string;&lt;/b&gt;
+        String will be added to the right if the field value is null.
+
+        &lt;b&gt;alias = field_name;&lt;/b&gt;
+        The displayed value will be provided by the fieldname value for the current record.
+
+        &lt;b&gt;Classes and styles&lt;/b&gt;
+        . classLabel = string; The default class &quot;label&quot; associated with the label of the displayed value will be replaced by the string.
+        . classValue = string; The default class &quot;value&quot; associated with the displayed value will be replaced by the string.
+        . classHTMLTag = string; The string will be added as a class to the HTML tag associated with the displayed item (not always available).
+        . styleLabel = string; The string will be added as a style attribute associated with the label of the displayed value.
+        . styleValue = string; The string will be added as a style attribute associated with the displayed value.
+        . styleHTMLTag = string; The string will be added as a style attribute to the HTML tag associated with the displayed item (not always available).
+
+        &lt;b&gt;cutIfNull=1;&lt;/b&gt;
+        Cut the field if null.
+
+        &lt;b&gt;cutIf=fieldName=value;&lt;/b&gt;
+        Cuts the field if current value of the field is equal to the given value. The markers ###user### or ###cruser### (same as user but should be used if a new record is created) will be replaced by the user id.
+        Use EMPTY for the value to test an empty field.
+
+        &lt;b&gt;cutIf=fieldName!=value;&lt;/b&gt;
+        Cuts the field if current value of the field is not equal to the given value.
+        Same markers as above can be used.
+
+        &lt;b&gt;cutIf=###usergroup=group_name###;&lt;/b&gt;
+        The field is cut if the group name is a valid group for the current user.
+
+        &lt;b&gt;cutIf=###usergroup!=group_name###;&lt;/b&gt;
+        The field is cut if the group &quot;group_name&quot; is not a valid group for the current user.
+
+        &lt;b&gt;cutIf=###group=group_name###;&lt;/b&gt;
+        The field is cut if the group &quot;group_name&quot; is a valid group for the current record. It checks the usergroup field in the local table if any.
+
+        &lt;b&gt;cutIf=###group!=group_name###;&lt;/b&gt;
+        The field is cut if the group name is not a valid group for the current record. It checks the usergroup field in the local table if any.
+
+        &lt;b&gt;cutLabel = 1;&lt;/b&gt;
+        Cuts the label associated with the field.
+
+        &lt;b&gt;edit = 0;&lt;/b&gt;
+        Makes the field not editable in an input form.
+        &lt;b&gt;edit=1;&lt;/b&gt;
+        Makes the field editable in an input form.
+
+        &lt;b&gt;editAdminPlus=1;&lt;/b&gt;
+        Makes the field editable in an input form, if the user has the &quot;Admin+&quot; right. To be an &quot;Admin&quot; user, his/her TSConfig must contain a line as follows:
+        extKey_Admin=value where extKey is the extension key and value is one of the possible value of the &quot;Input Admin Field&quot; defined in the flexform associated with the extension.
+        The user becomes an &quot;Admin+&quot; user, if his/her TSConfig contains a line as follows:
+        extKey_Admin=value+
+
+        &lt;b&gt;func = function_name;&lt;/b&gt;
+        See the help associated with functions.
+
+        &lt;b&gt;funcAddLeftIfNotNull = string;&lt;/b&gt;
+        String will be added to the left if the result of the applied function, defined by &quot;func=function_name;&quot; property, is not null.
+
+        &lt;b&gt;funcAddLeftIfNull = string;&lt;/b&gt;
+        String will be added to the left if the result of the applied function, defined by &quot;func=function_name;&quot; property, is null.
+
+        &lt;b&gt;funcAddRightIfNotNull = string;&lt;/b&gt;
+        String will be added to the right if the result of the applied function, defined by &quot;func=function_name;&quot; property, is not null.
+
+        &lt;b&gt;funcAddRightIfNull = string;&lt;/b&gt;
+        String will be added to the right if the result of the applied function, defined by &quot;func=function_name;&quot; property, is null.
+
+        &lt;b&gt;fusion = begin;&lt;/b&gt;
+        Starts the fusion of the fields, that is the following fields will be displayed on the same line.
+        &lt;b&gt;fusion = end;&lt;/b&gt;
+        Ends the fusion of the field, that is the following field will be displayed on the next line.
+
+        &lt;b&gt;label = string;&lt;/b&gt;
+        The displayed label will be provided by the string.
+
+        &lt;b&gt;mail = 1;&lt;/b&gt;
+        A mail will be associated with the field.
+
+        If the field is a checkbox, it is used as a flag to verify is the mail has to be sent. Mail information are the following:
+        . fieldForCheckMail=field_name; The mail will be sent if the value of the fieldname for the current row is not null.
+        . mailIfFieldSetTo=string; The mail will be sent if the value of the fieldname for the current row was previoulsy null or zero and is set to the given string value.
+        . mailSender=string; mail of the sender. marker ###user_email### will be replaced by the user email.
+        . mailReceiver=string; mail of the person who will receive the mail and process the information.
+        . mailReceiverFromField=field_name; The field_name contains the mail of the person who will receive the mail and process the information.
+        . mailReceiverFromQuery=MySQL_Query; The receiver is obtained from a select query with an alias &quot;value&quot; that will used to retreive the receiver. Example: SELECT email as value from fe_users where ...
+        . mailSubject=string; subject of the mail. markers ###fieldname### are allowed and will be replaced by their current value.
+        . mailMessage=string, mail message. markers ###fieldname### are allowed and will be replaced by their current value.
+        . mailcc=string; if set the string is used as Cc: for the mail.
+        Localization by means of the file locallang.xml can be used with $$$tag$$$ which will be replaced by its value according to the configuration language.
+        . mailMessageLanguage=string; This parameter will force the language for the message to the value of the string.
+        . mailMessageLanguageFromField=fieldname; This parameter will force the language for the message to the value of the field (for example a selector box).
+
+        &lt;b&gt;mailAlways = 1;&lt;/b&gt; (mail must be set to 1)
+        The mail is always sent when saving. Mail information are the following:
+        . mailSender=string; mail of the sender. marker ###user_email### will be replaced by the user email.
+        . mailReceiver=string; mail of the person who will receive the mail and process the information.
+        . mailReceiverFromField=field_name; The field_name contains the mail of the person who will receive the mail and process the information.
+        . mailReceiverFromQuery=MySQL_Query; The receiver is obtained from a select query with an alias &quot;value&quot; that will used to retreive the receiver. Example: SELECT email as value from fe_users where ...
+        . mailSubject=string; subject of the mail. markers ###fieldname### are allowed and will be replaced by their current value.
+        . mailMessage=string, mail message. markers ###fieldname### are allowed and will be replaced by their current value.
+        . mailcc=string; if set the string is used as Cc: for the mail.
+        Localization by means of the file locallang.xml can be used with $$$tag$$$ which will be replaced by its value according to the configuration language.
+        . mailMessageLanguage=string; This parameter will force the language for the message to the value of the string.
+        . mailMessageLanguageFromField=fieldname; This parameter will force the language for the message to the value of the field (for example a selector box).
+
+        &lt;b&gt;mailAuto = 1;&lt;/b&gt; (mail must be set to 1)
+        The mail is sent when saving if the field is not empty and if one field in the form is changed. Mail information are the following:
+        . mailSender=string; mail of the sender. The marker ###user_email### will be replaced by the user email.
+        . mailReceiver=string; mail of the person who will receive the mail and process the information.
+        . mailReceiverFromField=field_name; The field_name contains the mail of the person who will receive the mail and process the information.
+        . mailReceiverFromQuery=MySQL_Query; The receiver is obtained from a select query with an alias &quot;value&quot; that will used to retreive the receiver. Example: SELECT email as value from fe_users where ...
+        . mailSubject=string; subject of the mail. markers ###fieldname### are allowed and will be replaced by their current value.
+        . mailMessage=string, mail message. markers ###fieldname### are allowed and will be replaced by their current value.
+        . mailcc=string; if set the string is used as Cc: for the mail.
+        Localization by means of the file locallang.xml can be used with $$$tag$$$ which will be replaced by its value according to the configuration language.
+        . mailMessageLanguage=string; This parameter will force the language for the message to the value of the string.
+        . mailMessageLanguageFromField=fieldname; This parameter will force the language for the message to the value of the field (for example a selector box).
+
+        &lt;b&gt;onLabel = 1;&lt;/b&gt;
+        The value will be displayed in place of the label. Not so useful since the label can be cut.
+
+        &lt;b&gt;orderLinkInTitle = 1;&lt;/b&gt;
+        If this parameter is set, it makes it possible to generate an hyperlink in the title bar of the &quot;showAll&quot;. The hyperlink is asscoiated with the field if the marker ###fieldname###
+        is used in the &quot;showAllTitle&quot; section. Order clauses have to be defined in the &quot;Where Tags&quot; section of the &quot;Query Form&quot; with &quot;+&quot; and &quot;-&quot; sign added after &quot;fieldname&quot;.
+        Use for example:
+          'fieldmane+' =&gt; array('order' =&gt; 'tablename.fieldname'),
+          'fieldmane-' =&gt; array('order' =&gt; 'tablename.fieldname desc'),
+
+        &lt;b&gt;orderLinkInTitleSetup = string;&lt;/b&gt;
+        This property controls the display of the link when orderLinkInTitle is set. The format is “param1:param2:param3” where “param1” to “param3” can take the following values:
+        . value: the field value is displayed,
+        . link: the field value is displayed with a link with toggle the sort,
+        . asc: an icon is displayed with a link to make an ascending sort,
+        . desc: an icon is displayed with a link to make a descending sort,
+        . ascdesc: two icons are displayed with separate links to make an ascending or descending sort,
+        . if there is no value, nothing is displayed.
+        The default is &quot;:link:&quot;.
+
+        &lt;b&gt;query = SQL statements;&lt;/b&gt;
+        The query will be executed once the input form data have been saved. Therefore, it can only be used with &quot;input&quot; or &quot;update&quot; views.
+        Because any query may be executed, for security reason, this property can only be used if an admin user has checked the field “Allow the use of the “query” property” in the advanced folder of the flexform.
+        It may be useful, for example, to update a specific table when the current data are saved. Several queries can be used in the SQL statements. Each query must be separated using &quot;\;&quot;.
+        Special markers can be used in the statement :
+        . ###uid### will be replaced by the current record uid.
+        . ###CURRENT_PID### will be replaced by the current page uid.
+        . ###STORAGE_PID### will be replaced by the storage page uid.
+        . ###user### will be replaced by the user uid.
+        . ###value### will be replaced by the current value for the field.
+
+        &lt;b&gt;queryOnValue = string;&lt;/b&gt;
+        The query, as defined above, will be executed if the current field value is equal to the right hand side string.
+
+        &lt;b&gt;queryForEach = field_name;&lt;/b&gt;
+        If the field is a true MM relation, the query, as defined above, will be executed for all the record in the relation.
+        The special marker ###field_name###, where &quot;field_name&quot; is the field where the relation is defined, can be used to identify the record. It will be replaced by the uid of the associated record.
+
+        &lt;b&gt;reqValue = SQL SELECT statement;&lt;/b&gt;
+        SQL SELECT statement must have an alias &quot;value&quot; which will be used as the value to display.
+        Special markers can be used in the statement :
+        . ###uid### will be replaced by the current record uid.
+        . ###uidItem### will be replaced by the uid of the current subform item.
+        . ###user### will be replaced by the user id.
+        . ###row[field_name]### where field_name is the name of a field in the current record, will be replaced by its current value.
+        The following example returns the name of the user who has created the current record, assuming that tx_mytable is the local table:
+        reqValue= SELECT name AS value
+        FROM fe_users
+        WHERE uid=(SELECT cruser_id FROM tx_mytable WHERE uid=###uid###);
+
+        &lt;b&gt;setExtendLink = table_name;&lt;/b&gt;
+        The table name will be left-joined to existing tables
+
+        &lt;b&gt;stdWrapValue = TS syntax;&lt;/b&gt;
+        It defines a conventional TS stdWrap property. You can add here full TS syntax.
+        Do not forget that the configuration field is ended by a semi-column, therefore if you need a semi-column in your TS write it &quot;\;&quot;
+
+        &lt;b&gt;tsObject = cObject;&lt;/b&gt;
+        It defines a TS content object (e.g. TEXT, IMAGE, ...)
+
+        &lt;b&gt;tsProperties = string;&lt;/b&gt;
+        It defines the properties of the TS cObject.
+        Markers ###fieldName### can be used. The marker will be replaced by the current value of the field.
+        Localization markers $$$tag$$$ can also be used. The tag will be replaced by its value according to the configuration language.
+        Do not forget that the configuration field is ended by a semi-column, therefore if you need a semi-column in your TS write it &quot;\;&quot;
+
+        &lt;b&gt;verifier = verifier_name;&lt;/b&gt;
+        Verifiers can be used to check if a field satisfy a constraint. Each field can have one verifier. Each verifier is associated with a parameter.
+        Verifiers can be defined by the user. They must be added in the class tx_savlibrary_verifiers defined in the file: class.tx_savlibrary_verifiers.php.
+
+        The value &quot;verifier_name&quot; can be :
+        . isValidPattern
+        . isValidLength
+        . isValidInterval
+        . isValidQuery
+
+        &lt;b&gt;verifierMessage = string;&lt;/b&gt;
+        It replaces the default message.
+        Localization by means of the file locallang.xml can be used with $$$tag$$$ which will be replaced by its value according to the configuration language.
+        The marker $$$label[fieldName]$$$ will be replaced by the fieldName title according to the localization.
+
+        &lt;b&gt;verifierParam = expression;&lt;/b&gt;
+        The expression can be :
+        . a regular expression for the verifier &quot;isValidPattern&quot;.
+        For example /^[A-Za-z0-9_]*$/ will allow any input which contains letters, numbers or underline characters.
+        . an integer value for the verifier &quot;isValidLength&quot;.
+        . an interval [a, b] where a and b are integers for the verifier &quot;isValidInterval&quot;.
+        . a SELECT query for &quot;isValidQuery&quot;. The marker ###value### in the query will be replaced by the value of the field. The marker ###uid### will be replaced by the uid of the current record.
+
+        &lt;b&gt;verifierSetWarning = boolean;&lt;/b&gt;
+        If set an error detected by the verifier becomes a warning. In that case, the field content is written in the database (which is not the case for errors) and a message is displayed.
+
+        &lt;b&gt;wrapItem = string;&lt;/b&gt;
+        The string will be used to wrap the item. The syntax in the same as in TypoScript.
+        Localization by means of the file locallang.xml can be used with $$$tag$$$ which will be replaced by its value according to the configuration language.
+        The marker $$$label[fieldName]$$$ will be replaced by the fieldName title according to the localization.
+      </label>
+
+      
+      
+			<label index="formGen.description">Form generator</label>
+			<label index="formGen.details">
+        This section is used to provide general settings.
+        
+        &lt;b&gt;Generate form&lt;/b&gt;
+        Checks the box to use the form generator.
+
+        &lt;b&gt;Display the icon below the plugin selector&lt;/b&gt;
+        If set, the icon of your extension will be displayed under the plugin selector when you insert an extension in a page.
+
+        &lt;b&gt;Additional Code&lt;/b&gt;
+        Use this field to add your own php function.
+
+        &lt;b&gt;Additional FlexForm code&lt;/b&gt;
+        Use this field to add fexform code to the default flexform configuration for the extension.
+      </label>
+
+<!-- Queries -->
+			<label index="queries.description">Form queries</label>
+			<label index="queries.details">
+        This section is used to specify the query associated with your form.
+        
+        &lt;b&gt;Name&lt;/b&gt;
+        Sets the name of your query.
+        
+        &lt;b&gt;Main table&lt;/b&gt;
+        Sets the main table that your extension will use. By default, it is the first table in your &quot;New Database Tables&quot; section.
+        
+        &lt;b&gt;Foreign tables&lt;/b&gt;
+        Define here the foreign tables (tables from other extension for exemple) that are needed for your extension (MySQL syntax).
+        It is possible to use LEFT JOIN ou INNER JOIN.
+        
+        &lt;b&gt;Aliases&lt;/b&gt; 
+        Define here the aliases associated with your query (MySQL syntax).
+        
+        &lt;b&gt;Where clause&lt;/b&gt; 
+        Defines the WHERE clause for query. It can be:
+        . a conventional MySQL clause.
+        - The marker ###user### can be used. It will be replaced by the user uid.
+        - The marker ###uid### can be used. It will be replaced by the current uid record.
+        - The marker ###CURRENT_PID### can be used. It will be replaced by the current page uid.
+        - The marker ###STORAGE_PID### can be used. It will be replaced by the storage page uid.
+        . ###group_list = list_of_comma_separed_fe_groups###. To be used with a selector on fe_users. It checks if the user belongs to the group list. 
+        . ###group_list != list_of_comma_separed_fe_groups###. To be used with a selector on fe_users. It checks if the user does not belong to the group list. 
+        . ###func:WHERE_Clause####. func must be a valid method defined in the tx_savlibrary class. If the method returns true then the WHERE clause is added otherwise it is omitted. The method may have one parameter.
+        
+        Existing methods are:
+          - isInputMode which returns true the form is in the input mode,
+          - isNotInputMode which returns true the form is not in the input mode,
+          - isGroupMember(groupName) which returns true if the user is a member of &quot;groupName&quot;,
+          - isNotGroupMember(groupName) which returns true if the user is not a member of &quot;groupName&quot;.    
+              
+        Other methods can be added using sav_library_extends.The WHERE_Clause can be any previous cases.
+        
+        &lt;b&gt;Group By clause&lt;/b&gt;
+        GROUP BY clause for the query. Very useful when MM tables are used (MySQL syntax).
+        
+        &lt;b&gt;Order By clause&lt;/b&gt;
+        ORDER BY clause for the query (MySQL syntax).
+        
+        &lt;b&gt;Where tags&lt;/b&gt; 
+        Where tags are a special feature that makes it possible to use hyperlinks with a parameter &amp;where=tagname.  
+        To add a new "Where Tag", click on the icon and fill the fields. The first field is name of the parameter you want to use (e.g. tagname) and the two others are respectively a WHERE clause and an ORDER BY clause. Example:
+        Name: myTag
+        Where Clause: myTable.myField &gt; 0
+        Order By Clause: myTable.myField desc
+      </label>
+      
+<!-- Forms -->
+			<label index="forms.description">Form settings</label>
+			<label index="forms.details">
+        This section is used to specify the settings of your form.
+        
+        &lt;b&gt;Name&lt;/b&gt;
+        Sets the name of your form.
+        
+        &lt;b&gt;List view&lt;/b&gt;
+        Use the selector to set the &quot;List&quot; view that should be used with your form (if any).
+        
+        &lt;b&gt;Single view&lt;/b&gt;
+        Use the selector to set the &quot;Single&quot; view that should be used with your form (if any).
+
+        &lt;b&gt;Edit view&lt;/b&gt;
+        Use the selector to set the &quot;Edit&quot; view that should be used with your form (if any).
+
+        &lt;b&gt;Update view&lt;/b&gt;
+        Use the selector to set the &quot;Update&quot; view that should be used with your form (if any).
+
+        &lt;b&gt;Query&lt;/b&gt;
+        Use the selector to set the &quot;Query&quot; that should be used with your form (required).
+        
+        &lt;b&gt;Allow caching&lt;/b&gt;
+        Select this checkbox if the plugin should behave as USER for this form, that is caching is enabled.
+        By default, the plugin will behave as USER_INT (no caching) for all the forms.
+      </label>
+      
+<!-- Views -->
+			<label index="views.description">Form Views</label>
+			<label index="views.details">
+        This section is used to specify the views associated with your extension.
+        
+        &lt;b&gt;Name&lt;/b&gt;
+        Set the name of your view.
+        
+        &lt;b&gt;Type&lt;/b&gt;
+        Use the selector to set the type of the wiew. It is either &quot;List&quot;, &quot;Single&quot;, &quot;Edit&quot; or &quot;Update&quot;.
+        
+        &lt;b&gt;Title bar&lt;/b&gt;
+        The content will be displayed as the title bar of the view. if markers ###fieldname### are used, they will be replaced by the label associated with the fieldname.
+        Localization by means of the file locallang.xml can be used with $$$tag$$$ which will be replaced by its value according to the configuration language.
+        The marker $$$label[fieldName]$$$ will be replaced by the fieldName title according to the localization.
+        
+        &lt;b&gt;Item Template&lt;/b&gt;
+        Template for the &quot;List&quot;, &quot;Update&quot; or &quot;Print&quot; views. The fields to include are defined using markers ###fieldname###.
+        markers ###tablename.fieldname### can also be used. In this case, no processing is performed, the marker is replaced by the value in the selected row.
+        
+        Localization by means of the file locallang.xml can be used with $$$tag$$$ which will be replaced by its value according to the configuration language.
+        The marker $$$label[fieldName]$$$ will be replaced by the fieldName title according to the localization.
+        
+        In the case of a view &quot;Update&quot; or &quot;Print&quot;, markers ###field[field_name, label]### generate the display of the label (localization can be used with $$$tag$$$ or $$$label[fieldName]$$$), the current value of field &quot;field_name&quot; and an input element for update.
+        markers  ###newfield[field_name, label]### generate the display of the label and an input element for the field &quot;field_name&quot;. In both cases, label and field will be wrapped with default CSS classes
+        . updateCol1 to updateCol4 for an &quot;Update view&quot; (respectively the label, the previous value, the input value, the checkbox),
+        . printCol1 and printCol2 for a &quot;Print view&quot; (respectively the label, the field).
+        If you do not want this wrapping, just use $$$label[fieldName]$$$ for the label and ###field[fieldName]### for the field. 
+        
+        &lt;b&gt;View Template&lt;/b&gt;
+        This field can be used to change the template of the &quot;Show All&quot; views. The template shoud exist in the template file. By default the predefined template &quot;showAll&quot; is used.
+        Setting the value to &quot;showAllAlt&quot; will used the predefined template &quot;showAllAlt&quot; which allows a direct acces to page instead of using only arrows.
+        
+        
+        &lt;b&gt;Folders&lt;/b&gt;
+        This field is used to define folders associated with the &quot;Single&quot; and &quot;Edit&quot; views. Click on the icon to add a folder and fill its label.
+        If the label is defined in the file locallang.xml, it will be translated to the selected language.
+        You can delete or reorganize the folder order using delete, up and down icons.
+
+        &lt;b&gt;Folder parameters&lt;/b&gt;
+        Folder parameters can be added. Each parameter should be under the format:
+        parameter=value;
+        
+        . editAdminPlus = 1;
+        Make the folder editable in an input form, if the user has the &quot;Admin+&quot; right. To be an &quot;Admin&quot; user, the user's TSConfig must contain a line as follows:
+        extKey_Admin=value 
+        where extKey is the extension key and value is one of the possible value of the &quot;Input Admin Field&quot; defined in the flexform associated with the extension.
+        The user becomes an &quot;Admin+&quot; user, if his TSConfig contains a line as follows:
+        extKey_Admin=value+  
+        
+        . cutIf = fiedname=value;
+        The folder is cut if the field is equal to the given value.
+        
+        . cutIf = ###group=group_name###;
+        The folder is cut if the group name is a valid group for the current record. It checks the usergroup field in the local table if any. 
+                   
+        . cutIf = ###group!=group_name###;
+        The folder is cut if the group name is not a valid group for the current record. It checks the usergroup field in the local table if any.        
+
+        . cutIf = ###usergroup=group_name###;
+        The folder is cut if the group name is a valid group for the current user. 
+                   
+        . cutIf = ###usergroup!=group_name###;
+        The folder is cut if the group name is not a valid group for the current user.           
+
+        &lt;b&gt;Print icon&lt;/b&gt; 
+        If set, a print icon is added to the view.        
+      </label>
+      
+<!-- Emconf  -->
+			<label index="emconf.description">Wizard settings</label>
+			<label index="emconf.details">
+        
+        &lt;b&gt;New Version&lt;/b&gt;
+        This wizard can be used to automatically ugrade the version of your extension. If you set z, one unit will be added to the z part.
+        It you set y, one unit will be added to the y part, while the z part is reset to 0.
+        If you set x, one unit, will be added to the x part, while the y and z parts will be reset.
+
+        &lt;b&gt;Generate xml configuration&lt;/b&gt;
+        If set, the configuration of the extension is saved ina xml file instead of a php array.
+        
+        &lt;b&gt;Debug Query&lt;/b&gt;
+        Set to display error messages on queries, if any.
+        &lt;b&gt;The Debug Query option should not be left in the final version of your extension for security reasons&lt;/b&gt;.
+
+        &lt;b&gt;Maintenance&lt;/b&gt;
+        If set, a maintenance configuration flag will be added in ext_conf_templates.txt. If the configuration flag is set, a maintenance message will be displayed.
+        A general maintenance connfiguration flag is availbale with the SAV Library Extension. If set, all extensions generated with the SAV Library will display a maintenance message.
+
+        &lt;b&gt;Generate a new extension&lt;/b&gt;
+        This experimental feature makes it possible to generate a new extension from an existing one. 
+        Give a new extension and &lt;b&gt;click on &quot;Update result&quot; before clicking on &quot;WRITE&quot;.&lt;/b&gt;
+      </label>
+		</languageKey>
+	</data>
+	<orig_hash type="array">
+	</orig_hash>
+	<orig_text type="array">
+	</orig_text>
+</T3locallang>

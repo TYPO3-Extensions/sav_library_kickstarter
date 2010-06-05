@@ -1,0 +1,83 @@
+{namespace sav=Tx_SavLibraryKickstarter_ViewHelpers}
+<f:layout name="kickstarterExtensionListLayout.html" />
+
+<f:section name="content">
+<div id="extensionList">
+  <f:form method="post" action="createExtension">
+
+    <div class="title">
+      <ul>
+        <li class="extensionName">{f:translate(key:'kickstarter.extensionList.extensionName')}</li>
+        <li class="extensionVersion">{f:translate(key:'kickstarter.extensionList.extensionVersion')}</li>
+        <li class="libraryVersion">{f:translate(key:'kickstarter.extensionList.libraryVersion')}</li>
+        <li class="libraryType">{f:translate(key:'kickstarter.extensionList.libraryType')}</li>
+        <li class="forms">{f:translate(key:'kickstarter.extensionList.forms')}</li>
+        <li class="cache">{f:translate(key:'kickstarter.extensionList.cache')}</li>
+        <li class="buttons">
+          <f:link.action action="createExtension">
+          <img src="../../../../typo3/gfx/add.gif" alt="{f:translate(key:'kickstarter.createExtension')}" title="{f:translate(key:'kickstarter.createExtension')}" />
+          </f:link.action>
+        </li>
+      </ul>
+    </div>
+    
+    <div class="body">
+      <f:for each="{extensionList}" as="extension">
+      <ul>
+        <li class="extensionName"><f:link.action action="editExtension" arguments="{extKey:extension.general.1.extensionKey}">{extension.general.1.extensionKey}</f:link.action></li>
+        <li class="extensionVersion">{extension.emconf.1.version}</li>
+        <li class="libraryVersion {f:if(condition:'{extension.general.1.currentLibraryVersion} != {extension.general.1.libraryVersion}',then:'wrongVersion')}">{extension.general.1.libraryVersion}</li>
+        <li class="libraryType">{f:translate(key:'kickstarter.generalItem.libraryType.{extension.general.1.libraryType}')}</li>
+        <li class="forms">
+          <ul>
+          <f:for each="{extension.forms}" as="form">
+            <li>
+              <div class="formName">{form.title}</div>
+              <div class="cache">
+              <f:if condition="{form.userPlugin} == 1">
+                <img class="checked" src="../../../../typo3/gfx/icon_ok.gif" alt="{f:translate(key:'kickstarter.checked')}" title="{f:translate(key:'kickstarter.checked')}" />
+              </f:if>
+              </div>
+            </li>
+          </f:for>
+          </ul>
+        </li>
+        <li class="buttons">
+        <sav:comment><!-- Edit extension --></sav:comment>
+        <f:link.action action="editExtension" arguments="{extKey:extension.general.1.extensionKey}">
+          <img class="editExtension" src="../../../../typo3/gfx/edit.gif" alt="{f:translate(key:'kickstarter.editExtension')}" title="{f:translate(key:'kickstarter.editExtension')}" />
+        </f:link.action>
+        <sav:comment><!-- Generate extension --></sav:comment>
+        <f:link.action action="generateExtension" arguments="{extKey:extension.general.1.extensionKey}">
+          <img class="installExtension" src="../../../../typo3/gfx/refresh_n.gif" alt="{f:translate(key:'kickstarter.generateExtension')}" title="{f:translate(key:'kickstarter.generateExtension')}" />
+        </f:link.action>
+        <sav:comment><!-- Copy extension --></sav:comment>
+        <f:link.action action="copyExtension" arguments="{extKey:extension.general.1.extensionKey}">
+          <img class="copyExtension" src="../../../../typo3/gfx/copymode_s.gif" alt="{f:translate(key:'kickstarter.copyExtension')}" title="{f:translate(key:'kickstarter.copyExtension')}" />
+        </f:link.action>
+        <sav:comment><!-- install/uninstall extension --></sav:comment>
+        <f:if condition="{extension.general.1.isLoadedExtension} == 1">
+          <f:then>
+          <f:link.action action="uninstallExtension" arguments="{extKey:extension.general.1.extensionKey}">
+            <img class="uninstallExtension" src="../../../../typo3/mod/tools/em/uninstall.gif" alt="{f:translate(key:'kickstarter.uninstallExtension')}" title="{f:translate(key:'kickstarter.uninstallExtension')}" />
+          </f:link.action>
+          </f:then>
+          <f:else>
+          <f:link.action action="installExtension" arguments="{extKey:extension.general.1.extensionKey}">
+            <img class="installExtension" src="../../../../typo3/mod/tools/em/install.gif" alt="{f:translate(key:'kickstarter.installExtension')}" title="{f:translate(key:'kickstarter.installExtension')}" />
+          </f:link.action>
+          </f:else>
+        </f:if>
+        <sav:comment><!-- Upgrade the extension --></sav:comment>
+        <f:if condition="{extension.general.1.extensionMustbeUpgraded}">
+        <f:link.action action="upgradeExtension" arguments="{extKey:extension.general.1.extensionKey}">
+          <img class="upgradeExtension" src="../../../../typo3/gfx/refresh.gif" alt="{f:translate(key:'kickstarter.upgradeExtension')}" title="{f:translate(key:'kickstarter.upgradeExtension')}" />
+        </f:link.action>
+        </f:if>
+        </li>
+      </ul>
+      </f:for>
+    </div>
+  </f:form>
+</div>
+</f:section>

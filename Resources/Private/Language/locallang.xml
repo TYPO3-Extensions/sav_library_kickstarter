@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>module</type>
+		<description>Language labels for &quot;sav_library_kickstarter&quot;</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+      <!-- Error messages -->
+			<label index="error.extensionHasDependencies">The extension has not been removed due to dependencies</label>
+      
+      <!-- General labels  -->
+			<label index="kickstarter.title">SAV Library Kickstarter</label>
+			<label index="kickstarter.extensionList">List of available extensions</label>
+      <label index="kickstarter.createExtension">Create a new extension</label>
+      <label index="kickstarter.editExtension">Edit the extension</label>
+      <label index="kickstarter.copyExtension">Copy the extension</label>
+			<label index="kickstarter.installExtension">Install the extension</label>
+			<label index="kickstarter.uninstallExtension">Uninstall the extension</label>
+			<label index="kickstarter.generateExtension">Generate the extension</label>
+			<label index="kickstarter.upgradeExtension">Upgrade the extension</label>
+      <label index="kickstarter.checked">Checked</label>
+      <label index="kickstarter.delete">Delete</label>
+      <label index="kickstarter.moveUp">Move up</label>
+      <label index="kickstarter.moveDown">Move down</label>
+      <label index="kickstarter.gotoTop">Goto Top</label>
+      <label index="kickstarter.new">New</label>
+      <label index="kickstarter.sort">Sort</label>
+      <label index="kickstarter.copy">Copy</label>
+			<label index="kickstarter.addNewField">Add a new field</label>
+			<label index="kickstarter.addNewFolder">Add a new folder</label>
+			<label index="kickstarter.addNewWhereTag">Add a new "whereTag"</label>
+      <label index="kickstarter.edit">Edit</label>
+      <label index="kickstarter.importFields">Import fields</label>
+      <label index="kickstarter.useFields">Use fields as in view</label>
+
+      <label index="kickstarter.emconfSectionTitle">Extension Configuration</label>
+			<label index="kickstarter.newTablesSectionTitle">New tables</label>
+			<label index="kickstarter.existingTablesSectionTitle">Existing tables</label>
+      <label index="kickstarter.generalSectionTitle">SAV Library Configuration</label>
+      <label index="kickstarter.viewsSectionTitle">Views</label>
+			<label index="kickstarter.queriesSectionTitle">Queries</label>
+			<label index="kickstarter.formsSectionTitle">Forms</label>
+      <label index="kickstarter.fieldsOverview">Fields overview</label>
+      
+      <!-- Button labels  -->
+			<label index="kickstarter.save">Save</label>
+			<label index="kickstarter.generate">Generate</label>
+      <!-- Extension List  -->
+			<label index="kickstarter.extensionList.extensionName">Extension name</label>
+			<label index="kickstarter.extensionList.extensionVersion">Extension version</label>
+			<label index="kickstarter.extensionList.libraryVersion">Library version</label>
+      <label index="kickstarter.extensionList.libraryType">Library type</label>
+      <label index="kickstarter.extensionList.libraryType">Library type</label>
+			<label index="kickstarter.extensionList.forms">Forms</label>
+			<label index="kickstarter.extensionList.cache">Cache</label>
+      <!-- Extension Manager Section  -->
+			<label index="kickstarter.emconfItem.extensionKey">Extension key:</label>
+			<label index="kickstarter.emconfItem.newExtensionKey">New extension key:</label>
+			<label index="kickstarter.emconfItem.oldExtensionKey">Old extension key:</label>
+			<label index="kickstarter.emconfItem.title">Title  for the extension manager:</label>
+			<label index="kickstarter.emconfItem.description">Description:</label>
+			<label index="kickstarter.emconfItem.state">State:</label>
+			<label index="kickstarter.emconfItem.state.alpha">Alpha (Very initial development)</label>
+			<label index="kickstarter.emconfItem.state.beta">Beta (Under current development, should work partly)</label>
+			<label index="kickstarter.emconfItem.state.stable">Stable (Stable and used in production)</label>
+			<label index="kickstarter.emconfItem.state.experimental">Experimental (Nobody knows if this is going anywhere yet...)</label>
+			<label index="kickstarter.emconfItem.state.test">Test (Test extension, demonstrates concepts etc.)</label>
+      <label index="kickstarter.emconfItem.dependencies">Dependencies:</label>
+			<label index="kickstarter.emconfItem.author">Author:</label>
+			<label index="kickstarter.emconfItem.author_email">Author email:</label>
+      <!-- General Section  -->
+			<label index="kickstarter.general.savlibraryVersion">SAV Library Version:</label>
+			<label index="kickstarter.general.extensionVersion">Extension Version:</label>
+			<label index="kickstarter.generalItem.libraryType">Library type:</label>
+      <label index="kickstarter.generalItem.libraryType.0">default</label>
+      <label index="kickstarter.generalItem.libraryType.1">mvc</label>
+      <label index="kickstarter.generalItem.pluginTitle">Title for the plugin:</label>
+      <label index="kickstarter.generalItem.debug">Debug Query (Use only for developments):</label>
+      <label index="kickstarter.generalItem.version">New version:</label>
+      <!-- Views Section  -->
+			<label index="kickstarter.viewsItem.title">Name:</label>
+			<label index="kickstarter.viewsItem.type">Type:</label>
+			<label index="kickstarter.viewsItem.type.none"></label>
+			<label index="kickstarter.viewsItem.type.list">List</label>
+			<label index="kickstarter.viewsItem.type.single">Single</label>
+			<label index="kickstarter.viewsItem.type.edit">Edit</label>
+			<label index="kickstarter.viewsItem.type.special">Special</label>
+			<label index="kickstarter.viewsItem.subtype">Subtype:</label>
+			<label index="kickstarter.viewsItem.subtype.none"></label>
+			<label index="kickstarter.viewsItem.subtype.update">Update view</label>
+			<label index="kickstarter.viewsItem.subtype.print">Print view</label>
+			<label index="kickstarter.viewsItem.subtype.print.itemsBeforePageBreak">Number of items before page break:</label>
+			<label index="kickstarter.viewsItem.subtype.print.itemsBeforeFirstPageBreak">Number of items before page break for the first page:</label>
+			<label index="kickstarter.viewsItem.addPrintIcon">Add a print icon:</label>
+			<label index="kickstarter.viewsItem.viewForPrintIcon">Related view:</label>
+			<label index="kickstarter.viewsItem.viewTitleBar">Title bar:</label>
+			<label index="kickstarter.viewsItem.folders">Folders:</label>
+			<label index="kickstarter.viewsItem.folders.label">Label:</label>
+			<label index="kickstarter.viewsItem.folders.configuration">Configuration:</label>
+			<label index="kickstarter.viewsItem.itemTemplate">Item template:</label>
+			<label index="kickstarter.viewsItem.viewTemplate">View template:</label>
+      <!-- Queries Section  -->
+			<label index="kickstarter.queriesItem.title">Name:</label>
+			<label index="kickstarter.queriesItem.mainTable">Main Table:</label>
+			<label index="kickstarter.queriesItem.foreignTables">Foreign Tables:</label>
+			<label index="kickstarter.queriesItem.aliases">Aliases:</label>
+			<label index="kickstarter.queriesItem.whereClause">Where Clause:</label>
+			<label index="kickstarter.queriesItem.orderByClause">Order By Clause:</label>
+			<label index="kickstarter.queriesItem.groupByClause">Group By Clause:</label>
+			<label index="kickstarter.queriesItem.whereTags">Where Tags:</label>
+			<label index="kickstarter.queriesItem.whereTags.title">Name:</label>
+			<label index="kickstarter.queriesItem.whereTags.whereClause">Where Clause:</label>
+			<label index="kickstarter.queriesItem.whereTags.orderByClause">Order By Clause:</label>
+      <!-- Forms Section  -->
+			<label index="kickstarter.formsItem.title">Name:</label>
+			<label index="kickstarter.formsItem.listView">List view:</label>
+			<label index="kickstarter.formsItem.singleView">Single view:</label>
+			<label index="kickstarter.formsItem.editView">Edit view:</label>
+			<label index="kickstarter.formsItem.specialView">Special view:</label>
+ 			<label index="kickstarter.formsItem.query">Query:</label>
+			<label index="kickstarter.formsItem.userPlugin">Allow caching:</label>
+      <!-- NewTables Section  -->
+			<label index="kickstarter.newTablesItem.tablename">Table Name:</label>
+			<label index="kickstarter.newTablesItem.title">Table Title:</label>
+			<label index="kickstarter.newTablesItem.add_deleted">Add "Deleted" field</label>
+			<label index="kickstarter.newTablesItem.add_hidden">Add "Hidden" field</label>
+			<label index="kickstarter.newTablesItem.add_starttime">Add "Starttime" field</label>
+			<label index="kickstarter.newTablesItem.add_endtime">Add "Endtime" field</label>
+			<label index="kickstarter.newTablesItem.add_access">Add Access "group" field</label>
+			<label index="kickstarter.newTablesItem.localization">Enabled localization features</label>
+			<label index="kickstarter.newTablesItem.versioning">Enable versioning</label>
+			<label index="kickstarter.newTablesItem.sorting">Manual ordering of records</label>
+			<label index="kickstarter.newTablesItem.allow_on_pages">Allowed on pages</label>
+			<label index="kickstarter.newTablesItem.sorting_desc">Descending order</label>
+			<label index="kickstarter.newTablesItem.save_and_new">Add "Save and new" button in forms</label>
+			<label index="kickstarter.newTablesItem.allow_ce_insert_records">Allowed in "Insert Records" field in content elements</label>
+			<label index="kickstarter.newTablesItem.defIcon">Default icon</label>
+			<label index="kickstarter.newTablesItem.defIcon.white">Default (white)</label>
+			<label index="kickstarter.newTablesItem.defIcon.black">Black</label>
+			<label index="kickstarter.newTablesItem.defIcon.gray">Gray</label>
+			<label index="kickstarter.newTablesItem.defIcon.blue">Blue</label>
+			<label index="kickstarter.newTablesItem.defIcon.green">Green</label>
+			<label index="kickstarter.newTablesItem.defIcon.red">Red</label>
+			<label index="kickstarter.newTablesItem.defIcon.yellow">Yellow</label>
+			<label index="kickstarter.newTablesItem.defIcon.purple">Purple</label>
+			<label index="kickstarter.newTablesItem.sorting_field">If "Manual ordering" is not set, order the table by this field:</label>
+			<label index="kickstarter.newTablesItem.type_field">Type-field, if any:</label>
+			<label index="kickstarter.newTablesItem.header_field">Label-field:</label>
+      <!-- ExistingTables Section  -->
+			<label index="kickstarter.existingTablesItem.tablename">Table Name:</label>
+			<label index="kickstarter.existingTablesItem.tablename.tt_content">tt_content (Content)</label>
+			<label index="kickstarter.existingTablesItem.tablename.fe_users">fe_users (Frontend Users)</label>
+			<label index="kickstarter.existingTablesItem.tablename.fe_groups">fe_groups (Frontend Groups)</label>
+			<label index="kickstarter.existingTablesItem.tablename.be_users">be_users (Backend Users)</label>
+			<label index="kickstarter.existingTablesItem.tablename.be_groups">be_groups (Backend Groups)</label>
+			<label index="kickstarter.existingTablesItem.tablename.pages">pages (Pages)</label>
+			<label index="kickstarter.existingTablesItem.importFields">Import the fields as "Only shown in SAV form":</label>
+			<!-- Fields information -->
+			<label index="kickstarter.field.fieldLabel">Field-></label>
+			<label index="kickstarter.field.fieldName">Field name</label>
+			<label index="kickstarter.field.fieldTitle">Field title</label>
+			<label index="kickstarter.field.fieldType">Field type</label>
+			<label index="kickstarter.field.fieldType.unknown">Unknown</label>
+			<label index="kickstarter.field.fieldType.checkbox">Checkbox</label>
+			<label index="kickstarter.field.fieldType.checkboxes">Checkboxes</label>
+			<label index="kickstarter.field.fieldType.date">Date</label>
+			<label index="kickstarter.field.fieldType.datetime">Date and time</label>
+			<label index="kickstarter.field.fieldType.files">Files</label>
+			<label index="kickstarter.field.fieldType.graph">Graph</label>
+			<label index="kickstarter.field.fieldType.integer">Integer</label>
+			<label index="kickstarter.field.fieldType.link">Link</label>
+			<label index="kickstarter.field.fieldType.radioButtons">Radio buttons</label>
+      <label index="kickstarter.field.fieldType.relationOneToManyAsSelectorbox">Relation one-to-many (selectorbox)</label>
+			<label index="kickstarter.field.fieldType.relationManyToManyAsDoubleSelectorbox">Relation many-to-many (double selectorbox)</label>
+			<label index="kickstarter.field.fieldType.relationManyToManyAsSubform">Relation many-to-many (subform)</label>
+      <label index="kickstarter.field.fieldType.richTextEditor">Rich Text Editor</label>
+			<label index="kickstarter.field.fieldType.selectorbox">Selectorbox</label>
+			<label index="kickstarter.field.fieldType.showOnly">Only shown in SAV form</label>
+			<label index="kickstarter.field.fieldType.string">String</label>
+			<label index="kickstarter.field.fieldType.text">Textarea</label>
+			<label index="kickstarter.field.folder">Folder</label>
+      <!-- Files -->
+			<label index="kickstarter.field.conf_files_type">File type</label>
+			<label index="kickstarter.field.conf_files_type.images">Imagefiles</label>
+			<label index="kickstarter.field.conf_files_type.webimages">Web-imagefiles (gif,jpg,png)</label>
+			<label index="kickstarter.field.conf_files_type.all">All files, except php/php3 extensions</label>
+			<label index="kickstarter.field.conf_files">Max number of files</label>
+			<label index="kickstarter.field.conf_max_filesize">Max filesize allowed (kb)</label>
+			<label index="kickstarter.field.conf_files_selsize">Size of selector box</label>
+			<!-- Relations -->
+			<label index="kickstarter.field.conf_rel_table">Table in relation with</label>
+			<label index="kickstarter.field.conf_rel_table.pages">Pages table, (pages)</label>
+			<label index="kickstarter.field.conf_rel_table.fe_users">Frontend Users, (fe_users)</label>
+			<label index="kickstarter.field.conf_rel_table.fe_groups">Frontend Usergroups, (fe_groups)</label>
+			<label index="kickstarter.field.conf_rel_table.tt_content">Content elements, (tt_content)</label>
+			<label index="kickstarter.field.conf_rel_table.custom">Custom table (enter name below)</label>
+			<label index="kickstarter.field.conf_custom_table_name">Custom table if selected above</label>
+			<label index="kickstarter.field.conf_rel_type">Records source</label>
+			<label index="kickstarter.field.conf_rel_type.all">All pages</label>
+			<label index="kickstarter.field.conf_rel_type.select_cur">Current page</label>
+			<label index="kickstarter.field.conf_rel_type.select_root">Root page</label>
+			<label index="kickstarter.field.conf_rel_type.select_storage">Storage page</label>
+			<label index="kickstarter.field.conf_rel_dummyitem">Add a blank item to the selector</label>
+			<label index="kickstarter.field.conf_relations_mm">True M-M relations (otherwise commalist of values)</label>
+			<label index="kickstarter.field.conf_norelation">Just create the subform (no relation)</label>
+			<label index="kickstarter.field.conf_relations">Max number of relations</label>
+			<label index="kickstarter.field.conf_relations_selsize">Size of selector box</label>
+			<!-- String -->
+			<label index="kickstarter.field.conf_size">Field width</label>
+			<label index="kickstarter.field.conf_max">Max characters</label>
+			<label index="kickstarter.field.conf_required">Required</label>
+			<label index="kickstarter.field.conf_varchar">Create Create VARCHAR, not TINYTEXT field</label>
+			<!-- Text Area -->
+			<label index="kickstarter.field.conf_cols">Textarea width (30 default)</label>
+			<label index="kickstarter.field.conf_rows">Number of rows (height)</label>
+			<!-- Selector box and radio buttons -->
+			<label index="kickstarter.field.items.label">Label</label>
+			<label index="kickstarter.field.items.value">Value</label>
+      </languageKey>
+	</data>
+	<orig_hash type="array">
+	</orig_hash>
+	<orig_text type="array">
+	</orig_text>
+</T3locallang>

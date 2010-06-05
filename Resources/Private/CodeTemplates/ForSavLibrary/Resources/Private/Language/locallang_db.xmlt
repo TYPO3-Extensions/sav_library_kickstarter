@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<sav:function name="removeEmptyLines">
+<f:alias map="{showOnly:'showOnly'}">
+<T3locallang>
+	<meta type="array">
+		<type>database</type>
+		<description>Language labels for database tables/fields belonging to extension '{extension.general.1.extensionKey}'</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+      <f:for each="{extension.newTables}" as="table">
+      <label index="{sav:buildTableName(shortName:table.tablename, extensionKey:extension.general.1.extensionKey)}">{table.title->sav:function(name:'stringToUtf8')}</label>
+      <f:for each="{table.fields}" as="field">
+			<label index="{sav:buildTableName(shortName:table.tablename, extensionKey:extension.general.1.extensionKey)}.{field.fieldname}">{field.title->sav:function(name:'stringToUtf8')}</label>
+      <f:for each="{field.items}" as="item" key="itemKey">
+			<label index="{sav:buildTableName(shortName:table.tablename, extensionKey:extension.general.1.extensionKey)}.{field.fieldname}.I.{itemKey}">{item.label->sav:function(name:'stringToUtf8')}</label>
+      </f:for>
+      </f:for>
+      </f:for>
+      <f:for each="{extension.existingTables}" as="table">
+      <f:for each="{table.fields}" as="field">
+			<label index="{table.tablename}.{sav:buildTableName(shortName:field.fieldname, extensionKey:extension.general.1.extensionKey, shortNameOnly:'{field.type} == {showOnly}')}">{field.title->sav:function(name:'stringToUtf8')}</label>
+      <f:for each="{field.items}" as="item" key="itemKey">
+			<label index="{table.tablename}.{sav:buildTableName(shortName:field.fieldname, extensionKey:extension.general.1.extensionKey, shortNameOnly:'{field.type} == {showOnly}')}.{field.fieldname}.I.{itemKey}">{item.label->sav:function(name:'stringToUtf8')}</label>
+      </f:for>
+      </f:for>
+      </f:for>
+      <label index="tt_content.list_type_pi1">{extension.general.1.pluginTitle->sav:function(name:'stringToUtf8')}</label>
+		</languageKey>
+		<f:if condition="{extension.languages}">
+		<f:for each="{extension.languages.1}" as="language" key="languageKey">
+		<f:if condition="{language} == 1">
+		<languageKey index="{languageKey}" type="array">
+      <f:for each="{extension.newTables}" as="table">
+      <sav:alias map="{tableTitle:'{table.title_{languageKey}}'}">
+      <label index="{sav:buildTableName(shortName:table.tablename, extensionKey:extension.general.1.extensionKey)}">{tableTitle->sav:function(name:'stringToUtf8')}</label>
+      </sav:alias>
+      <f:for each="{table.fields}" as="field">
+      <sav:alias map="{fieldTitle:'{field.title_{languageKey}}'}">
+			<label index="{sav:buildTableName(shortName:table.tablename, extensionKey:extension.general.1.extensionKey)}.{field.fieldname}">{fieldTitle->sav:function(name:'stringToUtf8')}</label>
+      </sav:alias>
+      <f:for each="{field.items}" as="item" key="itemKey">
+      <sav:alias map="{ItemLabel:'{item.label_{languageKey}}'}">
+      <label index="{sav:buildTableName(shortName:table.tablename, extensionKey:extension.general.1.extensionKey)}.{field.fieldname}.I.{itemKey}">{itemLabel->sav:function(name:'stringToUtf8')}</label>
+      </sav:alias>
+      </f:for>
+      </f:for>
+      </f:for>
+      <f:for each="{extension.existingTables}" as="table">
+      <f:for each="{table.fields}" as="field">
+      <sav:alias map="{fieldTitle:'{field.title_{languageKey}}'}">
+			<label index="{table.tablename}.{sav:buildTableName(shortName:field.fieldname, extensionKey:extension.general.1.extensionKey, shortNameOnly:'{field.type} == {showOnly}')}">{fieldTitle->sav:function(name:'stringToUtf8')}</label>
+      </sav:alias>
+      <f:for each="{field.items}" as="item" key="itemKey">
+      <sav:alias map="{ItemLabel:'{item.label_{languageKey}}'}">
+      <label index="{table.tablename}.{sav:buildTableName(shortName:field.fieldname, extensionKey:extension.general.1.extensionKey, shortNameOnly:'{field.type} == {showOnly}')}.{field.fieldname}.I.{itemKey}">{itemLabel->sav:function(name:'stringToUtf8')}</label>
+      </sav:alias>
+      </f:for>
+      </f:for>
+      </f:for>
+      <sav:alias map="{title:'{extension.pi.1.title_{languageKey}}'}">
+			<label index="tt_content.list_type_pi1">{title->sav:function(name:'stringToUtf8')}</label>
+      </sav:alias>
+		</languageKey>
+    </f:if>
+		</f:for>
+		</f:if>
+	</data>
+</T3locallang>
+</f:alias>
+</sav:function>
