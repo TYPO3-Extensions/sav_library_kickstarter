@@ -33,6 +33,7 @@ class Tx_SavLibraryKickstarter_ViewHelpers_AliasViewHelper extends Tx_Fluid_Core
 	 * @version $Id:
 	 */
 	public function render(array $map) {
+
     foreach($this->templateVariableContainer->getAllIdentifiers() as $identifier) {
       $arguments[$identifier] = $this->templateVariableContainer->get($identifier);
     }
@@ -55,16 +56,28 @@ class Tx_SavLibraryKickstarter_ViewHelpers_AliasViewHelper extends Tx_Fluid_Core
 	 * @author Laurent Foulloy <yolf.typo3@orange.fr>
 	 */
 	protected function parseValue($template, $arguments) {
-    $templateParser = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Parser_TemplateParser');
-    $content = $template;
-    while (preg_match('/([^\{]*)(\{[^\{]+?\})/', $content, $match)) {
-      if ($match[1]) {
-        $content = str_replace($match[0], $templateParser->parseTemplate($match[0], $arguments), $content);
-      } else {
-        $content = $templateParser->parseTemplate($match[0], $arguments);
-      }
+
+    // Replaces patterns by markers
+    $patterns = array();
+    $index = 0;
+    while (preg_match('/\{[^\{]+?\}/', $template, $match)) {
+      $patterns[$index] = $match[0];
+      $template = preg_replace('/\{[^\{]+?\}/', '#' . $index++ . '#', $template, 1);
     }
-    return $content;
+
+    // Processes the paterns
+    if ($index > 0) {
+      $templateParser = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Parser_TemplateParser');
+      foreach ($patterns as $patternKey => $pattern) {
+        while (preg_match('/#([0-9]+)#/', $pattern, $match)) {
+          $pattern = str_replace($match[0], $patterns[$match[1]], $pattern);
+        }
+        $patterns[$patternKey] = $templateParser->parseTemplate($pattern, $arguments);
+      }
+      $template = $patterns[$index -1 ];
+    }
+    
+    return $template;
 	}
 
 }

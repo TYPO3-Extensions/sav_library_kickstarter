@@ -32,7 +32,7 @@
         <sav:comment><!-- Table Title --></sav:comment>
         <label for="title"><f:translate key="kickstarter.{section}Item.title" /></label>
   		  <f:form.textbox id="title" name="{section}[title]" value="{sectionItem.title}"/>
-  		  
+
   		  <div class="flags">
           <div class="col1">
             <sav:comment><!-- Add deleted field --></sav:comment>
@@ -60,7 +60,7 @@
         		<f:form.checkbox id="add_access" class="checkbox" name="{section}[add_access]" value="1" checked="{sectionItem.add_access}"/>
           	<label class="clearNone" for="add_access"><f:translate key="kickstarter.{section}Item.add_access" /></label>
         	</div>
-      	
+
           <div class="col2">
             <sav:comment><!-- Add localization --></sav:comment>
         		<f:form.hidden class="hidden" name="{section}[localization]" value="0"/>
@@ -81,7 +81,7 @@
             <f:form.hidden class="hidden" name="{section}[allow_ce_insert_records]" value="0"/>
         		<f:form.checkbox id="allow_ce_insert_records" class="checkbox" name="{section}[allow_ce_insert_records]" value="1" checked="{sectionItem.allow_ce_insert_records}"/>
           	<label class="clearNone" for="allow_ce_insert_records"><f:translate key="kickstarter.{section}Item.allow_ce_insert_records" /></label>
-          	
+
           </div>
           <div class="col1">
             <sav:comment><!-- Add Allowed on pages flag --></sav:comment>
@@ -103,15 +103,7 @@
           </div>
           <div class="col2">
             <sav:comment><!-- Icon --></sav:comment>
-      		  <f:form.select id="defIcon"name="{section}[defIcon]" options="{
-              default:'{f:translate(key:\"kickstarter.{section}Item.defIcon.white\")}',
-              default_black:'{f:translate(key:\"kickstarter.{section}Item.defIcon.black\")}',
-              default_gray4:'{f:translate(key:\"kickstarter.{section}Item.defIcon.gray\")}',
-              default_blue:'{f:translate(key:\"kickstarter.{section}Item.defIcon.blue\")}',
-              default_green:'{f:translate(key:\"kickstarter.{section}Item.defIcon.green\")}',
-              default_red:'{f:translate(key:\"kickstarter.{section}Item.defIcon.red\")}',
-              default_yellow:'{f:translate(key:\"kickstarter.{section}Item.defIcon.yellow\")}',
-              default_purple:'{f:translate(key:\"kickstarter.{section}Item.defIcon.purple\")}'}" value="{sectionItem.defIcon}" />
+      		  <f:form.select id="defIcon" name="{section}[defIcon]" options="{sav:buildOptionsForFileIconSelectorbox()}" value="{sectionItem.defIcon}" />
         	  <label class="defIcon clearNone" for="defIcon"><f:translate key="kickstarter.{section}Item.defIcon" /></label>
 
             <sav:comment><!-- Field type --></sav:comment>
@@ -135,7 +127,7 @@
             </f:if>
           </div>
         </div>
-        
+
         <sav:comment><!-- Fields configuration --></sav:comment>
         <div id="fieldsConfiguration">
           <ul>
