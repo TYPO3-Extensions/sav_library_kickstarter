@@ -31,7 +31,7 @@
         <sav:comment><!-- Main Table --></sav:comment>
       	<label for="mainTable"><f:translate key="kickstarter.{section}Item.mainTable" /></label>
         <sav:alias map="{firtNewTable:'{extension.newTables->sav:function(name:\"current\")}'}">
-        <sav:alias map="{defaultTableName:'{{sav:BuildTableName(shortName:firtNewTable.tablename, extensionKey:extKey)}}'}">
+        <sav:alias map="{defaultTableName:'{sav:BuildTableName(shortName:firtNewTable.tablename, extensionKey:extKey)}'}">
     		<f:form.textbox id="mainTable" name="{section}[mainTable]" value="{f:if(condition:sectionItem.mainTable, then:sectionItem.mainTable, else:defaultTableName)}" />
         </sav:alias>
         </sav:alias>

@@ -537,7 +537,7 @@
           'fieldmane-' =&gt; array('order' =&gt; 'tablename.fieldname desc'),
 
         &lt;b&gt;orderLinkInTitleSetup = string;&lt;/b&gt;
-        This property controls the display of the link when orderLinkInTitle is set. The format is “param1:param2:param3” where “param1” to “param3” can take the following values:
+        This property controls the display of the link when orderLinkInTitle is set. The format is &quot;param1:param2:param3&quot; where &quot;param1&quot; to &quot;param3&quot; can take the following values:
         . value: the field value is displayed,
         . link: the field value is displayed with a link with toggle the sort,
         . asc: an icon is displayed with a link to make an ascending sort,
@@ -548,7 +548,7 @@
 
         &lt;b&gt;query = SQL statements;&lt;/b&gt;
         The query will be executed once the input form data have been saved. Therefore, it can only be used with &quot;input&quot; or &quot;update&quot; views.
-        Because any query may be executed, for security reason, this property can only be used if an admin user has checked the field “Allow the use of the “query” property” in the advanced folder of the flexform.
+        Because any query may be executed, for security reason, this property can only be used if an admin user has checked the field &quot;Allow the use of the &quot;query&quot; property&quot; in the advanced folder of the flexform.
         It may be useful, for example, to update a specific table when the current data are saved. Several queries can be used in the SQL statements. Each query must be separated using &quot;\;&quot;.
         Special markers can be used in the statement :
         . ###uid### will be replaced by the current record uid.

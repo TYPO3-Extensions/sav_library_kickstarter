@@ -190,7 +190,7 @@ class Tx_SavLibraryKickstarter_Upgrade_UpgradeFromKickstarter extends Tx_SavLibr
       // Sets the tablename
       $itemConfiguration['tablename'] = $item['tablename'];
 
-      // Remove ".gif" in defIcon
+      // Removes ".gif" in defIcon
       $itemConfiguration['defIcon'] = preg_replace('/^([^\.]+)\.gif/', '$1', $item['defIcon']);
       
       // Upgrades the fields
@@ -297,7 +297,7 @@ class Tx_SavLibraryKickstarter_Upgrade_UpgradeFromKickstarter extends Tx_SavLibr
         $correctedFieldsConfiguration['fields'][$newKeyField++] = $field;
       }
 
-      // Remove the item
+      // Removes the item
       $configuration->deleteItem($key);
 
       $newConfiguration[$key] = array_merge($itemConfiguration, $correctedFieldsConfiguration);

@@ -554,6 +554,8 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
     $extKey = $arguments['extKey'];
     $section = $arguments['general']['section'];
     $itemKey = $arguments['general']['itemKey'];
+    $fieldKey = $arguments['general']['fieldKey'];
+    $showFieldDefinition = $arguments['general']['showFieldDefinition'];
 
     // Gets the configuration and the section managers
     $configurationManager = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Configuration_ConfigurationManager', $extKey);

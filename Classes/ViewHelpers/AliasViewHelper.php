@@ -57,6 +57,11 @@ class Tx_SavLibraryKickstarter_ViewHelpers_AliasViewHelper extends Tx_Fluid_Core
 	 */
 	protected function parseValue($template, $arguments) {
 
+    // Checks if the template is a string
+    if (!is_string($template)) {
+      return $template;
+    }
+    
     // Replaces patterns by markers
     $patterns = array();
     $index = 0;

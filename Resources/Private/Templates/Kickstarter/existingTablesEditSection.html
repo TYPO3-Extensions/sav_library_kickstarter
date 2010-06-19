@@ -45,7 +45,7 @@
               <div class="field {f:if(condition:'{fieldKey}=={key}',then:'selected')}">
                 <sav:link.empty key="{field.fieldname}" />
                 <div class="fieldLabel">
-                  <f:link.action action="{section}EditSection" arguments="{extKey:extKey, section:section, itemKey:itemKey}" section="{sav:function(name:'md5int',arguments:'kickstarterTop')}" >
+                  <f:link.action action="{section}EditSection" arguments="{extKey:extKey, section:section, itemKey:itemKey, fieldKey:key}" section="{sav:function(name:'md5int',arguments:'kickstarterTop')}" >
                   <img class="gotoTop" src="../../../../typo3/gfx/turn_up.gif" alt="{f:translate(key:'kickstarter.gotoTop')}" title="{f:translate(key:'kickstarter.gotoTop')}" />
                   <f:translate key="kickstarter.field.fieldLabel" />{field.fieldname}
                   </f:link.action>
