@@ -197,11 +197,11 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibrary extends 
             unset($orderedFields);
             foreach ($tempo as $fieldKey => $field) {
               // Generates the title
-              if (preg_match('/###(' . $field['fieldname'] . ')(?(?=[:]):([^#]+))###/', $view['viewTitleBar'], $matches) && $field['type'] != 'showOnly') {
+              if (preg_match('/###(' . $field['fieldname'] . ')(?(?=[:]):([^#]+))###/', $view['viewTitleBar'], $matches) && $field['type'] != 'ShowOnly') {
                 $title[$viewKey]['configuration']['field'] = str_replace($matches[0], '###' . $tableName . '.' . $field['fieldname'] . '###', $title[$viewKey]['configuration']['field']);
               }
 
-              if (preg_match_all('/([^=]+)=([^;#]+);?/', $matches[2], $matches) && $field['type'] != 'showOnly') {
+              if (preg_match_all('/([^=]+)=([^;#]+);?/', $matches[2], $matches) && $field['type'] != 'ShowOnly') {
 
                 foreach ($matches[0] as $keyMatch => $match) {
                   $title[$viewKey]['configuration'][strtolower($matches[1][$keyMatch])] = $matches[2][$keyMatch];
@@ -248,7 +248,7 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibrary extends 
 
             foreach ($tempo as $fieldKey => $field) {
 
-              if ($field['type'] != 'showOnly') {
+              if ($field['type'] != 'ShowOnly') {
 
                 // Generates the additional TCA information
                 $prefix = 'tx_' . str_replace('_', '', $this->extensionKey) . '_';
@@ -341,7 +341,7 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibrary extends 
               $table = $extension[$value['wizArray']][$value['table']];
               $field = $extension[$value['wizArray']][$value['table']]['fields'][$value['field']];
 
-              $fieldName = (($value['wizArray'] == 'existingTables' && $field['type'] != 'showOnly') ? 'tx_' . str_replace('_', '', $this->extensionKey) . '_' . $field['fieldname'] : $field['fieldname']);
+              $fieldName = (($value['wizArray'] == 'existingTables' && $field['type'] != 'ShowOnly') ? 'tx_' . str_replace('_', '', $this->extensionKey) . '_' . $field['fieldname'] : $field['fieldname']);
               $name = $value['tableName'] . '.' . $fieldName;
               // Generates the field
               if ($field['selected'][$viewKey]) {
@@ -355,7 +355,7 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibrary extends 
                 }
 
                 // Checks if it is a subform
-                if ($field['type'] == 'relationManyToManyAsSubform') {
+                if ($field['type'] == 'RelationManyToManyAsSubform') {
                   $relTable[$field['conf_rel_table']] = $this->cryptTag($name);
                 }
 

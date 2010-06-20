@@ -12,40 +12,40 @@
       </label>
 
 <!-- Types, functions and general attributes -->
-			<label index="all.description"></label>
-			<label index="all.seeAlso">
-        sav_library_kickstarter:checkbox
-        sav_library_kickstarter:checkboxes
-        sav_library_kickstarter:date
-        sav_library_kickstarter:datetime
-        sav_library_kickstarter:files
-        sav_library_kickstarter:functions
-        sav_library_kickstarter:general
-        sav_library_kickstarter:graph
-        sav_library_kickstarter:link
-        sav_library_kickstarter:rel
-        sav_library_kickstarter:radioButtons
-        sav_library_kickstarter:richTextEditor
-        sav_library_kickstarter:selectorbox
-        sav_library_kickstarter:string
-        sav_library_kickstarter:text
+			<label index="All.description"></label>
+			<label index="All.seeAlso">
+        sav_library_kickstarter:Checkbox
+        sav_library_kickstarter:Checkboxes
+        sav_library_kickstarter:Date
+        sav_library_kickstarter:DateTime
+        sav_library_kickstarter:Files
+        sav_library_kickstarter:Functions
+        sav_library_kickstarter:General
+        sav_library_kickstarter:Graph
+        sav_library_kickstarter:Link
+        sav_library_kickstarter:Rel
+        sav_library_kickstarter:RadioButtons
+        sav_library_kickstarter:RichTextEditor
+        sav_library_kickstarter:Selectorbox
+        sav_library_kickstarter:String
+        sav_library_kickstarter:Text
       </label>
       
 <!-- Types -->
-  <!-- checkbox -->
-			<label index="checkbox.description">Attributes for &quot;checkbox&quot;</label>
-			<label index="checkbox.seeAlso">sav_library_kickstarter:all,sav_library_kickstarter:functions,sav_library_kickstarter:general</label>
-			<label index="checkbox.syntax">
+  <!-- Checkbox -->
+			<label index="Checkbox.description">Attributes for &quot;Checkbox&quot;</label>
+			<label index="Checkbox.seeAlso">sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</label>
+			<label index="Checkbox.syntax">
         &lt;b&gt;displayAsImage = 1;&lt;/b&gt;
         If set, the check box is displayed as an image instead of a label.
         
         &lt;b&gt;doNotDisplayIfNotChecked = 1;&lt;/b&gt;
         Do not display the checkbox value (that is &quot;No&quot;) if it is not checked (obviously it does not apply when in edit mode)
       </label>
-  <!-- checkboxes -->
-			<label index="checkboxes.description">Attributes for &quot;checkboxes&quot;</label>
-			<label index="checkboxes.seeAlso">sav_library_kickstarter:all,sav_library_kickstarter:functions,sav_library_kickstarter:general</label>
-			<label index="checkboxes.syntax">
+  <!-- Checkboxes -->
+			<label index="Checkboxes.description">Attributes for &quot;Checkboxes&quot;</label>
+			<label index="Checkboxes.seeAlso">sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</label>
+			<label index="Checkboxes.syntax">
         &lt;b&gt;cols = integer;&lt;/b&gt;
         Number of columns to display.
 
@@ -59,10 +59,10 @@
         Number of items to display.  
       </label>
       
-  <!-- date -->
-			<label index="date.description">Attributes for &quot;date&quot;</label>
-			<label index="date.seeAlso">sav_library_kickstarter:all,sav_library_kickstarter:functions,sav_library_kickstarter:general</label>
-			<label index="date.syntax">
+  <!-- Date -->
+			<label index="Date.description">Attributes for &quot;Date&quot;</label>
+			<label index="Date.seeAlso">sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</label>
+			<label index="Date.syntax">
         &lt;b&gt;format = date_format;&lt;/b&gt;
         Sets a format to display the date. The format is the same as in strftime php function, e.g. format = %d/%m/%Y;
         
@@ -70,20 +70,20 @@
         Do not display the default date.
       </label>
 
-  <!-- datetime -->
-			<label index="datetime.description">Attributes for &quot;datetime&quot;</label>
-			<label index="datetime.seeAlso">sav_library_kickstarter:all,sav_library_kickstarter:functions,sav_library_kickstarter:general</label>
-			<label index="datetime.syntax">
+  <!-- DateTime -->
+			<label index="DateTime.description">Attributes for &quot;DateTime&quot;</label>
+			<label index="DateTime.seeAlso">sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</label>
+			<label index="DateTime.syntax">
         &lt;b&gt;format = date_format;&lt;/b&gt;
         Sets a format to display the date. The format is the same as in strftime php function, e.g. format = %d/%m/%Y;
         
         &lt;b&gt;noDefault = 1;&lt;/b&gt;
         Do not display the default date and time.
       </label>
-  <!-- files -->
-			<label index="files.description">Attributes for &quot;files&quot;</label>
-			<label index="files.seeAlso">sav_library_kickstarter:all,sav_library_kickstarter:functions,sav_library_kickstarter:general</label>
-			<label index="files.syntax">
+  <!-- Files -->
+			<label index="Files.description">Attributes for &quot;Files&quot;</label>
+			<label index="Files.seeAlso">sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</label>
+			<label index="Files.syntax">
         &lt;b&gt;addIcon = 1;&lt;/b&gt;
         Adds an icon in front of the hyperlink associated with the file.
 
@@ -123,26 +123,26 @@
         Sets the &quot;alt&quot; attribute with the content of the field whose name is given by field_name.
         
         &lt;b&gt;default = string;&lt;/b&gt;
-        Defines the default image if the content of the field is null otherwise the default image is “unknown.gif” taken in the directory sav_library/res/images.
+        Defines the default image if the content of the field is null otherwise the default image is &quot;unknown.gif&quot; taken in the directory sav_library/res/images.
         
         &lt;b&gt;tsProperties = string;&lt;/b&gt;
         It makes it possible to use the graphic possibilities of TYPO3. If set, an IMAGE cObject is generated with the given TS properties.
         Do not forget that the configuration field is ended by a semi-column, therefore if you need a semi-column in your TS write it &quot;\;&quot;
       </label>
-  <!-- graph -->
-			<label index="graph.description">Attributes for &quot;XML Graph&quot;</label>
-			<label index="graph.seeAlso">sav_library_kickstarter:all,sav_library_kickstarter:functions,sav_library_kickstarter:general</label>
-			<label index="graph.syntax">
+  <!-- Graph -->
+			<label index="Graph.description">Attributes for &quot;XML Graph&quot;</label>
+			<label index="Graph.seeAlso">sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</label>
+			<label index="Graph.syntax">
         &lt;b&gt;graphTemplate = string;&lt;/b&gt;
         File name of the XML template from the site root.
         &lt;b&gt;markers = string;&lt;/b&gt;
-        Comma-separated list of definitions. Example: “marker#begin = ###beginPeriod###” means that the “marker” whose id is “begin”
-        in the template will be replaced by the marker “###beginPeriod###”, that is by the alias “beginPeriod”.
+        Comma-separated list of definitions. Example: &quot;marker#begin = ###beginPeriod###&quot; means that the &quot;marker&quot; whose id is &quot;begin&quot;
+        in the template will be replaced by the marker &quot;###beginPeriod###&quot;, that is by the alias &quot;beginPeriod&quot;.
       </label>
-  <!-- link -->
-      <label index="link.description">Attributes for &quot;Link&quot;</label>
-			<label index="link.seeAlso">sav_library_kickstarter:all,sav_library_kickstarter:functions,sav_library_kickstarter:general</label>
-			<label index="link.syntax">
+  <!-- Link -->
+      <label index="Link.description">Attributes for &quot;Link&quot;</label>
+			<label index="Link.seeAlso">sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</label>
+			<label index="Link.syntax">
         &lt;b&gt;generateRTF=1;&lt;/b&gt;
         Sets the RTF generator.
         &lt;b&gt;templateRTF=filename;&lt;/b&gt;
@@ -161,20 +161,20 @@
         &lt;b&gt;fieldMessage = fieldName;&lt;/b&gt;
         Sets the attribute &quot;message&quot; with the content of the field whose name is given by fieldName.
       </label>
-  <!-- radioButtons -->
-			<label index="radioButtons.description">Attributes for &quot;radio buttons&quot;</label>
-			<label index="radioButtons.seeAlso">sav_library_kickstarter:all,sav_library_kickstarter:functions,sav_library_kickstarter:general</label>
-			<label index="radioButtons.syntax">
+  <!-- RadioButtons -->
+			<label index="RadioButtons.description">Attributes for &quot;Radio buttons&quot;</label>
+			<label index="RadioButtons.seeAlso">sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</label>
+			<label index="RadioButtons.syntax">
         &lt;b&gt;cols = integer;&lt;/b&gt;
         Number of columns to display.
 
         &lt;b&gt;displayAsImage = 1;&lt;/b&gt;
         If set, the radio buttons are displayed as images instead of labels.
       </label>
-  <!-- relationManyToManyAsSubform -->
-			<label index="relationManyToManyAsSubform.description">Attributes for &quot;Database many-to-many relation as subform&quot;</label>
-			<label index="relationManyToManyAsSubform.seeAlso">sav_library_kickstarter:all,sav_library_kickstarter:functions,sav_library_kickstarter:general</label>
-			<label index="relationManyToManyAsSubform.syntax">
+  <!-- RelationManyToManyAsSubform -->
+			<label index="RelationManyToManyAsSubform.description">Attributes for &quot;Database many-to-many relation as subform&quot;</label>
+			<label index="RelationManyToManyAsSubform.seeAlso">sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</label>
+			<label index="RelationManyToManyAsSubform.syntax">
         This type should is used to generate a subform. Special parameters can be added.
         &lt;b&gt;addDelete = 1;&lt;/b&gt;
         A delete icon will be added in front of each item.
@@ -196,16 +196,16 @@
         &lt;b&gt;noFirstLast = 1;&lt;/b&gt;
         First and last buttons in the browser associated with the &quot;subFormAlt&quot; template will not be shown.
      </label>
-  <!-- relationManyToManyAsDoubleSelectorbox -->
-			<label index="relationManyToManyAsDoubleSelectorbox.description">Attributes for &quot;Database many-to-many relation as double selectorbox&quot;</label>
-			<label index="relationManyToManyAsDoubleSelectorbox.seeAlso">sav_library_kickstarter:relationOneToManyAsSelectorbox,sav_library_kickstarter:all,sav_library_kickstarter:functions,sav_library_kickstarter:general</label>
-			<label index="relationManyToManyAsDoubleSelectorbox.syntax">
+  <!-- RelationManyToManyAsDoubleSelectorbox -->
+			<label index="RelationManyToManyAsDoubleSelectorbox.description">Attributes for &quot;Database many-to-many relation as double selectorbox&quot;</label>
+			<label index="RelationManyToManyAsDoubleSelectorbox.seeAlso">sav_library_kickstarter:RelationOneToManyAsSelectorbox,sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</label>
+			<label index="RelationManyToManyAsDoubleSelectorbox.syntax">
         The attributes for this type are the same as for Database one-to-many relation (selectorbox)
       </label>
-  <!-- relationOneToManyAsSelectorbox -->
-			<label index="relationOneToManyAsSelectorbox.description">Attributes for &quot;Database one-to-many relation as selectorbox&quot;</label>
-			<label index="relationOneToManyAsSelectorbox.seeAlso">sav_library_kickstarter:all,sav_library_kickstarter:functions,sav_library_kickstarter:general</label>
-			<label index="relationOneToManyAsSelectorbox.syntax">
+  <!-- RelationOneToManyAsSelectorbox -->
+			<label index="RelationOneToManyAsSelectorbox.description">Attributes for &quot;Database one-to-many relation as selectorbox&quot;</label>
+			<label index="RelationOneToManyAsSelectorbox.seeAlso">sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</label>
+			<label index="RelationOneToManyAsSelectorbox.syntax">
         &lt;b&gt;aliasSelect = field_name;&lt;/b&gt;
         Defines an alias used in the SELECT query. markers ###fieldname### can be used, fieldname must be in the relation table.
         &lt;b&gt;labelSelect = field_name;&lt;/b&gt;
@@ -253,9 +253,9 @@
         By default, when starting points are provided, information associated with the selector is searched in these page. This property overrides the default behavior.
      </label>
   <!-- richTextEditor -->
-			<label index="richTextEditor.description">Attributes for &quot;Rich Text Editor&quot;</label>
-			<label index="richTextEditor.seeAlso">sav_library_kickstarter:all,sav_library_kickstarter:functions,sav_library_kickstarter:general</label>
-			<label index="richTextEditor.syntax">
+			<label index="RichTextEditor.description">Attributes for &quot;Rich Text Editor&quot;</label>
+			<label index="RichTextEditor.seeAlso">sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</label>
+			<label index="RichTextEditor.syntax">
         &lt;b&gt;height = integer;&lt;/b&gt;
         Defines the height of the textarea. The integer value represents the height in pixels (45 pixels are automatically added).
 
@@ -263,9 +263,9 @@
         Defines the width of the textarea. The integer value represents the width in pixels.
       </label>
   <!-- selectorbox -->
-			<label index="selectorbox.description">Attributes for &quot;selectorbox&quot;</label>
-			<label index="selectorbox.seeAlso">sav_library_kickstarter:all,sav_library_kickstarter:functions,sav_library_kickstarter:general</label>
-			<label index="selectorbox.syntax">
+			<label index="Selectorbox.description">Attributes for &quot;Selectorbox&quot;</label>
+			<label index="Selectorbox.seeAlso">sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</label>
+			<label index="Selectorbox.syntax">
         &lt;b&gt;func = function_name;&lt;/b&gt;
         It associates a function with the selectorbox items. The parameter function_name can be:
         . makeItemLink
@@ -279,19 +279,19 @@
         It can be used with selector boxes associated with a MM relation to replace the default &lt; br /&gt; separator between items in showAll or showSingle views.
       </label>
   <!-- showOnly -->
-			<label index="showOnly.description">Attributes for &quot;Only shown in SAV form&quot;</label>
-			<label index="showOnly.seeAlso">sav_library_kickstarter:all,sav_library_kickstarter:functions,sav_library_kickstarter:general</label>
+			<label index="ShowOnly.description">Attributes for &quot;Only shown in SAV form&quot;</label>
+			<label index="ShowOnly.seeAlso">sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</label>
   <!-- string -->
-			<label index="string.description">Attributes for &quot;String input&quot;</label>
-			<label index="string.seeAlso">sav_library_kickstarter:all,sav_library_kickstarter:functions,sav_library_kickstarter:general</label>
-			<label index="string.syntax">
+			<label index="String.description">Attributes for &quot;String input&quot;</label>
+			<label index="String.seeAlso">sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</label>
+			<label index="String.syntax">
         &lt;b&gt;size = integer;&lt;/b&gt;
         Size of the field.
       </label>
   <!-- text -->
-			<label index="text.description">Attributes for &quot;textarea&quot;</label>
-			<label index="text.seeAlso">sav_library_kickstarter:all,sav_library_kickstarter:functions,sav_library_kickstarter:general</label>
-			<label index="text.syntax">
+			<label index="Text.description">Attributes for &quot;Textarea&quot;</label>
+			<label index="Text.seeAlso">sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</label>
+			<label index="Text.syntax">
         &lt;b&gt;cols = integer;&lt;/b&gt;
         Defines the number of cols of the textarea. This attribute overwrites the same attribute in the TCA.
 
@@ -300,9 +300,9 @@
       </label>
       
  <!-- Functions -->
-			<label index="functions.description">Functions attributes</label>
-			<label index="functions.seeAlso">sav_library_kickstarter:all,sav_library_kickstarter:functions,sav_library_kickstarter:general</label>
-			<label index="functions.syntax">
+			<label index="Functions.description">Functions attributes</label>
+			<label index="Functions.seeAlso">sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</label>
+			<label index="Functions.syntax">
 
         Functions are applied to the value of the field. It can be also applied to left and right contents.
         In this case, &quot;Left&quot; or &quot;Right&quot; should be added to the function name and the optional attributes.
@@ -384,9 +384,9 @@
       </label>
 
 <!-- General attributes -->
-			<label index="general.description">General Attributes</label>
-			<label index="general.seeAlso">sav_library_kickstarter:all,sav_library_kickstarter:functions,sav_library_kickstarter:general</label>
-			<label index="general.syntax">
+			<label index="General.description">General Attributes</label>
+			<label index="General.seeAlso">sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</label>
+			<label index="General.syntax">
         &lt;b&gt;addEdit = 1;&lt;/b&gt;
         When the field is used in an &quot;Update form&quot; view, it will add an input element for update that can be used with the marker ###field_name_Edit### where &quot;field_name&quot; is the name of the field.
         See also the help for Form views (showAllItemTemplate) to see how to use markers ###field[field_name, label]###.

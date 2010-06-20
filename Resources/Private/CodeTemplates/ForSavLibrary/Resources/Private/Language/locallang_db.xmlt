@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <sav:function name="removeEmptyLines">
-<f:alias map="{showOnly:'showOnly'}">
+<f:alias map="{ShowOnly:'ShowOnly'}">
 <T3locallang>
 	<meta type="array">
 		<type>database</type>
@@ -19,9 +19,9 @@
       </f:for>
       <f:for each="{extension.existingTables}" as="table">
       <f:for each="{table.fields}" as="field">
-			<label index="{table.tablename}.{sav:buildTableName(shortName:field.fieldname, extensionKey:extension.general.1.extensionKey, shortNameOnly:'{field.type} == {showOnly}')}">{field.title->sav:function(name:'stringToUtf8')}</label>
+			<label index="{table.tablename}.{sav:buildTableName(shortName:field.fieldname, extensionKey:extension.general.1.extensionKey, shortNameOnly:'{field.type} == {ShowOnly}')}">{field.title->sav:function(name:'stringToUtf8')}</label>
       <f:for each="{field.items}" as="item" key="itemKey">
-			<label index="{table.tablename}.{sav:buildTableName(shortName:field.fieldname, extensionKey:extension.general.1.extensionKey, shortNameOnly:'{field.type} == {showOnly}')}.{field.fieldname}.I.{itemKey}">{item.label->sav:function(name:'stringToUtf8')}</label>
+			<label index="{table.tablename}.{sav:buildTableName(shortName:field.fieldname, extensionKey:extension.general.1.extensionKey, shortNameOnly:'{field.type} == {ShowOnly}')}.{field.fieldname}.I.{itemKey}">{item.label->sav:function(name:'stringToUtf8')}</label>
       </f:for>
       </f:for>
       </f:for>
@@ -49,11 +49,11 @@
       <f:for each="{extension.existingTables}" as="table">
       <f:for each="{table.fields}" as="field">
       <sav:alias map="{fieldTitle:'{field.title_{languageKey}}'}">
-			<label index="{table.tablename}.{sav:buildTableName(shortName:field.fieldname, extensionKey:extension.general.1.extensionKey, shortNameOnly:'{field.type} == {showOnly}')}">{fieldTitle->sav:function(name:'stringToUtf8')}</label>
+			<label index="{table.tablename}.{sav:buildTableName(shortName:field.fieldname, extensionKey:extension.general.1.extensionKey, shortNameOnly:'{field.type} == {ShowOnly}')}">{fieldTitle->sav:function(name:'stringToUtf8')}</label>
       </sav:alias>
       <f:for each="{field.items}" as="item" key="itemKey">
       <sav:alias map="{ItemLabel:'{item.label_{languageKey}}'}">
-      <label index="{table.tablename}.{sav:buildTableName(shortName:field.fieldname, extensionKey:extension.general.1.extensionKey, shortNameOnly:'{field.type} == {showOnly}')}.{field.fieldname}.I.{itemKey}">{itemLabel->sav:function(name:'stringToUtf8')}</label>
+      <label index="{table.tablename}.{sav:buildTableName(shortName:field.fieldname, extensionKey:extension.general.1.extensionKey, shortNameOnly:'{field.type} == {ShowOnly}')}.{field.fieldname}.I.{itemKey}">{itemLabel->sav:function(name:'stringToUtf8')}</label>
       </sav:alias>
       </f:for>
       </f:for>

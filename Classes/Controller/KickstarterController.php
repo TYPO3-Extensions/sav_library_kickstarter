@@ -369,7 +369,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
         $item->addItem(array(
           'fieldname' => $columnKey,
           'title' => $GLOBALS['LANG']->sL($column['label']),
-          'type' => 'showOnly',
+          'type' => 'ShowOnly',
         ));
       }
 

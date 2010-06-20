@@ -85,7 +85,7 @@ $tempColumns = array (
 );
 t3lib_div::loadTCA('{model}');
 t3lib_extMgm::addTCAcolumns('{model}',$tempColumns,1);
-t3lib_extMgm::addToAllTCAtypes('{model}',';;;;1-1-1<f:alias map="{richTextEditor:'richTextEditor',showOnly:'showOnly'}"><f:for each="{table.fields}" as="field"><f:if condition="{field.type} != {showOnly}">, {sav:buildTableName(shortName:field.fieldname, extensionKey:extension.general.1.extensionKey)}<f:if condition="{field.type} == {richTextEditor}">;;;richtext[]:rte_transform[mode=ts]</f:if></f:if></f:for></f:alias>');
+t3lib_extMgm::addToAllTCAtypes('{model}',';;;;1-1-1<f:alias map="{RichTextEditor:'RichTextEditor',ShowOnly:'ShowOnly'}"><f:for each="{table.fields}" as="field"><f:if condition="{field.type} != {ShowOnly}">, {sav:buildTableName(shortName:field.fieldname, extensionKey:extension.general.1.extensionKey)}<f:if condition="{field.type} == {RichTextEditor}">;;;richtext[]:rte_transform[mode=ts]</f:if></f:if></f:for></f:alias>');
 
 </sav:alias>
 </f:for>

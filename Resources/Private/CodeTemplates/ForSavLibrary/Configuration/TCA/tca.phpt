@@ -124,7 +124,7 @@ $TCA['{model}'] = array (
 		</f:for>
 	),
 	'types' => array (
-		'0' => array('showitem' => '<f:if condition="{newTable.add_hidden}">hidden;;1;;1-1-1</f:if><f:for each="{newTable.fields}" as="field">, {field.fieldname}<f:alias map="{richTextEditor:'richTextEditor'}"><f:if condition="{field.type} == {richTextEditor}">;;;richtext[]:rte_transform[mode=ts]</f:if></f:alias></f:for>')
+		'0' => array('showitem' => '<f:if condition="{newTable.add_hidden}">hidden;;1;;1-1-1</f:if><f:for each="{newTable.fields}" as="field">, {field.fieldname}<f:alias map="{RichTextEditor:'RichTextEditor'}"><f:if condition="{field.type} == {RichTextEditor}">;;;richtext[]:rte_transform[mode=ts]</f:if></f:alias></f:for>')
 	),
   'palettes' => array (
 		'1' => array('showitem' => '')

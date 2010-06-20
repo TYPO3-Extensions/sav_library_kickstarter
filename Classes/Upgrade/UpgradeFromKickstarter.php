@@ -526,14 +526,14 @@ class Tx_SavLibraryKickstarter_Upgrade_UpgradeFromKickstarter extends Tx_SavLibr
 
     switch($field['type']) {
       case 'input':
-        $field['type'] = 'string';
+        $field['type'] = 'String';
         break;
       case 'check':
-        $field['type'] = 'checkbox';
+        $field['type'] = 'Checkbox';
         break;
       case 'check_4':
       case 'check_10':
-        $field['type'] = 'checkboxes';
+        $field['type'] = 'Checkboxes';
         for($i = 0; $i < $field['conf_numberBoxes']; $i++) {
           $field['items'][$i] = array(
             'label' => $field['conf_boxLabel_' . $i]
@@ -541,25 +541,25 @@ class Tx_SavLibraryKickstarter_Upgrade_UpgradeFromKickstarter extends Tx_SavLibr
         }
         break;
       case 'date':
-        $field['type'] = 'date';
+        $field['type'] = 'Date';
         break;
       case 'datetime':
-        $field['type'] = 'datetime';
+        $field['type'] = 'DateTime';
         break;
       case 'files':
-        $field['type'] = 'files';
+        $field['type'] = 'Files';
         break;
       case 'integer':
-        $field['type'] = 'integer';
+        $field['type'] = 'Integer';
         break;
       case 'graph':
-        $field['type'] = 'graph';
+        $field['type'] = 'Graph';
         break;
       case 'link':
-        $field['type'] = 'link';
+        $field['type'] = 'Link';
         break;
       case 'radio':
-        $field['type'] = 'radioButtons';
+        $field['type'] = 'RadioButtons';
         for($i = 0; $i < $field['conf_select_items']; $i++) {
           $field['items'][$i] = array(
             'label' => $field['conf_select_item_' . $i],
@@ -569,15 +569,15 @@ class Tx_SavLibraryKickstarter_Upgrade_UpgradeFromKickstarter extends Tx_SavLibr
         break;
       case 'rel':
         if ($field['conf_rel_type'] == 'group') {
-          $field['type'] = 'relationManyToManyAsSubform';
+          $field['type'] = 'RelationManyToManyAsSubform';
         } elseif ($field['conf_relations'] > 1) {
-          $field['type'] = 'relationManyToManyAsDoubleSelectorbox';
+          $field['type'] = 'RelationManyToManyAsDoubleSelectorbox';
         } else {
-          $field['type'] = 'relationOneToManyAsSelectorbox';
+          $field['type'] = 'RelationOneToManyAsSelectorbox';
         }
         break;
       case 'select':
-        $field['type'] = 'selectorbox';
+        $field['type'] = 'Selectorbox';
         for($i = 0; $i < $field['conf_select_items']; $i++) {
           $field['items'][$i] = array(
             'label' => $field['conf_select_item_' . $i],
@@ -586,16 +586,16 @@ class Tx_SavLibraryKickstarter_Upgrade_UpgradeFromKickstarter extends Tx_SavLibr
         }
         break;
       case 'ShowOnly':
-        $field['type'] = 'showOnly';
+        $field['type'] = 'ShowOnly';
         break;
       case 'textarea':
-        $field['type'] = 'text';
+        $field['type'] = 'Text';
         break;
       case 'textarea_rte':
-        $field['type'] = 'richTextEditor';
+        $field['type'] = 'RichTextEditor';
         break;
       default:
-        $field['type'] = 'unknown';
+        $field['type'] = 'Unknown';
         break;
     }
     return $field;
