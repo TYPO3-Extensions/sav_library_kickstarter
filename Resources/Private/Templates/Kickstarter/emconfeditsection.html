@@ -1,0 +1,85 @@
+{namespace sav=Tx_SavLibraryKickstarter_ViewHelpers}
+<f:layout name="KickstarterSectionLayout.html" />
+
+<f:section name="menu">
+<f:render partial="Menu" arguments="{extKey:extKey, extension:extension, selectedSection:'emconf', selectedItemKey:itemKey}" />
+</f:section>
+
+<f:section name="content">
+<f:alias map="{section:'emconf'}">
+<sav:alias map="{sectionItem:'{extension.{section}.{itemKey}}'}">
+<div id="{section}Section">
+ 	<f:form method="post" action="save" name="{section}" arguments="{extKey:extKey, section:section, itemKey:itemKey}">
+    <f:form.hidden name="general[section]" value="{section}" />
+    <f:form.hidden name="general[itemKey]" value="{itemKey}" />
+    <div id="content">
+      <div class="header">
+        <div class="logo">
+        <f:translate key="kickstarter.{section}SectionTitle" />
+        </div>
+        <div class="buttons">
+          <sav:HelpWindow cshTag="{section}" class="left" />
+          <f:form.submit class="submit" name="submitAction[save]" value="{f:translate(key:'kickstarter.save')}" />
+          <f:form.submit class="submit" name="submitAction[generateExtension]" value="{f:translate(key:'kickstarter.generate')}" />
+        </div>
+      </div>
+      <div class="body">
+        <sav:comment><!-- Title --></sav:comment>
+      	<label for="title"><f:translate key="kickstarter.{section}Item.title" /></label>
+    		<f:form.textbox id="title" name="{section}[title]" value="{sectionItem.title}" />
+
+        <sav:comment><!-- Plugin Title, saved in the general section --></sav:comment>
+      	<label for="pluginTitle"><f:translate key="kickstarter.generalItem.pluginTitle" /></label>
+    		<f:form.textbox id="pluginTitle" name="general[pluginTitle]" value="{extension.general.1.pluginTitle}" />
+
+        <sav:comment><!-- Description --></sav:comment>
+      	<label for="description"><f:translate key="kickstarter.{section}Item.description" /></label>
+    		<f:form.textarea id="description" name="{section}[description]" value="{sectionItem.description}" rows="{sav:function(name:'countLines', arguments:sectionItem.description)}" cols="80"/>
+
+        <sav:comment><!-- State --></sav:comment>
+      	<label for="state"><f:translate key="kickstarter.{section}Item.state" /></label>
+    		<f:form.select id="state" name="{section}[state]" options="{
+          alpha:'{f:translate(key:\'kickstarter.{section}Item.state.alpha\')}',
+          beta:'{f:translate(key:\'kickstarter.{section}Item.state.beta\')}',
+          stable:'{f:translate(key:\'kickstarter.{section}Item.state.stable\')}',
+          experimental:'{f:translate(key:\'kickstarter.{section}Item.state.experimental\')}',
+          test:'{f:translate(key:\'kickstarter.{section}Item.state.test\')}'}" value="{sectionItem.state}" />
+
+        <sav:comment><!-- Dependencies --></sav:comment>
+      	<label for="dependencies"><f:translate key="kickstarter.{section}Item.dependencies" /></label>
+    		<f:form.textbox id="dependencies" name="{section}[dependencies]" value="{sectionItem.dependencies}" />
+
+        <sav:comment><!-- Author --></sav:comment>
+      	<label for="author"><f:translate key="kickstarter.{section}Item.author" /></label>
+    		<f:form.textbox id="author" name="{section}[author]" value="{sectionItem.author}" />
+
+        <sav:comment><!-- Author Email --></sav:comment>
+      	<label for="author_email"><f:translate key="kickstarter.{section}Item.author_email" /></label>
+    		<f:form.textbox id="author_email" name="{section}[author_email]" value="{sectionItem.author_email}" />
+
+        <sav:comment><!-- Library type, saved in the general section --></sav:comment>
+        <label for="libraryType"><f:translate key="kickstarter.generalItem.libraryType" /></label>
+      	<f:form.hidden class="hidden" name="general[libraryType]" value="0"/>
+      	<f:form.select id="libraryType" name="general[libraryType]" options="{
+          0:'{f:translate(key:\'kickstarter.generalItem.libraryType.0\')}',
+          1:'{f:translate(key:\'kickstarter.generalItem.libraryType.1\')}'}"
+        value="{extension.general.1.libraryType}"/>
+
+        <sav:comment><!--Debug Query flag --></sav:comment>
+      	<label for="debug"><f:translate key="kickstarter.generalItem.debug" /></label>
+        <f:form.hidden name="general[debug]" value="0"/>
+        <f:form.checkbox class="checkbox" id="debug" name="general[debug]" value="1" checked="{extension.general.1.debug}" />
+
+        <sav:comment><!--Version --></sav:comment>
+        <label for="debug"><f:translate key="kickstarter.generalItem.version" /></label>
+        <span class="left clearLeft">x</span><f:form.checkbox class="version" name="general[version][x]" value="1" />
+        <span class="left">.y</span><f:form.checkbox class="version" name="general[version][y]" value="1" />
+        <span class="left">.z</span><f:form.checkbox class="version" name="general[version][z]" value="1" />
+    	</div>
+    </div>
+  </f:form>
+</div>
+</sav:alias>
+</f:alias>
+</f:section>
+
