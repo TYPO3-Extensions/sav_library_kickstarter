@@ -11,6 +11,9 @@
         <div class="extensionTitle">
           <span>{extKey}</span>
           <span>v{extension.emconf.1.version}</span>
+          <f:if condition="{extensionNotLoaded}">
+          <span class="extensionNotLoaded"><f:translate key="kickstarter.extensionNotLoaded" /></span>
+          </f:if>
         </div>
       </div>
     </div>

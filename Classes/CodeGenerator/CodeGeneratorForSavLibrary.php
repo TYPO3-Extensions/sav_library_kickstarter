@@ -461,14 +461,15 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibrary extends 
   }
 
 	/**
-	 * Method called by array_walk_recursive to convert special characters.
-	 *
+	 * Method called by array_walk_recursive to convert special characters and
+	 * remove trailing spaces
 	 * @param mixed $item The item
 	 * @return string The rendered view
 	 */
   public static function htmlspecialchars(&$item) {
     if (is_string($item)) {
       $item = htmlspecialchars($item);
+      $item  = preg_replace('/\s+([\n\r])/', '$1', $item );
     }
     return $item;
   }

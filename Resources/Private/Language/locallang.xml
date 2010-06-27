@@ -6,55 +6,46 @@
 	</meta>
 	<data type="array">
 		<languageKey index="default" type="array">
-      <!-- Error messages -->
 			<label index="error.extensionHasDependencies">The extension has not been removed due to dependencies</label>
-      
-      <!-- General labels  -->
 			<label index="kickstarter.title">SAV Library Kickstarter</label>
 			<label index="kickstarter.extensionList">List of available extensions</label>
-      <label index="kickstarter.createExtension">Create a new extension</label>
-      <label index="kickstarter.editExtension">Edit the extension</label>
-      <label index="kickstarter.copyExtension">Copy the extension</label>
+			<label index="kickstarter.extensionNotLoaded">(not loaded)</label>
+			<label index="kickstarter.createExtension">Create a new extension</label>
+			<label index="kickstarter.editExtension">Edit the extension</label>
+			<label index="kickstarter.copyExtension">Copy the extension</label>
 			<label index="kickstarter.installExtension">Install the extension</label>
 			<label index="kickstarter.uninstallExtension">Uninstall the extension</label>
 			<label index="kickstarter.generateExtension">Generate the extension</label>
 			<label index="kickstarter.upgradeExtension">Upgrade the extension</label>
-      <label index="kickstarter.checked">Checked</label>
-      <label index="kickstarter.delete">Delete</label>
-      <label index="kickstarter.moveUp">Move up</label>
-      <label index="kickstarter.moveDown">Move down</label>
-      <label index="kickstarter.gotoTop">Goto Top</label>
-      <label index="kickstarter.new">New</label>
-      <label index="kickstarter.sort">Sort</label>
-      <label index="kickstarter.copy">Copy</label>
+			<label index="kickstarter.checked">Checked</label>
+			<label index="kickstarter.delete">Delete</label>
+			<label index="kickstarter.moveUp">Move up</label>
+			<label index="kickstarter.moveDown">Move down</label>
+			<label index="kickstarter.gotoTop">Goto Top</label>
+			<label index="kickstarter.new">New</label>
+			<label index="kickstarter.sort">Sort</label>
+			<label index="kickstarter.copy">Copy</label>
 			<label index="kickstarter.addNewField">Add a new field</label>
 			<label index="kickstarter.addNewFolder">Add a new folder</label>
-			<label index="kickstarter.addNewWhereTag">Add a new "whereTag"</label>
-      <label index="kickstarter.edit">Edit</label>
-      <label index="kickstarter.importFields">Import fields</label>
-      <label index="kickstarter.useFields">Use fields as in view</label>
-
-      <label index="kickstarter.emconfSectionTitle">Extension Configuration</label>
+			<label index="kickstarter.addNewWhereTag">Add a new &quot;whereTag&quot;</label>
+			<label index="kickstarter.edit">Edit</label>
+			<label index="kickstarter.importFields">Import fields</label>
+			<label index="kickstarter.useFields">Use fields as in view</label>
+			<label index="kickstarter.emconfSectionTitle">Extension Configuration</label>
 			<label index="kickstarter.newTablesSectionTitle">New tables</label>
 			<label index="kickstarter.existingTablesSectionTitle">Existing tables</label>
-      <label index="kickstarter.generalSectionTitle">SAV Library Configuration</label>
-      <label index="kickstarter.viewsSectionTitle">Views</label>
+			<label index="kickstarter.viewsSectionTitle">Views</label>
 			<label index="kickstarter.queriesSectionTitle">Queries</label>
 			<label index="kickstarter.formsSectionTitle">Forms</label>
-      <label index="kickstarter.fieldsOverview">Fields overview</label>
-      
-      <!-- Button labels  -->
+			<label index="kickstarter.fieldsOverview">Fields overview</label>
 			<label index="kickstarter.save">Save</label>
 			<label index="kickstarter.generate">Generate</label>
-      <!-- Extension List  -->
 			<label index="kickstarter.extensionList.extensionName">Extension name</label>
 			<label index="kickstarter.extensionList.extensionVersion">Extension version</label>
 			<label index="kickstarter.extensionList.libraryVersion">Library version</label>
-      <label index="kickstarter.extensionList.libraryType">Library type</label>
-      <label index="kickstarter.extensionList.libraryType">Library type</label>
+			<label index="kickstarter.extensionList.libraryType">Library type</label>
 			<label index="kickstarter.extensionList.forms">Forms</label>
 			<label index="kickstarter.extensionList.cache">Cache</label>
-      <!-- Extension Manager Section  -->
 			<label index="kickstarter.emconfItem.extensionKey">Extension key:</label>
 			<label index="kickstarter.emconfItem.newExtensionKey">New extension key:</label>
 			<label index="kickstarter.emconfItem.oldExtensionKey">Old extension key:</label>
@@ -66,19 +57,17 @@
 			<label index="kickstarter.emconfItem.state.stable">Stable (Stable and used in production)</label>
 			<label index="kickstarter.emconfItem.state.experimental">Experimental (Nobody knows if this is going anywhere yet...)</label>
 			<label index="kickstarter.emconfItem.state.test">Test (Test extension, demonstrates concepts etc.)</label>
-      <label index="kickstarter.emconfItem.dependencies">Dependencies:</label>
+			<label index="kickstarter.emconfItem.dependencies">Dependencies:</label>
 			<label index="kickstarter.emconfItem.author">Author:</label>
 			<label index="kickstarter.emconfItem.author_email">Author email:</label>
-      <!-- General Section  -->
 			<label index="kickstarter.general.savlibraryVersion">SAV Library Version:</label>
 			<label index="kickstarter.general.extensionVersion">Extension Version:</label>
 			<label index="kickstarter.generalItem.libraryType">Library type:</label>
-      <label index="kickstarter.generalItem.libraryType.0">default</label>
-      <label index="kickstarter.generalItem.libraryType.1">mvc</label>
-      <label index="kickstarter.generalItem.pluginTitle">Title for the plugin:</label>
-      <label index="kickstarter.generalItem.debug">Debug Query (Use only for developments):</label>
-      <label index="kickstarter.generalItem.version">New version:</label>
-      <!-- Views Section  -->
+			<label index="kickstarter.generalItem.libraryType.0">default</label>
+			<label index="kickstarter.generalItem.libraryType.1">mvc</label>
+			<label index="kickstarter.generalItem.pluginTitle">Title for the plugin:</label>
+			<label index="kickstarter.generalItem.debug">Debug Query (Use only for developments):</label>
+			<label index="kickstarter.generalItem.version">New version:</label>
 			<label index="kickstarter.viewsItem.title">Name:</label>
 			<label index="kickstarter.viewsItem.type">Type:</label>
 			<label index="kickstarter.viewsItem.type.none"></label>
@@ -100,41 +89,38 @@
 			<label index="kickstarter.viewsItem.folders.configuration">Configuration:</label>
 			<label index="kickstarter.viewsItem.itemTemplate">Item template:</label>
 			<label index="kickstarter.viewsItem.viewTemplate">View template:</label>
-      <!-- Queries Section  -->
 			<label index="kickstarter.queriesItem.title">Name:</label>
 			<label index="kickstarter.queriesItem.mainTable">Main Table:</label>
 			<label index="kickstarter.queriesItem.foreignTables">Foreign Tables:</label>
 			<label index="kickstarter.queriesItem.aliases">Aliases:</label>
-			<label index="kickstarter.queriesItem.whereClause">Where Clause:</label>
-			<label index="kickstarter.queriesItem.orderByClause">Order By Clause:</label>
-			<label index="kickstarter.queriesItem.groupByClause">Group By Clause:</label>
-			<label index="kickstarter.queriesItem.whereTags">Where Tags:</label>
+			<label index="kickstarter.queriesItem.whereClause">WHERE Clause:</label>
+			<label index="kickstarter.queriesItem.orderByClause">ORDER BY Clause:</label>
+			<label index="kickstarter.queriesItem.groupByClause">GROUP BY Clause:</label>
+			<label index="kickstarter.queriesItem.whereTags">WHERE Tags:</label>
 			<label index="kickstarter.queriesItem.whereTags.title">Name:</label>
-			<label index="kickstarter.queriesItem.whereTags.whereClause">Where Clause:</label>
-			<label index="kickstarter.queriesItem.whereTags.orderByClause">Order By Clause:</label>
-      <!-- Forms Section  -->
+			<label index="kickstarter.queriesItem.whereTags.whereClause">WHERE Clause:</label>
+			<label index="kickstarter.queriesItem.whereTags.orderByClause">ORDER BY Clause:</label>
 			<label index="kickstarter.formsItem.title">Name:</label>
 			<label index="kickstarter.formsItem.listView">List view:</label>
 			<label index="kickstarter.formsItem.singleView">Single view:</label>
 			<label index="kickstarter.formsItem.editView">Edit view:</label>
 			<label index="kickstarter.formsItem.specialView">Special view:</label>
- 			<label index="kickstarter.formsItem.query">Query:</label>
+			<label index="kickstarter.formsItem.query">Query:</label>
 			<label index="kickstarter.formsItem.userPlugin">Allow caching:</label>
-      <!-- NewTables Section  -->
 			<label index="kickstarter.newTablesItem.tablename">Table Name:</label>
 			<label index="kickstarter.newTablesItem.title">Table Title:</label>
-			<label index="kickstarter.newTablesItem.add_deleted">Add "Deleted" field</label>
-			<label index="kickstarter.newTablesItem.add_hidden">Add "Hidden" field</label>
-			<label index="kickstarter.newTablesItem.add_starttime">Add "Starttime" field</label>
-			<label index="kickstarter.newTablesItem.add_endtime">Add "Endtime" field</label>
-			<label index="kickstarter.newTablesItem.add_access">Add Access "group" field</label>
+			<label index="kickstarter.newTablesItem.add_deleted">Add &quot;Deleted&quot; field</label>
+			<label index="kickstarter.newTablesItem.add_hidden">Add &quot;Hidden&quot; field</label>
+			<label index="kickstarter.newTablesItem.add_starttime">Add &quot;Starttime&quot; field</label>
+			<label index="kickstarter.newTablesItem.add_endtime">Add &quot;Endtime&quot; field</label>
+			<label index="kickstarter.newTablesItem.add_access">Add Access &quot;group&quot; field</label>
 			<label index="kickstarter.newTablesItem.localization">Enabled localization features</label>
 			<label index="kickstarter.newTablesItem.versioning">Enable versioning</label>
 			<label index="kickstarter.newTablesItem.sorting">Manual ordering of records</label>
 			<label index="kickstarter.newTablesItem.allow_on_pages">Allowed on pages</label>
 			<label index="kickstarter.newTablesItem.sorting_desc">Descending order</label>
-			<label index="kickstarter.newTablesItem.save_and_new">Add "Save and new" button in forms</label>
-			<label index="kickstarter.newTablesItem.allow_ce_insert_records">Allowed in "Insert Records" field in content elements</label>
+			<label index="kickstarter.newTablesItem.save_and_new">Add &quot;Save and new&quot; button in forms</label>
+			<label index="kickstarter.newTablesItem.allow_ce_insert_records">Allowed in &quot;Insert Records&quot; field in content elements</label>
 			<label index="kickstarter.newTablesItem.defIcon">Default icon</label>
 			<label index="kickstarter.newTablesItem.defIcon.white">Default (white)</label>
 			<label index="kickstarter.newTablesItem.defIcon.black">Black</label>
@@ -144,10 +130,9 @@
 			<label index="kickstarter.newTablesItem.defIcon.red">Red</label>
 			<label index="kickstarter.newTablesItem.defIcon.yellow">Yellow</label>
 			<label index="kickstarter.newTablesItem.defIcon.purple">Purple</label>
-			<label index="kickstarter.newTablesItem.sorting_field">If "Manual ordering" is not set, order the table by this field:</label>
+			<label index="kickstarter.newTablesItem.sorting_field">If &quot;Manual ordering&quot; is not set, order the table by this field:</label>
 			<label index="kickstarter.newTablesItem.type_field">Type-field, if any:</label>
 			<label index="kickstarter.newTablesItem.header_field">Label-field:</label>
-      <!-- ExistingTables Section  -->
 			<label index="kickstarter.existingTablesItem.tablename">Table Name:</label>
 			<label index="kickstarter.existingTablesItem.tablename.tt_content">tt_content (Content)</label>
 			<label index="kickstarter.existingTablesItem.tablename.fe_users">fe_users (Frontend Users)</label>
@@ -155,9 +140,8 @@
 			<label index="kickstarter.existingTablesItem.tablename.be_users">be_users (Backend Users)</label>
 			<label index="kickstarter.existingTablesItem.tablename.be_groups">be_groups (Backend Groups)</label>
 			<label index="kickstarter.existingTablesItem.tablename.pages">pages (Pages)</label>
-			<label index="kickstarter.existingTablesItem.importFields">Import the fields as "Only shown in SAV form":</label>
-			<!-- Fields information -->
-			<label index="kickstarter.field.fieldLabel">Field-></label>
+			<label index="kickstarter.existingTablesItem.importFields">Import the fields as &quot;Only shown in SAV form&quot;:</label>
+			<label index="kickstarter.field.fieldLabel">Field-&gt;</label>
 			<label index="kickstarter.field.fieldName">Field name</label>
 			<label index="kickstarter.field.fieldTitle">Field title</label>
 			<label index="kickstarter.field.fieldType">Field type</label>
@@ -171,16 +155,15 @@
 			<label index="kickstarter.field.fieldType.Integer">Integer</label>
 			<label index="kickstarter.field.fieldType.Link">Link</label>
 			<label index="kickstarter.field.fieldType.RadioButtons">Radio buttons</label>
-      <label index="kickstarter.field.fieldType.RelationOneToManyAsSelectorbox">Relation one-to-many (selectorbox)</label>
-			<label index="kickstarter.field.fieldType.RelationManyToManyAsDoubleSelectorbox">Relation many-to-many (double selectorbox)</label>
-			<label index="kickstarter.field.fieldType.RelationManyToManyAsSubform">Relation many-to-many (subform)</label>
-      <label index="kickstarter.field.fieldType.RichTextEditor">Rich Text Editor</label>
+			<label index="kickstarter.field.fieldType.RelationOneToManyAsSelectorbox">Relation 1:n (selectorbox)</label>
+			<label index="kickstarter.field.fieldType.RelationManyToManyAsDoubleSelectorbox">Relation n:n (double selectorbox)</label>
+			<label index="kickstarter.field.fieldType.RelationManyToManyAsSubform">Relation n:n (subform)</label>
+			<label index="kickstarter.field.fieldType.RichTextEditor">Rich Text Editor</label>
 			<label index="kickstarter.field.fieldType.Selectorbox">Selectorbox</label>
 			<label index="kickstarter.field.fieldType.ShowOnly">Only shown in SAV form</label>
 			<label index="kickstarter.field.fieldType.String">String</label>
 			<label index="kickstarter.field.fieldType.Text">Textarea</label>
 			<label index="kickstarter.field.folder">Folder</label>
-      <!-- Files -->
 			<label index="kickstarter.field.conf_files_type">File type</label>
 			<label index="kickstarter.field.conf_files_type.images">Imagefiles</label>
 			<label index="kickstarter.field.conf_files_type.webimages">Web-imagefiles (gif,jpg,png)</label>
@@ -188,7 +171,6 @@
 			<label index="kickstarter.field.conf_files">Max number of files</label>
 			<label index="kickstarter.field.conf_max_filesize">Max filesize allowed (kb)</label>
 			<label index="kickstarter.field.conf_files_selsize">Size of selector box</label>
-			<!-- Relations -->
 			<label index="kickstarter.field.conf_rel_table">Table in relation with</label>
 			<label index="kickstarter.field.conf_rel_table.pages">Pages table, (pages)</label>
 			<label index="kickstarter.field.conf_rel_table.fe_users">Frontend Users, (fe_users)</label>
@@ -206,18 +188,15 @@
 			<label index="kickstarter.field.conf_norelation">Just create the subform (no relation)</label>
 			<label index="kickstarter.field.conf_relations">Max number of relations</label>
 			<label index="kickstarter.field.conf_relations_selsize">Size of selector box</label>
-			<!-- String -->
 			<label index="kickstarter.field.conf_size">Field width</label>
 			<label index="kickstarter.field.conf_max">Max characters</label>
 			<label index="kickstarter.field.conf_required">Required</label>
-			<label index="kickstarter.field.conf_varchar">Create Create VARCHAR, not TINYTEXT field</label>
-			<!-- Text Area -->
+			<label index="kickstarter.field.conf_varchar">Create VARCHAR, not TINYTEXT field</label>
 			<label index="kickstarter.field.conf_cols">Textarea width (30 default)</label>
 			<label index="kickstarter.field.conf_rows">Number of rows (height)</label>
-			<!-- Selector box and radio buttons -->
 			<label index="kickstarter.field.items.label">Label</label>
 			<label index="kickstarter.field.items.value">Value</label>
-      </languageKey>
+		</languageKey>
 	</data>
 	<orig_hash type="array">
 	</orig_hash>

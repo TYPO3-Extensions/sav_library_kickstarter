@@ -271,6 +271,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
     }
     $configuration = $configurationManager->getConfiguration();
     $this->view->assign('savLibraryKickstarterVersion', Tx_SavLibraryKickstarter_Configuration_ConfigurationManager::getSavLibraryKickstarterVersion());
+    $this->view->assign('extensionNotLoaded', !$configurationManager->isLoadedExtension());
     $this->view->assign('extKey', $extKey);
     $this->view->assign('itemKey', $itemKey);
     $this->view->assign('fieldKey', $fieldKey);
@@ -338,6 +339,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
 
     $configuration = $configurationManager->getConfiguration();
     $this->view->assign('savLibraryKickstarterVersion', Tx_SavLibraryKickstarter_Configuration_ConfigurationManager::getSavLibraryKickstarterVersion());
+    $this->view->assign('extensionNotLoaded', !$configurationManager->isLoadedExtension());
     $this->view->assign('extKey', $extKey);
     $this->view->assign('itemKey', $itemKey);
     $this->view->assign('fieldKey', $fieldKey);
@@ -393,6 +395,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
 
     $configuration = $configurationManager->getConfiguration();
     $this->view->assign('savLibraryKickstarterVersion', Tx_SavLibraryKickstarter_Configuration_ConfigurationManager::getSavLibraryKickstarterVersion());
+    $this->view->assign('extensionNotLoaded', !$configurationManager->isLoadedExtension());
     $this->view->assign('extKey', $extKey);
     $this->view->assign('itemKey', $itemKey);
     $this->view->assign('fieldKey', $fieldKey);
@@ -421,6 +424,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
     $configuration = $configurationManager->getConfiguration();
 
     $this->view->assign('savLibraryKickstarterVersion', Tx_SavLibraryKickstarter_Configuration_ConfigurationManager::getSavLibraryKickstarterVersion());
+    $this->view->assign('extensionNotLoaded', !$configurationManager->isLoadedExtension());
     $this->view->assign('extKey', $extKey);
     $this->view->assign('itemKey', $itemKey);
 
@@ -449,6 +453,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
     $configurationManager->loadConfiguration();
     $configuration = $configurationManager->getConfiguration();
     $this->view->assign('savLibraryKickstarterVersion', Tx_SavLibraryKickstarter_Configuration_ConfigurationManager::getSavLibraryKickstarterVersion());
+    $this->view->assign('extensionNotLoaded', !$configurationManager->isLoadedExtension());
     $this->view->assign('extKey', $extKey);
     $this->view->assign('itemKey', $itemKey);
     $this->view->assign('extension', $configuration);
@@ -467,6 +472,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
     $configurationManager->loadConfiguration();
     $configuration = $configurationManager->getConfiguration();
     $this->view->assign('savLibraryKickstarterVersion', Tx_SavLibraryKickstarter_Configuration_ConfigurationManager::getSavLibraryKickstarterVersion());
+    $this->view->assign('extensionNotLoaded', !$configurationManager->isLoadedExtension());
     $this->view->assign('extKey', $extKey);
     $this->view->assign('itemKey', $itemKey);
     $this->view->assign('extension', $configuration);

@@ -7,12 +7,10 @@
 	</meta>
 	<data type="array">
 		<languageKey index="default" type="array">
-			<label index=".description">SAV Library</label>
+			<label index=".description">SAV Library Kickstarter</label>
 			<label index=".details">
       </label>
-
-<!-- Types, functions and general attributes -->
-			<label index="All.description"></label>
+			<label index="All.description">All types</label>
 			<label index="All.seeAlso">
         sav_library_kickstarter:Checkbox
         sav_library_kickstarter:Checkboxes
@@ -23,16 +21,15 @@
         sav_library_kickstarter:General
         sav_library_kickstarter:Graph
         sav_library_kickstarter:Link
-        sav_library_kickstarter:Rel
+        sav_library_kickstarter:RelationManyToManyAsSubform
+        sav_library_kickstarter:RelationManyToManyAsDoubleSelectorbox
+        sav_library_kickstarter:RelationOneToManyAsSelectorbox
         sav_library_kickstarter:RadioButtons
         sav_library_kickstarter:RichTextEditor
         sav_library_kickstarter:Selectorbox
         sav_library_kickstarter:String
         sav_library_kickstarter:Text
       </label>
-      
-<!-- Types -->
-  <!-- Checkbox -->
 			<label index="Checkbox.description">Attributes for &quot;Checkbox&quot;</label>
 			<label index="Checkbox.seeAlso">sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</label>
 			<label index="Checkbox.syntax">
@@ -42,7 +39,6 @@
         &lt;b&gt;doNotDisplayIfNotChecked = 1;&lt;/b&gt;
         Do not display the checkbox value (that is &quot;No&quot;) if it is not checked (obviously it does not apply when in edit mode)
       </label>
-  <!-- Checkboxes -->
 			<label index="Checkboxes.description">Attributes for &quot;Checkboxes&quot;</label>
 			<label index="Checkboxes.seeAlso">sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</label>
 			<label index="Checkboxes.syntax">
@@ -58,8 +54,6 @@
         &lt;b&gt;nbItems = integer;&lt;/b&gt;
         Number of items to display.  
       </label>
-      
-  <!-- Date -->
 			<label index="Date.description">Attributes for &quot;Date&quot;</label>
 			<label index="Date.seeAlso">sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</label>
 			<label index="Date.syntax">
@@ -69,8 +63,6 @@
         &lt;b&gt;noDefault = 1;&lt;/b&gt;
         Do not display the default date.
       </label>
-
-  <!-- DateTime -->
 			<label index="DateTime.description">Attributes for &quot;DateTime&quot;</label>
 			<label index="DateTime.seeAlso">sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</label>
 			<label index="DateTime.syntax">
@@ -80,7 +72,6 @@
         &lt;b&gt;noDefault = 1;&lt;/b&gt;
         Do not display the default date and time.
       </label>
-  <!-- Files -->
 			<label index="Files.description">Attributes for &quot;Files&quot;</label>
 			<label index="Files.seeAlso">sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</label>
 			<label index="Files.syntax">
@@ -129,8 +120,7 @@
         It makes it possible to use the graphic possibilities of TYPO3. If set, an IMAGE cObject is generated with the given TS properties.
         Do not forget that the configuration field is ended by a semi-column, therefore if you need a semi-column in your TS write it &quot;\;&quot;
       </label>
-  <!-- Graph -->
-			<label index="Graph.description">Attributes for &quot;XML Graph&quot;</label>
+			<label index="Graph.description">Attributes for &quot;Graph&quot;</label>
 			<label index="Graph.seeAlso">sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</label>
 			<label index="Graph.syntax">
         &lt;b&gt;graphTemplate = string;&lt;/b&gt;
@@ -139,8 +129,7 @@
         Comma-separated list of definitions. Example: &quot;marker#begin = ###beginPeriod###&quot; means that the &quot;marker&quot; whose id is &quot;begin&quot;
         in the template will be replaced by the marker &quot;###beginPeriod###&quot;, that is by the alias &quot;beginPeriod&quot;.
       </label>
-  <!-- Link -->
-      <label index="Link.description">Attributes for &quot;Link&quot;</label>
+			<label index="Link.description">Attributes for &quot;Link&quot;</label>
 			<label index="Link.seeAlso">sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</label>
 			<label index="Link.syntax">
         &lt;b&gt;generateRTF=1;&lt;/b&gt;
@@ -161,7 +150,6 @@
         &lt;b&gt;fieldMessage = fieldName;&lt;/b&gt;
         Sets the attribute &quot;message&quot; with the content of the field whose name is given by fieldName.
       </label>
-  <!-- RadioButtons -->
 			<label index="RadioButtons.description">Attributes for &quot;Radio buttons&quot;</label>
 			<label index="RadioButtons.seeAlso">sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</label>
 			<label index="RadioButtons.syntax">
@@ -171,8 +159,7 @@
         &lt;b&gt;displayAsImage = 1;&lt;/b&gt;
         If set, the radio buttons are displayed as images instead of labels.
       </label>
-  <!-- RelationManyToManyAsSubform -->
-			<label index="RelationManyToManyAsSubform.description">Attributes for &quot;Database many-to-many relation as subform&quot;</label>
+			<label index="RelationManyToManyAsSubform.description">Attributes for &quot;Database many-to-many (n:n) relation as subform&quot;</label>
 			<label index="RelationManyToManyAsSubform.seeAlso">sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</label>
 			<label index="RelationManyToManyAsSubform.syntax">
         This type should is used to generate a subform. Special parameters can be added.
@@ -196,14 +183,12 @@
         &lt;b&gt;noFirstLast = 1;&lt;/b&gt;
         First and last buttons in the browser associated with the &quot;subFormAlt&quot; template will not be shown.
      </label>
-  <!-- RelationManyToManyAsDoubleSelectorbox -->
-			<label index="RelationManyToManyAsDoubleSelectorbox.description">Attributes for &quot;Database many-to-many relation as double selectorbox&quot;</label>
+			<label index="RelationManyToManyAsDoubleSelectorbox.description">Attributes for &quot;Database many-to-many (n:n) relation as double selectorbox&quot;</label>
 			<label index="RelationManyToManyAsDoubleSelectorbox.seeAlso">sav_library_kickstarter:RelationOneToManyAsSelectorbox,sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</label>
 			<label index="RelationManyToManyAsDoubleSelectorbox.syntax">
         The attributes for this type are the same as for Database one-to-many relation (selectorbox)
       </label>
-  <!-- RelationOneToManyAsSelectorbox -->
-			<label index="RelationOneToManyAsSelectorbox.description">Attributes for &quot;Database one-to-many relation as selectorbox&quot;</label>
+			<label index="RelationOneToManyAsSelectorbox.description">Attributes for &quot;Database one-to-many (1:n) relation as selectorbox&quot;</label>
 			<label index="RelationOneToManyAsSelectorbox.seeAlso">sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</label>
 			<label index="RelationOneToManyAsSelectorbox.syntax">
         &lt;b&gt;aliasSelect = field_name;&lt;/b&gt;
@@ -252,7 +237,6 @@
         &lt;b&gt;overrideStartingPoint = 1;&lt;/b&gt;
         By default, when starting points are provided, information associated with the selector is searched in these page. This property overrides the default behavior.
      </label>
-  <!-- richTextEditor -->
 			<label index="RichTextEditor.description">Attributes for &quot;Rich Text Editor&quot;</label>
 			<label index="RichTextEditor.seeAlso">sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</label>
 			<label index="RichTextEditor.syntax">
@@ -262,7 +246,6 @@
         &lt;b&gt;width = integer;&lt;/b&gt;
         Defines the width of the textarea. The integer value represents the width in pixels.
       </label>
-  <!-- selectorbox -->
 			<label index="Selectorbox.description">Attributes for &quot;Selectorbox&quot;</label>
 			<label index="Selectorbox.seeAlso">sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</label>
 			<label index="Selectorbox.syntax">
@@ -278,17 +261,14 @@
         &lt;b&gt;separator = character or string;&lt;/b&gt;
         It can be used with selector boxes associated with a MM relation to replace the default &lt; br /&gt; separator between items in showAll or showSingle views.
       </label>
-  <!-- showOnly -->
 			<label index="ShowOnly.description">Attributes for &quot;Only shown in SAV form&quot;</label>
 			<label index="ShowOnly.seeAlso">sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</label>
-  <!-- string -->
 			<label index="String.description">Attributes for &quot;String input&quot;</label>
 			<label index="String.seeAlso">sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</label>
 			<label index="String.syntax">
         &lt;b&gt;size = integer;&lt;/b&gt;
         Size of the field.
       </label>
-  <!-- text -->
 			<label index="Text.description">Attributes for &quot;Textarea&quot;</label>
 			<label index="Text.seeAlso">sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</label>
 			<label index="Text.syntax">
@@ -298,20 +278,18 @@
         &lt;b&gt;rows = integer;&lt;/b&gt;
         Defines the number of rows  of the textarea. This attribute overwrites the same attribute in the TCA.
       </label>
-      
- <!-- Functions -->
 			<label index="Functions.description">Functions attributes</label>
 			<label index="Functions.seeAlso">sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</label>
 			<label index="Functions.syntax">
 
         Functions are applied to the value of the field. It can be also applied to left and right contents.
         In this case, &quot;Left&quot; or &quot;Right&quot; should be added to the function name and the optional attributes.
-   <!-- makeDateFormat -->
+   
         &lt;b&gt;func = makeDateFormat;&lt;/b&gt;
         This function generates a format for a unix time stamp date.
         Optional attributes can be added:
         . format = string; The string should be a format that makes sense for the php-function strftime().
-   <!-- makeImage -->
+   
         &lt;b&gt;func = makeImage;&lt;/b&gt;
         This function builds an IMG tag where the field value is the name of the image file.
         Additional parameter can be used.
@@ -320,13 +298,13 @@
         . height = integer; (height of the image in pixels);
         . alt = string; (string will be the &quot;alt&quot; attribute of the image).
         . fieldAlt = field_name; (the &quot;alt&quot; attribute will be the value of the fieldname for the current record).
-   <!-- makeEmailLink -->
+   
         &lt;b&gt;func = makeEmailLink;&lt;/b&gt;
         This function generates an email link associated with the field.
         Optional attributes can be added:
         . message = string; Message associated with the link.
         . fieldMessage = fieldName; Sets the attribute &quot;message&quot; with the content of the field whose name is given by fieldName.
-   <!-- makeNewWindowLink -->
+   
         &lt;b&gt;func = makeNewWindowLink;&lt;/b&gt;
         This function generates an hyperlink associated with the value of the field which opens a new window. Paramaters are :
         . windowUrl = string; string is the url. The marker ###special[fieldname]### from selectors can be used. This parameter is not necessary if the field is an image.
@@ -337,7 +315,7 @@
         Example: windowBodyStyle = fontweight:bold\;font-color:blue\;;
         . message = string; Message associated with the link.
         . fieldMessage = fieldName; Sets the attribute &quot;message&quot; with the content of the field whose name is given by fieldName.
-   <!-- makeItemLink -->
+   
         &lt;b&gt;func = makeItemLink;&lt;/b&gt;
         This function generates an hyperlink associated with the value of the field. It will open the &quot;showSingle&quot; view associated with the selected item.
         Optional attributes can be added:
@@ -345,7 +323,7 @@
         . inputForm = 1; makes it possible to open an &quot;Input form&quot; view instead of the &quot;Show single&quot; view.
         . folderTab = string; (string is the folder name, if the extension uses serveral folders).
         . page = string; (same as folderTab but deprecated).
-   <!-- makeLink -->
+   
         &lt;b&gt;func = makeLink;&lt;/b&gt;
         This function generates an internal link (typolink).
         Optional attributes can be added:
@@ -356,7 +334,7 @@
         . fieldMessage = fieldName; Sets the attribute &quot;message&quot; with the content of the field whose name is given by fieldName.
         . setUid = integer; the integer defines the page uid associated with the link.
         . valueIsUid = 1; The field value is used as the uid of the page associated with the link.
-   <!-- makeExtLink -->
+   
         &lt;b&gt;func = makeExtLink;&lt;/b&gt;
         This function generates an hyperlink associated with the value of the field. It will open the &quot;showSingle&quot; view associated with the selected item in another extension. The following attributes must be provided:
         . ext = string; (string is the extension name followedby the form name. Example &quot;myext_intranet&quot;).
@@ -368,7 +346,7 @@
         . setUid = this; The uid of the record to open, is given by the value of the field.
         . restrictLinkTo = ###usergroup=group_name###; the link will be displayed if the user belongs to the group_name.
         . restrictLinkTo = ###usergroup!=group_name###; the link will be displayed if the user does not belong to the group_name.
-   <!-- makeUrlLink -->
+   
         &lt;b&gt;func = makeUrlLink;&lt;/b&gt;
         This function generates a link for an external url.
         Optional attributes can be added:
@@ -376,14 +354,12 @@
         . fieldLink = fieldName; Sets the attribute &quot;link&quot; with the content of the field whose name is given by fieldName.
         . message = string; Message associated with the link.
         . fieldMessage = fieldName; Sets the attribute &quot;message&quot; with the content of the field whose name is given by fieldName.
-   <!-- makeXmlLink -->
+   
         &lt;b&gt;func = makeXmlLabel;&lt;/b&gt;
         This function generates the label from a xml language file. It works with the following parameter:
         . xmlLabel = string; the string is the label definition. For example, assume that the value comes from a selectorbox whose label definition is in the file locallang_db.xml
         in the extension &quot;my_ext&quot;. Assume also that the field is &quot;my_field&quot;. Then, to obtain the label one has to write xmlLabel = LLL:EXT:my_ext/locallang_db.xml:tx_myext.my_field.I.;
       </label>
-
-<!-- General attributes -->
 			<label index="General.description">General Attributes</label>
 			<label index="General.seeAlso">sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</label>
 			<label index="General.syntax">
@@ -623,28 +599,7 @@
         Localization by means of the file locallang.xml can be used with $$$tag$$$ which will be replaced by its value according to the configuration language.
         The marker $$$label[fieldName]$$$ will be replaced by the fieldName title according to the localization.
       </label>
-
-      
-      
-			<label index="formGen.description">Form generator</label>
-			<label index="formGen.details">
-        This section is used to provide general settings.
-        
-        &lt;b&gt;Generate form&lt;/b&gt;
-        Checks the box to use the form generator.
-
-        &lt;b&gt;Display the icon below the plugin selector&lt;/b&gt;
-        If set, the icon of your extension will be displayed under the plugin selector when you insert an extension in a page.
-
-        &lt;b&gt;Additional Code&lt;/b&gt;
-        Use this field to add your own php function.
-
-        &lt;b&gt;Additional FlexForm code&lt;/b&gt;
-        Use this field to add fexform code to the default flexform configuration for the extension.
-      </label>
-
-<!-- Queries -->
-			<label index="queries.description">Form queries</label>
+			<label index="queries.description">Queries</label>
 			<label index="queries.details">
         This section is used to specify the query associated with your form.
         
@@ -661,7 +616,7 @@
         &lt;b&gt;Aliases&lt;/b&gt; 
         Define here the aliases associated with your query (MySQL syntax).
         
-        &lt;b&gt;Where clause&lt;/b&gt; 
+        &lt;b&gt;WHERE clause&lt;/b&gt;
         Defines the WHERE clause for query. It can be:
         . a conventional MySQL clause.
         - The marker ###user### can be used. It will be replaced by the user uid.
@@ -680,22 +635,20 @@
               
         Other methods can be added using sav_library_extends.The WHERE_Clause can be any previous cases.
         
-        &lt;b&gt;Group By clause&lt;/b&gt;
+        &lt;b&gt;GROUP BY clause&lt;/b&gt;
         GROUP BY clause for the query. Very useful when MM tables are used (MySQL syntax).
         
-        &lt;b&gt;Order By clause&lt;/b&gt;
+        &lt;b&gt;ORDER BY clause&lt;/b&gt;
         ORDER BY clause for the query (MySQL syntax).
         
-        &lt;b&gt;Where tags&lt;/b&gt; 
-        Where tags are a special feature that makes it possible to use hyperlinks with a parameter &amp;where=tagname.  
-        To add a new "Where Tag", click on the icon and fill the fields. The first field is name of the parameter you want to use (e.g. tagname) and the two others are respectively a WHERE clause and an ORDER BY clause. Example:
+        &lt;b&gt;WHERE tags&lt;/b&gt;
+        WHERE tags are a special feature that makes it possible to use hyperlinks with a parameter &amp;where=tagname.
+        To add a new &quot;WHERE Tag&quot;, click on the icon and fill the fields. The first field is name of the parameter you want to use (e.g. tagname) and the two others are respectively a WHERE clause and an ORDER BY clause. Example:
         Name: myTag
-        Where Clause: myTable.myField &gt; 0
-        Order By Clause: myTable.myField desc
+        WHERE Clause: myTable.myField &gt; 0
+        ORDER BY Clause: myTable.myField desc
       </label>
-      
-<!-- Forms -->
-			<label index="forms.description">Form settings</label>
+			<label index="forms.description">Forms</label>
 			<label index="forms.details">
         This section is used to specify the settings of your form.
         
@@ -711,8 +664,8 @@
         &lt;b&gt;Edit view&lt;/b&gt;
         Use the selector to set the &quot;Edit&quot; view that should be used with your form (if any).
 
-        &lt;b&gt;Update view&lt;/b&gt;
-        Use the selector to set the &quot;Update&quot; view that should be used with your form (if any).
+        &lt;b&gt;Special view&lt;/b&gt;
+        Use the selector to set the &quot;Special&quot; view that should be used with your form (if any).
 
         &lt;b&gt;Query&lt;/b&gt;
         Use the selector to set the &quot;Query&quot; that should be used with your form (required).
@@ -721,9 +674,7 @@
         Select this checkbox if the plugin should behave as USER for this form, that is caching is enabled.
         By default, the plugin will behave as USER_INT (no caching) for all the forms.
       </label>
-      
-<!-- Views -->
-			<label index="views.description">Form Views</label>
+			<label index="views.description">Views</label>
 			<label index="views.details">
         This section is used to specify the views associated with your extension.
         
@@ -790,9 +741,7 @@
         &lt;b&gt;Print icon&lt;/b&gt; 
         If set, a print icon is added to the view.        
       </label>
-      
-<!-- Emconf  -->
-			<label index="emconf.description">Wizard settings</label>
+			<label index="emconf.description">Extension configuration</label>
 			<label index="emconf.details">
         
         &lt;b&gt;New Version&lt;/b&gt;
@@ -806,14 +755,6 @@
         &lt;b&gt;Debug Query&lt;/b&gt;
         Set to display error messages on queries, if any.
         &lt;b&gt;The Debug Query option should not be left in the final version of your extension for security reasons&lt;/b&gt;.
-
-        &lt;b&gt;Maintenance&lt;/b&gt;
-        If set, a maintenance configuration flag will be added in ext_conf_templates.txt. If the configuration flag is set, a maintenance message will be displayed.
-        A general maintenance connfiguration flag is availbale with the SAV Library Extension. If set, all extensions generated with the SAV Library will display a maintenance message.
-
-        &lt;b&gt;Generate a new extension&lt;/b&gt;
-        This experimental feature makes it possible to generate a new extension from an existing one. 
-        Give a new extension and &lt;b&gt;click on &quot;Update result&quot; before clicking on &quot;WRITE&quot;.&lt;/b&gt;
       </label>
 		</languageKey>
 	</data>

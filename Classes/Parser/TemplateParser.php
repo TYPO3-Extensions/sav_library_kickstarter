@@ -51,21 +51,29 @@ class Tx_SavLibraryKickstarter_Parser_TemplateParser {
   public function parseTemplate($template, $arguments = array(), $nameSpace = '{namespace sav=Tx_SavLibraryKickstarter_ViewHelpers}') {
 
     $templateParser = Tx_Fluid_Compatibility_TemplateParserBuilder::build();
-		$objectFactory = t3lib_div::makeInstance('Tx_Fluid_Compatibility_ObjectFactory');
-		$variableContainer = $objectFactory->create('Tx_Fluid_Core_ViewHelper_TemplateVariableContainer', $arguments);
-
-		$renderingConfiguration = $objectFactory->create('Tx_Fluid_Core_Rendering_RenderingConfiguration');
-		$renderingContext = $objectFactory->create('Tx_Fluid_Core_Rendering_RenderingContext');
+    if (self::getFluidVersion() < 1002000) {
+      // For TYPO3 4.3.3
+		  $objectManager = t3lib_div::makeInstance('Tx_Fluid_Compatibility_ObjectFactory');
+		  $renderingConfiguration = $objectManager->create('Tx_Fluid_Core_Rendering_RenderingConfiguration');
+    } else {
+      // For TYPO3 4.4
+  		$objectManager = t3lib_div::makeInstance('Tx_Fluid_Compatibility_ObjectManager');
+    }
+		$variableContainer = $objectManager->create('Tx_Fluid_Core_ViewHelper_TemplateVariableContainer', $arguments);
+		$renderingContext = $objectManager->create('Tx_Fluid_Core_Rendering_RenderingContext');
 		if ($this->controllerContext !== NULL) {
 			$renderingContext->setControllerContext($this->controllerContext);
 		}
     $renderingContext->setTemplateVariableContainer($variableContainer);
-		$renderingContext->setRenderingConfiguration($renderingConfiguration);
-		
+    if (self::getFluidVersion() < 1002000) {
+      // For TYPO3 4.3.3
+		  $renderingContext->setRenderingConfiguration($renderingConfiguration);
+    }
+
     if ($this->viewHelperVariableContainer !== NULL) {
 		  $viewHelperVariableContainer = $this->viewHelperVariableContainer;
     } else {
-		  $viewHelperVariableContainer = $objectFactory->create('Tx_Fluid_Core_ViewHelper_ViewHelperVariableContainer');
+		  $viewHelperVariableContainer = $objectManager->create('Tx_Fluid_Core_ViewHelper_ViewHelperVariableContainer');
     }
 		$renderingContext->setViewHelperVariableContainer($viewHelperVariableContainer);
 
@@ -92,6 +100,15 @@ class Tx_SavLibraryKickstarter_Parser_TemplateParser {
 	 */
    public function setControllerContext($controllerContext) {
     $this->controllerContext = $controllerContext;
+  }
+  
+	/**
+	 * Gets the fluid version
+	 *
+	 * @return integer
+	 */
+   public static function getFluidVersion() {
+    return t3lib_div::int_from_ver($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['fluid']['version']);
   }
   
 }
