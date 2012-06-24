@@ -122,7 +122,7 @@ class Tx_SavLibraryKickstarter_Utility_ItemManager extends ArrayObject {
    * return Tx_SavLibraryKickstarter_Utility_ItemManager
 	 */
   public function itemExists($itemKey) {
-    return $this->offsetexists($itemKey);
+    return $this->offsetExists($itemKey);
   }
   
 	/**
@@ -177,8 +177,12 @@ class Tx_SavLibraryKickstarter_Utility_ItemManager extends ArrayObject {
       if (is_array($itemValue)) {
         if (!$item->itemExists($key)) {
           $item->addItem($key)->addItem($itemValue);
-        } else {
-          $item->replace($itemValue, $item[$key]);
+        } else {       
+        	if ($item[$key] === NULL)  {
+          	$item->addItem($key)->addItem($itemValue);	
+        	} else {	
+          	$item->replace($itemValue, $item[$key]);
+        	}
         }
       } else {
         $item[$key] = $itemValue;
@@ -223,18 +227,30 @@ class Tx_SavLibraryKickstarter_Utility_ItemManager extends ArrayObject {
    * return Tx_SavLibraryKickstarter_Utility_ItemManager
 	 */
   public function sortBy($searchKey) {
+
     $sortedKeys = array();
+		$existingKeys = array();
     // Gets the keys
     foreach($this as $keyField => $field) {
       $fieldValue = $this->searchFieldValue($field, $searchKey);
-      $sortedKeys[$fieldValue] = $keyField;
+
+			if (array_key_exists($fieldValue, $sortedKeys)) {
+				// It should not happen
+				$existingKeys[] = $keyField;
+			} else {
+      	$sortedKeys[$fieldValue] = $keyField;
+			}
     }
+
     // Sorts the array
     ksort($sortedKeys);
+		$sortedKeys = array_merge($sortedKeys, $existingKeys);
+
     // Builds the sorted item array
     foreach($sortedKeys as $fieldKey) {
       $item[$fieldKey] = $this[$fieldKey];
     }
+
     // Replaces the item
     $this->exchangeArray($item);
     return $this;
@@ -269,18 +285,26 @@ class Tx_SavLibraryKickstarter_Utility_ItemManager extends ArrayObject {
 	 * return none
 	 */
   public function reIndex($searchKey) {
+
     $this->sortBy($searchKey);
+
     $counter = 1;
     if (is_array($searchKey)) {
       // Gets the keys
-      foreach($this as $keyField => $field) {
+      foreach($this as $fieldKey => $field) {
         $field[key($searchKey)][current($searchKey)] = $counter++;
       }
     } else {
-      foreach($this as $keyField => $field) {
+      foreach($this as $fieldKey => $field) {
         $field[$searchKey] = $counter++;
       }
     }
+    // Builds a new reindexed array
+    $counter = 1;
+    foreach($this as $fieldKey => $field) {
+      $fields[$counter++] = $field;
+    }
+    $this->exchangeArray($fields);
   }
 
 	/**
@@ -292,7 +316,7 @@ class Tx_SavLibraryKickstarter_Utility_ItemManager extends ArrayObject {
     // Sorts the items
     $this->ksort();
     // Builds a new reindexed array
-    foreach($this as $keyField => $field) {
+    foreach($this as $fieldKey => $field) {
       $fields[] = $field;
     }
     $this->exchangeArray($fields);

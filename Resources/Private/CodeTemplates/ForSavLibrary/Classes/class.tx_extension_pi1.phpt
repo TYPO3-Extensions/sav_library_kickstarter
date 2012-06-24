@@ -30,11 +30,11 @@
 
 require_once(t3lib_extMgm::extPath('sav_library').'class.tx_savlibrary.php');
 
-<sav:alias map="{extensionName: '{sav:function(name:\'removeUnderscore\', arguments:\'{extension.general.1.extensionKey}\')}'}">
+<f:alias map="{extensionName: '{sav:function(name:\'removeUnderscore\', arguments:\'{extension.general.1.extensionKey}\')}'}">
 /**
  * Plugin '{extension.emconf.1.title}' for the '{extension.general.1.extensionKey}' extension.
  *
- * @author	Yolf <yolf.typo3@orange.fr>
+ * @author	{extension.emconf.1.author} <{extension.emconf.1.author_email}>
  * @package	TYPO3
  * @subpackage	tx_{extensionName}
  */
@@ -86,5 +86,5 @@ class tx_{extensionName}_pi1 extends tslib_pibase  {
 if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/{extension.general.1.extensionKey}/pi1/class.tx_{extensionName}_pi1.php'])	{
 	include_once($TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/{extension.general.1.extensionKey}/pi1/class.tx_{extensionName}_pi1.php']);
 }
-</sav:alias>
+</f:alias>
 ?>

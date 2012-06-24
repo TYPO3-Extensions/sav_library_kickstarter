@@ -1,6 +1,6 @@
 <sav:function name="removeEmptyLines">
 <f:for each="{extension.newTables}" as="table" key="tableKey">
-<sav:alias map="{
+<f:alias map="{
   model:'{sav:buildTableName(shortName:table.tablename, extensionKey:extension.general.1.extensionKey)}'
 }">
 #
@@ -53,11 +53,9 @@ CREATE TABLE {model} (
 	</f:for>
   <f:for each="{extension.forms}" as="form" key="formKey">
   <f:if condition="{form.specialView}">
-  <sav:alias map="{mainTable:'{extension.queries.{form.query}.mainTable}'}">
-  <f:if condition="{mainTable} == {model}">
+  <f:if condition="{extension.queries.{form.query}.mainTable} == {model}">
   _submitted_data_ blob NOT NULL,
   </f:if>
-  </sav:alias>
   </f:if>
   </f:for>
 
@@ -84,11 +82,11 @@ CREATE TABLE {model}_{field.fieldname}_mm (
 </f:if>
 </f:for>
 
-</sav:alias>
+</f:alias>
 </f:for>
 
 <f:for each="{extension.existingTables}" as="table">
-<sav:alias map="{
+<f:alias map="{
   model:'{table.tablename}'
 }">
 #
@@ -118,7 +116,7 @@ CREATE TABLE {sav:buildTableName(shortName:field.fieldname, extensionKey:extensi
 </f:if>
 </f:for>
 
-</sav:alias>
+</f:alias>
 </f:for>
 
 </sav:function>

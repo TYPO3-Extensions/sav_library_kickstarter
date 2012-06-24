@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="iso-8859-1" standalone="yes" ?>
 <sav:function name="removeEmptyLines">
-<sav:alias map="{extensionName: '{sav:function(name:\'removeUnderscore\', arguments:\'{extension.extensionKey}\')}'}">
+<f:alias map="{extensionName: '{sav:function(name:\'removeUnderscore\', arguments:\'{extension.extensionKey}\')}'}">
 <sav_library_pi>
 	<version>{extension.version}</version>
 	<forms type="array">
@@ -14,6 +14,21 @@
 			<updateView>{form.updateView}</updateView>
 			<altView>{form.specialView}</altView>
 			<userPlugin>{form.userPlugin}</userPlugin>
+			<viewsWithCondition>
+        <f:for each="{form.viewsWithCondition}" as="viewsWithCondition" key="viewsWithConditionKey">
+        <{viewsWithConditionKey} type="array">
+          <f:for each="{viewsWithCondition}" as="viewWithCondition" key="viewWithConditionKey">
+		        <numIndex index="{viewWithCondition.key}" type="array">
+              <config type="array">
+                <f:for each="{viewWithCondition.config}" as="config" key="configKey">
+                <{configKey}>{config}</{configKey}>
+                </f:for>
+              </config>
+		        </numIndex>
+          </f:for>
+        </{viewsWithConditionKey}>
+        </f:for>
+      </viewsWithCondition>
 		</numIndex>
 		</f:for>
 	</forms>
@@ -42,9 +57,9 @@
 				<exclude type="integer">1</exclude>
 				<label>LLL:EXT:{extension.extensionKey}/locallang_db.xml:{tableKey}.{field.fieldname}</label>
 				<config type="array">
-          <sav:alias map="{TcaElements:\"{sav:render(partial:'../CodeTemplates/ForSavLibrary/Partials/TCA/{field.type}.phpt',arguments:{field:field,model:tableKey,extensionKey:extension.extensionKey})}\"}">
+          <f:alias map="{TcaElements:\"{sav:render(partial:'../CodeTemplates/ForSavLibrary/Partials/TCA/{field.type}.phpt',arguments:{field:field,model:tableKey,extensionKey:extension.extensionKey})}\"}">
           {sav:TcaElementsToXml(TcaElements:TcaElements)}
-          </sav:alias>
+          </f:alias>
  				</config>
 			</{field.fieldname}>
   	</f:for>
@@ -145,6 +160,6 @@
  		</numIndex>
 		</f:for>
 	</queries>
-</sav:alias>
+</f:alias>
 </sav:function>
 </sav_library_pi>

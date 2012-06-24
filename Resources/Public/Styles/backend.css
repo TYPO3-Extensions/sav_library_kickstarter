@@ -14,7 +14,7 @@ A IMG{border:none;}
 .clearNone {clear:none;}
 
 /* Error message */
-UL.errorMessage {color:red;}
+.errorMessage {color:red;margin:5px;}
 
 /* color definition for views */
 .list {color:red;}
@@ -27,11 +27,24 @@ UL.errorMessage {color:red;}
 .special:hover {color:orange;}
 
 /* Header */
-#header DIV.logo{text-align:center;margin:10px 0px 50px 0px;}
+#header DIV.logo{text-align:center;margin:10px 0px 20px 0px;}
 #header DIV.logo DIV.kickstarterTitle {font-size:40px;color:orange;height:40px;}
 #header DIV.logo DIV.extensionTitle {font-size:20px;color:orange;}
+#header DIV.logo DIV.extensionTitle SPAN.debugQueryOn {color:red;}
+#header DIV.logo DIV.extensionTitle SPAN.extensionNotLoaded {color:red;}
 
-/* Folder Tabs */
+/* Tabs */
+DIV.viewTabs {float:left;width:100%;background:url(./Images/folderTabBorder.gif) repeat-x bottom;margin-top:3px; padding:0px;}
+DIV.viewTabs DIV.buttons {margin-bottom:10px;}
+DIV.viewTabs UL.folderTabs {float:left;margin:0px;padding:0px;list-style:none;}
+DIV.viewTabs LI {display:inline;margin:0px;padding:0px;}
+DIV.viewTabs LI A {float:left;background:url(./Images/folderTabRight.gif) no-repeat right top;border-bottom:1px solid #84B0C7;text-decoration:none;font-weight:bold;}
+DIV.viewTabs LI A SPAN {display:block;background:url(./Images/folderTabLeft.gif) no-repeat left top;padding:5px 9px;white-space:nowrap;}
+DIV.viewTabs LI.currentTab A {background-position:100% -150px;border-width:0px;}
+DIV.viewTabs LI A:hover {background-position:100% -150px;}
+DIV.viewTabs LI A:hover SPAN {background-position:0% -150px;}
+DIV.viewTabs LI.currentTab A SPAN {background-position:0% -150px;padding-bottom:6px;}
+
 DIV.folderTabs {float:left;width:100%;background:url(./Images/folderTabBorder.gif) repeat-x bottom;margin-top:3px; padding:0px;}
 DIV.folderTabs DIV.buttons {margin-bottom:10px;}
 DIV.folderTabs UL.folderTabs {float:left;margin:0px;padding:0px;list-style:none;}
@@ -44,21 +57,21 @@ DIV.folderTabs LI A:hover SPAN {background-position:0% -150px;}
 DIV.folderTabs LI.currentTab A SPAN {background-position:0% -150px;padding-bottom:6px;}
 
 /* Menu */
-#menu {float:left;margin:10px;}
+#menu {float:left;margin:0px 5px 0px 5px;min-height:500px;}
 #menu A {text-decoration:none;}
 #menu UL {clear:left;float:left;padding:0px;margin:0px;}
 #menu LI {clear:left;float:left;list-style:none;padding:0px;margin:0px;}
 #menu LI.section{margin-bottom:2px;}
 #menu LI.selected{background-color:#e0e0e0;}
-#menu LI.section DIV.title {float:left;width:250px;font-weight:bold;background-color:#ffffff;min-height:15px;padding:2px;}
+#menu LI.section DIV.title {float:left;width:200px;font-weight:bold;background-color:#ffffff;min-height:15px;padding:2px;}
 #menu LI.section DIV.icon {float:left;width:15px;background-color:#ffffff;margin-right:2px;height:15px;padding:2px;}
-#menu LI.item DIV.title {float:left;width:250px;font-weight:normal;background-color:inherit;min-height:15px;padding:2px;}
+#menu LI.section DIV.selected {background-color:#e0e0e0;}
+#menu LI.item DIV.title {float:left;width:200px;font-weight:normal;background-color:inherit;min-height:15px;padding:2px;}
 #menu LI.item DIV.icon {float:left;width:15px;font-weight:normal;background-color:inherit;margin-right:2px;height:15px;padding:2px;}
 
-
 /* Content */
-#content {float:left;margin:5px;width:500px;}
-#content DIV.header {float:left;margin-bottom:15px;}
+#content {float:left;margin:0px 5px 0px 5px;width:500px;}
+#content DIV.header {float:left;margin-bottom:10px;}
 #content DIV.header DIV.logo {float:left;font-size:20px;}
 #content DIV.header DIV.buttons {float:left;margin-left:10px;}
 #content DIV.header DIV.buttons IMG.typo3-csh-icon {float:left;margin-right:10px;}
@@ -102,26 +115,65 @@ DIV.folderTabs LI.currentTab A SPAN {background-position:0% -150px;padding-botto
 #extensionList DIV.body LI.forms LI {clear:left;float:left;height:15px;text-align:left;margin:0px;}
 #extensionList DIV.body LI.forms DIV.formName {float:left;width:150px;height:15px;overflow:hidden;}
 #extensionList DIV.body LI.forms DIV.cache {float:left;width:60px;height:15px;text-align:center;}
-#extensionList DIV IMG.checked {width:13px;height:12px;}
+#extensionList DIV LI.debugQueries {width:60px;}
+#extensionList DIV.body LI.debugQueries {float:left;width:60px;text-align:center;}
+#extensionList DIV IMG.cacheChecked {width:13px;height:12px;}
+#extensionList DIV IMG.debugQueriesChecked {width:14px;height:13px;}
 #extensionList DIV LI.buttons {width:130px;}
 #extensionList DIV.body LI.buttons {width:130px;text-align:left;}
 #extensionList DIV LI.buttons IMG {margin-right:3px;}
 
 /* Extension Manager Configuration Section */
 #emconfSection DIV.body INPUT.version {width:10px;float:left;clear:none;margin:3px 3px 0px 3px;}
+#emconfSection DIV.body INPUT.submit {width:auto;float:left;clear:none;margin:2px 3px 0px 3px;}
 
 /* New Tables Section */
-#newTablesSection DIV.body DIV.selected {background-color:#e0e0e0;}
-#newTablesSection DIV.body DIV.flags {float:left;width:500px;margin:5px 0px 0px 0px;}
-#newTablesSection DIV.body DIV.flags DIV {float:left;}
-#newTablesSection DIV.body DIV.flags DIV.col1 {clear:left;width:200px;}
-#newTablesSection DIV.body DIV.flags DIV.col2 {width:300px;}
-#newTablesSection DIV.body DIV.flags DIV.col2 LABEL {width:220px;}
-#newTablesSection DIV.body DIV.flags DIV.col2 LABEL.defIcon {width:100px;}
+#savLibrary #newTablesSection DIV.body SPAN.extensionKey {margin-left:10px;font-style:italic;}
+#savLibrary #newTablesSection #savLibrary DIV.body DIV.selected {background-color:#e0e0e0;}
+#savLibrary #newTablesSection #savLibrary DIV.body DIV.flags {float:left;width:500px;margin:5px 0px 0px 0px;}
+#savLibrary #newTablesSection #savLibrary DIV.body DIV.flags DIV {float:left;}
+#savLibrary #newTablesSection #savLibrary DIV.body DIV.flags DIV.col1 {clear:left;width:200px;}
+#savLibrary #newTablesSection #savLibrary DIV.body DIV.flags DIV.col2 {width:300px;}
+#savLibrary #newTablesSection #savLibrary DIV.body DIV.flags DIV.col2 LABEL {width:220px;}
+#savLibrary #newTablesSection #savLibrary DIV.body DIV.flags DIV.col2 LABEL.defIcon {width:100px;}
+
+#savLibraryPlus #newTablesSection #content {width:1000px;}
+#savLibraryPlus #newTablesSection DIV.header {width:1000px;float:left;clear:left;}
+#savLibraryPlus #newTablesSection DIV.body {width:1000px;float:left;}
+#savLibraryPlus #newTablesSection DIV.body SPAN.extensionKey {margin-left:10px;font-style:italic;}
+#savLibraryPlus #newTablesSection DIV.body DIV.selected {background-color:#e0e0e0;}
+#savLibraryPlus #newTablesSection DIV.body DIV.flags {width:1000px;float:left;clear:left;margin:5px 0px 0px 0px;}
+#savLibraryPlus #newTablesSection DIV.body DIV.flags DIV {float:left;}
+#savLibraryPlus #newTablesSection DIV.body DIV.flags DIV.col1 {width:170px;clear:left;}
+#savLibraryPlus #newTablesSection DIV.body DIV.flags DIV.col2 {width:195px;}
+#savLibraryPlus #newTablesSection DIV.body DIV.flags DIV.col2 LABEL {width:170px;}
+#savLibraryPlus #newTablesSection DIV.body DIV.flags DIV.col3 {width:135px;}
+#savLibraryPlus #newTablesSection DIV.body DIV.flags DIV.col3 LABEL {width:115px;}
+#savLibraryPlus #newTablesSection DIV.body DIV.flags DIV.col4 {width:210px;}
+#savLibraryPlus #newTablesSection DIV.body DIV.flags DIV.col4 LABEL {width:180px;}
+#savLibraryPlus #newTablesSection DIV.body DIV.flags DIV.col4 LABEL.descendingOrder {width:100px;}
+#savLibraryPlus #newTablesSection DIV.body DIV.flags DIV.col4 LABEL.defIcon {width:100px;}
+#savLibraryPlus #newTablesSection DIV.body DIV.flags DIV.col4 INPUT {float:left;}
+#savLibraryPlus #newTablesSection DIV.body DIV.flags DIV.col4 INPUT.checkbox {clear:none;}
+#savLibraryPlus #newTablesSection DIV.body DIV.flags DIV.col4 SELECTOR {float:left;}
 
 /* Existing Tables Section */
-#existingTablesSection DIV.body DIV.selected {background-color:#e0e0e0;}
-#existingTablesSection DIV.body IMG.importFields {float:left;margin:5px 0px 0px 0px;}
+#savLibrary #existingTablesSection DIV.body DIV.selected {background-color:#e0e0e0;}
+#savLibrary #existingTablesSection DIV.body IMG.importFields {float:left;margin:5px 0px 0px 0px;}
+
+#savLibraryPlus #existingTablesSection #content {width:1000px;}
+#savLibraryPlus #existingTablesSection DIV.header {width:1000px;float:left;clear:left;}
+#savLibraryPlus #existingTablesSection DIV.body {width:1000px;float:left;}
+#savLibraryPlus #existingTablesSection DIV.body SPAN.extensionKey {margin-left:10px;font-style:italic;}
+#savLibraryPlus #existingTablesSection DIV.body DIV.selected {background-color:#e0e0e0;}
+#savLibraryPlus #existingTablesSection DIV.body IMG.importFields {float:left;margin:5px 0px 0px 0px;}
+
+/* Forms Section : Views definition */
+#formsSection DIV.viewsDefinition {clear:left;float:left;margin-top:5px;}
+#formsSection DIV.viewsDefinition IMG {float:left;margin-left:4px;}
+#formsSection DIV.viewsDefinition IMG.addNewViewWithCondition {margin-top:5px;}
+#formsSection DIV.viewsDefinition INPUT.condition {clear:none;float:left;margin:3px 0px 0px 0px;width:340px;}
+#formsSection DIV.viewsDefinition IMG.deleteFolder {margin-left:8px;}
 
 /* Fields configuration */
 #fieldsConfiguration {float:left;margin-top:10px;}
@@ -133,59 +185,101 @@ DIV.folderTabs LI.currentTab A SPAN {background-position:0% -150px;padding-botto
 #fieldsConfiguration DIV.field DIV.value INPUT {width:200px;}
 
 /* Fields overview */
-#fieldsOverview {float:left;margin:5px 5px 5px 20px;width:600px;}
-#fieldsOverview DIV.header {float:left;margin-bottom:15px;}
-#fieldsOverview DIV.header DIV.logo {float:left;font-size:20px;}
-#fieldsOverview DIV.header DIV.buttons {float:left;margin-left:10px;}
-#fieldsOverview DIV.header DIV.buttons IMG {margin-right:10px;}
-#fieldsOverview DIV.body UL {clear:left;float:left;padding:0px;margin:0px;}
-#fieldsOverview DIV.body LI {clear:left;float:left;list-style:none;margin:0px 0px 3px 0px;}
-#fieldsOverview DIV.body LI.title {font-weight:bold;padding:5px 0px 3px 0px;}
-#fieldsOverview DIV.body LI.field {padding:0px;}
-#fieldsOverview DIV.body LI.selected {background-color:#e0e0e0;}
-#fieldsOverview DIV.body LI DIV.fieldName {float:left;width:200px;}
-#fieldsOverview DIV.body LI DIV.fieldName A {float:left;width:200px;overflow:hidden;}
-#fieldsOverview DIV.body LI DIV.fieldTitle {float:left;width:150px;}
-#fieldsOverview DIV.body LI DIV.fieldType {float:left;width:150px;}
-#fieldsOverview DIV.body LI DIV.fieldControls {float:left;width:100px;margin:0px;padding:0px;}
-#fieldsOverview DIV.body LI DIV.fieldControls IMG {margin:0px;padding:0px;}
-#fieldsOverview DIV.body LI DIV.fieldControls INPUT.checkbox {float:left;margin:2px 2px;padding:0px;}
-#fieldsOverview DIV.body LI DIV.fieldControls IMG.deleteField {margin-left:10px;}
-#fieldsOverview DIV.body LI DIV.fieldControls IMG.editFieldDefinition {margin:0px 5px 0px 5px;}
+#savLibrary #fieldsOverview {float:left;margin:5px 5px 5px 20px;width:600px;}
+#savLibrary #fieldsOverview DIV.header {float:left;margin-bottom:15px;}
+#savLibrary #fieldsOverview DIV.header DIV.logo {float:left;font-size:20px;}
+#savLibrary #fieldsOverview DIV.header DIV.buttons {float:left;margin-left:10px;}
+#savLibrary #fieldsOverview DIV.header DIV.buttons IMG {margin-right:10px;}
+#savLibrary #fieldsOverview DIV.body UL {clear:left;float:left;padding:0px;margin:0px;}
+#savLibrary #fieldsOverview DIV.body LI {clear:left;float:left;list-style:none;margin:0px 0px 3px 0px;}
+#savLibrary #fieldsOverview DIV.body LI.title {font-weight:bold;padding:5px 0px 3px 0px;}
+#savLibrary #fieldsOverview DIV.body LI.field {padding:0px;}
+#savLibrary #fieldsOverview DIV.body LI.selected {background-color:#e0e0e0;}
+#savLibrary #fieldsOverview DIV.body LI DIV.fieldName {float:left;width:200px;}
+#savLibrary #fieldsOverview DIV.body LI DIV.fieldName A {float:left;width:200px;overflow:hidden;}
+#savLibrary #fieldsOverview DIV.body LI DIV.fieldTitle {float:left;width:150px;}
+#savLibrary #fieldsOverview DIV.body LI DIV.fieldType {float:left;width:150px;}
+#savLibrary #fieldsOverview DIV.body LI DIV.fieldControls {float:left;width:100px;margin:0px;padding:0px;}
+#savLibrary #fieldsOverview DIV.body LI DIV.fieldControls IMG {margin:0px;padding:0px;}
+#savLibrary #fieldsOverview DIV.body LI DIV.fieldControls INPUT.checkbox {float:left;margin:2px 2px;padding:0px;}
+#savLibrary #fieldsOverview DIV.body LI DIV.fieldControls IMG.deleteField {margin-left:8px;}
+#savLibrary #fieldsOverview DIV.body LI DIV.fieldControls IMG.editFieldDefinition {margin:0px 4px 0px 4px;}
 
-#fieldDefinition {clear:left;float:left;margin-top:20px;}
-#fieldDefinition DIV.basic {clear:left;float:left;}
-#fieldDefinition DIV.basic DIV.label {clear:left;float:left;width:100px;font-weight:bold;}
-#fieldDefinition DIV.basic DIV.value {clear:none;float:left;}
-#fieldDefinition DIV.basic DIV.value INPUT {width:200px;}
-#fieldDefinition DIV.definition {clear:left;float:left;margin-top:15px;}
-#fieldDefinition DIV.definition DIV.label {clear:left;float:left;width:100px;font-weight:bold;margin:0px 10px 3px 0px;}
-#fieldDefinition DIV.definition DIV.value {clear:none;float:left;width:50px;font-weight:bold;margin:0px 10px 3px 3px;}
-#fieldDefinition DIV.definition LABEL {clear:none;float:left;font-weight:bold;}
-#fieldDefinition DIV.definition SELECT {clear:left;float:left;text-align:left;margin:0px 10px 3px 0px;}
-#fieldDefinition DIV.definition INPUT {clear:left;float:left;text-align:left;margin:0px 10px 3px 0px;}
-#fieldDefinition DIV.definition INPUT.integer {width:25px;}
-#fieldDefinition DIV.definition INPUT.string {width:200px;}
-#fieldDefinition DIV.definition INPUT.itemLabel {width:100px;}
-#fieldDefinition DIV.definition INPUT.itemValue {clear:none;width:50px;}
-#fieldDefinition DIV.definition IMG.addNewBoxItem {float:left;margin-left:3px;}
-#fieldDefinition DIV.definition IMG.deleteBoxItem {float:left;}
+#savLibraryPlus #fieldsOverview {width:700px;float:left;margin:10px 5px 0px 5px;}
+#savLibraryPlus #fieldsOverview DIV.header {float:left;margin-bottom:15px;}
+#savLibraryPlus #fieldsOverview DIV.header DIV.logo {float:left;font-size:20px;}
+#savLibraryPlus #fieldsOverview DIV.header DIV.buttons {float:left;margin-left:10px;}
+#savLibraryPlus #fieldsOverview DIV.header DIV.buttons IMG {margin-right:10px;}
+#savLibraryPlus #fieldsOverview DIV.fields {width:700px;float:left;}
+#savLibraryPlus #fieldsOverview DIV.fields UL {clear:left;float:left;padding:0px;margin:0px;}
+#savLibraryPlus #fieldsOverview DIV.fields LI {clear:left;float:left;list-style:none;margin:0px 0px 3px 0px;}
+#savLibraryPlus #fieldsOverview DIV.fields LI.title {font-weight:bold;padding:5px 0px 3px 0px;}
+#savLibraryPlus #fieldsOverview DIV.fields LI.field {padding:0px;}
+#savLibraryPlus #fieldsOverview DIV.fields LI.selected {background-color:#e0e0e0;}
+#savLibraryPlus #fieldsOverview DIV.fields LI DIV.fieldName {width:200px;float:left;margin-left:5px;}
+#savLibraryPlus #fieldsOverview DIV.fields LI DIV.fieldName A {float:left;overflow:hidden;}
+#savLibraryPlus #fieldsOverview DIV.fields LI DIV.fieldName INPUT {width:195px;float:left;}
+#savLibraryPlus #fieldsOverview DIV.fields LI DIV.fieldTitle {float:left;width:130px;}
+#savLibraryPlus #fieldsOverview DIV.fields LI DIV.fieldTitle INPUT {width:125px;float:left;}
+#savLibraryPlus #fieldsOverview DIV.fields LI DIV.fieldType {width:130px;float:left;}
+#savLibraryPlus #fieldsOverview DIV.fields LI DIV.fieldType SELECT {width:125px;float:left;}
+#savLibraryPlus #fieldsOverview DIV.fields LI DIV.folder {width:150px;float:left;margin-left:55px;}
+#savLibraryPlus #fieldsOverview DIV.fields LI DIV.value {float:left;}
+#savLibraryPlus #fieldsOverview DIV.fields LI DIV.fieldControls {float:left;width:230px;margin:0px;padding:0px;}
+#savLibraryPlus #fieldsOverview DIV.fields LI DIV.fieldControls IMG {float:left;margin:0px;padding:0px;}
+#savLibraryPlus #fieldsOverview DIV.fields LI DIV.fieldControls INPUT.checkbox {float:left;margin:2px 2px;padding:0px;}
+#savLibraryPlus #fieldsOverview DIV.fields LI DIV.fieldControls IMG.deleteField {margin-left:2px;}
+#savLibraryPlus #fieldsOverview DIV.fields LI DIV.fieldControls IMG.editFieldConfiguration {margin:2px 2px 0px 4px;}
+#savLibraryPlus #fieldsOverview DIV.fields LI DIV.fieldControls IMG.moveDownField {margin:2px 1px 0px 1px;}
+#savLibraryPlus #fieldsOverview DIV.fields LI DIV.fieldControls IMG.moveUpField {margin:2px 1px 0px 1px;}
+#savLibraryPlus #fieldsOverview DIV.fields LI DIV.fieldControls SELECT.folder {width:170px;float:left;margin:2px 0px 2px 3px;padding:0px;}
+#savLibraryPlus #fieldsOverview DIV.fields LI DIV.subform {width:692px;float:left;margin:0px 2px 0px 2px;border:2px solid #84B0C7}
+#savLibraryPlus #fieldsOverview DIV.fields LI DIV.subform DIV.fieldControls {float:left;width:220px;margin:0px;padding:0px;}
+#savLibraryPlus #fieldsOverview DIV.inFolders {margin-bottom:10px;border-bottom:1px solid #84B0C7;border-right:1px solid #84B0C7;border-left:1px solid #84B0C7;}
+#savLibraryPlus #fieldsOverview DIV.notInFolders {border:1px solid #84B0C7;margin-bottom:10px;}
 
+/* Field configuration */
+#fieldConfiguration {width:430px;float:left;margin:10px 5px 0px 5px;}
+#fieldConfiguration DIV.header {float:left;margin-bottom:15px;}
+#fieldConfiguration DIV.header DIV.logo {float:left;font-size:20px;}
+#fieldConfiguration DIV.basic {clear:left;float:left;margin-top:10px;}
+#fieldConfiguration DIV.basic DIV.label {clear:left;float:left;width:100px;font-weight:bold;}
+#fieldConfiguration DIV.basic DIV.value {clear:none;float:left;}
+#fieldConfiguration DIV.basic DIV.value INPUT {width:200px;}
+#fieldConfiguration DIV.basic DIV.value INPUT.validationRules {width:300px;}
+#fieldConfiguration DIV.configuration {clear:left;float:left;margin-top:15px;}
+#fieldConfiguration DIV.configuration DIV.label {clear:left;float:left;width:100px;font-weight:bold;margin:0px 10px 3px 0px;}
+#fieldConfiguration DIV.configuration DIV.value {clear:none;float:left;width:50px;font-weight:bold;margin:0px 10px 3px 3px;}
+#fieldConfiguration DIV.configuration LABEL {clear:none;float:left;font-weight:bold;}
+#fieldConfiguration DIV.configuration SELECT {clear:left;float:left;text-align:left;margin:0px 10px 3px 0px;}
+#fieldConfiguration DIV.configuration INPUT {clear:left;float:left;text-align:left;margin:0px 10px 3px 0px;}
+#fieldConfiguration DIV.configuration INPUT.integer {width:25px;}
+#fieldConfiguration DIV.configuration INPUT.string {width:200px;}
+#fieldConfiguration DIV.configuration INPUT.itemLabel {width:100px;}
+#fieldConfiguration DIV.configuration INPUT.itemValue {clear:none;width:50px;}
+#fieldConfiguration DIV.configuration IMG.addNewBoxItem {float:left;margin-left:3px;}
+#fieldConfiguration DIV.configuration IMG.deleteBoxItem {float:left;}
+#fieldConfiguration DIV.configuration TEXTAREA {width:430px;clear:left;float:left;}
+
+/* Folders definition */
 DIV#foldersDefinition {clear:left;float:left;margin-top:5px;}
 DIV#foldersDefinition LABEL.folders {margin:0px 0px 5px 0px;}
 DIV#foldersDefinition LABEL.folder {width:90px;}
 DIV#foldersDefinition INPUT.folderLabel {clear:none;float:left;width:340px;text-align:left;}
-DIV#foldersDefinition IMG {float:left;margin-left:5px;}
+DIV#foldersDefinition IMG {float:left;margin-left:4px;}
 DIV#foldersDefinition IMG.addNewFolder {margin-top:5px;}
-DIV#foldersDefinition IMG.deleteFolder {margin-left:10px;}
+DIV#foldersDefinition IMG.moveUpFolder {margin-top:2px;}
+DIV#foldersDefinition IMG.moveDownFolder {margin-top:2px;}
+DIV#foldersDefinition IMG.deleteFolder {margin-left:8px;}
 DIV#foldersDefinition TEXTAREA.folder {clear:none;float:left;margin:0px 0px 10px 0px;width:340px;}
 
+/* WhereTags definition */
 DIV#whereTagsDefinition {clear:left;float:left;margin-top:5px;}
 DIV#whereTagsDefinition LABEL.whereTags {margin:0px 0px 5px 0px;}
 DIV#whereTagsDefinition LABEL.whereTag {width:90px;}
 DIV#whereTagsDefinition INPUT.whereTag {clear:none;float:left;width:340px;text-align:left;}
-DIV#whereTagsDefinition IMG {float:left;margin-left:5px;}
+DIV#whereTagsDefinition IMG {float:left;margin-left:4px;}
 DIV#whereTagsDefinition IMG.addNewWhereTag {margin-top:5px;}
-DIV#whereTagsDefinition IMG.deleteWhereTag {margin-left:10px;}
+DIV#whereTagsDefinition IMG.deleteWhereTag {margin-left:8px;}
 DIV#whereTagsDefinition TEXTAREA.whereTag {clear:none;float:left;margin:0px 0px 2px 0px;width:340px;}
 DIV#whereTagsDefinition TEXTAREA.whereTagLast {clear:none;float:left;margin:0px 0px 10px 0px;width:340px;}

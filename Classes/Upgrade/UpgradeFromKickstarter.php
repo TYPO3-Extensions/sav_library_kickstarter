@@ -81,12 +81,18 @@ class Tx_SavLibraryKickstarter_Upgrade_UpgradeFromKickstarter extends Tx_SavLibr
 
     // Adds the 'form' section'
     $newConfiguration['forms'] = $configuration['forms'];
+    
+    // Defines the library type
+    $libraryType = 'SavLibrary';
 
     // Creates the configuration directory if needed
-    $configurationDirectory =  $extensionDirectory . Tx_SavLibraryKickstarter_Configuration_ConfigurationManager::CONFIGURATION_DIRECTORY;
+    $configurationDirectory =  $extensionDirectory . Tx_SavLibraryKickstarter_Configuration_ConfigurationManager::CONFIGURATION_DIRECTORY . $libraryType . '/';
     if (!is_dir($configurationDirectory)) {
-      t3lib_div::mkdir_deep(Tx_SavLibraryKickstarter_Configuration_ConfigurationManager::getExtensionsRootDir(), $extensionKey . '/' . Tx_SavLibraryKickstarter_Configuration_ConfigurationManager::CONFIGURATION_DIRECTORY);
+      t3lib_div::mkdir_deep(Tx_SavLibraryKickstarter_Configuration_ConfigurationManager::getExtensionsRootDir(), $extensionKey . '/' . Tx_SavLibraryKickstarter_Configuration_ConfigurationManager::CONFIGURATION_DIRECTORY . $libraryType . '/');
     }
+    
+    // Saves the library type
+    t3lib_div::writeFile(Tx_SavLibraryKickstarter_Configuration_ConfigurationManager::getLibraryTypeFileName($extensionKey), $libraryType);
 
     // Saves the file to the JSON format
     $jsonContent = json_encode($newConfiguration);

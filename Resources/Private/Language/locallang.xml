@@ -7,9 +7,11 @@
 	<data type="array">
 		<languageKey index="default" type="array">
 			<label index="error.extensionHasDependencies">The extension has not been removed due to dependencies</label>
-			<label index="kickstarter.title">SAV Library Kickstarter</label>
+			<label index="kickstarter.extensionListTitle">SAV Library Kickstarter</label>
+			<label index="kickstarter.title">SAV Library %s Kickstarter</label>
 			<label index="kickstarter.extensionList">List of available extensions</label>
 			<label index="kickstarter.extensionNotLoaded">(not loaded)</label>
+			<label index="kickstarter.debugQueryOn">(debug queries is on)</label>			
 			<label index="kickstarter.createExtension">Create a new extension</label>
 			<label index="kickstarter.editExtension">Edit the extension</label>
 			<label index="kickstarter.copyExtension">Copy the extension</label>
@@ -28,6 +30,7 @@
 			<label index="kickstarter.addNewField">Add a new field</label>
 			<label index="kickstarter.addNewFolder">Add a new folder</label>
 			<label index="kickstarter.addNewWhereTag">Add a new &quot;whereTag&quot;</label>
+			<label index="kickstarter.addNewViewWithCondition">Add a new view with a condition field</label>
 			<label index="kickstarter.edit">Edit</label>
 			<label index="kickstarter.importFields">Import fields</label>
 			<label index="kickstarter.useFields">Use fields as in view</label>
@@ -38,7 +41,17 @@
 			<label index="kickstarter.queriesSectionTitle">Queries</label>
 			<label index="kickstarter.formsSectionTitle">Forms</label>
 			<label index="kickstarter.fieldsOverview">Fields overview</label>
-			<label index="kickstarter.save">Save</label>
+			<label index="kickstarter.fieldsNotInFolders">Fields not in folders</label>
+			<label index="kickstarter.allFields">All fields</label>			
+			<label index="kickstarter.showAllFields">Show all fields</label>
+			<label index="kickstarter.showFieldsNotInFolders">Show fields not in folders</label>
+			<label index="kickstarter.FieldMustBeAdded">At least one field must be added and selected in a subform</label>			
+			<label index="kickstarter.fieldConfiguration">FieldConfiguration</label>
+			<label index="kickstarter.save">Save</label>			
+			<label index="kickstarter.load">Load</label>
+			<label index="kickstarter.overwrite">Overwrite</label>	
+			<label index="kickstarter.overwriteRequired">The library type was not changed. Use overwrite to change the library type.</label>	
+			<label index="kickstarter.noConfigurationFile">The library type was not changed. No configuration file was found.</label>	
 			<label index="kickstarter.generate">Generate</label>
 			<label index="kickstarter.extensionList.extensionName">Extension name</label>
 			<label index="kickstarter.extensionList.extensionVersion">Extension version</label>
@@ -46,6 +59,7 @@
 			<label index="kickstarter.extensionList.libraryType">Library type</label>
 			<label index="kickstarter.extensionList.forms">Forms</label>
 			<label index="kickstarter.extensionList.cache">Cache</label>
+			<label index="kickstarter.extensionList.debugQueries">Debug queries</label>
 			<label index="kickstarter.emconfItem.extensionKey">Extension key:</label>
 			<label index="kickstarter.emconfItem.newExtensionKey">New extension key:</label>
 			<label index="kickstarter.emconfItem.oldExtensionKey">Old extension key:</label>
@@ -63,10 +77,11 @@
 			<label index="kickstarter.general.savlibraryVersion">SAV Library Version:</label>
 			<label index="kickstarter.general.extensionVersion">Extension Version:</label>
 			<label index="kickstarter.generalItem.libraryType">Library type:</label>
-			<label index="kickstarter.generalItem.libraryType.0">default</label>
-			<label index="kickstarter.generalItem.libraryType.1">mvc</label>
+			<label index="kickstarter.generalItem.libraryType.0">basic</label>
+			<label index="kickstarter.generalItem.libraryType.1">plus</label>
+			<label index="kickstarter.generalItem.libraryType.2">mvc</label>
 			<label index="kickstarter.generalItem.pluginTitle">Title for the plugin:</label>
-			<label index="kickstarter.generalItem.debug">Debug Query (Use only for developments):</label>
+			<label index="kickstarter.generalItem.debug">Debug Queries (Use only for developments):</label>
 			<label index="kickstarter.generalItem.version">New version:</label>
 			<label index="kickstarter.viewsItem.title">Name:</label>
 			<label index="kickstarter.viewsItem.type">Type:</label>
@@ -77,6 +92,7 @@
 			<label index="kickstarter.viewsItem.type.special">Special</label>
 			<label index="kickstarter.viewsItem.subtype">Subtype:</label>
 			<label index="kickstarter.viewsItem.subtype.none"></label>
+			<label index="kickstarter.viewsItem.subtype.form">Form view</label>			
 			<label index="kickstarter.viewsItem.subtype.update">Update view</label>
 			<label index="kickstarter.viewsItem.subtype.print">Print view</label>
 			<label index="kickstarter.viewsItem.subtype.print.itemsBeforePageBreak">Number of items before page break:</label>
@@ -184,6 +200,7 @@
 			<label index="kickstarter.field.conf_rel_type.select_root">Root page</label>
 			<label index="kickstarter.field.conf_rel_type.select_storage">Storage page</label>
 			<label index="kickstarter.field.conf_rel_dummyitem">Add a blank item to the selector</label>
+			<label index="kickstarter.field.conf_render_type">Type for the rendering (default String)</label>
 			<label index="kickstarter.field.conf_relations_mm">True M-M relations (otherwise commalist of values)</label>
 			<label index="kickstarter.field.conf_norelation">Just create the subform (no relation)</label>
 			<label index="kickstarter.field.conf_relations">Max number of relations</label>
@@ -196,6 +213,7 @@
 			<label index="kickstarter.field.conf_rows">Number of rows (height)</label>
 			<label index="kickstarter.field.items.label">Label</label>
 			<label index="kickstarter.field.items.value">Value</label>
+			<label index="kickstarter.field.validationRules">Validation rules</label>
 		</languageKey>
 	</data>
 	<orig_hash type="array">

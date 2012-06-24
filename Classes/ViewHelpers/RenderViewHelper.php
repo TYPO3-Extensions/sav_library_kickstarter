@@ -41,23 +41,28 @@ class Tx_SavLibraryKickstarter_ViewHelpers_RenderViewHelper extends Tx_Fluid_Cor
 	 * @param string $partial Reference to a partial.
 	 * @param array $arguments Arguments to pass to the partial.
 	 * @param string $directory If not null, it replaces the PARTIALS_DIRECTORY constant.
+	 * @param string $useDefault If Set, the file name is replaced by this parameter if it does not exist.
 	 * @return string Rendered string
 	 */
-	public function render($partial, $arguments = array(), $directory = NULL) {
+	public function render($partial, $arguments = array(), $directory = NULL, $useDefault = '') {
 
     if ($directory === NULL) {
       $directory = self::PARTIALS_DIRECTORY;
     }
-		$fileContent = file_get_contents(t3lib_extMgm::extPath('sav_library_kickstarter'). $directory . $partial);
+		$fileContent = @file_get_contents(t3lib_extMgm::extPath('sav_library_kickstarter'). $directory . $partial);
 
+    if ($fileContent === FALSE && $useDefault !== '') {
+      $partial = preg_replace('/([\w]+)(\.[\w]+)$/', $useDefault . '$2', $partial);
+		  $fileContent = @file_get_contents(t3lib_extMgm::extPath('sav_library_kickstarter'). $directory . $partial);
+    }
+      
     if ($fileContent === FALSE) {
       throw new RuntimeException('Unknown file name: "'. $directory . $partial . '".');
     }
-    $templateParser = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Parser_TemplateParser');
-    $templateParser->setViewHelperVariableContainer($this->viewHelperVariableContainer);
-    $templateParser->setControllerContext($this->controllerContext);
 
-		return $templateParser->parseTemplate($fileContent, $arguments);
+    Tx_SavLibraryKickstarter_Parser_ContentParser::setControllerContext($this->controllerContext);
+    return Tx_SavLibraryKickstarter_Parser_ContentParser::parse($fileContent, $arguments);
+
 	}
 }
 

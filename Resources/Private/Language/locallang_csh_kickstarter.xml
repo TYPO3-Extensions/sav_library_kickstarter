@@ -155,9 +155,12 @@
 			<label index="RadioButtons.syntax">
         &lt;b&gt;cols = integer;&lt;/b&gt;
         Number of columns to display.
-
         &lt;b&gt;displayAsImage = 1;&lt;/b&gt;
         If set, the radio buttons are displayed as images instead of labels.
+        &lt;b&gt;default = integer;&lt;/b&gt;
+        Default value for the radio buttons.
+        &lt;b&gt;horizontalLayout = 1;&lt;/b&gt;
+        If set to 1, radio buttons are displayed horizontally in edit forms.
       </label>
 			<label index="RelationManyToManyAsSubform.description">Attributes for &quot;Database many-to-many (n:n) relation as subform&quot;</label>
 			<label index="RelationManyToManyAsSubform.seeAlso">sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</label>

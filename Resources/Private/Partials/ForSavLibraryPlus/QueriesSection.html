@@ -1,0 +1,79 @@
+{namespace sav=Tx_SavLibraryKickstarter_ViewHelpers}
+
+<f:alias map="{section:'queries'}">
+<f:alias map="{sectionItem:'{extension.{section}.{itemKey}}'}">
+<div id="{section}Section">
+ 	<f:form method="post" action="save" name="{section}" arguments="{extKey:extKey, section:'queries', itemKey:itemKey}">
+    <f:form.hidden name="general[section]" value="{section}" />
+    <f:form.hidden name="general[itemKey]" value="{itemKey}" />
+    <div id="content">
+      <div class="header">
+        <div class="logo">
+        <f:translate key="kickstarter.{section}SectionTitle" />
+        </div>
+        <div class="buttons">
+          <sav:be.helpWindow cshTag="{section}" class="left" />
+          <f:form.submit class="submit" name="submitAction[save]" value="{f:translate(key:'kickstarter.save')}"/>
+          <f:form.submit class="submit" name="submitAction[generateExtension]" value="{f:translate(key:'kickstarter.generate')}"/>
+        </div>
+      </div>
+      <div class="body">
+        <sav:comment><!-- Title --></sav:comment>
+      	<label for="title"><f:translate key="kickstarter.{section}Item.title" /></label>
+    		<f:form.textbox id="title" name="{section}[title]" value="{sectionItem.title}" />
+
+        <sav:comment><!-- Main Table --></sav:comment>
+      	<label for="mainTable"><f:translate key="kickstarter.{section}Item.mainTable" /></label>
+        <f:alias map="{firtNewTable:'{extension.newTables->sav:function(name:\"current\")}'}">
+        <f:alias map="{defaultTableName:'{sav:BuildTableName(shortName:firtNewTable.tablename, extensionKey:extKey)}'}">
+    		<f:form.textbox id="mainTable" name="{section}[mainTable]" value="{f:if(condition:sectionItem.mainTable, then:sectionItem.mainTable, else:defaultTableName)}" />
+        </f:alias>
+        </f:alias>
+
+
+        <sav:comment><!-- Foreign Tables --></sav:comment>
+      	<label for="foreignTables"><f:translate key="kickstarter.{section}Item.foreignTables" /></label>
+    		<f:form.textarea id="foreignTables" name="{section}[foreignTables]" value="{sectionItem.foreignTables}" rows="{sav:function(name:'countLines', arguments:sectionItem.foreignTables)}" cols="80"/>
+
+        <sav:comment><!-- Aliases --></sav:comment>
+      	<label for="aliases"><f:translate key="kickstarter.{section}Item.aliases" /></label>
+    		<f:form.textarea id="aliases" name="{section}[aliases]" value="{sectionItem.aliases}" rows="{sav:function(name:'countLines', arguments:sectionItem.aliases)}" cols="80"/>
+
+        <sav:comment><!-- Where Clause --></sav:comment>
+      	<label for="whereClause"><f:translate key="kickstarter.{section}Item.whereClause" /></label>
+    		<f:form.textarea id="whereClause" name="{section}[whereClause]" value="{sectionItem.whereClause}" rows="{sav:function(name:'countLines', arguments:sectionItem.whereClause)}" cols="80"/>
+
+        <sav:comment><!-- Order By Clause --></sav:comment>
+      	<label for="orderByClause"><f:translate key="kickstarter.{section}Item.orderByClause" /></label>
+    		<f:form.textarea id="orderByClause" name="{section}[orderByClause]" value="{sectionItem.orderByClause}" rows="{sav:function(name:'countLines', arguments:sectionItem.orderByClause)}" cols="80"/>
+
+        <sav:comment><!-- Group By Clause --></sav:comment>
+      	<label for="groupByClause"><f:translate key="kickstarter.{section}Item.groupByClause" /></label>
+    		<f:form.textarea id="groupByClause" name="{section}[groupByClause]" value="{sectionItem.groupByClause}" rows="{sav:function(name:'countLines', arguments:sectionItem.groupByClause)}" cols="80"/>
+
+        <sav:comment><!-- WhereTags --></sav:comment>
+    		<div id="whereTagsDefinition">
+        	<label class="whereTags"><f:translate key="kickstarter.{section}Item.whereTags" /></label>
+          <f:link.action action="addNewWhereTag" arguments="{extKey:extKey, section:section, itemKey:itemKey}">
+          <sav:be.icon class="addNewWhereTag" icon="add" alt="{f:translate(key:'kickstarter.addNewWhereTag')}" title="{f:translate(key:'kickstarter.addNewWhereTag')}" />
+          </f:link.action>
+          <f:for each="{sectionItem.whereTags}" as="whereTag" key="whereTagKey" >
+          <label class="whereTag"><f:translate key="kickstarter.{section}Item.whereTags.title" /></label>
+      		<f:form.textbox class="whereTag" name="{section}[whereTags][{whereTagKey}][title]" value="{whereTag.title}" />
+          <f:link.action action="deleteWhereTag" arguments="{extKey:extKey, section:section, itemKey:itemKey, whereTagKey:whereTagKey}">
+            <sav:be.icon class="whereTagDelete" icon="garbage" alt="kickstarter.delete" title="{f:translate(key:'kickstarter.delete')}" />
+          </f:link.action>
+          <label class="whereTag"><f:translate key="kickstarter.{section}Item.whereTags.whereClause" /></label>
+      		<f:form.textarea class="whereTag" name="{section}[whereTags][{whereTagKey}][whereClause]" value="{whereTag.where}" rows="{sav:function(name:'countLines', arguments:whereTag.whereClause)}" cols="50" />
+          <label class="whereTag"><f:translate key="kickstarter.{section}Item.whereTags.orderByClause" /></label>
+      		<f:form.textarea class="whereTagLast" name="{section}[whereTags][{whereTagKey}][orderByClause]" value="{whereTag.orderByClause}" rows="{sav:function(name:'countLines', arguments:whereTag.orderByClause)}" cols="50" />
+          </f:for>
+        </div>
+
+      </div>
+	 </div>
+	</f:form>
+</div>
+</f:alias>
+</f:alias>
+

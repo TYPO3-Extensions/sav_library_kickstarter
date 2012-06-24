@@ -39,11 +39,11 @@ class Tx_SavLibraryKickstarter_ViewHelpers_BuildTableNameViewHelper extends Tx_F
 	 * @param boolean $shortNameOnly
 	 * @return string the table name
 	 */
-	public function render($shortName, $extensionKey, $prefix = '', $shortNameOnly = false) {
+	public function render($shortName, $extensionKey, $prefix = '', $shortNameOnly = FALSE) {
     if ($prefix != '') {
       $prefix = $prefix . '_';
     }
-    if ($shortNameOnly === true) {
+    if ($shortNameOnly === TRUE) {
       return $shortName;
     } else {
       return $prefix . 'tx_'  . str_replace('_', '', $extensionKey) . ($shortName ? '_' . $shortName : '');

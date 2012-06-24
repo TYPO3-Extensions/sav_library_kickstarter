@@ -30,7 +30,7 @@
  * @author Laurent Foulloy <yolf.typo3@orange.fr>
  * @version $Id: 
  */
-class Tx_SavLibraryKickstarter_ViewHelpers_lowerCamelViewHelper extends Tx_Fluid_Core_ViewHelper_AbstractViewHelper {
+class Tx_SavLibraryKickstarter_ViewHelpers_LowerCamelViewHelper extends Tx_Fluid_Core_ViewHelper_AbstractViewHelper {
 
 	/**
 	 *

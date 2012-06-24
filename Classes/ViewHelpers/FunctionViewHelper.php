@@ -32,8 +32,6 @@
  */
 class Tx_SavLibraryKickstarter_ViewHelpers_FunctionViewHelper extends Tx_Fluid_Core_ViewHelper_AbstractViewHelper {
 
-// TODO: Clean and comment
-
 	/**
 	 *
 	 * @param string $name The function name
@@ -43,6 +41,7 @@ class Tx_SavLibraryKickstarter_ViewHelpers_FunctionViewHelper extends Tx_Fluid_C
    * @version     SVN: $Id$
 	 */
 	public function render($name = NULL, $arguments = NULL) {
+
     $children = $this->renderChildren();
     if (!empty($children)){
       if (method_exists($this, $name)) {
@@ -196,19 +195,6 @@ class Tx_SavLibraryKickstarter_ViewHelpers_FunctionViewHelper extends Tx_Fluid_C
   }
 
 	/**
-	 * Indents a string by a number of tab
-	 *
-	 * @param string $string The argument
-	 * @param integer $count The number of tab
-	 * @return string
-	 */
-  private function indent($string, $count) {
-		$lines = explode(chr(10), $string);
-		$glue = chr(10) . str_repeat(chr(9), $count);
-		return implode($glue, $lines);
-  }
-
-	/**
 	 * Removes empty lines in a string
 	 *
 	 * @param string $string The argument
@@ -251,6 +237,54 @@ class Tx_SavLibraryKickstarter_ViewHelpers_FunctionViewHelper extends Tx_Fluid_C
     return '';
 	}
 
+	/**
+	 * Returns the negation of an argument
+	 *
+	 * @param mixed $argument The argument
+	 * @return string
+	 */
+	private function logicalNot($argument) {
+    return $argument ? false : true;
+	}
+
+	/**
+	 * Returns the and of the arguments
+	 *
+	 * @param mixed $argument The argument
+	 * @return string
+	 */
+	private function logicalAnd($arguments) {
+	$result = true;
+	foreach($arguments as $argument) {
+		$result = $result && $argument;
+	}
+	return $result;
+	}
+	
+	/**
+	 * Returns the or of the arguments
+	 *
+	 * @param mixed $argument The argument
+	 * @return string
+	 */
+	private function logicalOr($arguments) {
+	$result = false;
+	foreach($arguments as $argument) {
+	  $result = $result || $argument;
+	}
+	return $result;
+	}
+	
+	/**
+	 * Returns an empty string
+	 *
+	 * @param mixed $argument The argument
+	 * @return string
+	 */
+	private function not($arguments) {
+    return $arguments ? false : true;
+	}
+		
 	/**
 	 * Copies a file given by $arguments['source'] from the extension $arguments['sourceExtension']
 	 * into the file $arguments['destination'] from the extension $arguments['destinationExtension']

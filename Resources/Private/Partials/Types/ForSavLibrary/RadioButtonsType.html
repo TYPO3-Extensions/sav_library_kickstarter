@@ -1,0 +1,13 @@
+{namespace sav=Tx_SavLibraryKickstarter_ViewHelpers}
+<div class="label"><f:translate key="kickstarter.field.items.label" /></div>
+<div class="value"><f:translate key="kickstarter.field.items.value" /></div>
+<f:link.action action="addNewBoxItem" arguments="{extKey:extension.general.1.extensionKey, section:section, itemKey:itemKey, fieldKey:fieldKey}">
+  <img class="addNewBoxItem" src="../../../../typo3/gfx/add.gif" alt="{f:translate(key:'kickstarter.addNewBoxItem')}" title="{f:translate(key:'kickstarter.addNewBoxItem')}" />
+</f:link.action>
+<f:for each="{field.items}" as="item" key="key">
+  <f:form.textbox class="itemLabel" name="{section}[fields][{fieldKey}][items][{key}][label]" value="{item.label}" />
+  <f:form.textbox class="itemValue" name="{section}[fields][{fieldKey}][items][{key}][value]" value="{item.value}" />
+  <f:link.action action="deleteBoxItem" arguments="{extKey:extension.general.1.extensionKey, section:section, itemKey:itemKey, fieldKey:fieldKey, boxItemKey:key}">
+    <img class="deleteBoxItem" src="../../../../typo3/gfx/garbage.gif" alt="kickstarter.delete" title="{f:translate(key:'kickstarter.delete')}" />
+  </f:link.action>
+</f:for>

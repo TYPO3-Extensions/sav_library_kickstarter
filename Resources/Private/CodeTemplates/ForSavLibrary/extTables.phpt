@@ -2,7 +2,7 @@
 if (!defined ('TYPO3_MODE')) die ('Access denied.');
 <sav:function name="removeEmptyLines">
 <f:for each="{extension.newTables}" as="table">
-<sav:alias map="{
+<f:alias map="{
   model: '{sav:buildTableName(shortName:table.tablename, extensionKey:extension.general.1.extensionKey)}'
 }">
 
@@ -62,11 +62,11 @@ $TCA['{model}'] = array (
 		'iconfile' => t3lib_extMgm::extRelPath($_EXTKEY) . 'icon_{model}.gif'
 	)
 );
-</sav:alias>
+</f:alias>
 </f:for>
 
 <f:for each="{extension.existingTables}" as="table">
-<sav:alias map="{
+<f:alias map="{
   model: '{table.tablename}'
 }">
 
@@ -77,7 +77,7 @@ $tempColumns = array (
 		'exclude' => 1,
 		'label'  => 'LLL:EXT:{extension.general.1.extensionKey}/locallang_db.xml:{model}.{sav:buildTableName(shortName:field.fieldname, extensionKey:extension.general.1.extensionKey)}',
 		'config' => array (
-			<sav:function name="indent" arguments="4"><sav:render partial="../CodeTemplates/ForSavLibrary/Partials/TCA/{field.type}.phpt" arguments="{field:field,model:'{model}_{sav:buildTableName(shortName:0, extensionKey:extension.general.1.extensionKey)}',extensionKey:extension.general.1.extensionKey}" /></sav:function>
+			<sav:indent count="4"><sav:render partial="../CodeTemplates/ForSavLibrary/Partials/TCA/{field.type}.phpt" arguments="{field:field,model:'{model}_{sav:buildTableName(shortName:0, extensionKey:extension.general.1.extensionKey)}',extensionKey:extension.general.1.extensionKey}" /></sav:indent>
 		)
 	),
 	</sav:removeIfContainsDoNotCreate>
@@ -87,7 +87,7 @@ t3lib_div::loadTCA('{model}');
 t3lib_extMgm::addTCAcolumns('{model}',$tempColumns,1);
 t3lib_extMgm::addToAllTCAtypes('{model}',';;;;1-1-1<f:alias map="{RichTextEditor:'RichTextEditor',ShowOnly:'ShowOnly'}"><f:for each="{table.fields}" as="field"><f:if condition="{field.type} != {ShowOnly}">, {sav:buildTableName(shortName:field.fieldname, extensionKey:extension.general.1.extensionKey)}<f:if condition="{field.type} == {RichTextEditor}">;;;richtext[]:rte_transform[mode=ts]</f:if></f:if></f:for></f:alias>');
 
-</sav:alias>
+</f:alias>
 </f:for>
 
 

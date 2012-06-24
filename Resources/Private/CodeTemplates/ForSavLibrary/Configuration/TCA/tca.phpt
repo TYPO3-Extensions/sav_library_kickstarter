@@ -3,7 +3,7 @@
 if (!defined ('TYPO3_MODE')) 	die ('Access denied.');
 
 <f:for each="{extension.newTables}" as="newTable">
-<sav:alias map="{
+<f:alias map="{
   model:'{sav:buildTableName(shortName:newTable.tablename, extensionKey:extension.general.1.extensionKey)}'
 }">
 $TCA['{model}'] = array (
@@ -117,7 +117,7 @@ $TCA['{model}'] = array (
 			'exclude' => 1,
 			'label'  => 'LLL:EXT:{extension.general.1.extensionKey}/locallang_db.xml:{model}.{field.fieldname}',
 			'config' => array (
-				<sav:function name="indent" arguments="4"><sav:render partial="../CodeTemplates/ForSavLibrary/Partials/TCA/{field.type}.phpt" arguments="{field:field,model:model,extensionKey:extension.general.1.extensionKey}" /></sav:function>
+				<sav:indent count="4"><sav:render partial="../CodeTemplates/ForSavLibrary/Partials/TCA/{field.type}.phpt" arguments="{field:field,model:model,extensionKey:extension.general.1.extensionKey}" /></sav:indent>
 			)
 		),
 		</sav:removeIfContainsDoNotCreate>
@@ -130,7 +130,7 @@ $TCA['{model}'] = array (
 		'1' => array('showitem' => '')
 	),
 );
-</sav:alias>
+</f:alias>
 </f:for>
 </sav:function>
 ?>

@@ -45,9 +45,17 @@ class Tx_SavLibraryKickstarter_ViewHelpers_BuildOptionsForRelationTableSelectorb
       'fe_groups' => Tx_Extbase_Utility_Localization::translate('kickstarter.field.conf_rel_table.fe_groups', 'sav_library_kickstarter'),
       'tt_content' => Tx_Extbase_Utility_Localization::translate('kickstarter.field.conf_rel_table.tt_content', 'sav_library_kickstarter'),
     );
-    
+
     foreach ($arguments['newTables'] as $table) {
-      $tableName = 'tx_'  . str_replace('_', '', $arguments['general'][1]['extensionKey']) . ($table['tablename'] ? '_' . $table['tablename'] : '');
+      switch($arguments['general'][1]['libraryType']) {
+        case Tx_SavLibraryKickstarter_Configuration_ConfigurationManager::TYPE_SAV_LIBRARY:
+        case Tx_SavLibraryKickstarter_Configuration_ConfigurationManager::TYPE_SAV_LIBRARY_PLUS:
+          $tableName = 'tx_'  . str_replace('_', '', $arguments['general'][1]['extensionKey']) . ($table['tablename'] ? '_' . $table['tablename'] : '');
+          break;
+        case Tx_SavLibraryKickstarter_Configuration_ConfigurationManager::TYPE_SAV_LIBRARY_MVC:
+          $tableName = 'tx_'  . str_replace('_', '', $arguments['general'][1]['extensionKey']) . '_domain_model_' .($table['tablename'] ? $table['tablename'] : 'default');
+          break;
+      }
       $options = array_merge($options, array (
         $tableName => $table['title'] . ', (' . $tableName . ')',
         )

@@ -52,7 +52,7 @@ class Tx_SavLibraryKickstarter_ViewHelpers_BuildOptionsForFieldTypeSelectorboxVi
       'RelationManyToManyAsDoubleSelectorbox' => Tx_Extbase_Utility_Localization::translate('kickstarter.field.fieldType.RelationManyToManyAsDoubleSelectorbox', 'sav_library_kickstarter'),
       'RelationManyToManyAsSubform' => Tx_Extbase_Utility_Localization::translate('kickstarter.field.fieldType.RelationManyToManyAsSubform', 'sav_library_kickstarter'),
       'RichTextEditor' => Tx_Extbase_Utility_Localization::translate('kickstarter.field.fieldType.RichTextEditor', 'sav_library_kickstarter'),
-      'Relectorbox' => Tx_Extbase_Utility_Localization::translate('kickstarter.field.fieldType.Selectorbox', 'sav_library_kickstarter'),
+      'Selectorbox' => Tx_Extbase_Utility_Localization::translate('kickstarter.field.fieldType.Selectorbox', 'sav_library_kickstarter'),
       'ShowOnly' => Tx_Extbase_Utility_Localization::translate('kickstarter.field.fieldType.ShowOnly', 'sav_library_kickstarter'),
       'String' => Tx_Extbase_Utility_Localization::translate('kickstarter.field.fieldType.String', 'sav_library_kickstarter'),
       'Text' => Tx_Extbase_Utility_Localization::translate('kickstarter.field.fieldType.Text', 'sav_library_kickstarter'),

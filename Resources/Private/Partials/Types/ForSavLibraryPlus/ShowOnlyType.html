@@ -1,0 +1,4 @@
+{namespace sav=Tx_SavLibraryKickstarter_ViewHelpers}
+<label for="conf_render_type"><f:translate key="kickstarter.field.conf_render_type" /></label>
+<f:form.select id="conf_render_type" name="{section}[fields][{fieldKey}][conf_render_type]" options="{sav:buildOptionsForRenderTypeSelectorbox()}" value="{field.conf_render_type}" />
+

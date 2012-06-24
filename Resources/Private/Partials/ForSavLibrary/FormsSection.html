@@ -1,0 +1,83 @@
+{namespace sav=Tx_SavLibraryKickstarter_ViewHelpers}
+
+<f:alias map="{section:'forms'}">
+<f:alias map="{sectionItem:'{extension.{section}.{itemKey}}'}">
+<div id="{section}Section">
+ 	<f:form method="post" action="save" name="{section}" arguments="{extKey:extKey, section:section,itemKey:itemKey}">
+    <f:form.hidden name="general[section]" value="{section}" />
+    <f:form.hidden name="general[itemKey]" value="{itemKey}" />
+    <div id="content">
+      <div class="header">
+        <div class="logo">
+        <f:translate key="kickstarter.{section}SectionTitle" />
+        </div>
+        <div class="buttons">
+          <sav:be.helpWindow cshTag="{section}" class="left" />
+          <f:form.submit class="submit" name="submitAction[save]" value="{f:translate(key:'kickstarter.save')}"/>
+          <f:form.submit class="submit" name="submitAction[generateExtension]" value="{f:translate(key:'kickstarter.generate')}"/>
+        </div>
+      </div>
+      <div class="body">
+        <sav:comment><!-- Title --></sav:comment>
+      	<label class="{sectionItem.type}" for="title"><f:translate key="kickstarter.{section}Item.title" /></label>
+    		<f:form.textbox id="title" name="{section}[title]" value="{sectionItem.title}"/>
+
+        <sav:comment><!-- List View --></sav:comment>
+      	<label class="list" for="listView"><f:translate key="kickstarter.{section}Item.listView" /></label>
+    		<f:form.select id="listView" name="{section}[listView]" options="{options.list}" value="{sectionItem.listView}"/>
+
+        <sav:comment><!-- Single View --></sav:comment>
+    		<div class="viewsDefinition">
+        	<label class="single" for="singleView"><f:translate key="kickstarter.{section}Item.singleView" /></label>
+          <f:link.action action="addNewViewWithCondition" arguments="{extKey:extKey, section:section, viewType:'singleView', itemKey:itemKey}">
+            <sav:be.icon class="addNewViewWithCondition" icon="add" alt="{f:translate(key:'kickstarter.addNewViewWithCondition')}" title="{f:translate(key:'kickstarter.addNewViewWithCondition')}" />
+          </f:link.action>
+          <sav:comment><!-- The default Single View --></sav:comment>
+          <f:form.select id="singleView" name="{section}[singleView]" options="{options.single}" value="{sectionItem.singleView}"/>
+          <sav:comment><!-- Single Views with Condition --></sav:comment>
+          <f:for each="{sectionItem.viewsWithCondition.singleView}" as="viewWithCondition" key="viewWithConditionKey" >
+      		  <f:form.select name="{section}[viewsWithCondition][singleView][{viewWithConditionKey}][key]" options="{options.single}" value="{viewWithCondition.key}"/>
+        		<f:form.textbox class="condition" name="{section}[viewsWithCondition][singleView][{viewWithConditionKey}][condition]" value="{viewWithCondition.condition}" />
+            <f:link.action action="deleteViewWithCondition" arguments="{extKey:extKey, section:section, itemKey:itemKey, viewType:'singleView', viewWithConditionKey:viewWithConditionKey}">
+              <sav:be.icon class="deleteViewWithCondition" icon="garbage" alt="kickstarter.delete" title="{f:translate(key:'kickstarter.delete')}" />
+            </f:link.action>
+          </f:for>
+        </div>
+        
+        <sav:comment><!-- Edit View --></sav:comment>
+    		<div class="viewsDefinition">
+        	<label class="edit" for="editView"><f:translate key="kickstarter.{section}Item.editView" /></label>
+          <f:link.action action="addNewViewWithCondition" arguments="{extKey:extKey, section:section, viewType:'editView', itemKey:itemKey}">
+            <sav:be.icon class="addNewViewWithCondition" icon="add" alt="{f:translate(key:'kickstarter.addNewViewWithCondition')}" title="{f:translate(key:'kickstarter.addNewViewWithCondition')}" />
+          </f:link.action>
+          <sav:comment><!-- The default Edit View --></sav:comment>
+      		<f:form.select id="editView" name="{section}[editView]" options="{options.edit}" value="{sectionItem.editView}"/>
+          <sav:comment><!-- Edit Views with Condition --></sav:comment>
+          <f:for each="{sectionItem.viewsWithCondition.editView}" as="viewWithCondition" key="viewWithConditionKey" >
+      		  <f:form.select name="{section}[viewsWithCondition][editView][{viewWithConditionKey}][key]" options="{options.edit}" value="{viewWithCondition.key}"/>
+        		<f:form.textbox class="condition" name="{section}[viewsWithCondition][editView][{viewWithConditionKey}][condition]" value="{viewWithCondition.condition}" />
+            <f:link.action action="deleteViewWithCondition" arguments="{extKey:extKey, section:section, itemKey:itemKey, viewType:'editView', viewWithConditionKey:viewWithConditionKey}">
+              <sav:be.icon class="deleteViewWithCondition" icon="garbage" alt="kickstarter.delete" title="{f:translate(key:'kickstarter.delete')}" />
+            </f:link.action>
+          </f:for>
+        </div>
+
+        <sav:comment><!-- Special View --></sav:comment>
+      	<label class="special" for="specialView"><f:translate key="kickstarter.{section}Item.specialView" /></label>
+    		<f:form.select id="specialView" name="{section}[specialView]" options="{options.special}" value="{sectionItem.specialView}"/>
+
+        <sav:comment><!-- Query --></sav:comment>
+      	<label for="query"><f:translate key="kickstarter.{section}Item.query" /></label>
+    		<f:form.select id="query" name="{section}[query]" options="{options.query}" value="{sectionItem.query}"/>
+    		
+        <sav:comment><!-- Caching --></sav:comment>
+      	<label for="userPlugin"><f:translate key="kickstarter.{section}Item.userPlugin" /></label>
+        <f:form.hidden name="{section}[userPlugin]" value="0"/>
+        <f:form.checkbox class="checkbox" id="userPlugin" name="{section}[userPlugin]" value="1" checked="{sectionItem.userPlugin}" />
+    	</div>
+    </div>
+  </f:form>
+</div>
+</f:alias>
+</f:alias>
+

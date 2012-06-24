@@ -33,7 +33,7 @@
  */
 class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibrary extends Tx_SavLibraryKickstarter_CodeGenerator_AbstractCodeGenerator {
 
-  const CODE_TEMPLATES_DIRECTORY = 'Resources/Private/CodeTemplates/ForSavLibrary/';
+  protected $codeTemplatesDirectory = 'Resources/Private/CodeTemplates/ForSavLibrary/';
 
 	/**
 	 * Builds all the file for the extension.
@@ -121,7 +121,19 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibrary extends 
 
     // Generates forms
     if (is_array($extension['forms'])) {
+
+      // Copies the forms array and unset the viewsWithCondition field
       $xmlArray['forms'] = $extension['forms'];
+      
+      // Processes the viewsWithCondition field
+      foreach($xmlArray['forms'] as $formKey => $form) {
+        foreach($form['viewsWithCondition'] as $viewsWithConditionKey => $viewsWithCondition) {
+          // Processes each view
+          foreach($viewsWithCondition as $viewWithConditionKey => $viewWithCondition) {
+            $xmlArray['forms'][$formKey]['viewsWithCondition'][$viewsWithConditionKey][$viewWithConditionKey] += array('config' => $this->getConfig($viewWithCondition['condition']));
+          }
+        }
+      }
     }
 
     // Generates queries
@@ -244,7 +256,6 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibrary extends 
             // Puts the fields in the right order for the view
             $tempo = $table['fields'];
             unset($orderedFields);
-
 
             foreach ($tempo as $fieldKey => $field) {
 
@@ -382,7 +393,7 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibrary extends 
                     // Keeps the config for future use
                     $temp[$keyTemp] = $valTemp['configuration'];
                   } else {
-                    // just sets the config
+                    // Just sets the config
                     $xmlArray['views'][$viewKey][$this->cryptTag($valTemp['label'])]['fields'][$keyTemp]['configuration'] = $valTemp['configuration'];
                   }
                 }
