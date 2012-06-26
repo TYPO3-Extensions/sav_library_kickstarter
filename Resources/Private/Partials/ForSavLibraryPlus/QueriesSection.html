@@ -20,13 +20,13 @@
       <div class="body">
         <sav:comment><!-- Title --></sav:comment>
       	<label for="title"><f:translate key="kickstarter.{section}Item.title" /></label>
-    		<f:form.textbox id="title" name="{section}[title]" value="{sectionItem.title}" />
+    		<f:form.textfield id="title" name="{section}[title]" value="{sectionItem.title}" />
 
         <sav:comment><!-- Main Table --></sav:comment>
       	<label for="mainTable"><f:translate key="kickstarter.{section}Item.mainTable" /></label>
         <f:alias map="{firtNewTable:'{extension.newTables->sav:function(name:\"current\")}'}">
         <f:alias map="{defaultTableName:'{sav:BuildTableName(shortName:firtNewTable.tablename, extensionKey:extKey)}'}">
-    		<f:form.textbox id="mainTable" name="{section}[mainTable]" value="{f:if(condition:sectionItem.mainTable, then:sectionItem.mainTable, else:defaultTableName)}" />
+    		<f:form.textfield id="mainTable" name="{section}[mainTable]" value="{f:if(condition:sectionItem.mainTable, then:sectionItem.mainTable, else:defaultTableName)}" />
         </f:alias>
         </f:alias>
 
@@ -59,7 +59,7 @@
           </f:link.action>
           <f:for each="{sectionItem.whereTags}" as="whereTag" key="whereTagKey" >
           <label class="whereTag"><f:translate key="kickstarter.{section}Item.whereTags.title" /></label>
-      		<f:form.textbox class="whereTag" name="{section}[whereTags][{whereTagKey}][title]" value="{whereTag.title}" />
+      		<f:form.textfield class="whereTag" name="{section}[whereTags][{whereTagKey}][title]" value="{whereTag.title}" />
           <f:link.action action="deleteWhereTag" arguments="{extKey:extKey, section:section, itemKey:itemKey, whereTagKey:whereTagKey}">
             <sav:be.icon class="whereTagDelete" icon="garbage" alt="kickstarter.delete" title="{f:translate(key:'kickstarter.delete')}" />
           </f:link.action>

@@ -23,11 +23,11 @@
         <sav:comment><!-- Table Name --></sav:comment>
         <label for="tablename"><f:translate key="kickstarter.{section}Item.tablename" />
         <span class="extensionKey">tx_{extKey->sav:function(name:'removeUnderscore')}_</span></label>
-  		  <f:form.textbox id="tablename" name="newTables[tablename]" value="{sectionItem.tablename}"/>
+  		  <f:form.textfield id="tablename" name="newTables[tablename]" value="{sectionItem.tablename}"/>
 
         <sav:comment><!-- Table Title --></sav:comment>
         <label for="title"><f:translate key="kickstarter.{section}Item.title" /></label>
-  		  <f:form.textbox id="title" name="{section}[title]" value="{sectionItem.title}"/>
+  		  <f:form.textfield id="title" name="{section}[title]" value="{sectionItem.title}"/>
 
   		  <div class="flags">
           <div class="col1">
@@ -138,8 +138,8 @@
                   </f:link.action>
                 </div>
                 <sav:comment><!-- Adds the field definition --></sav:comment>
-                <div class="label"><f:translate key="kickstarter.field.fieldName" /></div><div class="value"><f:form.textbox name="{section}[fields][{key}][fieldname]" value="{field.fieldname}" /></div>
-                <div class="label"><f:translate key="kickstarter.field.fieldTitle" /></div><div class="value"><f:form.textbox name="{section}[fields][{key}][title]" value="{field.title}" /></div>
+                <div class="label"><f:translate key="kickstarter.field.fieldName" /></div><div class="value"><f:form.textfield name="{section}[fields][{key}][fieldname]" value="{field.fieldname}" /></div>
+                <div class="label"><f:translate key="kickstarter.field.fieldTitle" /></div><div class="value"><f:form.textfield name="{section}[fields][{key}][title]" value="{field.title}" /></div>
                 <div class="label"><f:translate key="kickstarter.field.fieldType" /></div><div class="value"><f:form.select name="{section}[fields][{key}][type]" options="{sav:buildOptionsForFieldTypeSelectorbox()}" value="{field.type}" /></div>
                 <sav:comment><!-- Adds the folder selector if any --></sav:comment>
                 <f:alias map="{folderExists:'{extension.views.{field.viewKey}.folders}'}">
@@ -252,8 +252,8 @@
         <sav:comment><!-- General definition --></sav:comment>
         <f:alias map="{field:'{sectionItem.fields.{fieldKey}}'}">
         <div class="basic">
-          <div class="label"><f:translate key="kickstarter.field.fieldName" /></div><div class="value"><f:form.textbox name="{section}[fields][{fieldKey}][fieldname]" value="{field.fieldname}" /></div>
-          <div class="label"><f:translate key="kickstarter.field.fieldTitle" /></div><div class="value"><f:form.textbox name="{section}[fields][{fieldKey}][title]" value="{field.title}" /></div>
+          <div class="label"><f:translate key="kickstarter.field.fieldName" /></div><div class="value"><f:form.textfield name="{section}[fields][{fieldKey}][fieldname]" value="{field.fieldname}" /></div>
+          <div class="label"><f:translate key="kickstarter.field.fieldTitle" /></div><div class="value"><f:form.textfield name="{section}[fields][{fieldKey}][title]" value="{field.title}" /></div>
           <div class="label"><f:translate key="kickstarter.field.fieldType" /></div><div class="value"><f:form.select name="{section}[fields][{fieldKey}][type]" options="{sav:buildOptionsForFieldTypeSelectorbox()}" value="{field.type}" /></div>
           <sav:comment><!-- Adds the folders if any --></sav:comment>
           <f:alias map="{folderExists:'{extension.views.{field.viewKey}.folders}'}">

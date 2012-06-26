@@ -36,15 +36,15 @@
       <div class="body">
         <sav:comment><!-- Extension key --></sav:comment>
       	<label for="extensionKey"><f:translate key="kickstarter.{section}Item.extensionKey" /></label>
-    		<f:form.textbox id="extensionKey" name="extKey" value="" />
+    		<f:form.textfield id="extensionKey" name="extKey" value="" />
 
         <sav:comment><!-- Title --></sav:comment>
       	<label for="title"><f:translate key="kickstarter.{section}Item.title" /></label>
-    		<f:form.textbox id="title" name="{section}[title]" value="" />
+    		<f:form.textfield id="title" name="{section}[title]" value="" />
 
         <sav:comment><!-- Plugin Title, saved in the general section --></sav:comment>
       	<label for="pluginTitle"><f:translate key="kickstarter.generalItem.pluginTitle" /></label>
-    		<f:form.textbox id="pluginTitle" name="general[pluginTitle]" value="{extension.general.1.pluginTitle}" />
+    		<f:form.textfield id="pluginTitle" name="general[pluginTitle]" value="{extension.general.1.pluginTitle}" />
 
         <sav:comment><!-- Description --></sav:comment>
       	<label for="description"><f:translate key="kickstarter.{section}Item.description" /></label>
@@ -61,15 +61,15 @@
 
         <sav:comment><!-- Dependencies --></sav:comment>
       	<label for="dependencies"><f:translate key="kickstarter.{section}Item.dependencies" /></label>
-    		<f:form.textbox id="dependencies" name="{section}[dependencies]" value=""/>
+    		<f:form.textfield id="dependencies" name="{section}[dependencies]" value=""/>
 
         <sav:comment><!-- Author --></sav:comment>
       	<label for="author"><f:translate key="kickstarter.{section}Item.author" /></label>
-    		<f:form.textbox id="author" name="{section}[author]" value=""/>
+    		<f:form.textfield id="author" name="{section}[author]" value=""/>
 
         <sav:comment><!-- Author Email --></sav:comment>
       	<label for="author_email"><f:translate key="kickstarter.{section}Item.author_email" /></label>
-    		<f:form.textbox id="author_email" name="{section}[author_email]" value=""/>
+    		<f:form.textfield id="author_email" name="{section}[author_email]" value=""/>
 
         <sav:comment><!-- Library type, saved in the general section --></sav:comment>
         <label for="libraryType"><f:translate key="kickstarter.generalItem.libraryType" /></label>

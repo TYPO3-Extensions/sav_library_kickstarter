@@ -20,7 +20,7 @@
       <div class="body">
         <sav:comment><!-- Title --></sav:comment>
       	<label class="{sectionItem.type}" for="title"><f:translate key="kickstarter.{section}Item.title" /></label>
-    		<f:form.textbox id="title" name="{section}[title]" value="{sectionItem.title}"/>
+    		<f:form.textfield id="title" name="{section}[title]" value="{sectionItem.title}"/>
 
         <sav:comment><!-- Type --></sav:comment>
       	<label class="{sectionItem.type}" for="type"><f:translate key="kickstarter.{section}Item.type" /></label>
@@ -45,9 +45,9 @@
         <sav:comment><!-- Option for printView --></sav:comment>
     		<f:if condition="{sav:function(name:'in_array', arguments:'{needle:sectionItem.subtype, haystack:\"print\"}')}">
       	<label class="{sectionItem.type}" for="itemsBeforePageBreak"><f:translate key="kickstarter.{section}Item.subtype.print.itemsBeforePageBreak" /></label>
-        <f:form.textbox id="itemsBeforePageBreak" class="integer" name="{section}[itemsBeforePageBreak]" value="{sectionItem.itemsBeforePageBreak}" />
+        <f:form.textfield id="itemsBeforePageBreak" class="integer" name="{section}[itemsBeforePageBreak]" value="{sectionItem.itemsBeforePageBreak}" />
         <label class="{sectionItem.type}"  for="itemsBeforeFirstPageBreak"><f:translate key="kickstarter.{section}Item.subtype.print.itemsBeforeFirstPageBreak" /></label>
-        <f:form.textbox id="itemsBeforeFirstPageBreak" class="integer" name="{section}[itemsBeforeFirstPageBreak]" value="{sectionItem.itemsBeforeFirstPageBreak}" />
+        <f:form.textfield id="itemsBeforeFirstPageBreak" class="integer" name="{section}[itemsBeforeFirstPageBreak]" value="{sectionItem.itemsBeforeFirstPageBreak}" />
     		</f:if>
 
         <sav:comment><!-- View Title Bar --></sav:comment>
@@ -63,7 +63,7 @@
           </f:link.action>
           <f:for each="{sectionItem.folders}" as="folder" key="folderKey" >
           <label class="folder {sectionItem.type}"><f:translate key="kickstarter.{section}Item.folders.label" /></label>
-      		<f:form.textbox class="folderLabel" name="{section}[folders][{folderKey}][label]" value="{folder.label}" />
+      		<f:form.textfield class="folderLabel" name="{section}[folders][{folderKey}][label]" value="{folder.label}" />
           <f:link.action action="moveDownFolder" arguments="{extKey:extKey, section:section, itemKey:itemKey, folderKey:folderKey}">
             <sav:be.icon class="moveDownFolder" icon="down" alt="{f:translate(key:'kickstarter.moveDown')}" title="{f:translate(key:'kickstarter.moveDown')}" />
           </f:link.action>
@@ -89,7 +89,7 @@
     		<f:if condition="{sav:function(name:'in_array', arguments:'{needle:sectionItem.type, haystack:\"list\"}')}">
         <f:if condition="{extension.general.1.libraryType} == 0">
       	<label class="{sectionItem.type}" for="viewTemplate"><f:translate key="kickstarter.{section}Item.viewTemplate" /></label>
-    		<f:form.textbox id="viewTemplate" name="{section}[viewTemplate]" value="{sectionItem.viewTemplate}" />
+    		<f:form.textfield id="viewTemplate" name="{section}[viewTemplate]" value="{sectionItem.viewTemplate}" />
     		</f:if>
     		</f:if>
 

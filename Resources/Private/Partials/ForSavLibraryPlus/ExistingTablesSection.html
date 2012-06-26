@@ -224,8 +224,8 @@
           <f:if condition="{sav:function(name:'logicalOr', arguments:{0:sectionItem.showAllFields,1:'{sav:function(name:\'logicalAnd\', arguments:{0:notInFolder,1:folderExists})}'})}">        
           <li class="field {f:if(condition:'{fieldKey}=={key}',then:'selected')}">
             <f:alias map="{selected:'{field.selected.{sectionItem.viewKey}}', order:'{field.order.{sectionItem.viewKey}}', class:'{extension.views.{sectionItem.viewKey}.type}'}">
-        	<div class="fieldName"><f:form.textbox class="fieldName" name="{section}[fields][{key}][fieldname]" value="{field.fieldname}" /></div>
-        	<div class="fieldTitle"><f:form.textbox class="fieldTitle" name="{section}[fields][{key}][title]" value="{field.title}" /></div>
+        	<div class="fieldName"><f:form.textfield class="fieldName" name="{section}[fields][{key}][fieldname]" value="{field.fieldname}" /></div>
+        	<div class="fieldTitle"><f:form.textfield class="fieldTitle" name="{section}[fields][{key}][title]" value="{field.title}" /></div>
         	<div class="fieldType"><f:form.select class="fieldType" name="{section}[fields][{key}][type]" options="{sav:buildOptionsForFieldTypeSelectorbox()}" value="{field.type}" /></div>
 
             <div class="fieldControls">
@@ -268,8 +268,8 @@
     
       <sav:comment><!-- General Configuration --></sav:comment>
       <div class="basic">
-        <div class="label"><f:translate key="kickstarter.field.fieldName" /></div><div class="value"><f:form.textbox name="{section}[fields][{selectedFieldKey}][fieldname]" value="{field.fieldname}" /></div>
-        <div class="label"><f:translate key="kickstarter.field.fieldTitle" /></div><div class="value"><f:form.textbox name="{section}[fields][{selectedFieldKey}][title]" value="{field.title}" /></div>
+        <div class="label"><f:translate key="kickstarter.field.fieldName" /></div><div class="value"><f:form.textfield name="{section}[fields][{selectedFieldKey}][fieldname]" value="{field.fieldname}" /></div>
+        <div class="label"><f:translate key="kickstarter.field.fieldTitle" /></div><div class="value"><f:form.textfield name="{section}[fields][{selectedFieldKey}][title]" value="{field.title}" /></div>
         <div class="label"><f:translate key="kickstarter.field.fieldType" /></div><div class="value"><f:form.select name="{section}[fields][{selectedFieldKey}][type]" options="{sav:buildOptionsForFieldTypeSelectorbox()}" value="{field.type}" /></div>
         <sav:comment><!-- Adds the folders if any --></sav:comment>
         <f:alias map="{folderExists:'{extension.views.{sectionItem.viewKey}.folders}'}">

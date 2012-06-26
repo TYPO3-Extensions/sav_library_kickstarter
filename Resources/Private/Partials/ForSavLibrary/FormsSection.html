@@ -20,7 +20,7 @@
       <div class="body">
         <sav:comment><!-- Title --></sav:comment>
       	<label class="{sectionItem.type}" for="title"><f:translate key="kickstarter.{section}Item.title" /></label>
-    		<f:form.textbox id="title" name="{section}[title]" value="{sectionItem.title}"/>
+    		<f:form.textfield id="title" name="{section}[title]" value="{sectionItem.title}"/>
 
         <sav:comment><!-- List View --></sav:comment>
       	<label class="list" for="listView"><f:translate key="kickstarter.{section}Item.listView" /></label>
@@ -37,7 +37,7 @@
           <sav:comment><!-- Single Views with Condition --></sav:comment>
           <f:for each="{sectionItem.viewsWithCondition.singleView}" as="viewWithCondition" key="viewWithConditionKey" >
       		  <f:form.select name="{section}[viewsWithCondition][singleView][{viewWithConditionKey}][key]" options="{options.single}" value="{viewWithCondition.key}"/>
-        		<f:form.textbox class="condition" name="{section}[viewsWithCondition][singleView][{viewWithConditionKey}][condition]" value="{viewWithCondition.condition}" />
+        		<f:form.textfield class="condition" name="{section}[viewsWithCondition][singleView][{viewWithConditionKey}][condition]" value="{viewWithCondition.condition}" />
             <f:link.action action="deleteViewWithCondition" arguments="{extKey:extKey, section:section, itemKey:itemKey, viewType:'singleView', viewWithConditionKey:viewWithConditionKey}">
               <sav:be.icon class="deleteViewWithCondition" icon="garbage" alt="kickstarter.delete" title="{f:translate(key:'kickstarter.delete')}" />
             </f:link.action>
@@ -55,7 +55,7 @@
           <sav:comment><!-- Edit Views with Condition --></sav:comment>
           <f:for each="{sectionItem.viewsWithCondition.editView}" as="viewWithCondition" key="viewWithConditionKey" >
       		  <f:form.select name="{section}[viewsWithCondition][editView][{viewWithConditionKey}][key]" options="{options.edit}" value="{viewWithCondition.key}"/>
-        		<f:form.textbox class="condition" name="{section}[viewsWithCondition][editView][{viewWithConditionKey}][condition]" value="{viewWithCondition.condition}" />
+        		<f:form.textfield class="condition" name="{section}[viewsWithCondition][editView][{viewWithConditionKey}][condition]" value="{viewWithCondition.condition}" />
             <f:link.action action="deleteViewWithCondition" arguments="{extKey:extKey, section:section, itemKey:itemKey, viewType:'editView', viewWithConditionKey:viewWithConditionKey}">
               <sav:be.icon class="deleteViewWithCondition" icon="garbage" alt="kickstarter.delete" title="{f:translate(key:'kickstarter.delete')}" />
             </f:link.action>
