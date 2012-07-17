@@ -32,24 +32,40 @@
       </label>
 			<label index="Checkbox.description">Attributes for &quot;Checkbox&quot;</label>
 			<label index="Checkbox.seeAlso">sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</label>
-			<label index="Checkbox.syntax">
+			<label index="Checkbox.syntax">	
+				&lt;b&gt;checkboxSelectedImage=string;&lt;/b&gt;
+				The string is used as a file name which is searched in the default icon directory and, if not found, in the extension icon directory. 
+				It replaces the default image for a selected checkbox. &lt;b&gt;Not available in &quot;basic&quot; type library.;&lt;/b&gt;			
+
+				&lt;b&gt;checkboxNotSelectedImage=string;&lt;/b&gt;
+				The string is used as a file name which is searched in the default icon directory and, if not found, in the extension icon directory. 
+				It replaces the default image for an unselected checkbox. &lt;b&gt;Not available in &quot;basic&quot; type library.;&lt;/b&gt;			
+			
         &lt;b&gt;displayAsImage = 1;&lt;/b&gt;
-        If set, the check box is displayed as an image instead of a label.
+        If set, the check box is displayed as an image instead of a label (defaut=0 &quot;basic&quot; type library).
         
         &lt;b&gt;doNotDisplayIfNotChecked = 1;&lt;/b&gt;
-        Do not display the checkbox value (that is &quot;No&quot;) if it is not checked (obviously it does not apply when in edit mode)
+        Do not display the checkbox value if it is not checked (obviously it does not apply when in edit mode).
       </label>
 			<label index="Checkboxes.description">Attributes for &quot;Checkboxes&quot;</label>
 			<label index="Checkboxes.seeAlso">sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</label>
 			<label index="Checkboxes.syntax">
+				&lt;b&gt;checkboxSelectedImage=string;&lt;/b&gt;
+				The string is used as a file name which is searched in the default icon directory and, if not found, in the extension icon directory. 
+				It replaces the default image for a selected checkbox. &lt;b&gt;Not available in &quot;basic&quot; type library.;&lt;/b&gt;			
+
+				&lt;b&gt;checkboxNotSelectedImage=string;&lt;/b&gt;
+				The string is used as a file name which is searched in the default icon directory and, if not found, in the extension icon directory. 
+				It replaces the default image for an unselected checkbox. &lt;b&gt;Not available in &quot;basic&quot; type library.;&lt;/b&gt;			
+			
         &lt;b&gt;cols = integer;&lt;/b&gt;
         Number of columns to display.
 
         &lt;b&gt;displayAsImage = 1;&lt;/b&gt;
-        If set, the check box is displayed as an image instead of a label.
+        If set, the check box is displayed as an image instead of a label (defaut=0 &quot;basic&quot; type library).
         
         &lt;b&gt;doNotDisplayIfNotChecked = 1;&lt;/b&gt;
-        Do not display the checkbox if it is not checked (obviously it does not apply when in edit mode).
+        Do not display the checkbox value if it is not checked (obviously it does not apply when in edit mode).
 
         &lt;b&gt;nbItems = integer;&lt;/b&gt;
         Number of items to display.  
@@ -560,7 +576,12 @@
 
         &lt;b&gt;stdWrapValue = TS syntax;&lt;/b&gt;
         It defines a conventional TS stdWrap property. You can add here full TS syntax.
-        Do not forget that the configuration field is ended by a semi-column, therefore if you need a semi-column in your TS write it &quot;\;&quot;
+        Do not forget that the configuration field is ended by a semi-column, therefore if you need a semi-column in your TS write it &quot;\;&quot;.
+        &lt;b&gt;Not available in &quot;basic&quot; type library.&lt;/b&gt;
+
+        &lt;b&gt;stdWrapValue = TS syntax;&lt;/b&gt;
+        It defines a conventional TS stdWrap property. You can add here full TS syntax.
+        Do not forget that the configuration field is ended by a semi-column, therefore if you need a semi-column in your TS write it &quot;\;&quot;.
 
         &lt;b&gt;tsObject = cObject;&lt;/b&gt;
         It defines a TS content object (e.g. TEXT, IMAGE, ...)
