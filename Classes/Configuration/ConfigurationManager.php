@@ -208,13 +208,25 @@ class Tx_SavLibraryKickstarter_Configuration_ConfigurationManager {
 	 * @return string The version
 	 */
   public function getExtensionVersion($extensionKey) {
-  	if (!empty($extensionKey) && t3lib_extMgm::isLoaded($extensionKey) && file_exists(t3lib_extMgm::extPath($extensionKey) . 'ext_emconf.php')) {
-    	$_EXTKEY = $extensionKey;
-    	require(t3lib_extMgm::extPath($extensionKey) . 'ext_emconf.php');
-    	return($EM_CONF[$_EXTKEY]['version']);
-  	} else {
-  		return NULL;
-  	}
+  	if (empty($extensionKey)) {
+  		return NULL;  		
+ 		} else {
+ 			if (t3lib_extMgm::isLoaded($extensionKey)) {
+ 				$extensionConfigurationFileName = t3lib_extMgm::extPath($extensionKey) . 'ext_emconf.php';
+ 			} else {
+ 				// Tries a default name
+ 				$extensionConfigurationFileName = self::getExtensionsRootDir(). $extensionKey . '/ext_emconf.php'; 				
+ 			}
+ 			
+ 			// Opens the file if it exists
+ 			if (file_exists($extensionConfigurationFileName)) {
+    		$_EXTKEY = $extensionKey;
+    		require($extensionConfigurationFileName);
+    		return($EM_CONF[$_EXTKEY]['version']); 				
+ 			} else {
+ 				return NULL;
+ 			}				
+ 		}
   }  
   
 	/**
