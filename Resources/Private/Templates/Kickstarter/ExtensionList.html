@@ -16,8 +16,13 @@
         <li class="debugQueries">{f:translate(key:'kickstarter.extensionList.debugQueries')}</li>
         <li class="buttons">
           <f:link.action action="createExtension">
-          <sav:be.icon icon="add" alt="{f:translate(key:'kickstarter.createExtension')}" title="{f:translate(key:'kickstarter.createExtension')}" />
+          <sav:be.icon class="createExtension" icon="add" alt="{f:translate(key:'kickstarter.createExtension')}" title="{f:translate(key:'kickstarter.createExtension')}" />
           </f:link.action>
+          <f:if condition="{extensionsNeedTobeUpgraded}">
+          <f:link.action action="upgradeExtensions">
+            <sav:be.icon class="upgradeExtensions" icon="refresh" alt="{f:translate(key:'kickstarter.upgradeExtensions')}" title="{f:translate(key:'kickstarter.upgradeExtensions')}" />
+          </f:link.action> 
+          </f:if>         
         </li>
       </ul>
     </div>
@@ -77,7 +82,7 @@
         <sav:comment><!-- Upgrade the extension --></sav:comment>
         <f:if condition="{extension.general.1.extensionMustbeUpgraded}">
         <f:link.action action="upgradeExtension" arguments="{extKey:extension.general.1.extensionKey}">
-          <sav:be.icon  class="upgradeExtension" icon="refresh" alt="{f:translate(key:'kickstarter.upgradeExtension')}" title="{f:translate(key:'kickstarter.upgradeExtension')}" />
+          <sav:be.icon class="upgradeExtension" icon="refresh" alt="{f:translate(key:'kickstarter.upgradeExtension')}" title="{f:translate(key:'kickstarter.upgradeExtension')}" />
         </f:link.action>
         </f:if>
         </li>

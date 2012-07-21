@@ -34,6 +34,11 @@
 class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extbase_MVC_Controller_ActionController {
 
 	/**
+	 * @var boolean
+	 */
+  protected $extensionsNeedTobeUpgraded = false;
+
+	/**
 	 * Inializes the view, by injecting a template parser which takes into
 	 * account accessors containing accessors.
 	 *
@@ -53,6 +58,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
 	 */
 	public function extensionListAction() {
     $this->view->assign('extensionList', $this->getConfigurationList());
+    $this->view->assign('extensionsNeedTobeUpgraded', $this->extensionsNeedTobeUpgraded);    
     $this->view->assign('savLibraryKickstarterVersion', Tx_SavLibraryKickstarter_Configuration_ConfigurationManager::getSavLibraryKickstarterVersion());
   }
 
@@ -161,6 +167,34 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
     $this->redirect('extensionList');
 	}
 
+	/**
+	 * upgradeExtensions action for this controller.
+	 *
+	 * @param string $extKey
+	 * @return string The rendered view
+	 */
+	public function upgradeExtensionsAction() {
+	
+    foreach (t3lib_div::get_dirs(PATH_typo3conf . 'ext/') as $extensionKey) {
+      $configurationManager = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Configuration_ConfigurationManager', $extensionKey);
+
+      if ($configurationManager->isSavLibraryKickstarterExtension()) {    	
+        // Checks if the extension must be upgraded
+        $configurationManager->loadConfiguration();
+        if ($configurationManager->getCurrentLibraryVersion() != $configurationManager->getSectionManager()->getItem('general')->getItem(1)->getItem('libraryVersion')) {
+        	$configurationManager->checkForUpgrade();       
+        	$configurationManager->injectFlashMessages($this->flashMessages);
+    			$configurationManager->getCodeGenerator()->buildExtension();
+    			$configurationManager->getExtensionManager()->checkDbUpdate();
+    			$configurationManager->getSectionManager()->getItem('general')->getItem(1)->replace(array('extensionMustbeUpgraded' => false));
+    			$configurationManager->saveConfiguration();
+    			$this->redirect('upgradeExtensions');    			
+        }
+      }
+    }
+    $this->redirect('extensionList');
+  }		
+	
 	/**
 	 * addItem action for this controller.
 	 *
@@ -1536,6 +1570,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
 	 */
   public function getConfigurationList() {
     $extensionList = array();
+    $this->extensionsNeedTobeUpgraded = false;
     foreach (t3lib_div::get_dirs(PATH_typo3conf . 'ext/') as $extensionKey) {
       $configurationManager = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Configuration_ConfigurationManager', $extensionKey);
 
@@ -1546,9 +1581,18 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
         $configurationManager->loadConfiguration();
         $configurationManager->getSectionManager()->getItem('general')->getItem(1)->addItem(array('isLoadedExtension' => $configurationManager->isLoadedExtension()));
         $configurationManager->getSectionManager()->getItem('general')->getItem(1)->addItem(array('currentLibraryVersion' => $configurationManager->getCurrentLibraryVersion()));
+      
+    		// Changes the extension version if needed
+    		$extensionVersion = $configurationManager->getExtensionVersion($extensionKey);
+    		if ($configurationManager->getSectionManager()->getItem('emconf')->getItem(1)->getItem('version') != $extensionVersion) {
+		    	$configurationManager->getSectionManager()->getItem('emconf')->getItem(1)->replace(array('version' => $extensionVersion));
+        	$configurationManager->saveConfiguration();	
+    		}	    	
+        
         // Checks if the extension must be upgraded
         if ($configurationManager->getCurrentLibraryVersion() != $configurationManager->getSectionManager()->getItem('general')->getItem(1)->getItem('libraryVersion')) {
           $configurationManager->getSectionManager()->getItem('general')->getItem(1)->replace(array('extensionMustbeUpgraded' => true));
+          $this->extensionsNeedTobeUpgraded = true;
         }
         $extensionList[] = $configurationManager->getConfiguration();
       }

@@ -19,6 +19,7 @@
 			<label index="kickstarter.uninstallExtension">Uninstall the extension</label>
 			<label index="kickstarter.generateExtension">Generate the extension</label>
 			<label index="kickstarter.upgradeExtension">Upgrade the extension</label>
+			<label index="kickstarter.upgradeExtensions">Upgrade all extensions</label>			
 			<label index="kickstarter.checked">Checked</label>
 			<label index="kickstarter.delete">Delete</label>
 			<label index="kickstarter.moveUp">Move up</label>

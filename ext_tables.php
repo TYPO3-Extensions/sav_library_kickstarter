@@ -22,6 +22,7 @@ Tx_Extbase_Utility_Extension::registerModule(
       uninstallExtension,
       generateExtension,
       upgradeExtension,
+      upgradeExtensions,      
       addItem,
       deleteItem,
       editItem,

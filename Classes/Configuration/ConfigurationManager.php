@@ -202,6 +202,22 @@ class Tx_SavLibraryKickstarter_Configuration_ConfigurationManager {
   }
 
 	/**
+	 * Gets the extension version.
+	 *
+	 * @param string $extensionKey The extension key
+	 * @return string The version
+	 */
+  public function getExtensionVersion($extensionKey) {
+  	if (!empty($extensionKey) && t3lib_extMgm::isLoaded($extensionKey) && file_exists(t3lib_extMgm::extPath($extensionKey) . 'ext_emconf.php')) {
+    	$_EXTKEY = $extensionKey;
+    	require(t3lib_extMgm::extPath($extensionKey) . 'ext_emconf.php');
+    	return($EM_CONF[$_EXTKEY]['version']);
+  	} else {
+  		return NULL;
+  	}
+  }  
+  
+	/**
 	 * Gets the root directory for extensions.
 	 *
 	 * @param none
