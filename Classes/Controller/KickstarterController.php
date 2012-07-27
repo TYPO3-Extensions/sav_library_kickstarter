@@ -227,8 +227,8 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
     $configurationManager = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Configuration_ConfigurationManager', $extKey);
     $configurationManager->loadConfiguration();
     $configurationManager->getSectionManager()->getItem($section)->deleteItem($itemKey);
-    $configurationManager->getSectionManager()->getItem('general')->deleteItem('section');
-    $configurationManager->getSectionManager()->getItem('general')->deleteItem('itemKey');
+    $configurationManager->getSectionManager()->getItem('general')->getItem(1)->deleteItem('section');
+    $configurationManager->getSectionManager()->getItem('general')->getItem(1)->deleteItem('itemKey');
     $configurationManager->saveConfiguration();
     $this->redirect('editExtension', NULL, NULL, array('extKey' => $extKey));
 	}
