@@ -207,7 +207,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
     $configurationManager->loadConfiguration();
     $itemKey = $configurationManager
       ->getSectionManager()
-      ->getItem($section)
+      ->addItem($section)
       ->addItem(NULL)
       ->addItem(array('title' =>  Tx_Extbase_Utility_Localization::translate('kickstarter.new', 'sav_library_kickstarter')))
       ->getItemIndex();
