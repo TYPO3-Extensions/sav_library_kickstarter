@@ -64,7 +64,7 @@
 			<label index="kickstarter.emconfItem.extensionKey">Extension key:</label>
 			<label index="kickstarter.emconfItem.newExtensionKey">New extension key:</label>
 			<label index="kickstarter.emconfItem.oldExtensionKey">Old extension key:</label>
-			<label index="kickstarter.emconfItem.title">Title  for the extension manager:</label>
+			<label index="kickstarter.emconfItem.title">Title for the extension manager:</label>
 			<label index="kickstarter.emconfItem.description">Description:</label>
 			<label index="kickstarter.emconfItem.state">State:</label>
 			<label index="kickstarter.emconfItem.state.alpha">Alpha (Very initial development)</label>

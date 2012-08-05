@@ -305,6 +305,16 @@ class Tx_SavLibraryKickstarter_ViewHelpers_FunctionViewHelper extends Tx_Fluid_C
       throw new RuntimeException('Copy failed.');
     }
   }
+  
+	/**
+	 * Returns the time
+	 *
+	 * @return integer
+	 */
+	private function time() {
+    return time();
+	}  
+  
 }
 ?>
 

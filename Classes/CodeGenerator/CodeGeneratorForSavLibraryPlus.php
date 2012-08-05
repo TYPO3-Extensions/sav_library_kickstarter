@@ -98,11 +98,19 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibraryPlus exte
 		  $fileContents = $this->generateFile('Resources/Private/Language/locallang.xmlt');
 		  t3lib_div::writeFile($fileDirectory . 'locallang.xml', $fileContents);
     }
-
+			// Generate locallang.xlf file if it does not exist
+		if (!file_exists($fileDirectory . 'locallang.xlf')) {
+		  $fileContents = $this->generateFile('Resources/Private/Language/locallang.xlft');
+		  t3lib_div::writeFile($fileDirectory . 'locallang.xlf', $fileContents);
+    }
+    
 		// Generates locallang_db.xml file
 		$fileContents = $this->generateFile('Resources/Private/Language/locallang_db.xmlt');
 		t3lib_div::writeFile($fileDirectory . 'locallang_db.xml', $fileContents);
-
+		// Generates locallang_db.xlf file
+		$fileContents = $this->generateFile('Resources/Private/Language/locallang_db.xlft');
+		t3lib_div::writeFile($fileDirectory . 'locallang_db.xlf', $fileContents);
+		
 		// Generates the pi1 directory
 		t3lib_div::mkdir_deep($this->extensionDirectory, 'Classes');
 		$fileDirectory = $this->extensionDirectory . 'Classes/';

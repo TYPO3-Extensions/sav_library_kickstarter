@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<T3locallang>
-	<meta type="array">
-		<type>CSH</type>
-		<csh_table>sav_library_kickstarter</csh_table>
-		<description>Default TCA_DESCR for the kicksarter</description>
-	</meta>
-	<data type="array">
-		<languageKey index="default" type="array">
-			<label index=".description">SAV Library Kickstarter</label>
-			<label index=".details">
-      </label>
-			<label index="All.description">All types</label>
-			<label index="All.seeAlso">
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2012-07-29T18:13:18Z" product-name="sav_library_kickstarter">
+		<header/>
+		<body>
+			<trans-unit id=".description" xml:space="preserve">
+				<source>SAV Library Kickstarter</source>
+			</trans-unit>
+			<trans-unit id=".details" xml:space="preserve">
+				<source>
+      </source>
+			</trans-unit>
+			<trans-unit id="All.description" xml:space="preserve">
+				<source>All types</source>
+			</trans-unit>
+			<trans-unit id="All.seeAlso" xml:space="preserve">
+				<source>
 sav_library_kickstarter:Checkbox
 sav_library_kickstarter:Checkboxes
 sav_library_kickstarter:Date
@@ -29,10 +32,16 @@ sav_library_kickstarter:RichTextEditor
 sav_library_kickstarter:Selectorbox
 sav_library_kickstarter:String
 sav_library_kickstarter:Text
-      </label>
-			<label index="Checkbox.description">Attributes for "Checkbox"</label>
-			<label index="Checkbox.seeAlso">sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</label>
-			<label index="Checkbox.syntax">
+      </source>
+			</trans-unit>
+			<trans-unit id="Checkbox.description" xml:space="preserve">
+				<source>Attributes for "Checkbox"</source>
+			</trans-unit>
+			<trans-unit id="Checkbox.seeAlso" xml:space="preserve">
+				<source>sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</source>
+			</trans-unit>
+			<trans-unit id="Checkbox.syntax" xml:space="preserve">
+				<source>
 &lt;b&gt;checkboxSelectedImage=string;&lt;/b&gt;
 The string is used as a file name which is searched in the icon directory.
 It replaces the default image for a selected checkbox. &lt;b&gt;Not available in "basic" type library.;&lt;/b&gt;
@@ -46,16 +55,22 @@ If set, the check box is displayed as an image instead of a label (defaut=0 "bas
 
 &lt;b&gt;doNotDisplayIfNotChecked = 1;&lt;/b&gt;
 Do not display the checkbox value if it is not checked (obviously it does not apply when in edit mode).
-      </label>
-			<label index="Checkboxes.description">Attributes for "Checkboxes"</label>
-			<label index="Checkboxes.seeAlso">sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</label>
-			<label index="Checkboxes.syntax">
+      </source>
+			</trans-unit>
+			<trans-unit id="Checkboxes.description" xml:space="preserve">
+				<source>Attributes for "Checkboxes"</source>
+			</trans-unit>
+			<trans-unit id="Checkboxes.seeAlso" xml:space="preserve">
+				<source>sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</source>
+			</trans-unit>
+			<trans-unit id="Checkboxes.syntax" xml:space="preserve">
+				<source>
 &lt;b&gt;checkboxSelectedImage=string;&lt;/b&gt;
-The string is used as a file name which is searched in the default icon directory and, if not found, in the extension icon directory.
+The string is used as a file name which is searched in the icon directory.
 It replaces the default image for a selected checkbox. &lt;b&gt;Not available in "basic" type library.;&lt;/b&gt;
 
 &lt;b&gt;checkboxNotSelectedImage=string;&lt;/b&gt;
-The string is used as a file name which is searched in the default icon directory and, if not found, in the extension icon directory.
+The string is used as a file name which is searched in the icon directory.
 It replaces the default image for an unselected checkbox. &lt;b&gt;Not available in "basic" type library.;&lt;/b&gt;
 
 &lt;b&gt;cols = integer;&lt;/b&gt;
@@ -69,28 +84,46 @@ Do not display the checkbox value if it is not checked (obviously it does not ap
 
 &lt;b&gt;nbItems = integer;&lt;/b&gt;
 Number of items to display.
-      </label>
-			<label index="Date.description">Attributes for "Date"</label>
-			<label index="Date.seeAlso">sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</label>
-			<label index="Date.syntax">
+      </source>
+			</trans-unit>
+			<trans-unit id="Date.description" xml:space="preserve">
+				<source>Attributes for "Date"</source>
+			</trans-unit>
+			<trans-unit id="Date.seeAlso" xml:space="preserve">
+				<source>sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</source>
+			</trans-unit>
+			<trans-unit id="Date.syntax" xml:space="preserve">
+				<source>
 &lt;b&gt;format = date_format;&lt;/b&gt;
 Sets a format to display the date. The format is the same as in strftime php function, e.g. format = %d/%m/%Y;
 
 &lt;b&gt;noDefault = 1;&lt;/b&gt;
 Do not display the default date.
-      </label>
-			<label index="DateTime.description">Attributes for "DateTime"</label>
-			<label index="DateTime.seeAlso">sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</label>
-			<label index="DateTime.syntax">
+      </source>
+			</trans-unit>
+			<trans-unit id="DateTime.description" xml:space="preserve">
+				<source>Attributes for "DateTime"</source>
+			</trans-unit>
+			<trans-unit id="DateTime.seeAlso" xml:space="preserve">
+				<source>sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</source>
+			</trans-unit>
+			<trans-unit id="DateTime.syntax" xml:space="preserve">
+				<source>
 &lt;b&gt;format = date_format;&lt;/b&gt;
 Sets a format to display the date. The format is the same as in strftime php function, e.g. format = %d/%m/%Y;
 
 &lt;b&gt;noDefault = 1;&lt;/b&gt;
 Do not display the default date and time.
-      </label>
-			<label index="Files.description">Attributes for "Files"</label>
-			<label index="Files.seeAlso">sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</label>
-			<label index="Files.syntax">
+      </source>
+			</trans-unit>
+			<trans-unit id="Files.description" xml:space="preserve">
+				<source>Attributes for "Files"</source>
+			</trans-unit>
+			<trans-unit id="Files.seeAlso" xml:space="preserve">
+				<source>sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</source>
+			</trans-unit>
+			<trans-unit id="Files.syntax" xml:space="preserve">
+				<source>
 &lt;b&gt;addIcon = 1;&lt;/b&gt;
 Adds an icon in front of the hyperlink associated with the file.
 
@@ -135,20 +168,32 @@ Defines the default image if the content of the field is null otherwise the defa
 &lt;b&gt;tsProperties = string;&lt;/b&gt;
 It makes it possible to use the graphic possibilities of TYPO3. If set, an IMAGE cObject is generated with the given TS properties.
 Do not forget that the configuration field is ended by a semi-column, therefore if you need a semi-column in your TS write it "\;"
-      </label>
-			<label index="Graph.description">Attributes for "Graph"</label>
-			<label index="Graph.seeAlso">sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</label>
-			<label index="Graph.syntax">
+      </source>
+			</trans-unit>
+			<trans-unit id="Graph.description" xml:space="preserve">
+				<source>Attributes for "Graph"</source>
+			</trans-unit>
+			<trans-unit id="Graph.seeAlso" xml:space="preserve">
+				<source>sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</source>
+			</trans-unit>
+			<trans-unit id="Graph.syntax" xml:space="preserve">
+				<source>
 &lt;b&gt;graphTemplate = string;&lt;/b&gt;
 File name of the XML template from the site root.
 
 &lt;b&gt;markers = string;&lt;/b&gt;
 Comma-separated list of definitions. Example: "marker#begin = ###beginPeriod###" means that the "marker" whose id is "begin"
 in the template will be replaced by the marker "###beginPeriod###", that is by the alias "beginPeriod".
-      </label>
-			<label index="Link.description">Attributes for "Link"</label>
-			<label index="Link.seeAlso">sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</label>
-			<label index="Link.syntax">
+      </source>
+			</trans-unit>
+			<trans-unit id="Link.description" xml:space="preserve">
+				<source>Attributes for "Link"</source>
+			</trans-unit>
+			<trans-unit id="Link.seeAlso" xml:space="preserve">
+				<source>sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</source>
+			</trans-unit>
+			<trans-unit id="Link.syntax" xml:space="preserve">
+				<source>
 &lt;b&gt;generateRTF=1;&lt;/b&gt;
 Sets the RTF generator.
 
@@ -170,12 +215,19 @@ Sets the attribute "link" with the content of the field whose name is given by f
 
 &lt;b&gt;message = string;&lt;/b&gt;
 Message associated with the link.
+
 &lt;b&gt;fieldMessage = fieldName;&lt;/b&gt;
 Sets the attribute "message" with the content of the field whose name is given by fieldName.
-      </label>
-			<label index="RadioButtons.description">Attributes for "Radio buttons"</label>
-			<label index="RadioButtons.seeAlso">sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</label>
-			<label index="RadioButtons.syntax">
+      </source>
+			</trans-unit>
+			<trans-unit id="RadioButtons.description" xml:space="preserve">
+				<source>Attributes for "Radio buttons"</source>
+			</trans-unit>
+			<trans-unit id="RadioButtons.seeAlso" xml:space="preserve">
+				<source>sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</source>
+			</trans-unit>
+			<trans-unit id="RadioButtons.syntax" xml:space="preserve">
+				<source>
 &lt;b&gt;cols = integer;&lt;/b&gt;
 Number of columns to display.
 
@@ -187,10 +239,16 @@ Default value for the radio buttons.
 
 &lt;b&gt;horizontalLayout = 1;&lt;/b&gt;
 If set to 1, radio buttons are displayed horizontally in edit forms.
-      </label>
-			<label index="RelationManyToManyAsSubform.description">Attributes for "Database many-to-many (n:n) relation as subform"</label>
-			<label index="RelationManyToManyAsSubform.seeAlso">sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</label>
-			<label index="RelationManyToManyAsSubform.syntax">
+      </source>
+			</trans-unit>
+			<trans-unit id="RelationManyToManyAsSubform.description" xml:space="preserve">
+				<source>Attributes for "Database many-to-many (n:n) relation as subform"</source>
+			</trans-unit>
+			<trans-unit id="RelationManyToManyAsSubform.seeAlso" xml:space="preserve">
+				<source>sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</source>
+			</trans-unit>
+			<trans-unit id="RelationManyToManyAsSubform.syntax" xml:space="preserve">
+				<source>
 This type should is used to generate a subform. Special parameters can be added.
 
 &lt;b&gt;addDelete = 1;&lt;/b&gt;
@@ -220,15 +278,27 @@ Name of the template (e.g. subFormAlt). By default the template "subForm" is use
 
 &lt;b&gt;noFirstLast = 1;&lt;/b&gt;
 First and last buttons in the browser associated with the "subFormAlt" template will not be shown.
-     </label>
-			<label index="RelationManyToManyAsDoubleSelectorbox.description">Attributes for "Database many-to-many (n:n) relation as double selectorbox"</label>
-			<label index="RelationManyToManyAsDoubleSelectorbox.seeAlso">sav_library_kickstarter:RelationOneToManyAsSelectorbox,sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</label>
-			<label index="RelationManyToManyAsDoubleSelectorbox.syntax">
+     </source>
+			</trans-unit>
+			<trans-unit id="RelationManyToManyAsDoubleSelectorbox.description" xml:space="preserve">
+				<source>Attributes for "Database many-to-many (n:n) relation as double selectorbox"</source>
+			</trans-unit>
+			<trans-unit id="RelationManyToManyAsDoubleSelectorbox.seeAlso" xml:space="preserve">
+				<source>sav_library_kickstarter:RelationOneToManyAsSelectorbox,sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</source>
+			</trans-unit>
+			<trans-unit id="RelationManyToManyAsDoubleSelectorbox.syntax" xml:space="preserve">
+				<source>
 The attributes for this type are the same as for Database one-to-many relation (selectorbox)
-      </label>
-			<label index="RelationOneToManyAsSelectorbox.description">Attributes for "Database one-to-many (1:n) relation as selectorbox"</label>
-			<label index="RelationOneToManyAsSelectorbox.seeAlso">sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</label>
-			<label index="RelationOneToManyAsSelectorbox.syntax">
+      </source>
+			</trans-unit>
+			<trans-unit id="RelationOneToManyAsSelectorbox.description" xml:space="preserve">
+				<source>Attributes for "Database one-to-many (1:n) relation as selectorbox"</source>
+			</trans-unit>
+			<trans-unit id="RelationOneToManyAsSelectorbox.seeAlso" xml:space="preserve">
+				<source>sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</source>
+			</trans-unit>
+			<trans-unit id="RelationOneToManyAsSelectorbox.syntax" xml:space="preserve">
+				<source>
 &lt;b&gt;aliasSelect = field_name;&lt;/b&gt;
 Defines an alias used in the SELECT query. markers ###fieldname### can be used, fieldname must be in the relation table.
 
@@ -244,10 +314,10 @@ Defines the order clause for the selector. In general : field_name [desc].
 &lt;b&gt;whereSelect=string;&lt;/b&gt;
 Defines the WHERE clause for the selector. It can be:
 . a conventional MySQL clause.
-- The marker ###user### can be used. It will be replaced by the user uid.
-- The marker ###uid### can be used. it will be replaced by the main current record.
-- The marker ###CURRENT_PID### can be used. It will be replaced by the current page uid.
-- The marker ###STORAGE_PID### can be used. It will be replaced by the storage page uid.
+  - The marker ###user### can be used. It will be replaced by the user uid.
+  - The marker ###uid### can be used. it will be replaced by the main current record.
+  - The marker ###CURRENT_PID### can be used. It will be replaced by the current page uid.
+  - The marker ###STORAGE_PID### can be used. It will be replaced by the storage page uid.
 . ###group_list = list_of_comma_separed_fe_groups###. To be used with a selector on fe_users. It checks if the user belongs to the group list.
 . ###group_list != list_of_comma_separed_fe_groups###. To be used with a selector on fe_users. It checks if the user does not belong to the group list.
 
@@ -284,19 +354,31 @@ It may be used in specific cases when you needed to retreive all the records.
 
 &lt;b&gt;overrideStartingPoint = 1;&lt;/b&gt;
 By default, when starting points are provided, information associated with the selector is searched in these page. This property overrides the default behavior.
-     </label>
-			<label index="RichTextEditor.description">Attributes for "Rich Text Editor"</label>
-			<label index="RichTextEditor.seeAlso">sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</label>
-			<label index="RichTextEditor.syntax">
+     </source>
+			</trans-unit>
+			<trans-unit id="RichTextEditor.description" xml:space="preserve">
+				<source>Attributes for "Rich Text Editor"</source>
+			</trans-unit>
+			<trans-unit id="RichTextEditor.seeAlso" xml:space="preserve">
+				<source>sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</source>
+			</trans-unit>
+			<trans-unit id="RichTextEditor.syntax" xml:space="preserve">
+				<source>
 &lt;b&gt;height = integer;&lt;/b&gt;
 Defines the height of the textarea. The integer value represents the height in pixels (45 pixels are automatically added).
 
 &lt;b&gt;width = integer;&lt;/b&gt;
 Defines the width of the textarea. The integer value represents the width in pixels.
-      </label>
-			<label index="Selectorbox.description">Attributes for "Selectorbox"</label>
-			<label index="Selectorbox.seeAlso">sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</label>
-			<label index="Selectorbox.syntax">
+      </source>
+			</trans-unit>
+			<trans-unit id="Selectorbox.description" xml:space="preserve">
+				<source>Attributes for "Selectorbox"</source>
+			</trans-unit>
+			<trans-unit id="Selectorbox.seeAlso" xml:space="preserve">
+				<source>sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</source>
+			</trans-unit>
+			<trans-unit id="Selectorbox.syntax" xml:space="preserve">
+				<source>
 &lt;b&gt;func = function_name;&lt;/b&gt;
 It associates a function with the selectorbox items. The parameter function_name can be:
 . makeItemLink
@@ -308,27 +390,49 @@ See functions for the associated parameters.
 
 &lt;b&gt;separator = character or string;&lt;/b&gt;
 It can be used with selector boxes associated with a MM relation to replace the default &lt; br /&gt; separator between items in showAll or showSingle views.
-      </label>
-			<label index="ShowOnly.description">Attributes for "Only shown in SAV form"</label>
-			<label index="ShowOnly.seeAlso">sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</label>
-			<label index="String.description">Attributes for "String input"</label>
-			<label index="String.seeAlso">sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</label>
-			<label index="String.syntax">
+      </source>
+			</trans-unit>
+			<trans-unit id="ShowOnly.description" xml:space="preserve">
+				<source>Attributes for "Only shown in SAV form"</source>
+			</trans-unit>
+			<trans-unit id="ShowOnly.seeAlso" xml:space="preserve">
+				<source>sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</source>
+			</trans-unit>
+			<trans-unit id="String.description" xml:space="preserve">
+				<source>Attributes for "String input"</source>
+			</trans-unit>
+			<trans-unit id="String.seeAlso" xml:space="preserve">
+				<source>sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</source>
+			</trans-unit>
+			<trans-unit id="String.syntax" xml:space="preserve">
+				<source>
 &lt;b&gt;size = integer;&lt;/b&gt;
 Size of the field.
-      </label>
-			<label index="Text.description">Attributes for "Textarea"</label>
-			<label index="Text.seeAlso">sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</label>
-			<label index="Text.syntax">
+      </source>
+			</trans-unit>
+			<trans-unit id="Text.description" xml:space="preserve">
+				<source>Attributes for "Textarea"</source>
+			</trans-unit>
+			<trans-unit id="Text.seeAlso" xml:space="preserve">
+				<source>sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</source>
+			</trans-unit>
+			<trans-unit id="Text.syntax" xml:space="preserve">
+				<source>
 &lt;b&gt;cols = integer;&lt;/b&gt;
 Defines the number of cols of the textarea. This attribute overwrites the same attribute in the TCA.
 
 &lt;b&gt;rows = integer;&lt;/b&gt;
 Defines the number of rows of the textarea. This attribute overwrites the same attribute in the TCA.
-      </label>
-			<label index="Functions.description">Functions attributes</label>
-			<label index="Functions.seeAlso">sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</label>
-			<label index="Functions.syntax">
+      </source>
+			</trans-unit>
+			<trans-unit id="Functions.description" xml:space="preserve">
+				<source>Functions attributes</source>
+			</trans-unit>
+			<trans-unit id="Functions.seeAlso" xml:space="preserve">
+				<source>sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</source>
+			</trans-unit>
+			<trans-unit id="Functions.syntax" xml:space="preserve">
+				<source>
 Functions are applied to the value of the field. It can be also applied to left and right contents.
 In this case, "Left" or "Right" should be added to the function name and the optional attributes.
 
@@ -405,10 +509,16 @@ Optional attributes can be added:
 &lt;b&gt;func = makeXmlLabel;&lt;/b&gt;
 This function generates the label from a xml language file. It works with the following parameter:
 . xmlLabel = string; the string is the label definition. For example, assume that the value comes from a selectorbox whose label definition is in the file locallang_db.xml in the extension "my_ext". Assume also that the field is "my_field". Then, to obtain the label one has to write xmlLabel = LLL:EXT:my_ext/locallang_db.xml:tx_myext.my_field.I.;
-      </label>
-			<label index="General.description">General Attributes</label>
-			<label index="General.seeAlso">sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</label>
-			<label index="General.syntax">
+      </source>
+			</trans-unit>
+			<trans-unit id="General.description" xml:space="preserve">
+				<source>General Attributes</source>
+			</trans-unit>
+			<trans-unit id="General.seeAlso" xml:space="preserve">
+				<source>sav_library_kickstarter:All,sav_library_kickstarter:Functions,sav_library_kickstarter:General</source>
+			</trans-unit>
+			<trans-unit id="General.syntax" xml:space="preserve">
+				<source>
 &lt;b&gt;addEdit = 1;&lt;/b&gt;
 When the field is used in an "Update form" view, it will add an input element for update that can be used with the marker ###field_name_Edit### where "field_name" is the name of the field.
 See also the help for Form views (showAllItemTemplate) to see how to use markers ###field[field_name, label]###.
@@ -514,7 +624,7 @@ If the field is a checkbox, it is used as a flag to verify is the mail has to be
 . mailSender=string; mail of the sender. marker ###user_email### will be replaced by the user email.
 . mailReceiver=string; mail of the person who will receive the mail and process the information.
 . mailReceiverFromField=field_name; The field_name contains the mail of the person who will receive the mail and process the information.
-. mailReceiverFromQuery=MySQL_Query; The receiver is obtained from a select query with an alias "value" that will used to retreive the receiver. Example: SELECT email as value from fe_users where ...
+. mailReceiverFromQuery=MySQL_Query; The receiver is obtained from a select query with an alias "value" that will used to retreive the receiver. Example: SELECT email AS value FROM fe_users WHERE ...
 . mailSubject=string; subject of the mail. markers ###fieldname### are allowed and will be replaced by their current value.
 . mailMessage=string, mail message. markers ###fieldname### are allowed and will be replaced by their current value.
 . mailcc=string; if set the string is used as Cc: for the mail.
@@ -527,7 +637,7 @@ The mail is always sent when saving. Mail information are the following:
 . mailSender=string; mail of the sender. marker ###user_email### will be replaced by the user email.
 . mailReceiver=string; mail of the person who will receive the mail and process the information.
 . mailReceiverFromField=field_name; The field_name contains the mail of the person who will receive the mail and process the information.
-. mailReceiverFromQuery=MySQL_Query; The receiver is obtained from a select query with an alias "value" that will used to retreive the receiver. Example: SELECT email AS value from fe_users WHERE ...
+. mailReceiverFromQuery=MySQL_Query; The receiver is obtained from a select query with an alias "value" that will used to retreive the receiver. Example: SELECT email AS value FROM fe_users WHERE ...
 . mailSubject=string; subject of the mail. markers ###fieldname### are allowed and will be replaced by their current value.
 . mailMessage=string, mail message. markers ###fieldname### are allowed and will be replaced by their current value.
 . mailcc=string; if set the string is used as Cc: for the mail.
@@ -540,7 +650,7 @@ The mail is sent when saving if the field is not empty and if one field in the f
 . mailSender=string; mail of the sender. The marker ###user_email### will be replaced by the user email.
 . mailReceiver=string; mail of the person who will receive the mail and process the information.
 . mailReceiverFromField=field_name; The field_name contains the mail of the person who will receive the mail and process the information.
-. mailReceiverFromQuery=MySQL_Query; The receiver is obtained from a select query with an alias "value" that will used to retreive the receiver. Example: SELECT email AS value FROM fe_users WHERE ...
+. mailReceiverFromQuery=MySQL_Query; The receiver is obtained from a select query with an alias "value" that will used to retreive the receiver. Example: SELECT email as value from fe_users where ...
 . mailSubject=string; subject of the mail. markers ###fieldname### are allowed and will be replaced by their current value.
 . mailMessage=string, mail message. markers ###fieldname### are allowed and will be replaced by their current value.
 . mailcc=string; if set the string is used as Cc: for the mail.
@@ -653,9 +763,13 @@ If set an error detected by the verifier becomes a warning. In that case, the fi
 The string will be used to wrap the item. The syntax in the same as in TypoScript.
 Localization by means of the file locallang.xml can be used with $$$tag$$$ which will be replaced by its value according to the configuration language.
 The marker $$$label[fieldName]$$$ will be replaced by the fieldName title according to the localization.
-      </label>
-			<label index="queries.description">Queries</label>
-			<label index="queries.details">
+      </source>
+			</trans-unit>
+			<trans-unit id="queries.description" xml:space="preserve">
+				<source>Queries</source>
+			</trans-unit>
+			<trans-unit id="queries.details" xml:space="preserve">
+				<source>
 This section is used to specify the query associated with your form.
 
 &lt;b&gt;Name&lt;/b&gt;
@@ -674,10 +788,10 @@ Define here the aliases associated with your query (MySQL syntax).
 &lt;b&gt;WHERE clause&lt;/b&gt;
 Defines the WHERE clause for query. It can be:
 . a conventional MySQL clause.
-- The marker ###user### can be used. It will be replaced by the user uid.
-- The marker ###uid### can be used. It will be replaced by the current uid record.
-- The marker ###CURRENT_PID### can be used. It will be replaced by the current page uid.
-- The marker ###STORAGE_PID### can be used. It will be replaced by the storage page uid.
+  - The marker ###user### can be used. It will be replaced by the user uid.
+  - The marker ###uid### can be used. It will be replaced by the current uid record.
+  - The marker ###CURRENT_PID### can be used. It will be replaced by the current page uid.
+  - The marker ###STORAGE_PID### can be used. It will be replaced by the storage page uid.
 . ###group_list = list_of_comma_separed_fe_groups###. To be used with a selector on fe_users. It checks if the user belongs to the group list. 
 . ###group_list != list_of_comma_separed_fe_groups###. To be used with a selector on fe_users. It checks if the user does not belong to the group list. 
 . ###func:WHERE_Clause####. func must be a valid method defined in the tx_savlibrary class. If the method returns true then the WHERE clause is added otherwise it is omitted. The method may have one parameter.
@@ -686,8 +800,7 @@ Existing methods are:
   - isNotInputMode which returns true the form is not in the input mode,
   - isGroupMember(groupName) which returns true if the user is a member of "groupName",
   - isNotGroupMember(groupName) which returns true if the user is not a member of "groupName".
-
-Other methods can be added using sav_library_extends.The WHERE_Clause can be any previous cases.
+The WHERE_Clause can be any previous cases.
 
 &lt;b&gt;GROUP BY clause&lt;/b&gt;
 GROUP BY clause for the query. Very useful when MM tables are used (MySQL syntax).
@@ -701,9 +814,13 @@ To add a new "WHERE Tag", click on the icon and fill the fields. The first field
 Name: myTag
 WHERE Clause: myTable.myField &gt; 0
 ORDER BY Clause: myTable.myField desc
-      </label>
-			<label index="forms.description">Forms</label>
-			<label index="forms.details">
+      </source>
+			</trans-unit>
+			<trans-unit id="forms.description" xml:space="preserve">
+				<source>Forms</source>
+			</trans-unit>
+			<trans-unit id="forms.details" xml:space="preserve">
+				<source>
 This section is used to specify the settings of your form.
 
 &lt;b&gt;Name&lt;/b&gt;
@@ -727,9 +844,13 @@ Use the selector to set the "Query" that should be used with your form (required
 &lt;b&gt;Allow caching&lt;/b&gt;
 Select this checkbox if the plugin should behave as USER for this form, that is caching is enabled.
 By default, the plugin will behave as USER_INT (no caching) for all the forms.
-      </label>
-			<label index="views.description">Views</label>
-			<label index="views.details">
+      </source>
+			</trans-unit>
+			<trans-unit id="views.description" xml:space="preserve">
+				<source>Views</source>
+			</trans-unit>
+			<trans-unit id="views.details" xml:space="preserve">
+				<source>
 This section is used to specify the views associated with your extension.
 
 &lt;b&gt;Name&lt;/b&gt;
@@ -789,9 +910,13 @@ The folder is cut if the group name is not a valid group for the current user.
 
 &lt;b&gt;Print icon&lt;/b&gt; 
 If set, a print icon is added to the view.
-      </label>
-			<label index="emconf.description">Extension configuration</label>
-			<label index="emconf.details">
+      </source>
+			</trans-unit>
+			<trans-unit id="emconf.description" xml:space="preserve">
+				<source>Extension configuration</source>
+			</trans-unit>
+			<trans-unit id="emconf.details" xml:space="preserve">
+				<source>
 &lt;b&gt;New Version&lt;/b&gt;
 This wizard can be used to automatically ugrade the version of your extension. If you set z, one unit will be added to the z part.
 It you set y, one unit will be added to the y part, while the z part is reset to 0.
@@ -800,11 +925,8 @@ If you set x, one unit, will be added to the x part, while the y and z parts wil
 &lt;b&gt;Debug Query&lt;/b&gt;
 Set to display error messages on queries, if any.
 &lt;b&gt;The Debug Query option should not be left in the final version of your extension for security reasons&lt;/b&gt;.
-      </label>
-		</languageKey>
-	</data>
-	<orig_hash type="array">
-	</orig_hash>
-	<orig_text type="array">
-	</orig_text>
-</T3locallang>
+      </source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
