@@ -1199,7 +1199,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
       $sectionManager->getItem($section)->getItem($itemKey)->getItem('fields')->getItem($fieldKey)->addItem(array(
         'fieldname' => Tx_Extbase_Utility_Localization::translate('kickstarter.new', 'sav_library_kickstarter'),
         'title' => Tx_Extbase_Utility_Localization::translate('kickstarter.new', 'sav_library_kickstarter'),
-        'type' => 'unknown',
+        'type' => 'Unknown',
         )
       );
       // Sets the view key
