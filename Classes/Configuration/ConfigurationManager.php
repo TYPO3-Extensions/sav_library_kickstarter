@@ -519,12 +519,12 @@ class Tx_SavLibraryKickstarter_Configuration_ConfigurationManager {
       }
       
       $this->loadConfiguration();
-      $currentLibraryVersion =  t3lib_div::int_from_ver($this->getCurrentLibraryVersion());
+      $currentLibraryVersion =  t3lib_utility_VersionNumber::convertVersionNumberToInteger($this->getCurrentLibraryVersion());
       $currentLibraryName = $this->getCurrentLibraryName();
       ksort($this->upgradeFiles[$currentLibraryName]);
 
       foreach($this->upgradeFiles[$currentLibraryName] as $version => $fileInformation) {
-        $libraryVersion = t3lib_div::int_from_ver($this->getSectionManager()->getItem('general')->getItem(1)->getItem('libraryVersion'));
+        $libraryVersion = t3lib_utility_VersionNumber::convertVersionNumberToInteger($this->getSectionManager()->getItem('general')->getItem(1)->getItem('libraryVersion'));
         if ($libraryVersion < $currentLibraryVersion &&  $libraryVersion < $version) {
             $this->upgradeExtension('To' . $currentLibraryName . $version);
         }
