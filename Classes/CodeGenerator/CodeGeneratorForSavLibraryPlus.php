@@ -69,7 +69,7 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibraryPlus exte
 		// Generates the Configuration/TCA directory
 		t3lib_div::mkdir_deep($this->extensionDirectory, 'Configuration/TCA');
 		$fileDirectory = $this->extensionDirectory . 'Configuration/TCA/';
-		
+
 		// Generates TCA
 		$fileContents = $this->generateFile('Configuration/TCA/tca.phpt');
 		t3lib_div::writeFile($fileDirectory . 'tca.php', $fileContents);
@@ -208,17 +208,20 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibraryPlus exte
         }
 
         // Processes folders
+        $sortedFolders = array();
         if ($view['folders']) {
           $opt_showFolders = array(
             0 => array('label' => '0'),
-          );
+          );          
           foreach ($view['folders'] as $folderKey => $folder) {
             $folderConfiguration['label'] = $folder['label'];
-            $folderConfiguration['configuration'] = $folder['configuration'];
+            $folderConfiguration['configuration'] = $folder['configuration'];          
             $opt_showFolders[$folderKey] = $folderConfiguration;
+            $sortedFolders[$folder['order']] = $folderKey;
           }
+          ksort($sortedFolders);
         }       
-        
+ 
         // Gets the list of the fields organized by folders
         unset($showFolders);
         unset($showFields);
@@ -345,14 +348,17 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibraryPlus exte
           if (isset($showFields)) {
             $showFolders[0] = $showFields;
             $opt_showFolders[0] = '0';
+            $sortedFolders[0] = 0;
           }
         }
 
         if (isset($showFolders)) {
           $configTemp = array();
           $relTable = array();
-          foreach ($showFolders as $folderKey => $folder) {
-
+          foreach ($sortedFolders as $sortedFolderKey => $folderKey) {
+          	// Gets the folder
+						$folder = $showFolders[$folderKey];
+      
             $folderName = $opt_showFolders[$folderKey]['label'];
             // Gets the folder config parameter
             $xmlArray['views'][$viewKey][$this->cryptTag($folderName)]['configuration'] = $this->getConfig($opt_showFolders[$folderKey]['configuration']) +
