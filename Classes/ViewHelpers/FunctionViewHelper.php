@@ -119,7 +119,12 @@ class Tx_SavLibraryKickstarter_ViewHelpers_FunctionViewHelper extends Tx_Fluid_C
 	private function isArrayOfInteger($arguments) {
     $notInteger = 0;
     foreach ($arguments['input'] as $key => $value) {
-      $notInteger += t3lib_div::testInt($value[$arguments['index']]) ? 0 : 1;
+    	// For compatiblity : t3lib_div::testInt deprecated since TYPO3 4.6
+    	if (method_exists('t3lib_utility_Math', 'canBeInterpretedAsInteger')) {
+      	$notInteger += t3lib_utility_Math::canBeInterpretedAsInteger($value[$arguments['index']]) ? 0 : 1;
+    	} else {
+      	$notInteger += t3lib_div::testInt($value[$arguments['index']]) ? 0 : 1;
+    	}
     }
     return $notInteger ? false : true;
 	}

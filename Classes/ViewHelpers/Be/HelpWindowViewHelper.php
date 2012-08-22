@@ -31,7 +31,7 @@
  * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
  * @scope prototype
  */
-class Tx_SavLibraryKickstarter_ViewHelpers_Be_HelpWindowViewHelper extends Tx_Fluid_Core_ViewHelper_TagBasedViewHelper {
+class Tx_SavLibraryKickstarter_ViewHelpers_Be_HelpWindowViewHelper extends Tx_Fluid_Core_ViewHelper_AbstractTagBasedViewHelper {
 
 	/**
 	 * @var string
@@ -45,11 +45,8 @@ class Tx_SavLibraryKickstarter_ViewHelpers_Be_HelpWindowViewHelper extends Tx_Fl
 	 * @author Bastian Waidelich <bastian@typo3.org>
 	 */
 	public function initializeArguments() {
-		$this->registerUniversalTagAttributes();
-		$this->registerTagAttribute('name', 'string', 'Specifies the name of an anchor');
-		$this->registerTagAttribute('rel', 'string', 'Specifies the relationship between the current document and the linked document');
-		$this->registerTagAttribute('rev', 'string', 'Specifies the relationship between the linked document and the current document');
-		$this->registerTagAttribute('target', 'string', 'Specifies where to open the linked document');
+		parent::initializeArguments();
+		$this->registerUniversalTagAttributes();	
 	}
 
 	/**

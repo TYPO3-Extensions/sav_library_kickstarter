@@ -23,7 +23,7 @@
 /**
  * View helper which renders the flash messages with HTML output.
  *
- * Same as renderFlashMessages but the output is not passed through htmlspecialchars.
+ * Same as FlashMessages but the output is not passed through htmlspecialchars.
  *
  *
  * = Examples =
@@ -46,42 +46,25 @@
  * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
  * @scope prototype
  */
-class Tx_SavLibraryKickstarter_ViewHelpers_RenderFlashHtmlMessagesViewHelper extends Tx_Fluid_Core_ViewHelper_TagBasedViewHelper {
+class Tx_SavLibraryKickstarter_ViewHelpers_FlashHtmlMessagesViewHelper extends Tx_Fluid_ViewHelpers_FlashMessagesViewHelper {
 
 	/**
-	 * @var string
-	 */
-	protected $tagName = 'ul';
-
-	/**
-	 * Initialize arguments
+	 * Renders the flash messages as unordered list 
 	 *
-	 * @return void
-	 * @author Sebastian Kurfürst <sbastian@typo3.org>
-	 * @api
+	 * @param array $flashMessages array<t3lib_FlashMessage>
+	 * @return string
 	 */
-	public function initializeArguments() {
-		$this->registerUniversalTagAttributes();
-	}
-
-	/**
-	 * Render method.
-	 *
-	 * @return string rendered Flash Messages, if there are any.
-	 * @author Sebastian Kurfürst <sbastian@typo3.org>
-	 * @api
-	 */
-	public function render() {
-		$flashMessages = $this->controllerContext->getFlashMessages()->getAllAndFlush();
-		if (count($flashMessages) > 0) {
-			$tagContent = '';
-			foreach ($flashMessages as $singleFlashMessage) {
-				$tagContent .=  '<li>' . $singleFlashMessage . '</li>';
-			}
-			$this->tag->setContent($tagContent);
-			return $this->tag->render();
+	protected function renderUl(array $flashMessages) {
+		$this->tag->setTagName('ul');
+		if ($this->arguments->hasArgument('class')) {
+			$this->tag->addAttribute('class', $this->arguments['class']);
 		}
-		return '';
+		$tagContent = '';
+		foreach ($flashMessages as $singleFlashMessage) {
+			$tagContent .= '<li>' . $singleFlashMessage->getMessage() . '</li>';
+		}
+		$this->tag->setContent($tagContent);
+		return $this->tag->render();
 	}
 }
 
