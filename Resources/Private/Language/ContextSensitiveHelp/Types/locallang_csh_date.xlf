@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2012-08-24T17:59:50Z" product-name="sav_library_kickstarter">
+		<header/>
+		<body>
+			<trans-unit id="Date.description" xml:space="preserve">
+				<source>Attributes for the type &quot;Date&quot;</source>
+			</trans-unit>
+			<trans-unit id="Date.seeAlso" xml:space="preserve">
+				<source>sav_library_kickstarter_all:*,sav_library_kickstarter_functions:*,sav_library_kickstarter_general:*</source>
+			</trans-unit>
+			<trans-unit id="format = date_format;.description" xml:space="preserve">
+				<source>Sets a format to display the date. The format is the same as in strftime php function, e.g. format = %d/%m/%Y;</source>
+			</trans-unit>
+			<trans-unit id="noDefault = 1;.description" xml:space="preserve">
+				<source>Do not display the default date.</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -35,10 +35,10 @@ $TCA['{model}'] = array (
 		</f:if>
 		<f:if condition="{table.sorting}">
       <f:then>
-		'sortby' => 'sorting',
+		'sortby' => '{model}.sorting',
       </f:then>
       <f:else>
-		'default_sortby' => 'ORDER BY {table.sorting_field} {f:if(condition:table.sorting_desc,then:"DESC")}',
+		'default_sortby' => 'ORDER BY {model}.{table.sorting_field} {f:if(condition:table.sorting_desc,then:"DESC")}',
       </f:else>
     </f:if>
     <f:if condition="{table.add_deleted}">
@@ -99,9 +99,6 @@ $TCA['tt_content']['types']['list']['subtypes_addlist'][$_EXTKEY . '_pi1'] = 'pi
 
 // Adds flexform DataStructure
 t3lib_extMgm::addPiFlexFormValue($_EXTKEY . '_pi1', 'FILE:EXT:' . $_EXTKEY . '/Configuration/Flexforms/ExtensionFlexform.xml');
-
-// Adds the csh for the flexform
-t3lib_extMgm::addLLrefForTCAdescr('tt_content.pi_flexform.'. $_EXTKEY . '_pi1.list', 'EXT:sav_library_plus/Resources/Private/Language/locallang_csh_flexform.xml');
 
 t3lib_extMgm::addPlugin(array(
 	'LLL:EXT:{extension.general.1.extensionKey}/Resources/Private/Language/locallang_db.xml:tt_content.list_type_pi1',

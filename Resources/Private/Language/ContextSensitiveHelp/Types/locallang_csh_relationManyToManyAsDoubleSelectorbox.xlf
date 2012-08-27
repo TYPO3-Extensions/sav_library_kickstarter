@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2012-08-24T18:01:55Z" product-name="sav_library_kickstarter">
+		<header/>
+		<body>
+			<trans-unit id="RelationManyToManyAsDoubleSelectorbox.description" xml:space="preserve">
+				<source>Attributes for the type &quot;Database many-to-many (n:n) relation as double selectorbox&quot; are the same as for Database one-to-many relation (selectorbox)</source>
+			</trans-unit>
+			<trans-unit id="RelationManyToManyAsDoubleSelectorbox.seeAlso" xml:space="preserve">
+				<source>sav_library_kickstarter_relationOneToManyAsSelectorbox:*,sav_library_kickstarter_all:*,sav_library_kickstarter_functions:*,sav_library_kickstarter_general:*</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

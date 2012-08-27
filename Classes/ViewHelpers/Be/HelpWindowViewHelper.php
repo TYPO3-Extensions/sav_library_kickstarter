@@ -57,9 +57,9 @@ class Tx_SavLibraryKickstarter_ViewHelpers_Be_HelpWindowViewHelper extends Tx_Fl
 	 */
 	public function render($cshTag) {
 		$this->tag->addAttribute('href', '#');
-		$this->tag->addAttribute('onclick', 'vHWin=window.open(\'view_help.php?tfID=sav_library_kickstarter.' . $cshTag . '\',\'viewFieldHelp\',\'height=400,width=600,status=0,menubar=0,scrollbars=1\');vHWin.focus();return false;');
+		$this->tag->addAttribute('onclick', 'vHWin=window.open(\'view_help.php?tfID=sav_library_kickstarter_' . t3lib_div::lcfirst($cshTag) . '.*\',\'viewFieldHelp\',\'height=400,width=600,status=0,menubar=0,scrollbars=1\');vHWin.focus();return false;');
 		$skinnedIcon = t3lib_iconWorks::skinImg($GLOBALS['BACK_PATH'], 'gfx/helpbubble.gif', '');
-		$this->tag->setContent('<img'.$skinnedIcon.' class="typo3-csh-icon" alt="' . $cshTag . '" height="16" hspace="2" width="16">');
+		$this->tag->setContent('<img'.$skinnedIcon.' class="typo3-csh-icon" alt="' . t3lib_div::lcfirst($cshTag) . '" height="16" hspace="2" width="16">');
 
 		return $this->tag->render();
 	}

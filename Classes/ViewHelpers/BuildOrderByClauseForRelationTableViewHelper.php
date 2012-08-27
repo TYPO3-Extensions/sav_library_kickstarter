@@ -14,12 +14,12 @@
  *                                                                        */
 
 /**
- * A view helper for getting the relation table.
+ * A view helper for building the ORDER BY clause of a relation table.
  *
  * = Examples =
  *
- * <code title="GetRelationTableKeyForSubform">
- * <sav:GetRelationTableForSubform />
+ * <code title="BuildOrderbyClauseForRelationTable">
+ * <sav:BuildOrderbyClauseForRelationTable />
  * </code>
  *
  * Output:
@@ -30,7 +30,7 @@
  * @author Laurent Foulloy <yolf.typo3@orange.fr>
  * @version $Id: 
  */
-class Tx_SavLibraryKickstarter_ViewHelpers_GetRelationTableKeyForSubformViewHelper extends Tx_Fluid_Core_ViewHelper_AbstractViewHelper {
+class Tx_SavLibraryKickstarter_ViewHelpers_BuildOrderbyClauseForRelationTableViewHelper extends Tx_Fluid_Core_ViewHelper_AbstractViewHelper {
 
 	/**
 	 * @param array $arguments
@@ -40,14 +40,38 @@ class Tx_SavLibraryKickstarter_ViewHelpers_GetRelationTableKeyForSubformViewHelp
 	 */
 	public function render($arguments, $tableName) {
 
+		// Searches the table name in new tables
     foreach ($arguments['newTables'] as $tableKey => $table) {
     	$realTableName = 'tx_' . str_replace('_', '', $arguments['general'][1]['extensionKey']) . '_' . $table['tablename'];
   	
     	if ($realTableName == $tableName) {
-    		return $tableKey;
+				// Checks if manual ordering is not set
+				if (empty($table['sorting'])) {
+					// Field-based ordering
+					$orderByClause = $realTableName. '.' . $table['sorting_field'];
+					if (empty($table['sorting_desc']) === false) {
+						$orderByClause .= ' DESC';
+					}
+				} else {
+					// Manual ordering
+					$orderByClause .= 'sorting';
+				}
+    		return $orderByClause;
     	}  
     }	
-		return 0;    
+    
+    // Searches the table name in existing tables
+		foreach($GLOBALS['TCA'] as $tableKey => $table) {
+			if ($tableKey == $tableName) {		
+				// Checks if there is a default ordering
+				if (empty($table['default_sortby']) === false) {
+					return $table['default_sortby'];
+				} elseif (empty($table['sortby']) === false)  {
+					return $table['sortby'];
+				}
+			}	
+		}
+		return '';    
 	}
 
 }

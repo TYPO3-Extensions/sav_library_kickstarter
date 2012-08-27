@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2012-08-24T18:03:51Z" product-name="sav_library_kickstarter">
+		<header/>
+		<body>
+			<trans-unit id="String.description" xml:space="preserve">
+				<source>Attributes for the type &quot;String input&quot;</source>
+			</trans-unit>
+			<trans-unit id="String.seeAlso" xml:space="preserve">
+				<source>sav_library_kickstarter_all:*,sav_library_kickstarter_functions:*,sav_library_kickstarter_general:*</source>
+			</trans-unit>
+			<trans-unit id="size = integer;.description" xml:space="preserve">
+				<source>Size of the field.</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

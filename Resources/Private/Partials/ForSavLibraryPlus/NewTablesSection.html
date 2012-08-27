@@ -117,6 +117,7 @@
               <label class="" for="sorting_field"><f:translate key="kickstarter.{section}Item.sorting_field" /></label>
               <f:form.select id="sorting_field" name="{section}[sorting_field]" options="{sav:buildOptionsForFieldSelectorbox(fields:sectionItem.fields, options:'{
                 crdate:\"[crdate]\",
+                uid:\"[uid]\",
                 cruser_id:\"[cruser_id]\",
                 tstamp:\"[tstamp]\"}')}" value="{sectionItem.sorting_field}" />
 
@@ -147,10 +148,10 @@
           </f:link.action>
           <f:form.submit class="submit" name="submitAction[save]" value="{f:translate(key:'kickstarter.save')}"/>
           <f:form.submit class="submit" name="submitAction[generateExtension]" value="{f:translate(key:'kickstarter.generate')}"/>
-          <label for="tablename"><f:translate key="kickstarter.useFields" /></label>
+          <div class="viewSelectorbox"><f:translate key="kickstarter.useFields" /></div>
           <sav:form.select id="viewSelectorbox" name="{section}[viewSelectorbox]" value="" options="{sav:buildOptionsForViewSelectorbox(views:extension.views)}" />
-          <f:form.submit name="submitAction[sortFields]" value="{f:translate(key:'kickstarter.sort')}" />
-          <f:form.submit name="submitAction[copyFields]" value="{f:translate(key:'kickstarter.copy')}" />
+          <f:form.submit class="submit" name="submitAction[sortFields]" value="{f:translate(key:'kickstarter.sort')}" />
+          <f:form.submit class="submit" name="submitAction[copyFields]" value="{f:translate(key:'kickstarter.copy')}" />
         </div>
       </div>
     
@@ -295,10 +296,10 @@
         <div class="buttons">
           <f:if condition="{sectionItem.showAllFields}">
             <f:then>
-            <f:form.submit name="submitAction[showFieldsNotInFolders]" value="{f:translate(key:'kickstarter.showFieldsNotInFolders')}" />  
+            <f:form.submit class="submit" name="submitAction[showFieldsNotInFolders]" value="{f:translate(key:'kickstarter.showFieldsNotInFolders')}" />  
             </f:then>
             <f:else>
-            <f:form.submit name="submitAction[showAllFields]" value="{f:translate(key:'kickstarter.showAllFields')}" />  
+            <f:form.submit class="submit" name="submitAction[showAllFields]" value="{f:translate(key:'kickstarter.showAllFields')}" />  
             </f:else>
           </f:if>      
         </div>

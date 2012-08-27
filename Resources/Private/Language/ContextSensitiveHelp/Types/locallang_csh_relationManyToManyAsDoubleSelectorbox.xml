@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>CSH</type>
+		<csh_table></csh_table>
+		<description>Help for the type "RelationManyToManyAsDoubleSelectorbox"</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+
+			<label index="RelationManyToManyAsDoubleSelectorbox.description">Attributes for the type "Database many-to-many (n:n) relation as double selectorbox" are the same as for Database one-to-many relation (selectorbox)</label>
+			<label index="RelationManyToManyAsDoubleSelectorbox.seeAlso">sav_library_kickstarter_relationOneToManyAsSelectorbox:*,sav_library_kickstarter_all:*,sav_library_kickstarter_functions:*,sav_library_kickstarter_general:*</label>
+
+		</languageKey>
+	</data>
+</T3locallang>

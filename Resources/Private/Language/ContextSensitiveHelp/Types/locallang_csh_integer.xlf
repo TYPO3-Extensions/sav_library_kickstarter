@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2012-08-24T18:01:16Z" product-name="sav_library_kickstarter">
+		<header/>
+		<body>
+			<trans-unit id="Integer.description" xml:space="preserve">
+				<source>Attributes for the type &quot;Integer&quot;</source>
+			</trans-unit>
+			<trans-unit id="Integer.seeAlso" xml:space="preserve">
+				<source>sav_library_kickstarter_all:*,sav_library_kickstarter_functions:*,sav_library_kickstarter_general:*</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

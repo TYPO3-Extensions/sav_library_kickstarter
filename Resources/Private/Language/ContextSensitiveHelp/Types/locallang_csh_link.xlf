@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2012-08-24T18:01:29Z" product-name="sav_library_kickstarter">
+		<header/>
+		<body>
+			<trans-unit id="Link.description" xml:space="preserve">
+				<source>Attributes for the type &quot;Link&quot;</source>
+			</trans-unit>
+			<trans-unit id="Link.seeAlso" xml:space="preserve">
+				<source>sav_library_kickstarter_all:*,sav_library_kickstarter_functions:*,sav_library_kickstarter_general:*</source>
+			</trans-unit>
+			<trans-unit id="generateRTF=1;.description" xml:space="preserve">
+				<source>Sets the RTF generator.</source>
+			</trans-unit>
+			<trans-unit id="templateRTF=filename;.description" xml:space="preserve">
+				<source>Defines the template to be used by the RTF generator. Field markers ###tableName.fieldName### or ###fieldName### (for aliases) can be used.</source>
+			</trans-unit>
+			<trans-unit id="saveFileRTF=filename;.description" xml:space="preserve">
+				<source>Name under which the generated file will be saved. Field markers ###tableName.fieldName### or ###fieldName### (for aliases) can be used.</source>
+			</trans-unit>
+			<trans-unit id="tableName.fieldName=string1->string2;.description" xml:space="preserve">
+				<source>In an rtf document, if the field marker ###tableName.fieldName### exists string1 will be replaced by string2. String1 can be NL (for the ASCII character LF).
+It may be useful when one wants to input data in a textarea and display them in one line with a given separator in the file.</source>
+			</trans-unit>
+			<trans-unit id="link = string;.description" xml:space="preserve">
+				<source>The string will be used for the link instead of the field value.</source>
+			</trans-unit>
+			<trans-unit id="fieldLink = fieldName;.description" xml:space="preserve">
+				<source>Sets the attribute &quot;link&quot; with the content of the field whose name is given by fieldName.</source>
+			</trans-unit>
+			<trans-unit id="message = string;.description" xml:space="preserve">
+				<source>Message associated with the link.</source>
+			</trans-unit>
+			<trans-unit id="fieldMessage = fieldName;.description" xml:space="preserve">
+				<source>Sets the attribute &quot;message&quot; with the content of the field whose name is given by fieldName.</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

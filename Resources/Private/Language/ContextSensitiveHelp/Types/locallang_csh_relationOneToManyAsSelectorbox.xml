@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>CSH</type>
+		<csh_table></csh_table>
+		<description>Help for the type "RelationOneToManyAsSelectorbox"</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+
+			<label index="RelationOneToManyAsSelectorbox.description">Attributes for the type "Database one-to-many (1:n) relation as selectorbox"</label>
+			<label index="RelationOneToManyAsSelectorbox.seeAlso">sav_library_kickstarter_all:*,sav_library_kickstarter_functions:*,sav_library_kickstarter_general:*</label>
+
+			<label index="aliasSelect = field_name;.description">Defines an alias used in the SELECT query. markers ###fieldname### can be used, fieldname must be in the relation table.</label>
+
+			<label index="labelSelect = field_name;.description">Defines the label from field_name for the selector.</label>
+
+			<label index="additionalTableSelect = comma-separated table names;.description">Adds the table names in the select query. It can be used when tables need to be joined.</label>
+
+			<label index="orderSelect = string;.description">Defines the order clause for the selector. In general : field_name [desc].</label>
+
+			<label index="whereSelect=string;.description">Defines the WHERE clause for the selector. It can be:
+. a conventional MySQL clause.
+- The marker ###user### can be used. It will be replaced by the user uid.
+- The marker ###uid### can be used. it will be replaced by the main current record.
+- The marker ###CURRENT_PID### can be used. It will be replaced by the current page uid.
+- The marker ###STORAGE_PID### can be used. It will be replaced by the storage page uid.
+. ###group_list = list_of_comma_separed_fe_groups###. To be used with a selector on fe_users. It checks if the user belongs to the group list.
+. ###group_list != list_of_comma_separed_fe_groups###. To be used with a selector on fe_users. It checks if the user does not belong to the group list.</label>
+
+			<label index="groupBySelect=string;.description">Defines the GROUP BY clause for the selector.</label>
+
+			<label index="content=SQL select statement;.description">SQL select statement must have an alias "uid" and an alias "label" which will be used as the value to display.
+Special markers can be used in the statement :
+. ###uid### will be replaced by the current record uid.
+. ###uidSelected### will be replaced by the selected item.
+. ###user### will be replaced by the user id.
+. ###cruser### will be replaced by the user id.
+The following example returns a selectorbox with the usernames that are linked with the user by a MM relation :
+content = SELECT fe_users.uid as uid, fe_users.name AS label
+FROM tx_mytable_rel_myfield_mm,fe_users
+WHERE
+  tx_mytable_rel_myfields_mm.uid_local=###user### AND
+  tx_mytable_rel_myfields_mm.uid_foreign=fe_users.uid
+ORDER BY label;</label>
+
+			<label index="separator = string;.description">It should be used when the max number of relations is greater than 1 (not true MM-relation) to replace the default &lt; br /&gt; separator between items in showAll or showSingle views.</label>
+
+			<label index="specialFields = comma-separated list of fields;.description">The value of the fields will be propagated in the ###special[fieldname]### marker when available.</label>
+
+			<label index="singleWindow = 1;.description">In case of a MM relation, a double window is used to select items. When this option is used, a single selectorbox in multiple mode is used.</label>
+
+			<label index="overrideEnableFields = 1;.description">If set, the method enableFields of the class tslib_cObj which filters out records with start/end times or hidden/fe_groups fields is not applied to the query associated with the selectorbox.
+It may be used in specific cases when you needed to retreive all the records.</label>
+
+			<label index="overrideStartingPoint = 1;.description">By default, when starting points are provided, information associated with the selector is searched in these page. This property overrides the default behavior.</label>
+
+		</languageKey>
+	</data>
+</T3locallang>

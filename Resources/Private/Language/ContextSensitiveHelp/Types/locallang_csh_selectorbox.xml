@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>CSH</type>
+		<csh_table></csh_table>
+		<description>Help for the type "Selectorbox"</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+
+			<label index="Selectorbox.description">Attributes for the type "Selectorbox"</label>
+			<label index="Selectorbox.seeAlso">sav_library_kickstarter_all:*,sav_library_kickstarter_functions:*,sav_library_kickstarter_general:*</label>
+
+			<label index="func = function_name;.description">It associates a function with the selectorbox items. The parameter function_name can be:
+. makeItemLink
+. makeExtLink
+. makeLink
+. makeUrlLink
+. makeEmailLink
+See functions for the associated parameters.</label>
+
+			<label index="separator = character or string;.description">It can be used with selector boxes associated with a MM relation to replace the default &lt; br /&gt; separator between items in showAll or showSingle views.</label>
+
+		</languageKey>
+	</data>
+</T3locallang>

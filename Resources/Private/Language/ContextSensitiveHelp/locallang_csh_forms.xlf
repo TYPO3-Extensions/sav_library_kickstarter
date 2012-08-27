@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2012-08-24T19:31:56Z" product-name="sav_library_kickstarter">
+		<header/>
+		<body>
+			<trans-unit id="LLL:EXT:sav_library_kickstarter/Resources/Private/Language/locallang.xml:kickstarter.formsSectionTitle.description" xml:space="preserve">
+				<source>This section is used to specify the settings of your form.</source>
+			</trans-unit>
+			<trans-unit id="LLL:EXT:sav_library_kickstarter/Resources/Private/Language/locallang.xml:kickstarter.formsItem.title.description" xml:space="preserve">
+				<source>Sets the name of your form.</source>
+			</trans-unit>
+			<trans-unit id="LLL:EXT:sav_library_kickstarter/Resources/Private/Language/locallang.xml:kickstarter.formsItem.listView.description" xml:space="preserve">
+				<source>Use the selector to set the &quot;List&quot; view that should be used with your form (if any).</source>
+			</trans-unit>
+			<trans-unit id="LLL:EXT:sav_library_kickstarter/Resources/Private/Language/locallang.xml:kickstarter.formsItem.singleView.description" xml:space="preserve">
+				<source>Use the selector to set the &quot;Single&quot; view that should be used with your form (if any).</source>
+			</trans-unit>
+			<trans-unit id="LLL:EXT:sav_library_kickstarter/Resources/Private/Language/locallang.xml:kickstarter.formsItem.editView.description" xml:space="preserve">
+				<source>Use the selector to set the &quot;Edit&quot; view that should be used with your form (if any).</source>
+			</trans-unit>
+			<trans-unit id="LLL:EXT:sav_library_kickstarter/Resources/Private/Language/locallang.xml:kickstarter.formsItem.specialView.description" xml:space="preserve">
+				<source>Use the selector to set the &quot;Special&quot; view that should be used with your form (if any).</source>
+			</trans-unit>
+			<trans-unit id="LLL:EXT:sav_library_kickstarter/Resources/Private/Language/locallang.xml:kickstarter.formsItem.query.description" xml:space="preserve">
+				<source>Use the selector to set the &quot;Query&quot; that should be used with your form (required).</source>
+			</trans-unit>
+			<trans-unit id="LLL:EXT:sav_library_kickstarter/Resources/Private/Language/locallang.xml:kickstarter.formsItem.userPlugin.description" xml:space="preserve">
+				<source>Select this checkbox if the plugin should behave as USER for this form, that is caching is enabled.
+By default, the plugin will behave as USER_INT (no caching) for all the forms.</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

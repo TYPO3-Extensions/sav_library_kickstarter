@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2012-08-24T18:01:41Z" product-name="sav_library_kickstarter">
+		<header/>
+		<body>
+			<trans-unit id="RadioButtons.description" xml:space="preserve">
+				<source>Attributes for the type &quot;RadioButtons&quot;</source>
+			</trans-unit>
+			<trans-unit id="RadioButtons.seeAlso" xml:space="preserve">
+				<source>sav_library_kickstarter_all:*,sav_library_kickstarter_functions:*,sav_library_kickstarter_general:*</source>
+			</trans-unit>
+			<trans-unit id="cols = integer;.description" xml:space="preserve">
+				<source>Number of columns to display.</source>
+			</trans-unit>
+			<trans-unit id="displayAsImage = 1;.description" xml:space="preserve">
+				<source>If set, the radio buttons are displayed as images instead of labels (default=0 for &quot;basic&quot; type library).</source>
+			</trans-unit>
+			<trans-unit id="default = integer;.description" xml:space="preserve">
+				<source>Default value for the radio buttons.</source>
+			</trans-unit>
+			<trans-unit id="horizontalLayout = 1;.description" xml:space="preserve">
+				<source>If set to 1, radio buttons are displayed horizontally in edit forms.</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

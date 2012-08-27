@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2012-08-24T18:00:35Z" product-name="sav_library_kickstarter">
+		<header/>
+		<body>
+			<trans-unit id="Functions.description" xml:space="preserve">
+				<source>Functions are applied to the value of the field. It can be also applied to left and right contents.
+In this case, &quot;Left&quot; or &quot;Right&quot; should be added to the function name and the optional attributes.</source>
+			</trans-unit>
+			<trans-unit id="Functions.seeAlso" xml:space="preserve">
+				<source>sav_library_kickstarter_all:*,sav_library_kickstarter_functions:*,sav_library_kickstarter_general:*</source>
+			</trans-unit>
+			<trans-unit id="func = makeDateFormat;.description" xml:space="preserve">
+				<source>This function generates a format for a unix time stamp date.
+Optional attributes can be added:
+. format = string; The string should be a format that makes sense for the php-function strftime().</source>
+			</trans-unit>
+			<trans-unit id="func = makeImage;.description" xml:space="preserve">
+				<source>This function builds an IMG tag where the field value is the name of the image file.
+Additional parameter can be used.
+. folder = string; (string will be the folder where the file should be).
+. width = integer; (width of the image in pixels).
+. height = integer; (height of the image in pixels);
+. alt = string; (string will be the &quot;alt&quot; attribute of the image).
+. fieldAlt = field_name; (the &quot;alt&quot; attribute will be the value of the fieldname for the current record).</source>
+			</trans-unit>
+			<trans-unit id="func = makeEmailLink;.description" xml:space="preserve">
+				<source>This function generates an email link associated with the field.
+Optional attributes can be added:
+. message = string; Message associated with the link.
+. fieldMessage = fieldName; Sets the attribute &quot;message&quot; with the content of the field whose name is given by fieldName.</source>
+			</trans-unit>
+			<trans-unit id="func = makeNewWindowLink;.description" xml:space="preserve">
+				<source>This function generates a hyperlink associated with the value of the field which opens a new window. Paramaters are :
+. windowUrl = string; string is the url. The marker ###special[fieldname]### from selectors can be used. This parameter is not necessary if the field is an image.
+Optional attributes can be added:
+. windowText = string; string will be added above the image. The marker ###special[fieldname]### from selectors can be used.
+. windowBodyStyle = string; string will be added as the style attribute to the body html tag. Do not forget to use \; for style attributes,
+since the semi-colon is use to split field attributes, and do not forget to end your definition by a semi-colon.
+Example: windowBodyStyle = fontweight:bold\;font-color:blue\;;
+. message = string; Message associated with the link.
+. fieldMessage = fieldName; Sets the attribute &quot;message&quot; with the content of the field whose name is given by fieldName.</source>
+			</trans-unit>
+			<trans-unit id="func = makeItemLink;.description" xml:space="preserve">
+				<source>This function generates a hyperlink associated with the value of the field. It will open the &quot;showSingle&quot; view associated with the selected item.
+Optional attributes can be added:
+. updateForm = 1; makes it possible to open an &quot;update&quot; view instead of the &quot;Show single&quot; view.
+. inputForm = 1; makes it possible to open an &quot;Input form&quot; view instead of the &quot;Show single&quot; view.
+. folderTab = string; (string is the folder name, if the extension uses serveral folders).
+. page = string; (same as folderTab but deprecated).</source>
+			</trans-unit>
+			<trans-unit id="func = makeLink;.description" xml:space="preserve">
+				<source>This function generates an internal link (typolink).
+Optional attributes can be added:
+. folder = string; The string will be the folder where the file should be).
+. target = string; The string defines the target parameter.
+. class = string; Name of the class associated with the link.
+. message = string; Message associated with the link.
+. fieldMessage = fieldName; Sets the attribute &quot;message&quot; with the content of the field whose name is given by fieldName.
+. setUid = integer; the integer defines the page uid associated with the link.
+. valueIsUid = 1; The field value is used as the uid of the page associated with the link.</source>
+			</trans-unit>
+			<trans-unit id="func = makeExtLink;.description" xml:space="preserve">
+				<source>This function generates a hyperlink associated with the value of the field. It will open the &quot;showSingle&quot; view associated with the selected item in another extension. The following attributes must be provided:
+. ext = string; (string is the extension name followedby the form name. Example &quot;myext_intranet&quot;).
+. pageId = integer; (integer is the page id where the extension is the content element).
+. contentId = integer; (integer is the content id of the extension).
+Optional attributes can be added:
+. folderTab = string; (string is the folder name, if the extension uses serveral folders).
+. page = string; (same as folderTab but deprecated).
+. setUid = this; The uid of the record to open, is given by the value of the field.
+. restrictLinkTo = ###usergroup=group_name###; the link will be displayed if the user belongs to the group_name.
+. restrictLinkTo = ###usergroup!=group_name###; the link will be displayed if the user does not belong to the group_name.</source>
+			</trans-unit>
+			<trans-unit id="func = makeUrlLink;.description" xml:space="preserve">
+				<source>This function generates a link for an external url.
+Optional attributes can be added:
+. link = string; The string will be used for the link instead of the field value.
+. fieldLink = fieldName; Sets the attribute &quot;link&quot; with the content of the field whose name is given by fieldName.
+. message = string; Message associated with the link.
+. fieldMessage = fieldName; Sets the attribute &quot;message&quot; with the content of the field whose name is given by fieldName.</source>
+			</trans-unit>
+			<trans-unit id="func = makeXmlLabel;.description" xml:space="preserve">
+				<source>This function generates the label from a xml language file. It works with the following parameter:
+. xmlLabel = string; the string is the label definition. For example, assume that the value comes from a selectorbox whose label definition is in the file locallang_db.xml in the extension &quot;my_ext&quot;. Assume also that the field is &quot;my_field&quot;. Then, to obtain the label one has to write xmlLabel = LLL:EXT:my_ext/locallang_db.xml:tx_myext.my_field.I.;</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

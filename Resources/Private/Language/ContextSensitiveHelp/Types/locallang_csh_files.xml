@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>CSH</type>
+		<csh_table></csh_table>
+		<description>Help for the type "Files"</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+
+			<label index="Files.description">Attributes for the type "Files"</label>
+			<label index="Files.seeAlso">sav_library_kickstarter_all:*,sav_library_kickstarter_functions:*,sav_library_kickstarter_general:*</label>
+
+			<label index="addIcon = 1;.description">Adds an icon in front of the hyperlink associated with the file.</label>
+
+			<label index="uploadFolder = string;.description">Sets the folder path where the file is stored. It overwrites the same attribute in the TCA.</label>
+
+			<label index="addToUploadFolder = string;.description">Adds a subpath to the UploadFolder path.</label>
+
+			<label index="addToUploadFolderFromField = field_name;.description">Adds the content of the field whose name is given by "field_name" to the uploadFolder attribute. This information is separated with an underscore.
+Example : if the field_name is "my_field" and its contents is "123", then
+AddToUploadFolderFromField = my_field; will add "_123" to the uploadFolder name.</label>
+
+			<label index="size = integer;.description">Sets the size attribute. It overwrites the same attribute in the TCA.</label>
+
+			<label index="iframe = 1;.description">Opens the image in an iframe.</label>
+
+			<label index="width = integer;.description">Sets the width of an image or of the iframe.</label>
+
+			<label index="height = integer;.description">Sets the height of an image or of the iframe.</label>
+
+			<label index="message = string;.description">If the file is not an image, a hyperlink is created with the string.</label>
+
+			<label index="fieldMessage = field_name;.description">Sets the attribute "message" with the content of the field whose name is given by field_name.</label>
+
+			<label index="alt = string;.description">Provides the HTML alt attribute for an image.</label>
+
+			<label index="fieldAlt = field_name;.description">Sets the "alt" attribute with the content of the field whose name is given by field_name.</label>
+
+			<label index="default = string;.description">Defines the default image if the content of the field is null otherwise the default image is "unknown.gif" taken in the directory sav_library/res/images.</label>
+
+			<label index="tsProperties = string;.description">It makes it possible to use the graphic possibilities of TYPO3. If set, an IMAGE cObject is generated with the given TS properties.
+Do not forget that the configuration field is ended by a semi-column, therefore if you need a semi-column in your TS write it "\;"</label>
+      
+		</languageKey>
+	</data>
+</T3locallang>

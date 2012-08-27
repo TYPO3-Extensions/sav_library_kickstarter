@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>CSH</type>
+		<csh_table></csh_table>
+		<description>Help for the type "DateTime"</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+		
+			<label index="DateTime.description">Attributes for the type "DateTime"</label>
+			<label index="DateTime.seeAlso">sav_library_kickstarter_all:*,sav_library_kickstarter_functions:*,sav_library_kickstarter_general:*</label>
+			
+			<label index="format = date_format;.description">Sets a format to display the date. The format is the same as in strftime php function, e.g. format = %d/%m/%Y;</label>
+
+			<label index="noDefault = 1;.description">Do not display the default date.</label>
+
+		</languageKey>
+	</data>
+</T3locallang>

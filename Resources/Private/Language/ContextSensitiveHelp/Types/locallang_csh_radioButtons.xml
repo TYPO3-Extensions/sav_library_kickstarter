@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>CSH</type>
+		<csh_table></csh_table>
+		<description>Help for the type "RadioButtons"</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+		
+			<label index="RadioButtons.description">Attributes for the type "RadioButtons"</label>
+			<label index="RadioButtons.seeAlso">sav_library_kickstarter_all:*,sav_library_kickstarter_functions:*,sav_library_kickstarter_general:*</label>
+			
+			<label index="cols = integer;.description">Number of columns to display.</label>
+
+			<label index="displayAsImage = 1;.description">If set, the radio buttons are displayed as images instead of labels (default=0 for "basic" type library).</label>
+
+			<label index="default = integer;.description">Default value for the radio buttons.</label>
+
+			<label index="horizontalLayout = 1;.description">If set to 1, radio buttons are displayed horizontally in edit forms.</label>
+
+		</languageKey>
+	</data>
+</T3locallang>

@@ -14,11 +14,11 @@
 <f:if condition="{field.conf_rel_table} == {custom}">
 <f:then>
 'foreign_table' => '{field.conf_custom_table_name}',
-'foreign_table_where' => '{whereClause} ORDER BY {field.conf_custom_table_name}.uid',
+'foreign_table_where' => '{whereClause} ORDER BY {sav:buildOrderByClauseForRelationTable(arguments:extension,tableName:field.conf_custom_table_name)}',
 </f:then>
 <f:else>
 'foreign_table' => '{field.conf_rel_table}',
-'foreign_table_where' => '{whereClause} ORDER BY {field.conf_rel_table}.uid',
+'foreign_table_where' => '{whereClause} ORDER BY {sav:buildOrderByClauseForRelationTable(arguments:extension,tableName:field.conf_rel_table)}',
 </f:else>
 </f:if>
 'size' => 1,

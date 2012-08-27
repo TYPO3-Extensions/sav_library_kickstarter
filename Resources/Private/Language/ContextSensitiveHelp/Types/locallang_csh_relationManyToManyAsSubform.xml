@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>CSH</type>
+		<csh_table></csh_table>
+		<description>Help for the type "RelationManyToManyAsSubform"</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+
+			<label index="RelationManyToManyAsSubform.description">Attributes for the type "Database many-to-many (n:n) relation as subform"</label>
+			<label index="RelationManyToManyAsSubform.seeAlso">sav_library_kickstarter_all:*,sav_library_kickstarter_functions:*,sav_library_kickstarter_general:*</label>
+
+			<label index="addDelete = 1;.description">A delete icon will be added in front of each item.</label>
+
+			<label index="addUpDown = 1;.description">Two buttons (up and down) will be added. They can be used to reorganize the order of the subform items.</label>
+
+			<label index="addSave = 1;.description">A save button and an anchor will be added. It simplifies the saving when several items are in the subform and the height of an item is important.</label>
+
+			<label index="maxSubItems = integer;.description">Number of items that will be displayed in the subform. All items are displayed if set to 0. If not set, the "maxitems" value in the TCA, that is the "Max number of relations" in the Kickstarter, is used.</label>
+
+			<label index="keepFieldsInSubForm = comma-separated list of fields;.description">The values of the fields (use tableName.fieldName) from the parent form will be kept in the subform. It can be used to deal with these values in the subform.
+If * is used instead of the comma-separated list of fields, all fields are kept. &lt;b&gt;Only for "basic" library type.&lt;/b&gt;</label>
+
+			<label index="cutNewButtonIfNotSaved = 1;.description">The new button of the subform will be cut if the form in which the subform takes place is not saved.</label>
+
+			<label index="labelOnTitle = 1;.description">The label will be displayed in the title of the subform in input mode.</label>
+
+			<label index="subFormTemplate = string;.description">Name of the template (e.g. subFormAlt). By default the template "subForm" is used.</label>
+
+			<label index="noFirstLast = 1;.description">First and last buttons in the browser associated with the "subFormAlt" template will not be shown.</label>
+
+		</languageKey>
+	</data>
+</T3locallang>

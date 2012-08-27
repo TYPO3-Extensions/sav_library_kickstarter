@@ -109,7 +109,21 @@ class Tx_SavLibraryKickstarter_ViewHelpers_FunctionViewHelper extends Tx_Fluid_C
       return $argument;
     }
 	}
-
+	
+	/**
+	 * Returns 0 if the arguments is empty
+	 *
+	 * @param mixed $argument The argument
+	 * @return mixed 
+	 */
+	private function setZeroIfEmpty($argument) {
+    if (empty($argument)) {
+      return '0';
+    } else {
+      return $argument;
+    }
+	}
+	
 	/**
 	 * Returns true if the arguments[index] in the argument[input] is an array of integer
 	 *

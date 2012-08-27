@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>CSH</type>
+		<csh_table></csh_table>
+		<description>Help for the type "Link"</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+
+			<label index="Link.description">Attributes for the type "Link"</label>
+			<label index="Link.seeAlso">sav_library_kickstarter_all:*,sav_library_kickstarter_functions:*,sav_library_kickstarter_general:*</label>
+			
+
+			<label index="generateRTF=1;.description">Sets the RTF generator.</label>
+
+			<label index="templateRTF=filename;.description">Defines the template to be used by the RTF generator. Field markers ###tableName.fieldName### or ###fieldName### (for aliases) can be used.</label>
+
+			<label index="saveFileRTF=filename;.description">Name under which the generated file will be saved. Field markers ###tableName.fieldName### or ###fieldName### (for aliases) can be used.</label>
+
+			<label index="tableName.fieldName=string1-&gt;string2;.description">In an rtf document, if the field marker ###tableName.fieldName### exists string1 will be replaced by string2. String1 can be NL (for the ASCII character LF).
+It may be useful when one wants to input data in a textarea and display them in one line with a given separator in the file.</label>
+
+			<label index="link = string;.description">The string will be used for the link instead of the field value.</label>
+
+			<label index="fieldLink = fieldName;.description">Sets the attribute "link" with the content of the field whose name is given by fieldName.</label>
+
+			<label index="message = string;.description">Message associated with the link.</label>
+
+			<label index="fieldMessage = fieldName;.description">Sets the attribute "message" with the content of the field whose name is given by fieldName.</label>
+
+		</languageKey>
+	</data>
+</T3locallang>

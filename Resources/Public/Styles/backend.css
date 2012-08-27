@@ -27,7 +27,7 @@ A IMG{border:none;}
 .special:hover {color:orange;}
 
 /* Header */
-#header DIV.logo{text-align:center;margin:10px 0px 20px 0px;}
+#header DIV.logo {text-align:center;margin:10px 0px 20px 0px;}
 #header DIV.logo DIV.kickstarterTitle {font-size:40px;color:orange;height:40px;}
 #header DIV.logo DIV.extensionTitle {font-size:20px;color:orange;}
 #header DIV.logo DIV.extensionTitle SPAN.debugQueryOn {color:red;}
@@ -146,7 +146,7 @@ DIV.folderTabs LI.currentTab A SPAN {background-position:0% -150px;padding-botto
 #savLibraryPlus #newTablesSection DIV.body DIV.selected {background-color:#e0e0e0;}
 #savLibraryPlus #newTablesSection DIV.body DIV.flags {width:1000px;float:left;clear:left;margin:5px 0px 0px 0px;}
 #savLibraryPlus #newTablesSection DIV.body DIV.flags DIV {float:left;}
-#savLibraryPlus #newTablesSection DIV.body DIV.flags DIV.col1 {width:170px;clear:left;}
+#savLibraryPlus #newTablesSection DIV.body DIV.flags DIV.col1 {min-width:170px;clear:left;}
 #savLibraryPlus #newTablesSection DIV.body DIV.flags DIV.col2 {width:195px;}
 #savLibraryPlus #newTablesSection DIV.body DIV.flags DIV.col2 LABEL {width:170px;}
 #savLibraryPlus #newTablesSection DIV.body DIV.flags DIV.col3 {width:135px;}
@@ -208,10 +208,15 @@ DIV.folderTabs LI.currentTab A SPAN {background-position:0% -150px;padding-botto
 #savLibrary #fieldsOverview DIV.body LI DIV.fieldControls IMG.editFieldDefinition {margin:0px 4px 0px 4px;}
 
 #savLibraryPlus #fieldsOverview {width:700px;float:left;margin:10px 5px 0px 5px;}
-#savLibraryPlus #fieldsOverview DIV.header {float:left;margin-bottom:15px;}
+#savLibraryPlus #fieldsOverview DIV.header {width:700px;float:left;margin-bottom:15px;}
 #savLibraryPlus #fieldsOverview DIV.header DIV.logo {float:left;font-size:20px;}
-#savLibraryPlus #fieldsOverview DIV.header DIV.buttons {float:left;margin-left:10px;}
-#savLibraryPlus #fieldsOverview DIV.header DIV.buttons IMG {margin-right:10px;}
+#savLibraryPlus #fieldsOverview DIV.header:first-child DIV.logo:first-child {max-width:200px;float:left;font-size:20px;}
+#savLibraryPlus #fieldsOverview DIV.header DIV.buttons {max-width:500px;float:left;margin-left:10px;}
+#savLibraryPlus #fieldsOverview DIV.header DIV.buttons INPUT.submit {float:left;margin-right:3px;}
+#savLibraryPlus #fieldsOverview DIV.header:first-child DIV.buttons INPUT.submit {width:75px;}
+#savLibraryPlus #fieldsOverview DIV.header DIV.buttons SELECT {float:left;margin-right:3px;}
+#savLibraryPlus #fieldsOverview DIV.header DIV.buttons IMG {float:left;margin-right:5px;}
+#savLibraryPlus #fieldsOverview DIV.header DIV.buttons DIV.viewSelectorbox {float:left;width:100px;margin:0px 3px 0px 3px;}
 #savLibraryPlus #fieldsOverview DIV.fields {width:700px;float:left;}
 #savLibraryPlus #fieldsOverview DIV.fields UL {clear:left;float:left;padding:0px;margin:0px;}
 #savLibraryPlus #fieldsOverview DIV.fields LI {clear:left;float:left;list-style:none;margin:0px 0px 3px 0px;}

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>CSH</type>
+		<csh_table></csh_table>
+		<description>Help for the forms</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+		
+			<label index="LLL:EXT:sav_library_kickstarter/Resources/Private/Language/locallang.xml:kickstarter.formsSectionTitle.description">This section is used to specify the settings of your form.</label>
+			
+			<label index="LLL:EXT:sav_library_kickstarter/Resources/Private/Language/locallang.xml:kickstarter.formsItem.title.description">Sets the name of your form.</label>
+		
+			<label index="LLL:EXT:sav_library_kickstarter/Resources/Private/Language/locallang.xml:kickstarter.formsItem.listView.description">Use the selector to set the "List" view that should be used with your form (if any).</label>
+					
+			<label index="LLL:EXT:sav_library_kickstarter/Resources/Private/Language/locallang.xml:kickstarter.formsItem.singleView.description">Use the selector to set the "Single" view that should be used with your form (if any).</label>
+					
+			<label index="LLL:EXT:sav_library_kickstarter/Resources/Private/Language/locallang.xml:kickstarter.formsItem.editView.description">Use the selector to set the "Edit" view that should be used with your form (if any).</label>
+				
+			<label index="LLL:EXT:sav_library_kickstarter/Resources/Private/Language/locallang.xml:kickstarter.formsItem.specialView.description">Use the selector to set the "Special" view that should be used with your form (if any).</label>
+			
+			<label index="LLL:EXT:sav_library_kickstarter/Resources/Private/Language/locallang.xml:kickstarter.formsItem.query.description">Use the selector to set the "Query" that should be used with your form (required).</label>
+			
+			<label index="LLL:EXT:sav_library_kickstarter/Resources/Private/Language/locallang.xml:kickstarter.formsItem.userPlugin.description">Select this checkbox if the plugin should behave as USER for this form, that is caching is enabled.
+By default, the plugin will behave as USER_INT (no caching) for all the forms.</label>
+
+		</languageKey>
+	</data>
+</T3locallang>

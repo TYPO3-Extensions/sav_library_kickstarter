@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2012-08-24T18:04:07Z" product-name="sav_library_kickstarter">
+		<header/>
+		<body>
+			<trans-unit id="Text.description" xml:space="preserve">
+				<source>Attributes for the type &quot;Textarea&quot;</source>
+			</trans-unit>
+			<trans-unit id="Text.seeAlso" xml:space="preserve">
+				<source>sav_library_kickstarter_all:*,sav_library_kickstarter_functions:*,sav_library_kickstarter_general:*</source>
+			</trans-unit>
+			<trans-unit id="cols = integer;.description" xml:space="preserve">
+				<source>Defines the number of cols of the textarea. This attribute overwrites the same attribute in the TCA.</source>
+			</trans-unit>
+			<trans-unit id="rows = integer;.description" xml:space="preserve">
+				<source>Defines the number of rows of the textarea. This attribute overwrites the same attribute in the TCA.</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

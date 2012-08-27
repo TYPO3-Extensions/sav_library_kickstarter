@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>CSH</type>
+		<csh_table></csh_table>
+		<description>Help for the type "RichTextEditor"</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+
+			<label index="RichTextEditor.description">Attributes for the type "Rich Text Editor"</label>
+			<label index="RichTextEditor.seeAlso">sav_library_kickstarter_all:*,sav_library_kickstarter_functions:*,sav_library_kickstarter_general:*</label>
+			
+			<label index="height = integer;.description">Defines the height of the textarea. The integer value represents the height in pixels (45 pixels are automatically added).</label>
+
+			<label index="width = integer;.description">Defines the width of the textarea. The integer value represents the width in pixels.</label>
+
+		</languageKey>
+	</data>
+</T3locallang>

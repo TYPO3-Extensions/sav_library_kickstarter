@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2012-08-24T17:59:17Z" product-name="sav_library_kickstarter">
+		<header/>
+		<body>
+			<trans-unit id="Checkbox.description" xml:space="preserve">
+				<source>Attributes for the type &quot;Checkbox&quot;</source>
+			</trans-unit>
+			<trans-unit id="Checkbox.seeAlso" xml:space="preserve">
+				<source>sav_library_kickstarter_all:*,sav_library_kickstarter_functions:*,sav_library_kickstarter_general:*</source>
+			</trans-unit>
+			<trans-unit id="checkboxSelectedImage=string;.description" xml:space="preserve">
+				<source>The string is used as a file name which is searched in the icon directory.
+It replaces the default image for a selected checkbox. &lt;b&gt;Not available in &quot;basic&quot; type library.&lt;/b&gt;</source>
+			</trans-unit>
+			<trans-unit id="checkboxNotSelectedImage=string;.description" xml:space="preserve">
+				<source>The string is used as a file name which is searched in the icon directory.
+It replaces the default image for an unselected checkbox. &lt;b&gt;Not available in &quot;basic&quot; type library.&lt;/b&gt;</source>
+			</trans-unit>
+			<trans-unit id="displayAsImage = 1;.description" xml:space="preserve">
+				<source>If set, the check box is displayed as an image instead of a label (defaut=0 &quot;basic&quot; type library).</source>
+			</trans-unit>
+			<trans-unit id="doNotDisplayIfNotChecked = 1;.description" xml:space="preserve">
+				<source>Do not display the checkbox value if it is not checked (obviously it does not apply when in edit mode).</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

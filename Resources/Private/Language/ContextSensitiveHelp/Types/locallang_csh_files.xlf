@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2012-08-24T18:00:20Z" product-name="sav_library_kickstarter">
+		<header/>
+		<body>
+			<trans-unit id="Files.description" xml:space="preserve">
+				<source>Attributes for the type &quot;Files&quot;</source>
+			</trans-unit>
+			<trans-unit id="Files.seeAlso" xml:space="preserve">
+				<source>sav_library_kickstarter_all:*,sav_library_kickstarter_functions:*,sav_library_kickstarter_general:*</source>
+			</trans-unit>
+			<trans-unit id="addIcon = 1;.description" xml:space="preserve">
+				<source>Adds an icon in front of the hyperlink associated with the file.</source>
+			</trans-unit>
+			<trans-unit id="uploadFolder = string;.description" xml:space="preserve">
+				<source>Sets the folder path where the file is stored. It overwrites the same attribute in the TCA.</source>
+			</trans-unit>
+			<trans-unit id="addToUploadFolder = string;.description" xml:space="preserve">
+				<source>Adds a subpath to the UploadFolder path.</source>
+			</trans-unit>
+			<trans-unit id="addToUploadFolderFromField = field_name;.description" xml:space="preserve">
+				<source>Adds the content of the field whose name is given by &quot;field_name&quot; to the uploadFolder attribute. This information is separated with an underscore.
+Example : if the field_name is &quot;my_field&quot; and its contents is &quot;123&quot;, then
+AddToUploadFolderFromField = my_field; will add &quot;_123&quot; to the uploadFolder name.</source>
+			</trans-unit>
+			<trans-unit id="size = integer;.description" xml:space="preserve">
+				<source>Sets the size attribute. It overwrites the same attribute in the TCA.</source>
+			</trans-unit>
+			<trans-unit id="iframe = 1;.description" xml:space="preserve">
+				<source>Opens the image in an iframe.</source>
+			</trans-unit>
+			<trans-unit id="width = integer;.description" xml:space="preserve">
+				<source>Sets the width of an image or of the iframe.</source>
+			</trans-unit>
+			<trans-unit id="height = integer;.description" xml:space="preserve">
+				<source>Sets the height of an image or of the iframe.</source>
+			</trans-unit>
+			<trans-unit id="message = string;.description" xml:space="preserve">
+				<source>If the file is not an image, a hyperlink is created with the string.</source>
+			</trans-unit>
+			<trans-unit id="fieldMessage = field_name;.description" xml:space="preserve">
+				<source>Sets the attribute &quot;message&quot; with the content of the field whose name is given by field_name.</source>
+			</trans-unit>
+			<trans-unit id="alt = string;.description" xml:space="preserve">
+				<source>Provides the HTML alt attribute for an image.</source>
+			</trans-unit>
+			<trans-unit id="fieldAlt = field_name;.description" xml:space="preserve">
+				<source>Sets the &quot;alt&quot; attribute with the content of the field whose name is given by field_name.</source>
+			</trans-unit>
+			<trans-unit id="default = string;.description" xml:space="preserve">
+				<source>Defines the default image if the content of the field is null otherwise the default image is &quot;unknown.gif&quot; taken in the directory sav_library/res/images.</source>
+			</trans-unit>
+			<trans-unit id="tsProperties = string;.description" xml:space="preserve">
+				<source>It makes it possible to use the graphic possibilities of TYPO3. If set, an IMAGE cObject is generated with the given TS properties.
+Do not forget that the configuration field is ended by a semi-column, therefore if you need a semi-column in your TS write it &quot;\;&quot;</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

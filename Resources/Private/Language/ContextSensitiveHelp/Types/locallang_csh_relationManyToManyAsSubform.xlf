@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2012-08-24T18:02:18Z" product-name="sav_library_kickstarter">
+		<header/>
+		<body>
+			<trans-unit id="RelationManyToManyAsSubform.description" xml:space="preserve">
+				<source>Attributes for the type &quot;Database many-to-many (n:n) relation as subform&quot;</source>
+			</trans-unit>
+			<trans-unit id="RelationManyToManyAsSubform.seeAlso" xml:space="preserve">
+				<source>sav_library_kickstarter_all:*,sav_library_kickstarter_functions:*,sav_library_kickstarter_general:*</source>
+			</trans-unit>
+			<trans-unit id="addDelete = 1;.description" xml:space="preserve">
+				<source>A delete icon will be added in front of each item.</source>
+			</trans-unit>
+			<trans-unit id="addUpDown = 1;.description" xml:space="preserve">
+				<source>Two buttons (up and down) will be added. They can be used to reorganize the order of the subform items.</source>
+			</trans-unit>
+			<trans-unit id="addSave = 1;.description" xml:space="preserve">
+				<source>A save button and an anchor will be added. It simplifies the saving when several items are in the subform and the height of an item is important.</source>
+			</trans-unit>
+			<trans-unit id="maxSubItems = integer;.description" xml:space="preserve">
+				<source>Number of items that will be displayed in the subform. All items are displayed if set to 0. If not set, the &quot;maxitems&quot; value in the TCA, that is the &quot;Max number of relations&quot; in the Kickstarter, is used.</source>
+			</trans-unit>
+			<trans-unit id="keepFieldsInSubForm = comma-separated list of fields;.description" xml:space="preserve">
+				<source>The values of the fields (use tableName.fieldName) from the parent form will be kept in the subform. It can be used to deal with these values in the subform.
+If * is used instead of the comma-separated list of fields, all fields are kept. &lt;b&gt;Only for &quot;basic&quot; library type.&lt;/b&gt;</source>
+			</trans-unit>
+			<trans-unit id="cutNewButtonIfNotSaved = 1;.description" xml:space="preserve">
+				<source>The new button of the subform will be cut if the form in which the subform takes place is not saved.</source>
+			</trans-unit>
+			<trans-unit id="labelOnTitle = 1;.description" xml:space="preserve">
+				<source>The label will be displayed in the title of the subform in input mode.</source>
+			</trans-unit>
+			<trans-unit id="subFormTemplate = string;.description" xml:space="preserve">
+				<source>Name of the template (e.g. subFormAlt). By default the template &quot;subForm&quot; is used.</source>
+			</trans-unit>
+			<trans-unit id="noFirstLast = 1;.description" xml:space="preserve">
+				<source>First and last buttons in the browser associated with the &quot;subFormAlt&quot; template will not be shown.</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

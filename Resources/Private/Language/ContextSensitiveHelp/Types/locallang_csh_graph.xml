@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>CSH</type>
+		<csh_table></csh_table>
+		<description>Help for the type "Graph"</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+
+			<label index="Graph.description">Attributes for the type "Graph"</label>
+			<label index="Graph.seeAlso">sav_library_kickstarter_all:*,sav_library_kickstarter_functions:*,sav_library_kickstarter_general:*</label>
+			
+
+			<label index="graphTemplate = string;.description">File name of the XML template from the site root.</label>
+
+			<label index="markers = string;.description">Comma-separated list of definitions.
+Example: "marker#begin = ###beginPeriod###" means that the "marker" whose id is "begin" in the template will be replaced by the marker "###beginPeriod###", that is by the alias "beginPeriod".</label>
+
+		</languageKey>
+	</data>
+</T3locallang>

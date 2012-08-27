@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>CSH</type>
+		<csh_table></csh_table>
+		<description>Help for the views</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+		
+			<label index="LLL:EXT:sav_library_kickstarter/Resources/Private/Language/locallang.xml:kickstarter.viewsSectionTitle.description">This section is used to specify the views associated with your extension.</label>
+			
+			<label index="LLL:EXT:sav_library_kickstarter/Resources/Private/Language/locallang.xml:kickstarter.viewsItem.title.description">Set the name of your view.</label>
+			
+			<label index="LLL:EXT:sav_library_kickstarter/Resources/Private/Language/locallang.xml:kickstarter.viewsItem.type.description">Use the selector to set the type of the wiew. It is either "List", "Single", "Edit" or "Update".</label>
+
+			<label index="LLL:EXT:sav_library_kickstarter/Resources/Private/Language/locallang.xml:kickstarter.viewsItem.viewTitleBar.description">The content will be displayed as the title bar of the view. if markers ###fieldname### are used, they will be replaced by the label associated with the fieldname.
+Localization by means of the file locallang.xml can be used with $$$tag$$$ which will be replaced by its value according to the configuration language.
+The marker $$$label[fieldName]$$$ will be replaced by the fieldName title according to the localization.</label>
+
+			<label index="LLL:EXT:sav_library_kickstarter/Resources/Private/Language/locallang.xml:kickstarter.viewsItem.itemTemplate.description">Template for the "List", "Update" or "Print" views. The fields to include are defined using markers ###fieldname###.
+markers ###tablename.fieldname### can also be used. In this case, no processing is performed, the marker is replaced by the value in the selected row.
+
+In the case of a view "Update" or "Print", markers ###field[field_name, label]### generate the display of the label (localization can be used with $$$tag$$$ or $$$label[fieldName]$$$), the current value of field "field_name" and an input element for update.
+markers ###newfield[field_name, label]### generate the display of the label and an input element for the field "field_name". In both cases, label and field will be wrapped with default CSS classes
+. updateCol1 to updateCol4 for an "Update view" (respectively the label, the previous value, the input value, the checkbox),
+. printCol1 and printCol2 for a "Print view" (respectively the label, the field).
+If you do not want this wrapping, just use $$$label[fieldName]$$$ for the label and ###field[fieldName]### for the field. </label>
+
+			<label index="LLL:EXT:sav_library_kickstarter/Resources/Private/Language/locallang.xml:kickstarter.viewsItem.folders.description">This field is used to define folders associated with the "Single" and "Edit" views. Click on the icon to add a folder and fill its label.
+If the label is defined in the file locallang.xml, it will be translated to the selected language.
+You can delete or reorganize the folder order using delete, up and down icons.</label>
+
+	<label index="LLL:EXT:sav_library_kickstarter/Resources/Private/Language/locallang.xml:kickstarter.viewsItem.folders.configuration.description">Folder parameters can be added. Each parameter should be under the format:
+parameter=value;
+
+. editAdminPlus = 1;
+Make the folder editable in an input form, if the user has the "Admin+" right. To be an "Admin" user, the user's TSConfig must contain a line as follows:
+extKey_Admin=value 
+where extKey is the extension key and value is one of the possible value of the "Input Admin Field" defined in the flexform associated with the extension.
+The user becomes an "Admin+" user, if his TSConfig contains a line as follows:
+extKey_Admin=value+
+
+. cutIf = fiedname=value;
+The folder is cut if the field is equal to the given value.
+
+. cutIf = ###group=group_name###;
+The folder is cut if the group name is a valid group for the current record. It checks the usergroup field in the local table if any. 
+
+. cutIf = ###group!=group_name###;
+The folder is cut if the group name is not a valid group for the current record. It checks the usergroup field in the local table if any.
+
+. cutIf = ###usergroup=group_name###;
+The folder is cut if the group name is a valid group for the current user. 
+
+. cutIf = ###usergroup!=group_name###;
+The folder is cut if the group name is not a valid group for the current user.
+
+Instead of using cufIf attributes, you can also use showIf attributes (only with "plus" library type). In such as case, the condition tells when to show the folder.</label>
+
+			<label index="LLL:EXT:sav_library_kickstarter/Resources/Private/Language/locallang.xml:kickstarter.viewsItem.addPrintIcon.description">If set, a print icon is added to the view.</label>
+
+		</languageKey>
+	</data>
+</T3locallang>
