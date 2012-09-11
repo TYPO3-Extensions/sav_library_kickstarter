@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2012-08-24T20:19:42Z" product-name="sav_library_kickstarter">
+	<file source-language="en" datatype="plaintext" original="messages" date="2012-09-10T14:12:20Z" product-name="sav_library_kickstarter">
 		<header/>
 		<body>
 			<trans-unit id="LLL:EXT:sav_library_kickstarter/Resources/Private/Language/locallang.xml:kickstarter.viewsSectionTitle.description" xml:space="preserve">
@@ -13,16 +13,19 @@
 				<source>Use the selector to set the type of the wiew. It is either &quot;List&quot;, &quot;Single&quot;, &quot;Edit&quot; or &quot;Update&quot;.</source>
 			</trans-unit>
 			<trans-unit id="LLL:EXT:sav_library_kickstarter/Resources/Private/Language/locallang.xml:kickstarter.viewsItem.viewTitleBar.description" xml:space="preserve">
-				<source>The content will be displayed as the title bar of the view. if markers ###fieldname### are used, they will be replaced by the label associated with the fieldname.
+				<source>The content will be displayed as the title bar of the view.
+If markers ###fieldName### are used, they will be replaced by the label associated with the fieldname for a list view. For single or edit views, they will be replaced by the value in the main table by default. 
+. Use ###tableName.fieldName### if you want to access to a field which is in another table.
+. By default the raw content of the table is displayed. Use ###render[fieldName]### or ###render[tableName.fieldName]### when rendering is required like for dates or selector boxes.
 Localization by means of the file locallang.xml can be used with $$$tag$$$ which will be replaced by its value according to the configuration language.
-The marker $$$label[fieldName]$$$ will be replaced by the fieldName title according to the localization.</source>
+The marker $$$label[fieldName]$$$ will be replaced by the fieldName title according to the localization. By default, the main table is assumed. Use $$$label[tableName.fieldName]$$$ if necessary.</source>
 			</trans-unit>
 			<trans-unit id="LLL:EXT:sav_library_kickstarter/Resources/Private/Language/locallang.xml:kickstarter.viewsItem.itemTemplate.description" xml:space="preserve">
-				<source>Template for the &quot;List&quot;, &quot;Update&quot; or &quot;Print&quot; views. The fields to include are defined using markers ###fieldname###.
+				<source>Template for the &quot;List&quot;, &quot;Update&quot; or &quot;Print&quot; views. The fields to include are defined using markers ###fieldName###.
 markers ###tablename.fieldname### can also be used. In this case, no processing is performed, the marker is replaced by the value in the selected row.
 
-In the case of a view &quot;Update&quot; or &quot;Print&quot;, markers ###field[field_name, label]### generate the display of the label (localization can be used with $$$tag$$$ or $$$label[fieldName]$$$), the current value of field &quot;field_name&quot; and an input element for update.
-markers ###newfield[field_name, label]### generate the display of the label and an input element for the field &quot;field_name&quot;. In both cases, label and field will be wrapped with default CSS classes
+In the case of a view &quot;Update&quot; or &quot;Print&quot;, markers ###field[fieldName, label]### generate the display of the label (localization can be used with $$$tag$$$ or $$$label[fieldName]$$$), the current value of field &quot;fieldName&quot; and an input element for update.
+markers ###newfield[fieldName, label]### generate the display of the label and an input element for the field &quot;fieldName&quot;. In both cases, label and field will be wrapped with default CSS classes
 . updateCol1 to updateCol4 for an &quot;Update view&quot; (respectively the label, the previous value, the input value, the checkbox),
 . printCol1 and printCol2 for a &quot;Print view&quot; (respectively the label, the field).
 If you do not want this wrapping, just use $$$label[fieldName]$$$ for the label and ###field[fieldName]### for the field. </source>

@@ -27,7 +27,7 @@
 </f:if>
 </f:alias>
 'max_size' => $GLOBALS['TYPO3_CONF_VARS']['BE']['maxFileSize'],
-'uploadfolder' => 'uploads/tx_{sav:function(name:"removeUnderscore", arguments:"{extensionKey}")}',
+'uploadfolder' => 'uploads/tx_{sav:function(name:"removeUnderscore", arguments:"{extension.general.1.extensionKey}")}',
 'size' => {f:if(condition:'{field.conf_files_selsize}',then:'{field.conf_files_selsize}',else:'1')},
 'minitems' => 0,
 'maxitems' => {f:if(condition:'{field.conf_files}',then:'{field.conf_files}',else:'1')},

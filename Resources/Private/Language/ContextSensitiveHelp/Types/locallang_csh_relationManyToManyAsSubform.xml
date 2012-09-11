@@ -17,7 +17,9 @@
 
 			<label index="addSave = 1;.description">A save button and an anchor will be added. It simplifies the saving when several items are in the subform and the height of an item is important.</label>
 
-			<label index="maxSubItems = integer;.description">Number of items that will be displayed in the subform. All items are displayed if set to 0. If not set, the "maxitems" value in the TCA, that is the "Max number of relations" in the Kickstarter, is used.</label>
+			<label index="maxSubItems = integer;.description">Number of items that will be displayed in the subform. All items are displayed if set to 0. &lt;b&gt;Only for "basic" library type.&lt;/b&gt;</label>
+
+			<label index="maxSubformItems = integer;.description">Number of items that will be displayed in the subform. All items are displayed if set to 0. &lt;b&gt;Use maxSubformItems for "plus" library type.&lt;/b&gt;</label>
 
 			<label index="keepFieldsInSubForm = comma-separated list of fields;.description">The values of the fields (use tableName.fieldName) from the parent form will be kept in the subform. It can be used to deal with these values in the subform.
 If * is used instead of the comma-separated list of fields, all fields are kept. &lt;b&gt;Only for "basic" library type.&lt;/b&gt;</label>
@@ -26,9 +28,11 @@ If * is used instead of the comma-separated list of fields, all fields are kept.
 
 			<label index="labelOnTitle = 1;.description">The label will be displayed in the title of the subform in input mode.</label>
 
-			<label index="subFormTemplate = string;.description">Name of the template (e.g. subFormAlt). By default the template "subForm" is used.</label>
+			<label index="noFirstLast = 1;.description">First and last buttons in the browser associated with the subform will not be shown.</label>
 
-			<label index="noFirstLast = 1;.description">First and last buttons in the browser associated with the "subFormAlt" template will not be shown.</label>
+			<label index="subFormTemplate = string;.description">Name of the template (e.g. subFormAlt). By default the template "subForm" is used. &lt;b&gt;Only for "basic" library type.&lt;/b&gt;</label>
+
+			<label index="subformTitle = string;.description">If set, the string will be displayed in the title bar of the subform. Localization tags and markers can be used. &lt;b&gt;Only for "plus" library type.&lt;/b&gt;</label>
 
 		</languageKey>
 	</data>

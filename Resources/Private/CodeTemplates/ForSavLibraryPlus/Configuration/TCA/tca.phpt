@@ -117,7 +117,7 @@ $TCA['{model}'] = array (
 			'exclude' => 1,
 			'label'  => 'LLL:EXT:{extension.general.1.extensionKey}/Resources/Private/Language/locallang_db.xml:{model}.{field.fieldname}',
 			'config' => array (
-				<sav:indent count="4"><sav:render partial="../CodeTemplates/ForSavLibraryPlus/Partials/TCA/{field.type}.phpt" arguments="{field:field,model:model,extensionKey:extension.general.1.extensionKey,extension:extension}" /></sav:indent>
+				<sav:indent count="4"><sav:render partial="../CodeTemplates/ForSavLibraryPlus/Partials/TCA/{field.type}.phpt" arguments="{field:field,model:model,extension:extension}" /></sav:indent>
 			)
 		),
 		</sav:removeIfContainsDoNotCreate>

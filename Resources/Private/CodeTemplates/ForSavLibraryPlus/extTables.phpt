@@ -77,7 +77,7 @@ $tempColumns = array (
 		'exclude' => 1,
 		'label'  => 'LLL:EXT:{extension.general.1.extensionKey}/Resources/Private/Language/locallang_db.xml:{model}.{sav:buildTableName(shortName:field.fieldname, extensionKey:extension.general.1.extensionKey)}',
 		'config' => array (
-			<sav:indent count="4"><sav:render partial="../CodeTemplates/ForSavLibrary/Partials/TCA/{field.type}.phpt" arguments="{field:field,model:'{model}_{sav:buildTableName(shortName:0, extensionKey:extension.general.1.extensionKey)}',extensionKey:extension.general.1.extensionKey}" /></sav:indent>
+			<sav:indent count="4"><sav:render partial="../CodeTemplates/ForSavLibrary/Partials/TCA/{field.type}.phpt" arguments="{field:field,model:'{model}_{sav:buildTableName(shortName:0, extensionKey:extension.general.1.extensionKey)}',extension:extension}" /></sav:indent>
 		)
 	),
 	</sav:removeIfContainsDoNotCreate>

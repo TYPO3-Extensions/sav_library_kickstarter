@@ -13,6 +13,8 @@
 
 			<label index="addIcon = 1;.description">Adds an icon in front of the hyperlink associated with the file.</label>
 
+			<label index="addLinkInEditMode = 1;.description">A hyperlink to the file will be added in the edit mode. &lt;b&gt;Only for "plus" library type.&lt;/b&gt;</label>
+
 			<label index="uploadFolder = string;.description">Sets the folder path where the file is stored. It overwrites the same attribute in the TCA.</label>
 
 			<label index="addToUploadFolder = string;.description">Adds a subpath to the UploadFolder path.</label>

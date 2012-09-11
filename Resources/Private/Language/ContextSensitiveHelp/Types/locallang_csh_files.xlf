@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2012-08-24T18:00:20Z" product-name="sav_library_kickstarter">
+	<file source-language="en" datatype="plaintext" original="messages" date="2012-09-10T14:11:38Z" product-name="sav_library_kickstarter">
 		<header/>
 		<body>
 			<trans-unit id="Files.description" xml:space="preserve">
@@ -11,6 +11,9 @@
 			</trans-unit>
 			<trans-unit id="addIcon = 1;.description" xml:space="preserve">
 				<source>Adds an icon in front of the hyperlink associated with the file.</source>
+			</trans-unit>
+			<trans-unit id="addLinkInEditMode = 1;.description" xml:space="preserve">
+				<source>A hyperlink to the file will be added in the edit mode. &lt;b&gt;Only for &quot;plus&quot; library type.&lt;/b&gt;</source>
 			</trans-unit>
 			<trans-unit id="uploadFolder = string;.description" xml:space="preserve">
 				<source>Sets the folder path where the file is stored. It overwrites the same attribute in the TCA.</source>

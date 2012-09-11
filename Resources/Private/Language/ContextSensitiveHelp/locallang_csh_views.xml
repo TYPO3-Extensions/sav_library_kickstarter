@@ -14,15 +14,18 @@
 			
 			<label index="LLL:EXT:sav_library_kickstarter/Resources/Private/Language/locallang.xml:kickstarter.viewsItem.type.description">Use the selector to set the type of the wiew. It is either "List", "Single", "Edit" or "Update".</label>
 
-			<label index="LLL:EXT:sav_library_kickstarter/Resources/Private/Language/locallang.xml:kickstarter.viewsItem.viewTitleBar.description">The content will be displayed as the title bar of the view. if markers ###fieldname### are used, they will be replaced by the label associated with the fieldname.
+			<label index="LLL:EXT:sav_library_kickstarter/Resources/Private/Language/locallang.xml:kickstarter.viewsItem.viewTitleBar.description">The content will be displayed as the title bar of the view.
+If markers ###fieldName### are used, they will be replaced by the label associated with the fieldname for a list view. For single or edit views, they will be replaced by the value in the main table by default. 
+. Use ###tableName.fieldName### if you want to access to a field which is in another table.
+. By default the raw content of the table is displayed. Use ###render[fieldName]### or ###render[tableName.fieldName]### when rendering is required like for dates or selector boxes.
 Localization by means of the file locallang.xml can be used with $$$tag$$$ which will be replaced by its value according to the configuration language.
-The marker $$$label[fieldName]$$$ will be replaced by the fieldName title according to the localization.</label>
+The marker $$$label[fieldName]$$$ will be replaced by the fieldName title according to the localization. By default, the main table is assumed. Use $$$label[tableName.fieldName]$$$ if necessary.</label>
 
-			<label index="LLL:EXT:sav_library_kickstarter/Resources/Private/Language/locallang.xml:kickstarter.viewsItem.itemTemplate.description">Template for the "List", "Update" or "Print" views. The fields to include are defined using markers ###fieldname###.
+			<label index="LLL:EXT:sav_library_kickstarter/Resources/Private/Language/locallang.xml:kickstarter.viewsItem.itemTemplate.description">Template for the "List", "Update" or "Print" views. The fields to include are defined using markers ###fieldName###.
 markers ###tablename.fieldname### can also be used. In this case, no processing is performed, the marker is replaced by the value in the selected row.
 
-In the case of a view "Update" or "Print", markers ###field[field_name, label]### generate the display of the label (localization can be used with $$$tag$$$ or $$$label[fieldName]$$$), the current value of field "field_name" and an input element for update.
-markers ###newfield[field_name, label]### generate the display of the label and an input element for the field "field_name". In both cases, label and field will be wrapped with default CSS classes
+In the case of a view "Update" or "Print", markers ###field[fieldName, label]### generate the display of the label (localization can be used with $$$tag$$$ or $$$label[fieldName]$$$), the current value of field "fieldName" and an input element for update.
+markers ###newfield[fieldName, label]### generate the display of the label and an input element for the field "fieldName". In both cases, label and field will be wrapped with default CSS classes
 . updateCol1 to updateCol4 for an "Update view" (respectively the label, the previous value, the input value, the checkbox),
 . printCol1 and printCol2 for a "Print view" (respectively the label, the field).
 If you do not want this wrapping, just use $$$label[fieldName]$$$ for the label and ###field[fieldName]### for the field. </label>
