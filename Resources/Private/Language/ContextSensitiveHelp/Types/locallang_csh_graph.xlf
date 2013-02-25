@@ -1,18 +1,27 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2012-08-24T18:01:02Z" product-name="sav_library_kickstarter">
+	<file source-language="en" datatype="plaintext" original="messages" date="2013-02-25T13:20:24Z" product-name="sav_library_kickstarter">
 		<header/>
 		<body>
-			<trans-unit id="Graph.description" xml:space="preserve">
-				<source>Attributes for the type &quot;Graph&quot;</source>
+			<trans-unit id=".alttitle" xml:space="preserve">
+				<source>SAV Library Kickstarter &gt; Types &gt; Graph</source>
 			</trans-unit>
-			<trans-unit id="Graph.seeAlso" xml:space="preserve">
-				<source>sav_library_kickstarter_all:*,sav_library_kickstarter_functions:*,sav_library_kickstarter_general:*</source>
+			<trans-unit id=".description" xml:space="preserve">
+				<source>Attributes for the type Graph</source>
 			</trans-unit>
-			<trans-unit id="graphTemplate = string;.description" xml:space="preserve">
+			<trans-unit id=".seeAlso" xml:space="preserve">
+				<source>xEXT_sav_library_kickstarter_all:*,xEXT_sav_library_kickstarter_functions:*,xEXT_sav_library_kickstarter_general:*</source>
+			</trans-unit>
+			<trans-unit id="graphTemplate.alttitle" xml:space="preserve">
+				<source>graphTemplate = string;</source>
+			</trans-unit>
+			<trans-unit id="graphTemplate.description" xml:space="preserve">
 				<source>File name of the XML template from the site root.</source>
 			</trans-unit>
-			<trans-unit id="markers = string;.description" xml:space="preserve">
+			<trans-unit id="markers.alttitle" xml:space="preserve">
+				<source>markers = string;</source>
+			</trans-unit>
+			<trans-unit id="markers.description" xml:space="preserve">
 				<source>Comma-separated list of definitions.
 Example: &quot;marker#begin = ###beginPeriod###&quot; means that the &quot;marker&quot; whose id is &quot;begin&quot; in the template will be replaced by the marker &quot;###beginPeriod###&quot;, that is by the alias &quot;beginPeriod&quot;.</source>
 			</trans-unit>

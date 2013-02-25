@@ -1,18 +1,27 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2012-08-24T18:00:04Z" product-name="sav_library_kickstarter">
+	<file source-language="en" datatype="plaintext" original="messages" date="2013-02-25T13:20:00Z" product-name="sav_library_kickstarter">
 		<header/>
 		<body>
-			<trans-unit id="DateTime.description" xml:space="preserve">
-				<source>Attributes for the type &quot;DateTime&quot;</source>
+			<trans-unit id=".alttitle" xml:space="preserve">
+				<source>SAV Library Kickstarter &gt; Types &gt; DateTime</source>
 			</trans-unit>
-			<trans-unit id="DateTime.seeAlso" xml:space="preserve">
-				<source>sav_library_kickstarter_all:*,sav_library_kickstarter_functions:*,sav_library_kickstarter_general:*</source>
+			<trans-unit id=".description" xml:space="preserve">
+				<source>Attributes for the type DateTime</source>
 			</trans-unit>
-			<trans-unit id="format = date_format;.description" xml:space="preserve">
+			<trans-unit id=".seeAlso" xml:space="preserve">
+				<source>xEXT_sav_library_kickstarter_all:*,xEXT_sav_library_kickstarter_functions:*,xEXT_sav_library_kickstarter_general:*</source>
+			</trans-unit>
+			<trans-unit id="format.alttitle" xml:space="preserve">
+				<source>format = date_format;</source>
+			</trans-unit>
+			<trans-unit id="format.description" xml:space="preserve">
 				<source>Sets a format to display the date. The format is the same as in strftime php function, e.g. format = %d/%m/%Y;</source>
 			</trans-unit>
-			<trans-unit id="noDefault = 1;.description" xml:space="preserve">
+			<trans-unit id="noDefault.alttitle" xml:space="preserve">
+				<source>noDefault = 1;</source>
+			</trans-unit>
+			<trans-unit id="noDefault.description" xml:space="preserve">
 				<source>Do not display the default date.</source>
 			</trans-unit>
 		</body>

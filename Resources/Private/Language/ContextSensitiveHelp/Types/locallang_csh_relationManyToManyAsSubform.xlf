@@ -1,46 +1,82 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2012-09-10T14:11:59Z" product-name="sav_library_kickstarter">
+	<file source-language="en" datatype="plaintext" original="messages" date="2013-02-25T13:21:10Z" product-name="sav_library_kickstarter">
 		<header/>
 		<body>
-			<trans-unit id="RelationManyToManyAsSubform.description" xml:space="preserve">
+			<trans-unit id=".alttitle" xml:space="preserve">
+				<source>SAV Library Kickstarter &gt; Types &gt; Relation n-n as subform</source>
+			</trans-unit>
+			<trans-unit id=".description" xml:space="preserve">
 				<source>Attributes for the type &quot;Database many-to-many (n:n) relation as subform&quot;</source>
 			</trans-unit>
-			<trans-unit id="RelationManyToManyAsSubform.seeAlso" xml:space="preserve">
-				<source>sav_library_kickstarter_all:*,sav_library_kickstarter_functions:*,sav_library_kickstarter_general:*</source>
+			<trans-unit id=".seeAlso" xml:space="preserve">
+				<source>xEXT_sav_library_kickstarter_all:*,xEXT_sav_library_kickstarter_functions:*,xEXT_sav_library_kickstarter_general:*</source>
 			</trans-unit>
-			<trans-unit id="addDelete = 1;.description" xml:space="preserve">
+			<trans-unit id="addDelete.alttitle" xml:space="preserve">
+				<source>addDelete = 1;</source>
+			</trans-unit>
+			<trans-unit id="addDelete.description" xml:space="preserve">
 				<source>A delete icon will be added in front of each item.</source>
 			</trans-unit>
-			<trans-unit id="addUpDown = 1;.description" xml:space="preserve">
+			<trans-unit id="addUpDown.alttitle" xml:space="preserve">
+				<source>addUpDown = 1;</source>
+			</trans-unit>
+			<trans-unit id="addUpDown.description" xml:space="preserve">
 				<source>Two buttons (up and down) will be added. They can be used to reorganize the order of the subform items.</source>
 			</trans-unit>
-			<trans-unit id="addSave = 1;.description" xml:space="preserve">
+			<trans-unit id="addSave.alttitle" xml:space="preserve">
+				<source>addSave = 1;</source>
+			</trans-unit>
+			<trans-unit id="addSave.description" xml:space="preserve">
 				<source>A save button and an anchor will be added. It simplifies the saving when several items are in the subform and the height of an item is important.</source>
 			</trans-unit>
-			<trans-unit id="maxSubItems = integer;.description" xml:space="preserve">
+			<trans-unit id="maxSubItems.alttitle" xml:space="preserve">
+				<source>maxSubItems = integer;</source>
+			</trans-unit>
+			<trans-unit id="maxSubItems.description" xml:space="preserve">
 				<source>Number of items that will be displayed in the subform. All items are displayed if set to 0. &lt;b&gt;Only for &quot;basic&quot; library type.&lt;/b&gt;</source>
 			</trans-unit>
-			<trans-unit id="maxSubformItems = integer;.description" xml:space="preserve">
-				<source>Number of items that will be displayed in the subform. All items are displayed if set to 0. &lt;b&gt;Use maxSubformItems for "plus" library type.&lt;/b&gt;</source>
+			<trans-unit id="maxSubformItems.alttitle" xml:space="preserve">
+				<source>maxSubformItems = integer;</source>
 			</trans-unit>
-			<trans-unit id="keepFieldsInSubForm = comma-separated list of fields;.description" xml:space="preserve">
+			<trans-unit id="maxSubformItems.description" xml:space="preserve">
+				<source>Number of items that will be displayed in the subform. All items are displayed if set to 0. &lt;b&gt;Use maxSubformItems for &quot;plus&quot; library type.&lt;/b&gt;</source>
+			</trans-unit>
+			<trans-unit id="keepFieldsInSubForm.alttitle" xml:space="preserve">
+				<source>keepFieldsInSubForm = comma-separated list of fields;</source>
+			</trans-unit>
+			<trans-unit id="keepFieldsInSubForm.description" xml:space="preserve">
 				<source>The values of the fields (use tableName.fieldName) from the parent form will be kept in the subform. It can be used to deal with these values in the subform.
 If * is used instead of the comma-separated list of fields, all fields are kept. &lt;b&gt;Only for &quot;basic&quot; library type.&lt;/b&gt;</source>
 			</trans-unit>
-			<trans-unit id="cutNewButtonIfNotSaved = 1;.description" xml:space="preserve">
+			<trans-unit id="cutNewButtonIfNotSaved.alttitle" xml:space="preserve">
+				<source>cutNewButtonIfNotSaved = 1;</source>
+			</trans-unit>
+			<trans-unit id="cutNewButtonIfNotSaved.description" xml:space="preserve">
 				<source>The new button of the subform will be cut if the form in which the subform takes place is not saved.</source>
 			</trans-unit>
-			<trans-unit id="labelOnTitle = 1;.description" xml:space="preserve">
+			<trans-unit id="labelOnTitle.alttitle" xml:space="preserve">
+				<source>labelOnTitle = 1;</source>
+			</trans-unit>
+			<trans-unit id="labelOnTitle.description" xml:space="preserve">
 				<source>The label will be displayed in the title of the subform in input mode.</source>
 			</trans-unit>
-			<trans-unit id="noFirstLast = 1;.description" xml:space="preserve">
+			<trans-unit id="noFirstLast.alttitle" xml:space="preserve">
+				<source>noFirstLast = 1;</source>
+			</trans-unit>
+			<trans-unit id="noFirstLast.description" xml:space="preserve">
 				<source>First and last buttons in the browser associated with the subform will not be shown.</source>
 			</trans-unit>
-			<trans-unit id="subFormTemplate = string;.description" xml:space="preserve">
+			<trans-unit id="subFormTemplate.alttitle" xml:space="preserve">
+				<source>subFormTemplate = string;</source>
+			</trans-unit>
+			<trans-unit id="subFormTemplate.description" xml:space="preserve">
 				<source>Name of the template (e.g. subFormAlt). By default the template &quot;subForm&quot; is used. &lt;b&gt;Only for &quot;basic&quot; library type.&lt;/b&gt;</source>
 			</trans-unit>
-			<trans-unit id="subformTitle = string;.description" xml:space="preserve">
+			<trans-unit id="subformTitle.alttitle" xml:space="preserve">
+				<source>subformTitle = string;</source>
+			</trans-unit>
+			<trans-unit id="subformTitle.description" xml:space="preserve">
 				<source>If set, the string will be displayed in the title bar of the subform. Localization tags and markers can be used. &lt;b&gt;Only for &quot;plus&quot; library type.&lt;/b&gt;</source>
 			</trans-unit>
 		</body>

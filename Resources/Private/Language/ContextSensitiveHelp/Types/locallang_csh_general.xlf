@@ -1,40 +1,70 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2012-08-24T22:18:23Z" product-name="sav_library_kickstarter">
+	<file source-language="en" datatype="plaintext" original="messages" date="2013-02-25T13:20:18Z" product-name="sav_library_kickstarter">
 		<header/>
 		<body>
-			<trans-unit id="General.description" xml:space="preserve">
+			<trans-unit id=".alttitle" xml:space="preserve">
+				<source>SAV Library Kickstarter &gt; Types &gt; General attributes</source>
+			</trans-unit>
+			<trans-unit id=".description" xml:space="preserve">
 				<source>General Attributes</source>
 			</trans-unit>
-			<trans-unit id="General.seeAlso" xml:space="preserve">
-				<source>sav_library_kickstarter_all:*,sav_library_kickstarter_functions:*,sav_library_kickstarter_general:*</source>
+			<trans-unit id=".seeAlso" xml:space="preserve">
+				<source>xEXT_sav_library_kickstarter_all:*,xEXT_sav_library_kickstarter_functions:*,xEXT_sav_library_kickstarter_general:*</source>
 			</trans-unit>
-			<trans-unit id="addEdit = 1;.description" xml:space="preserve">
+			<trans-unit id="addEdit.alttitle" xml:space="preserve">
+				<source>addEdit = 1;</source>
+			</trans-unit>
+			<trans-unit id="addEdit.description" xml:space="preserve">
 				<source>When the field is used in an &quot;Update form&quot; view, it will add an input element for update that can be used with the marker ###field_name_Edit### where &quot;field_name&quot; is the name of the field.
 See also the help for Form views (showAllItemTemplate) to see how to use markers ###field[field_name, label]###.</source>
 			</trans-unit>
-			<trans-unit id="addEditIfNull = 1;.description" xml:space="preserve">
+			<trans-unit id="addEditIfNull.alttitle" xml:space="preserve">
+				<source>addEditIfNull = 1;</source>
+			</trans-unit>
+			<trans-unit id="addEditIfNull.description" xml:space="preserve">
 				<source>Same as addEdit but the element will be added only if the field is null.</source>
 			</trans-unit>
-			<trans-unit id="addEditIfAdmin = 1;.description" xml:space="preserve">
+			<trans-unit id="addEditIfAdmin.alttitle" xml:space="preserve">
+				<source>addEditIfAdmin = 1;</source>
+			</trans-unit>
+			<trans-unit id="addEditIfAdmin.description" xml:space="preserve">
 				<source>Same as addEdit but the element will be added only if the user has the input right for the plugin.</source>
 			</trans-unit>
-			<trans-unit id="addLeftIfNotNull = string;.description" xml:space="preserve">
+			<trans-unit id="addLeftIfNotNull.alttitle" xml:space="preserve">
+				<source>addLeftIfNotNull = string;</source>
+			</trans-unit>
+			<trans-unit id="addLeftIfNotNull.description" xml:space="preserve">
 				<source>String will be added to the left if the field value is not null.</source>
 			</trans-unit>
-			<trans-unit id="addLeftIfNull = string;.description" xml:space="preserve">
+			<trans-unit id="addLeftIfNull.alttitle" xml:space="preserve">
+				<source>addLeftIfNull = string;</source>
+			</trans-unit>
+			<trans-unit id="addLeftIfNull.description" xml:space="preserve">
 				<source>String will be added to the left if the field value is null.</source>
 			</trans-unit>
-			<trans-unit id="addNewIcon = integer;.description" xml:space="preserve">
+			<trans-unit id="addNewIcon.alttitle" xml:space="preserve">
+				<source>addNewIcon = integer;</source>
+			</trans-unit>
+			<trans-unit id="addNewIcon.description" xml:space="preserve">
 				<source>A new icon, will be displayed in front of the field during the number of days given by the integer.</source>
 			</trans-unit>
-			<trans-unit id="addRighIfNotNull = string;.description" xml:space="preserve">
+			<trans-unit id="addRighIfNotNull.alttitle" xml:space="preserve">
+				<source>addRighIfNotNull = string;</source>
+			</trans-unit>
+			<trans-unit id="addRighIfNotNull.description" xml:space="preserve">
 				<source>String will be added to the right if the field value is not null.</source>
 			</trans-unit>
-			<trans-unit id="addRighIfNull = string;.description" xml:space="preserve">
+			<trans-unit id="addRighIfNull.alttitle" xml:space="preserve">
+				<source>addRighIfNull = string;</source>
+			</trans-unit>
+			<trans-unit id="addRighIfNull.description" xml:space="preserve">
 				<source>String will be added to the right if the field value is null.</source>
 			</trans-unit>
-			<trans-unit id="alias = field_name;.description" xml:space="preserve">
+			<trans-unit id="alias.alttitle" xml:space="preserve">
+				<source>alias = field_name;</source>
+			</trans-unit>
+			<trans-unit id="alias.description" xml:space="preserve">
 				<source>The displayed value will be provided by the fieldname value for the current record.</source>
 			</trans-unit>
 			<trans-unit id="Classes and styles.description" xml:space="preserve">
@@ -45,69 +75,85 @@ See also the help for Form views (showAllItemTemplate) to see how to use markers
 . styleValue = string; The string will be added as a style attribute associated with the displayed value.
 . styleHTMLTag = string; The string will be added as a style attribute to the HTML tag associated with the displayed item (not always available).</source>
 			</trans-unit>
-			<trans-unit id="cutIfNull=1;.description" xml:space="preserve">
+			<trans-unit id="cutIfNull.alttitle" xml:space="preserve">
+				<source>cutIfNull=1;</source>
+			</trans-unit>
+			<trans-unit id="cutIfNull.description" xml:space="preserve">
 				<source>Cut the field if null.</source>
 			</trans-unit>
-			<trans-unit id="cutIf=fieldName=value;.description" xml:space="preserve">
-				<source>Cuts the field if current value of the field is equal to the given value. The markers ###user### or ###cruser### (same as user but should be used if a new record is created) will be replaced by the user id.
-Use EMPTY for the value to test an empty field.</source>
+			<trans-unit id="cutIf.alttitle" xml:space="preserve">
+				<source>cutIf=###group!=group_name###;</source>
 			</trans-unit>
-			<trans-unit id="cutIf=fieldName!=value;.description" xml:space="preserve">
-				<source>Cuts the field if current value of the field is not equal to the given value.
-Same markers as above can be used.</source>
-			</trans-unit>
-			<trans-unit id="cutIf=###usergroup=group_name###;.description" xml:space="preserve">
-				<source>The field is cut if the group name is a valid group for the current user.</source>
-			</trans-unit>
-			<trans-unit id="cutIf=###usergroup!=group_name###;.description" xml:space="preserve">
-				<source>The field is cut if the group &quot;group_name&quot; is not a valid group for the current user.</source>
-			</trans-unit>
-			<trans-unit id="cutIf=###group=group_name###;.description" xml:space="preserve">
-				<source>The field is cut if the group &quot;group_name&quot; is a valid group for the current record. It checks the usergroup field in the local table if any.</source>
-			</trans-unit>
-			<trans-unit id="cutIf=###group!=group_name###;.description" xml:space="preserve">
+			<trans-unit id="cutIf.description" xml:space="preserve">
 				<source>The field is cut if the group name is not a valid group for the current record. It checks the usergroup field in the local table if any.</source>
 			</trans-unit>
-			<trans-unit id="cutLabel = 1;.description" xml:space="preserve">
+			<trans-unit id="cutLabel.alttitle" xml:space="preserve">
+				<source>cutLabel = 1;</source>
+			</trans-unit>
+			<trans-unit id="cutLabel.description" xml:space="preserve">
 				<source>Cuts the label associated with the field.</source>
 			</trans-unit>
-			<trans-unit id="edit = 0;.description" xml:space="preserve">
-				<source>Makes the field not editable in an input form.</source>
+			<trans-unit id="edit.alttitle" xml:space="preserve">
+				<source>edit=1;</source>
 			</trans-unit>
-			<trans-unit id="edit=1;.description" xml:space="preserve">
+			<trans-unit id="edit.description" xml:space="preserve">
 				<source>Makes the field editable in an input form.</source>
 			</trans-unit>
-			<trans-unit id="editAdminPlus=1;.description" xml:space="preserve">
+			<trans-unit id="editAdminPlus.alttitle" xml:space="preserve">
+				<source>editAdminPlus=1;</source>
+			</trans-unit>
+			<trans-unit id="editAdminPlus.description" xml:space="preserve">
 				<source>Makes the field editable in an input form, if the user has the &quot;Admin+&quot; right. To be an &quot;Admin&quot; user, his/her TSConfig must contain a line as follows:
 extKey_Admin=value where extKey is the extension key and value is one of the possible value of the &quot;Input Admin Field&quot; defined in the flexform associated with the extension.
 The user becomes an &quot;Admin+&quot; user, if his/her TSConfig contains a line as follows:
 extKey_Admin=value+</source>
 			</trans-unit>
-			<trans-unit id="func = function_name;.description" xml:space="preserve">
+			<trans-unit id="func.alttitle" xml:space="preserve">
+				<source>func = function_name;</source>
+			</trans-unit>
+			<trans-unit id="func.description" xml:space="preserve">
 				<source>See the help associated with functions.</source>
 			</trans-unit>
-			<trans-unit id="funcAddLeftIfNotNull = string;.description" xml:space="preserve">
+			<trans-unit id="funcAddLeftIfNotNull.alttitle" xml:space="preserve">
+				<source>funcAddLeftIfNotNull = string;</source>
+			</trans-unit>
+			<trans-unit id="funcAddLeftIfNotNull.description" xml:space="preserve">
 				<source>String will be added to the left if the result of the applied function, defined by &quot;func=function_name;&quot; property, is not null.</source>
 			</trans-unit>
-			<trans-unit id="funcAddLeftIfNull = string;.description" xml:space="preserve">
+			<trans-unit id="funcAddLeftIfNull.alttitle" xml:space="preserve">
+				<source>funcAddLeftIfNull = string;</source>
+			</trans-unit>
+			<trans-unit id="funcAddLeftIfNull.description" xml:space="preserve">
 				<source>String will be added to the left if the result of the applied function, defined by &quot;func=function_name;&quot; property, is null.</source>
 			</trans-unit>
-			<trans-unit id="funcAddRightIfNotNull = string;.description" xml:space="preserve">
+			<trans-unit id="funcAddRightIfNotNull.alttitle" xml:space="preserve">
+				<source>funcAddRightIfNotNull = string;</source>
+			</trans-unit>
+			<trans-unit id="funcAddRightIfNotNull.description" xml:space="preserve">
 				<source>String will be added to the right if the result of the applied function, defined by &quot;func=function_name;&quot; property, is not null.</source>
 			</trans-unit>
-			<trans-unit id="funcAddRightIfNull = string;.description" xml:space="preserve">
+			<trans-unit id="funcAddRightIfNull.alttitle" xml:space="preserve">
+				<source>funcAddRightIfNull = string;</source>
+			</trans-unit>
+			<trans-unit id="funcAddRightIfNull.description" xml:space="preserve">
 				<source>String will be added to the right if the result of the applied function, defined by &quot;func=function_name;&quot; property, is null.</source>
 			</trans-unit>
-			<trans-unit id="fusion = begin;.description" xml:space="preserve">
-				<source>Starts the fusion of the fields, that is the following fields will be displayed on the same line.</source>
+			<trans-unit id="fusion.alttitle" xml:space="preserve">
+				<source>fusion = end;</source>
 			</trans-unit>
-			<trans-unit id="fusion = end;.description" xml:space="preserve">
+			<trans-unit id="fusion.description" xml:space="preserve">
 				<source>Ends the fusion of the field, that is the following field will be displayed on the next line.</source>
 			</trans-unit>
-			<trans-unit id="label = string;.description" xml:space="preserve">
+			<trans-unit id="label.alttitle" xml:space="preserve">
+				<source>label = string;</source>
+			</trans-unit>
+			<trans-unit id="label.description" xml:space="preserve">
 				<source>The displayed label will be provided by the string.</source>
 			</trans-unit>
-			<trans-unit id="mail = 1;.description" xml:space="preserve">
+			<trans-unit id="mail.alttitle" xml:space="preserve">
+				<source>mail = 1;</source>
+			</trans-unit>
+			<trans-unit id="mail.description" xml:space="preserve">
 				<source>A mail will be associated with the field.
 
 If the field is a checkbox, it is used as a flag to verify is the mail has to be sent. Mail information are the following:
@@ -124,7 +170,10 @@ Localization by means of the file locallang.xml can be used with $$$tag$$$ which
 . mailMessageLanguage=string; This parameter will force the language for the message to the value of the string.
 . mailMessageLanguageFromField=fieldname; This parameter will force the language for the message to the value of the field (for example a selector box).</source>
 			</trans-unit>
-			<trans-unit id="mailAlways = 1;.description" xml:space="preserve">
+			<trans-unit id="mailAlways.alttitle" xml:space="preserve">
+				<source>mailAlways = 1;</source>
+			</trans-unit>
+			<trans-unit id="mailAlways.description" xml:space="preserve">
 				<source> (mail must be set to 1)
 The mail is always sent when saving. Mail information are the following:
 . mailSender=string; mail of the sender. marker ###user_email### will be replaced by the user email.
@@ -138,7 +187,10 @@ Localization by means of the file locallang.xml can be used with $$$tag$$$ which
 . mailMessageLanguage=string; This parameter will force the language for the message to the value of the string.
 . mailMessageLanguageFromField=fieldname; This parameter will force the language for the message to the value of the field (for example a selector box).</source>
 			</trans-unit>
-			<trans-unit id="mailAuto = 1;.description" xml:space="preserve">
+			<trans-unit id="mailAuto.alttitle" xml:space="preserve">
+				<source>mailAuto = 1;</source>
+			</trans-unit>
+			<trans-unit id="mailAuto.description" xml:space="preserve">
 				<source> (mail must be set to 1)
 The mail is sent when saving if the field is not empty and if one field in the form is changed. Mail information are the following:
 . mailSender=string; mail of the sender. The marker ###user_email### will be replaced by the user email.
@@ -152,10 +204,16 @@ Localization by means of the file locallang.xml can be used with $$$tag$$$ which
 . mailMessageLanguage=string; This parameter will force the language for the message to the value of the string.
 . mailMessageLanguageFromField=fieldname; This parameter will force the language for the message to the value of the field (for example a selector box).</source>
 			</trans-unit>
-			<trans-unit id="onLabel = 1;.description" xml:space="preserve">
+			<trans-unit id="onLabel.alttitle" xml:space="preserve">
+				<source>onLabel = 1;</source>
+			</trans-unit>
+			<trans-unit id="onLabel.description" xml:space="preserve">
 				<source>The value will be displayed in place of the label. Not so useful since the label can be cut.</source>
 			</trans-unit>
-			<trans-unit id="orderLinkInTitle = 1;.description" xml:space="preserve">
+			<trans-unit id="orderLinkInTitle.alttitle" xml:space="preserve">
+				<source>orderLinkInTitle = 1;</source>
+			</trans-unit>
+			<trans-unit id="orderLinkInTitle.description" xml:space="preserve">
 				<source>If this parameter is set, it makes it possible to generate a hyperlink in the title bar of the &quot;list view&quot;.
 The hyperlink is asscoiated with the field if the marker ###fieldname### is used in the &quot;Title bar&quot; section. Order clauses have to be defined in the &quot;Where Tags&quot; section of the &quot;Query Form&quot; with &quot;+&quot; and &quot;-&quot; sign added after &quot;fieldname&quot;.
 Use for example:
@@ -166,7 +224,10 @@ Name: fieldname-
 WHERE Clause:
 ORDER BY Clause: tablename.fieldname DESC</source>
 			</trans-unit>
-			<trans-unit id="orderLinkInTitleSetup = string;.description" xml:space="preserve">
+			<trans-unit id="orderLinkInTitleSetup.alttitle" xml:space="preserve">
+				<source>orderLinkInTitleSetup = string;</source>
+			</trans-unit>
+			<trans-unit id="orderLinkInTitleSetup.description" xml:space="preserve">
 				<source>This property controls the display of the link when orderLinkInTitle is set. The format is &quot;param1:param2:param3&quot; where &quot;param1&quot; to &quot;param3&quot; can take the following values:
 . value: the field value is displayed,
 . link: the field value is displayed with a link with toggle the sort,
@@ -176,7 +237,10 @@ ORDER BY Clause: tablename.fieldname DESC</source>
 . if there is no value, nothing is displayed.
 The default is &quot;:link:&quot;.</source>
 			</trans-unit>
-			<trans-unit id="query = SQL statements;.description" xml:space="preserve">
+			<trans-unit id="query.alttitle" xml:space="preserve">
+				<source>query = SQL statements;</source>
+			</trans-unit>
+			<trans-unit id="query.description" xml:space="preserve">
 				<source>The query will be executed once the input form data have been saved. Therefore, it can only be used with &quot;input&quot; or &quot;update&quot; views.
 Because any query may be executed, for security reason, this property can only be used if an admin user has checked the field &quot;Allow the use of the &quot;query&quot; property&quot; in the advanced folder of the flexform.
 It may be useful, for example, to update a specific table when the current data are saved. Several queries can be used in the SQL statements. Each query must be separated using &quot;\;&quot;.
@@ -187,18 +251,28 @@ Special markers can be used in the statement :
 . ###user### will be replaced by the user uid.
 . ###value### will be replaced by the current value for the field.</source>
 			</trans-unit>
-			<trans-unit id="queryOnValue = string;.description" xml:space="preserve">
+			<trans-unit id="queryOnValue.alttitle" xml:space="preserve">
+				<source>queryOnValue = string;</source>
+			</trans-unit>
+			<trans-unit id="queryOnValue.description" xml:space="preserve">
 				<source>The query, as defined above, will be executed if the current field value is equal to the right hand side string.</source>
 			</trans-unit>
-			<trans-unit id="queryForEach = field_name;.description" xml:space="preserve">
+			<trans-unit id="queryForEach.alttitle" xml:space="preserve">
+				<source>queryForEach = field_name;</source>
+			</trans-unit>
+			<trans-unit id="queryForEach.description" xml:space="preserve">
 				<source>If the field is a true MM relation, the query, as defined above, will be executed for all the record in the relation.
 The special marker ###field_name###, where &quot;field_name&quot; is the field where the relation is defined, can be used to identify the record. It will be replaced by the uid of the associated record.</source>
 			</trans-unit>
-			<trans-unit id="reqValue = SQL SELECT statement;.description" xml:space="preserve">
+			<trans-unit id="reqValue.alttitle" xml:space="preserve">
+				<source>reqValue = SQL SELECT statement;</source>
+			</trans-unit>
+			<trans-unit id="reqValue.description" xml:space="preserve">
 				<source>SQL SELECT statement must have an alias &quot;value&quot; which will be used as the value to display.
 Special markers can be used in the statement :
 . ###uid### will be replaced by the current record uid.
-. ###uidItem### will be replaced by the uid of the current subform item.
+. ###uidItem### will be replaced by the uid of the current subform item  (only in &quot;basic&quot; type library).
+. ###uidMainTable### will be replaced by the uid of the record in the main table (only in &quot;plus&quot; type library).
 . ###user### will be replaced by the user id.
 . ###row[field_name]### where field_name is the name of a field in the current record, will be replaced by its current value.
 The following example returns the name of the user who has created the current record, assuming that tx_mytable is the local table:
@@ -206,33 +280,63 @@ reqValue= SELECT name AS value
 FROM fe_users
 WHERE uid=(SELECT cruser_id FROM tx_mytable WHERE uid=###uid###);</source>
 			</trans-unit>
-			<trans-unit id="setExtendLink = table_name;.description" xml:space="preserve">
+			<trans-unit id="renderReqValue.alttitle" xml:space="preserve">
+				<source>renderReqValue = 1;</source>
+			</trans-unit>
+			<trans-unit id="renderReqValue.description" xml:space="preserve">
+				<source>Rendering is applied to the value provided by the &quot;reqValue&quot; attribute according to the type of the field. &lt;b&gt;Not available in &quot;basic&quot; type library.&lt;/b&gt;.</source>
+			</trans-unit>
+			<trans-unit id="setExtendLink.alttitle" xml:space="preserve">
+				<source>setExtendLink = table_name;</source>
+			</trans-unit>
+			<trans-unit id="setExtendLink.description" xml:space="preserve">
 				<source>The table name will be left-joined to existing tables</source>
 			</trans-unit>
-			<trans-unit id="showIf = expression;.description" xml:space="preserve">
+			<trans-unit id="showIf.alttitle" xml:space="preserve">
+				<source>showIf = expression;</source>
+			</trans-unit>
+			<trans-unit id="showIf.description" xml:space="preserve">
 				<source>Same as cutIf but show instead of cut.</source>
 			</trans-unit>
-			<trans-unit id="stdWrapItem = TS syntax;.description" xml:space="preserve">
+			<trans-unit id="stdWrapItem.alttitle" xml:space="preserve">
+				<source>stdWrapItem = TS syntax;</source>
+			</trans-unit>
+			<trans-unit id="stdWrapItem.description" xml:space="preserve">
 				<source>It defines a conventional TS stdWrap property. You can add here full TS syntax.
 Do not forget that the configuration field is ended by a semi-column, therefore if you need a semi-column in your TS write it &quot;\;&quot; &lt;b&gt;Not available in &quot;basic&quot; type library.&lt;/b&gt;</source>
 			</trans-unit>
-			<trans-unit id="stdWrapValue = TS syntax;.description" xml:space="preserve">
+			<trans-unit id="stdWrapValue.alttitle" xml:space="preserve">
+				<source>stdWrapValue = TS syntax;</source>
+			</trans-unit>
+			<trans-unit id="stdWrapValue.description" xml:space="preserve">
 				<source>It defines a conventional TS stdWrap property. You can add here full TS syntax.
 Do not forget that the configuration field is ended by a semi-column, therefore if you need a semi-column in your TS write it &quot;\;&quot;.</source>
 			</trans-unit>
-			<trans-unit id="tsObject = cObject;.description" xml:space="preserve">
+			<trans-unit id="tsObject.alttitle" xml:space="preserve">
+				<source>tsObject = cObject;</source>
+			</trans-unit>
+			<trans-unit id="tsObject.description" xml:space="preserve">
 				<source>It defines a TS content object (e.g. TEXT, IMAGE, ...)</source>
 			</trans-unit>
-			<trans-unit id="tsProperties = string;.description" xml:space="preserve">
+			<trans-unit id="tsProperties.alttitle" xml:space="preserve">
+				<source>tsProperties = string;</source>
+			</trans-unit>
+			<trans-unit id="tsProperties.description" xml:space="preserve">
 				<source>It defines the properties of the TS cObject.
 Markers ###fieldName### can be used. The marker will be replaced by the current value of the field.
 Localization markers $$$tag$$$ can also be used. The tag will be replaced by its value according to the configuration language.
 Do not forget that the configuration field is ended by a semi-column, therefore if you need a semi-column in your TS write it &quot;\;&quot;.</source>
 			</trans-unit>
-			<trans-unit id="value = string;.description" xml:space="preserve">
+			<trans-unit id="value.alttitle" xml:space="preserve">
+				<source>value = string;</source>
+			</trans-unit>
+			<trans-unit id="value.description" xml:space="preserve">
 				<source>It defines directly the value for the field.</source>
 			</trans-unit>
-			<trans-unit id="verifier = verifier_name;.description" xml:space="preserve">
+			<trans-unit id="verifier.alttitle" xml:space="preserve">
+				<source>verifier = verifier_name;</source>
+			</trans-unit>
+			<trans-unit id="verifier.description" xml:space="preserve">
 				<source>Verifiers can be used to check if a field satisfy a constraint. Each field can have one verifier. Each verifier is associated with a parameter.
 Verifiers can be defined by the user. They must be added in the class tx_savlibrary_verifiers defined in the file: class.tx_savlibrary_verifiers.php.
 
@@ -242,12 +346,18 @@ The value &quot;verifier_name&quot; can be :
 . isValidInterval
 . isValidQuery</source>
 			</trans-unit>
-			<trans-unit id="verifierMessage = string;.description" xml:space="preserve">
+			<trans-unit id="verifierMessage.alttitle" xml:space="preserve">
+				<source>verifierMessage = string;</source>
+			</trans-unit>
+			<trans-unit id="verifierMessage.description" xml:space="preserve">
 				<source>It replaces the default message.
 Localization by means of the file locallang.xml can be used with $$$tag$$$ which will be replaced by its value according to the configuration language.
 The marker $$$label[fieldName]$$$ will be replaced by the fieldName title according to the localization.</source>
 			</trans-unit>
-			<trans-unit id="verifierParam = expression;.description" xml:space="preserve">
+			<trans-unit id="verifierParam.alttitle" xml:space="preserve">
+				<source>verifierParam = expression;</source>
+			</trans-unit>
+			<trans-unit id="verifierParam.description" xml:space="preserve">
 				<source>The expression can be :
 . a regular expression for the verifier &quot;isValidPattern&quot;.
 For example /^[A-Za-z0-9_]*$/ will allow any input which contains letters, numbers or underline characters.
@@ -255,10 +365,16 @@ For example /^[A-Za-z0-9_]*$/ will allow any input which contains letters, numbe
 . an interval [a, b] where a and b are integers for the verifier &quot;isValidInterval&quot;.
 . a SELECT query for &quot;isValidQuery&quot;. The marker ###value### in the query will be replaced by the value of the field. The marker ###uid### will be replaced by the uid of the current record.</source>
 			</trans-unit>
-			<trans-unit id="verifierSetWarning = boolean;.description" xml:space="preserve">
+			<trans-unit id="verifierSetWarning.alttitle" xml:space="preserve">
+				<source>verifierSetWarning = boolean;</source>
+			</trans-unit>
+			<trans-unit id="verifierSetWarning.description" xml:space="preserve">
 				<source>If set an error detected by the verifier becomes a warning. In that case, the field content is written in the database (which is not the case for errors) and a message is displayed.</source>
 			</trans-unit>
-			<trans-unit id="wrapItem = string;.description" xml:space="preserve">
+			<trans-unit id="wrapItem.alttitle" xml:space="preserve">
+				<source>wrapItem = string;</source>
+			</trans-unit>
+			<trans-unit id="wrapItem.description" xml:space="preserve">
 				<source>The string will be used to wrap the item. The syntax in the same as in TypoScript.
 Localization by means of the file locallang.xml can be used with $$$tag$$$ which will be replaced by its value according to the configuration language.
 The marker $$$label[fieldName]$$$ will be replaced by the fieldName title according to the localization.</source>

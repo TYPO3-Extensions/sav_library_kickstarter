@@ -79,11 +79,15 @@
           </f:link.action>
           </f:else>
         </f:if>
+        <sav:comment><!-- Download extension --></sav:comment>
+        <f:link.action action="downloadExtension" arguments="{extKey:extension.general.1.extensionKey}">
+          <sav:be.icon class="downloadExtension" icon="system-extension-download" type="png" dir="sysext/t3skin/images/icons/actions/" alt="{f:translate(key:'kickstarter.downloadExtension')}" title="{f:translate(key:'kickstarter.downloadExtension')}" />
+        </f:link.action>          
         <sav:comment><!-- Upgrade the extension --></sav:comment>
         <f:if condition="{extension.general.1.extensionMustbeUpgraded}">
         <f:link.action action="upgradeExtension" arguments="{extKey:extension.general.1.extensionKey}">
           <sav:be.icon class="upgradeExtension" icon="refresh" alt="{f:translate(key:'kickstarter.upgradeExtension')}" title="{f:translate(key:'kickstarter.upgradeExtension')}" />
-        </f:link.action>
+        </f:link.action>      
         </f:if>
         </li>
       </ul>

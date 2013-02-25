@@ -7,11 +7,12 @@
 	</meta>
 	<data type="array">
 		<languageKey index="default" type="array">
+			<label index=".alttitle">SAV Library Kickstarter &gt; Types &gt; Selectorbox</label>		
+			<label index=".description">Attributes for the type Selectorbox</label>
+			<label index=".seeAlso">xEXT_sav_library_kickstarter_all:*,xEXT_sav_library_kickstarter_functions:*,xEXT_sav_library_kickstarter_general:*</label>
 
-			<label index="Selectorbox.description">Attributes for the type "Selectorbox"</label>
-			<label index="Selectorbox.seeAlso">sav_library_kickstarter_all:*,sav_library_kickstarter_functions:*,sav_library_kickstarter_general:*</label>
-
-			<label index="func = function_name;.description">It associates a function with the selectorbox items. The parameter function_name can be:
+			<label index="func.alttitle">func = function_name;</label>
+			<label index="func.description">It associates a function with the selectorbox items. The parameter function_name can be:
 . makeItemLink
 . makeExtLink
 . makeLink
@@ -19,7 +20,8 @@
 . makeEmailLink
 See functions for the associated parameters.</label>
 
-			<label index="separator = character or string;.description">It can be used with selector boxes associated with a MM relation to replace the default &lt; br /&gt; separator between items in showAll or showSingle views.</label>
+			<label index="separator.alttitle">separator = character or string;</label>
+			<label index="separator.description">It can be used with selector boxes associated with a MM relation to replace the default &lt; br /&gt; separator between items in showAll or showSingle views.</label>
 
 		</languageKey>
 	</data>

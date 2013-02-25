@@ -7,9 +7,9 @@
 	</meta>
 	<data type="array">
 		<languageKey index="default" type="array">
-
-			<label index="RelationManyToManyAsDoubleSelectorbox.description">Attributes for the type "Database many-to-many (n:n) relation as double selectorbox" are the same as for Database one-to-many relation (selectorbox)</label>
-			<label index="RelationManyToManyAsDoubleSelectorbox.seeAlso">sav_library_kickstarter_relationOneToManyAsSelectorbox:*,sav_library_kickstarter_all:*,sav_library_kickstarter_functions:*,sav_library_kickstarter_general:*</label>
+			<label index=".alttitle">SAV Library Kickstarter &gt; Types &gt; Relation n-n as double selectorbox</label>		
+			<label index=".description">Attributes for the type "Database many-to-many (n:n) relation as double selectorbox" are the same as for Database one-to-many relation (selectorbox)</label>
+			<label index=".seeAlso">xEXT_sav_library_kickstarter_relationOneToManyAsSelectorbox:*,xEXT_sav_library_kickstarter_all:*,xEXT_sav_library_kickstarter_functions:*,xEXT_sav_library_kickstarter_general:*</label>
 
 		</languageKey>
 	</data>

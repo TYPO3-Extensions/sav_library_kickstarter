@@ -7,9 +7,8 @@
 	</meta>
 	<data type="array">
 		<languageKey index="default" type="array">
-		
-			<label index="LLL:EXT:sav_library_kickstarter/Resources/Private/Language/locallang.xml:kickstarter.emconfSectionTitle.description">This section is used to specify the extension configuration.</label>
-					
+			<label index=".alttitle">SAV Library Kickstarter &gt; Extension Configuration</label>
+			<label index=".description">This section is used to specify the extension configuration.</label>						
 			<label index="LLL:EXT:sav_library_kickstarter/Resources/Private/Language/locallang.xml:kickstarter.generalItem.version.description">This wizard can be used to automatically ugrade the version of your extension.
 If you set z, one unit will be added to the z part.
 It you set y, one unit will be added to the y part, while the z part is reset to 0.

@@ -110,9 +110,9 @@ DIV.folderTabs LI.currentTab A SPAN {background-position:0% -150px;padding-botto
 #extensionList DIV LI.libraryType DIV.icon {height:15px;}
 #extensionList DIV.title LI.forms {width:150px;}
 #extensionList DIV.title LI.cache {width:60px;}
-#extensionList DIV.title LI.buttons {width:130px;text-align:left;}
+#extensionList DIV.title LI.buttons {width:150px;text-align:left;}
 #extensionList DIV.title LI.buttons IMG {margin-right:3px;}
-#extensionList DIV.title LI.buttons IMG.createExtension {margin-left:60px;margin-right:7px;}
+#extensionList DIV.title LI.buttons IMG.createExtension {margin-left:80px;margin-right:7px;}
 #extensionList DIV.body LI.forms {width:210px;text-align:left;}
 #extensionList DIV.body LI.forms UL {border:0px;padding:0px;margin:0px;}
 #extensionList DIV.body LI.forms LI {clear:left;float:left;height:15px;text-align:left;margin:0px;}
@@ -122,7 +122,7 @@ DIV.folderTabs LI.currentTab A SPAN {background-position:0% -150px;padding-botto
 #extensionList DIV.body LI.debugQueries {float:left;width:60px;text-align:center;}
 #extensionList DIV IMG.cacheChecked {width:13px;height:12px;}
 #extensionList DIV IMG.debugQueriesChecked {width:14px;height:13px;}
-#extensionList DIV.body LI.buttons {width:130px;text-align:left;}
+#extensionList DIV.body LI.buttons {width:150px;text-align:left;}
 #extensionList DIV.body LI.buttons IMG {margin-right:3px;}
 
 /* Extension Manager Configuration Section */
@@ -154,10 +154,11 @@ DIV.folderTabs LI.currentTab A SPAN {background-position:0% -150px;padding-botto
 #savLibraryPlus #newTablesSection DIV.body DIV.flags DIV.col4 {width:210px;}
 #savLibraryPlus #newTablesSection DIV.body DIV.flags DIV.col4 LABEL {width:180px;}
 #savLibraryPlus #newTablesSection DIV.body DIV.flags DIV.col4 LABEL.descendingOrder {width:100px;}
-#savLibraryPlus #newTablesSection DIV.body DIV.flags DIV.col4 LABEL.defIcon {width:100px;}
+#savLibraryPlus #newTablesSection DIV.body DIV.flags DIV.col4 LABEL.defIcon {width:80px;}
 #savLibraryPlus #newTablesSection DIV.body DIV.flags DIV.col4 INPUT {float:left;}
-#savLibraryPlus #newTablesSection DIV.body DIV.flags DIV.col4 INPUT.checkbox {clear:none;}
-#savLibraryPlus #newTablesSection DIV.body DIV.flags DIV.col4 SELECTOR {float:left;}
+#savLibraryPlus #newTablesSection DIV.body DIV.flags DIV.col4 INPUT.checkbox {clear:left;}
+#savLibraryPlus #newTablesSection DIV.body DIV.flags DIV.col4 SELECT {float:left;max-width:210px;}
+#savLibraryPlus #newTablesSection DIV.body DIV.flags DIV.col4 SELECT#defIcon {float:left;max-width:130px;}
 
 /* Existing Tables Section */
 #savLibrary #existingTablesSection DIV.body DIV.selected {background-color:#e0e0e0;}
@@ -216,7 +217,7 @@ DIV.folderTabs LI.currentTab A SPAN {background-position:0% -150px;padding-botto
 #savLibraryPlus #fieldsOverview DIV.header:first-child DIV.buttons INPUT.submit {width:75px;}
 #savLibraryPlus #fieldsOverview DIV.header DIV.buttons SELECT {float:left;margin-right:3px;}
 #savLibraryPlus #fieldsOverview DIV.header DIV.buttons IMG {float:left;margin-right:5px;}
-#savLibraryPlus #fieldsOverview DIV.header DIV.buttons DIV.viewSelectorbox {float:left;width:100px;margin:0px 3px 0px 3px;}
+#savLibraryPlus #fieldsOverview DIV.header DIV.buttons DIV.viewSelectorbox {float:left;width:70px;padding:0px;margin:0px 3px 0px 3px;}
 #savLibraryPlus #fieldsOverview DIV.fields {width:700px;float:left;}
 #savLibraryPlus #fieldsOverview DIV.fields UL {clear:left;float:left;padding:0px;margin:0px;}
 #savLibraryPlus #fieldsOverview DIV.fields LI {clear:left;float:left;list-style:none;margin:0px 0px 3px 0px;}

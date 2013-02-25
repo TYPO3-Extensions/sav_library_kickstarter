@@ -40,7 +40,7 @@ require_once(t3lib_extMgm::extPath('sav_library_plus').'Classes/Controller/Contr
  */
 class tx_{extensionName}_pi1 extends tslib_pibase {
 	public $prefixId = 'tx_{extensionName}_pi1';		// Same as class name
-	public $scriptRelPath = 'pi1/class.tx_{extensionName}_pi1.php';	// Path to this script relative to the extension dir.
+	public $scriptRelPath = 'Classes/class.tx_{extensionName}_pi1.php';	// Path to this script relative to the extension dir.
 	public $extKey = '{extension.general.1.extensionKey}';	// The extension key.
 	            
 	public function main($content,$conf) {
@@ -72,8 +72,8 @@ class tx_{extensionName}_pi1 extends tslib_pibase {
 
 }
 
-if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/{extension.general.1.extensionKey}/pi1/class.tx_{extensionName}_pi1.php'])	{
-	include_once($TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/{extension.general.1.extensionKey}/pi1/class.tx_{extensionName}_pi1.php']);
+if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/{extension.general.1.extensionKey}/Classes/class.tx_{extensionName}_pi1.php'])	{
+	include_once($TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/{extension.general.1.extensionKey}/Classes/class.tx_{extensionName}_pi1.php']);
 }
 </f:alias>
 ?>

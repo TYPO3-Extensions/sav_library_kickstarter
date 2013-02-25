@@ -46,7 +46,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
 	 */
 	protected function initializeView(Tx_Extbase_MVC_View_ViewInterface $view) {
     $view->injectTemplateParser(Tx_SavLibraryKickstarter_Compatibility_TemplateParserBuilder::build());
-    if (version_compare($GLOBALS['TYPO_VERSION'], '4.6', '>=')) {
+    if (version_compare(TYPO3_version, '4.6', '>=')) {
     	$view->injectTemplateCompiler($this->objectManager->get('Tx_SavLibraryKickstarter_Core_Compiler_TemplateCompiler'));
     }
 	}
@@ -134,6 +134,21 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
     $this->redirect('extensionList');
 	}
 
+
+	/**
+	 * downloadExtension action for this controller.
+	 *
+	 * @param string $extKey
+	 * @return string The rendered view
+	 */
+	public function downloadExtensionAction($extKey) {
+    $configurationManager = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Configuration_ConfigurationManager', $extKey);
+    $configurationManager->loadConfiguration();
+    $configurationManager->injectFlashMessages($this->flashMessages);
+    $configurationManager->getExtensionManager()->downloadExtension();
+    $this->redirect('extensionList');
+	}
+	
 	/**
 	 * generateExtension action for this controller.
 	 *
@@ -261,10 +276,13 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
 	 * @param string $section The section name
 	 * @param integer $itemKey The key of the item to edit
 	 * @param integer $fieldKey The key of the field to edit
+	 * @param integer $viewKey The key of the view
+	 * @param integer $folderKey The key of the folder
 	 * @param boolean $showFieldConfiguration Displays the field definition if true
 	 * @return string The rendered view
 	 */
-	public function newTablesEditSectionAction($extKey, $section, $itemKey, $fieldKey = NULL, $showFieldConfiguration = false) {
+	public function newTablesEditSectionAction($extKey, $section, $itemKey, $fieldKey = NULL, $viewKey = NULL, $folderKey = NULL, $showFieldConfiguration = false) {
+
     // Loads the configuration and gets the section manager
     $configurationManager = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Configuration_ConfigurationManager', $extKey);
     $configurationManager->loadConfiguration();
@@ -275,9 +293,9 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
       foreach ($table->getItem('fields') as $key => $field) {
         $item = $sectionManager->getItem($section)->getItem($tableKey)->addItem('fields')->addItem($key)->addItem('order');
         if ($sectionManager->getItem('views')->count() > 0) {
-          foreach ($sectionManager->getItem('views') as $viewKey => $view) {
-            if (!$item->itemExists($viewKey)) {
-              $item->addItem(array($viewKey => $key));
+          foreach ($sectionManager->getItem('views') as $viewKeyLocal => $view) {
+            if (!$item->itemExists(viewKeyLocal)) {
+              $item->addItem(array(viewKeyLocal => $key));
             } elseif ($sectionManager->getItem($section)->getItem($tableKey)->getItem('fields')->getItem($key)->getItem('viewKey') == 0) {
               $sectionManager->getItem($section)->getItem($tableKey)->getItem('fields')->getItem($key)->addItem(array('viewKey' => 1));
             }     
@@ -296,7 +314,17 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
       }      
     }
 
-    // Orders the section according to the view
+    // Changes the view if any provided
+    if ($viewKey !== NULL) {
+    	$sectionManager->getItem($section)->getItem($itemKey)->addItem(array('viewKey' => $viewKey));
+    }
+    
+	  // Changes the folder if any provided
+    if (!empty($folderKey)) {
+    	$sectionManager->getItem($section)->getItem($itemKey)->addItem('folderKeys')->addItem(array($viewKey => $folderKey));
+    }    
+    
+    // Orders the section item according to the view
     if ($sectionManager->getItem($section)->getItem($itemKey)->addItem('fields')->count() > 0) {
       $viewKey = $sectionManager->getItem($section)->getItem($itemKey)->getItem('viewKey');
       $sectionManager->getItem($section)->getItem($itemKey)->getItem('fields')->reIndex(array('order' => $viewKey));
@@ -333,10 +361,12 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
 	 * @param string $section The section name
 	 * @param integer $itemKey The key of the item to edit
 	 * @param integer $fieldKey The key of the field to edit
+	 * @param integer $viewKey The key of the view
+	 * @param integer $folderKey The key of the folder
 	 * @param boolean $showFieldConfiguration Displays the field definition if true
 	 * @return string The rendered view
 	 */
-	public function existingTablesEditSectionAction($extKey, $section, $itemKey, $fieldKey = NULL, $showFieldConfiguration = false) {
+	public function existingTablesEditSectionAction($extKey, $section, $itemKey, $fieldKey = NULL, $viewKey = NULL, $folderKey = NULL, $showFieldConfiguration = false) {
     // Loads the configuration and gets the section manager
     $configurationManager = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Configuration_ConfigurationManager', $extKey);
     $configurationManager->loadConfiguration();
@@ -346,9 +376,9 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
       foreach ($table->getItem('fields') as $key => $field) {
         $item = $sectionManager->getItem($section)->getItem($tableKey)->addItem('fields')->addItem($key)->addItem('order');
         if ($sectionManager->getItem('views')->count() > 0) {
-          foreach ($sectionManager->getItem('views') as $viewKey => $view) {
-            if (!$item->itemExists($viewKey)) {
-              $item->addItem(array($viewKey => $key));
+          foreach ($sectionManager->getItem('views') as $viewKeyLocal => $view) {
+            if (!$item->itemExists($viewKeyLocal)) {
+              $item->addItem(array($viewKeyLocal => $key));
             } elseif ($sectionManager->getItem($section)->getItem($tableKey)->getItem('fields')->getItem($key)->getItem('viewKey') == 0) {
               $sectionManager->getItem($section)->getItem($tableKey)->getItem('fields')->getItem($key)->addItem(array('viewKey' => 1));
             }
@@ -373,6 +403,17 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
       $viewKey = $sectionManager->getItem($section)->getItem($itemKey)->getItem('viewKey');
       $sectionManager->getItem($section)->getItem($itemKey)->getItem('fields')->sortby(array('order' => $viewKey));
     }
+    
+    // Changes the view if any provided
+    if ($viewKey !== NULL) {
+    	$sectionManager->getItem($section)->getItem($itemKey)->addItem(array('viewKey' => $viewKey));
+    }
+    
+	  // Changes the folder if any provided
+    if (!empty($folderKey)) {
+    	$sectionManager->getItem($section)->getItem($itemKey)->addItem('folderKeys')->addItem(array($viewKey => $folderKey));
+    }  
+        
     // Sets the folder labels
     foreach ($sectionManager->getItem('views') as $viewKey => $view) {
       if ($view->itemExists('folders') && $view->getItem('folders') !== NULL) {
@@ -1030,7 +1071,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
     $configurationManager->loadConfiguration();
     $configurationManager->getSectionManager()->getItem($section)->getItem($itemKey)->addItem('activeFields')->replace(array($viewKey => array($folderKey => $fieldKey)));
     $configurationManager->saveConfiguration();		
-    $this->redirect($section . 'EditSection', NULL, NULL, array('extKey' => $extKey, 'section' => $section, 'itemKey' => $itemKey, 'fieldKey' => $fieldKey, 'showFieldConfiguration' => true));
+    $this->redirect($section . 'EditSection', NULL, NULL, array('extKey' => $extKey, 'section' => $section, 'itemKey' => $itemKey, 'fieldKey' => $fieldKey, 'viewKey' => $viewKey, 'folderKey' => $folderKey, 'showFieldConfiguration' => true));
 	}
 
 	/**
@@ -1235,6 +1276,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
     $configurationManager = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Configuration_ConfigurationManager', $extKey);
     $configurationManager->loadConfiguration();
     $sectionManager = $configurationManager->getSectionManager();
+
     // Deletes the field
     $sectionManager->getItem($section)->getItem($itemKey)->getItem('fields')->deleteItem($fieldKey);
     // Reorders the fields if any
@@ -1248,7 +1290,23 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
       } else {
          $sectionManager->getItem($section)->getItem($itemKey)->getItem('fields')->reIndex(array('order' => 0));
       }
-    }
+      
+			// Gets the view key
+			$viewKey = $sectionManager->getItem($section)->getItem($itemKey)->getItem('viewKey');		
+			// Gets the folder keys if any
+			$folderKeys = $sectionManager->getItem($section)->getItem($itemKey)->getItem('folderKeys');
+	    if ($folderKeys !== NULL) {
+				$folderKey = $folderKeys->getItem($viewKey);
+			} else {
+				$folderKey = 0;
+			}
+			// Deletes the active field if it is the delete field
+			$activeFields = $sectionManager->getItem($section)->getItem($itemKey)->getItem('activeFields');	
+			if ($activeFields !== NULL && $activeFields->getItem($viewKey) !== NULL && $activeFields->getItem($viewKey)->getItem($folderKey) == $fieldKey) {
+	    	$sectionManager->getItem($section)->getItem($itemKey)->getItem('activeFields')->getItem($viewKey)->deleteItem($folderKey);      
+			}
+    }  
+        
     // Saves the configuration and redirects to the section
     $configurationManager->saveConfiguration();
     $this->redirect($section . 'EditSection', NULL, NULL, array('extKey' => $extKey, 'section' => $section, 'itemKey' => $itemKey, 'fieldKey' => $fieldKey));
@@ -1280,7 +1338,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
   }
 
 	/**
-	 * deleteFolderAction action for this controller.
+	 * deleteViewWithConditionAction action for this controller.
 	 *
 	 * @param string $extKey The extension key
 	 * @param string $section The section name
@@ -1424,7 +1482,9 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
     // Deletes the folder input  for the view in all field of the existingTables 
     foreach($sectionManager->getItem('existingTables') as $tableKey => $table) {
       foreach($table->getItem('fields') as $fieldKey =>$field) {
-        $field->getItem('folders')->deleteItem($itemKey);
+        if ($field->getItem('folders') !== NULL && $field->getItem('folders')->getItem($itemKey) == $folderKey)  {
+          $field->getItem('folders')->deleteItem($itemKey);
+        }
       }
     }
       

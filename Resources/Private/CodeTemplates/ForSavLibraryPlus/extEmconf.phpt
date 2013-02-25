@@ -17,8 +17,6 @@ $EM_CONF[$_EXTKEY] = array(
 	'author_email' => '{sav:function(name:"addSlashes", arguments:"{extension.emconf.1.author_email}")}',
 	'author_company' => '',
 	'shy' => '',
-	'dependencies' => '{f:if(condition:extension.emconf.1.dependencies, then:extension.emconf.1.dependencies, else:"sav_library_plus")}',
-	'conflicts' => '',
 	'priority' => '',
 	'module' => '',
 	'state' => '{extension.emconf.1.state}',
@@ -31,6 +29,8 @@ $EM_CONF[$_EXTKEY] = array(
 	'version' => '{extension.emconf.1.version}',
 	'constraints' => array(
 		'depends' => array(
+			'typo3' => '4.5.0-0.0.0',	
+{sav:buildConstraintsForExtensionManager(dependencies:extension.emconf.1.dependencies)}	
 		),
 		'conflicts' => array(
 		),

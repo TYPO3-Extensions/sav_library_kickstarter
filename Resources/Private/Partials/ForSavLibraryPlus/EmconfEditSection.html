@@ -63,6 +63,11 @@
         <f:form.submit class="submit" name="submitAction[load]" value="{f:translate(key:'kickstarter.load')}" />
         <f:form.submit class="submit" name="submitAction[overwrite]" value="{f:translate(key:'kickstarter.overwrite')}" />       
 
+        <sav:comment><!-- keepExtLocalConf flag --></sav:comment>
+        <label for="keepExtLocalConf"><f:translate key="kickstarter.generalItem.keepExtLocalConf" /></label>
+        <f:form.hidden name="general[keepExtLocalConf]" value="0"/>
+        <f:form.checkbox class="checkbox" id="keepExtLocalConf" name="general[keepExtLocalConf]" value="1" checked="{extension.general.1.keepExtLocalConf}" />
+        
         <sav:comment><!--Debug Query flag --></sav:comment>
       	<label for="debug"><f:translate key="kickstarter.generalItem.debug" /></label>
         <f:form.hidden name="general[debug]" value="0"/>

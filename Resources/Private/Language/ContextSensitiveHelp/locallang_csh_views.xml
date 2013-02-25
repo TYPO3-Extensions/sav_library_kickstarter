@@ -7,9 +7,9 @@
 	</meta>
 	<data type="array">
 		<languageKey index="default" type="array">
-		
-			<label index="LLL:EXT:sav_library_kickstarter/Resources/Private/Language/locallang.xml:kickstarter.viewsSectionTitle.description">This section is used to specify the views associated with your extension.</label>
-			
+			<label index=".alttitle">SAV Library Kickstarter &gt; Views</label>
+			<label index=".description">This section is used to specify the views associated with your extension.</label>		
+
 			<label index="LLL:EXT:sav_library_kickstarter/Resources/Private/Language/locallang.xml:kickstarter.viewsItem.title.description">Set the name of your view.</label>
 			
 			<label index="LLL:EXT:sav_library_kickstarter/Resources/Private/Language/locallang.xml:kickstarter.viewsItem.type.description">Use the selector to set the type of the wiew. It is either "List", "Single", "Edit" or "Update".</label>

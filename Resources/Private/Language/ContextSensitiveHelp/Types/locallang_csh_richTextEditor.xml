@@ -7,13 +7,15 @@
 	</meta>
 	<data type="array">
 		<languageKey index="default" type="array">
-
-			<label index="RichTextEditor.description">Attributes for the type "Rich Text Editor"</label>
-			<label index="RichTextEditor.seeAlso">sav_library_kickstarter_all:*,sav_library_kickstarter_functions:*,sav_library_kickstarter_general:*</label>
+			<label index=".alttitle">SAV Library Kickstarter &gt; Types &gt; Rich Text Editor</label>		
+			<label index=".description">Attributes for the type Rich Text Editor</label>
+			<label index=".seeAlso">xEXT_sav_library_kickstarter_all:*,xEXT_sav_library_kickstarter_functions:*,xEXT_sav_library_kickstarter_general:*</label>
 			
-			<label index="height = integer;.description">Defines the height of the textarea. The integer value represents the height in pixels (45 pixels are automatically added).</label>
+			<label index="height.alttitle">height = integer;</label>
+			<label index="height.description">Defines the height of the textarea. The integer value represents the height in pixels (45 pixels are automatically added).</label>
 
-			<label index="width = integer;.description">Defines the width of the textarea. The integer value represents the width in pixels.</label>
+			<label index="width.alttitle">width = integer;</label>
+			<label index="width.description">Defines the width of the textarea. The integer value represents the width in pixels.</label>
 
 		</languageKey>
 	</data>

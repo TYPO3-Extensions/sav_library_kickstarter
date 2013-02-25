@@ -64,7 +64,7 @@
             <sav:be.icon class="whereTagDelete" icon="garbage" alt="kickstarter.delete" title="{f:translate(key:'kickstarter.delete')}" />
           </f:link.action>
           <label class="whereTag"><f:translate key="kickstarter.{section}Item.whereTags.whereClause" /></label>
-      		<f:form.textarea class="whereTag" name="{section}[whereTags][{whereTagKey}][whereClause]" value="{whereTag.where}" rows="{sav:function(name:'countLines', arguments:whereTag.whereClause)}" cols="50" />
+      		<f:form.textarea class="whereTag" name="{section}[whereTags][{whereTagKey}][whereClause]" value="{whereTag.whereClause}" rows="{sav:function(name:'countLines', arguments:whereTag.whereClause)}" cols="50" />
           <label class="whereTag"><f:translate key="kickstarter.{section}Item.whereTags.orderByClause" /></label>
       		<f:form.textarea class="whereTagLast" name="{section}[whereTags][{whereTagKey}][orderByClause]" value="{whereTag.orderByClause}" rows="{sav:function(name:'countLines', arguments:whereTag.orderByClause)}" cols="50" />
           </f:for>

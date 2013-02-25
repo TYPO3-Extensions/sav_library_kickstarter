@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2012-08-24T18:03:36Z" product-name="sav_library_kickstarter">
+	<file source-language="en" datatype="plaintext" original="messages" date="2013-02-25T13:21:38Z" product-name="sav_library_kickstarter">
 		<header/>
 		<body>
-			<trans-unit id="ShowOnly.description" xml:space="preserve">
-				<source>Attributes for the type &quot;Only shown in SAV form&quot;</source>
+			<trans-unit id=".alttitle" xml:space="preserve">
+				<source>SAV Library Kickstarter &gt; Types &gt; Show Only</source>
 			</trans-unit>
-			<trans-unit id="ShowOnly.seeAlso" xml:space="preserve">
-				<source>sav_library_kickstarter_all:*,sav_library_kickstarter_functions:*,sav_library_kickstarter_general:*</source>
+			<trans-unit id=".description" xml:space="preserve">
+				<source>Attributes for the type Only shown in SAV form</source>
+			</trans-unit>
+			<trans-unit id=".seeAlso" xml:space="preserve">
+				<source>xEXT_sav_library_kickstarter_all:*,xEXT_sav_library_kickstarter_functions:*,xEXT_sav_library_kickstarter_general:*</source>
 			</trans-unit>
 		</body>
 	</file>

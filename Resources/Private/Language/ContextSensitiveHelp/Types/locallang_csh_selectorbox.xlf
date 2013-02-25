@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2012-08-24T18:03:18Z" product-name="sav_library_kickstarter">
+	<file source-language="en" datatype="plaintext" original="messages" date="2013-02-25T13:21:32Z" product-name="sav_library_kickstarter">
 		<header/>
 		<body>
-			<trans-unit id="Selectorbox.description" xml:space="preserve">
-				<source>Attributes for the type &quot;Selectorbox&quot;</source>
+			<trans-unit id=".alttitle" xml:space="preserve">
+				<source>SAV Library Kickstarter &gt; Types &gt; Selectorbox</source>
 			</trans-unit>
-			<trans-unit id="Selectorbox.seeAlso" xml:space="preserve">
-				<source>sav_library_kickstarter_all:*,sav_library_kickstarter_functions:*,sav_library_kickstarter_general:*</source>
+			<trans-unit id=".description" xml:space="preserve">
+				<source>Attributes for the type Selectorbox</source>
 			</trans-unit>
-			<trans-unit id="func = function_name;.description" xml:space="preserve">
+			<trans-unit id=".seeAlso" xml:space="preserve">
+				<source>xEXT_sav_library_kickstarter_all:*,xEXT_sav_library_kickstarter_functions:*,xEXT_sav_library_kickstarter_general:*</source>
+			</trans-unit>
+			<trans-unit id="func.alttitle" xml:space="preserve">
+				<source>func = function_name;</source>
+			</trans-unit>
+			<trans-unit id="func.description" xml:space="preserve">
 				<source>It associates a function with the selectorbox items. The parameter function_name can be:
 . makeItemLink
 . makeExtLink
@@ -18,7 +24,10 @@
 . makeEmailLink
 See functions for the associated parameters.</source>
 			</trans-unit>
-			<trans-unit id="separator = character or string;.description" xml:space="preserve">
+			<trans-unit id="separator.alttitle" xml:space="preserve">
+				<source>separator = character or string;</source>
+			</trans-unit>
+			<trans-unit id="separator.description" xml:space="preserve">
 				<source>It can be used with selector boxes associated with a MM relation to replace the default &lt; br /&gt; separator between items in showAll or showSingle views.</source>
 			</trans-unit>
 		</body>

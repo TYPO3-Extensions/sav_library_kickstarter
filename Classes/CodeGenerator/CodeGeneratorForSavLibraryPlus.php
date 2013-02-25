@@ -55,8 +55,11 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibraryPlus exte
 		t3lib_div::writeFile($fileDirectory . 'ext_emconf.php', $fileContents);
 
 		// Generates ext_localconf.php
-		$fileContents = $this->generateFile('extLocalconf.phpt');
-		t3lib_div::writeFile($fileDirectory . 'ext_localconf.php', $fileContents);
+		if ( !$this->sectionManager->getItem('general')->getItem(1)->getItem('keepExtLocalConf') || 
+				($this->sectionManager->getItem('general')->getItem(1)->getItem('keepExtLocalConf') && !file_exists($this->extensionDirectory . 'ext_localconf.php'))) {
+			$fileContents = $this->generateFile('extLocalconf.phpt');
+			t3lib_div::writeFile($fileDirectory . 'ext_localconf.php', $fileContents);
+		}
 
 		// Generates ext_tables.php
 		$fileContents = $this->generateFile('extTables.phpt');
@@ -239,17 +242,7 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibraryPlus exte
             $tempo = $table['fields'];
             unset($orderedFields);
             foreach ($tempo as $fieldKey => $field) {
-              // Generates the title
-              if (preg_match('/###(' . $field['fieldname'] . ')(?(?=[:]):([^#]+))###/', $view['viewTitleBar'], $matches) && $field['type'] != 'ShowOnly') {
-                $title[$viewKey]['configuration']['field'] = str_replace($matches[0], '###' . $tableName . '.' . $field['fieldname'] . '###', $title[$viewKey]['configuration']['field']);
-              }
-
-              if (preg_match_all('/([^=]+)=([^;#]+);?/', $matches[2], $matches) && $field['type'] != 'ShowOnly') {
-
-                foreach ($matches[0] as $keyMatch => $match) {
-                  $title[$viewKey]['configuration'][strtolower($matches[1][$keyMatch])] = $matches[2][$keyMatch];
-                }
-              }
+         
               if ($field['selected'][$viewKey]) {
                 $orderedFields[$field['order'][$viewKey]] = $fieldKey;
               }
@@ -298,16 +291,6 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibraryPlus exte
                   $column['fieldname'] = $prefix . $field['fieldname'];
                   $columns[$prefix . $field['fieldname']] = $column;
 
-                // Generates the title
-                if (preg_match('/###(' . $field['fieldname'] . ')(?(?=[:]):([^#]+))###/', $view['viewTitleBar'], $matches)) {
-                  $title[$viewKey]['configuration']['field'] = str_replace($matches[0], '###' . $tableName . '.' . $field['fieldname'] . '###',$title[$viewKey]['configuration']['field']);
-                }
-
-                if (preg_match_all('/([^=]+)=([^;#]+);?/', $matches[2], $matches)) {
-                  foreach ($matches[0] as $keyMatch => $match){
-                    $title[$viewKey]['configuration'][strtolower($matches[1][$keyMatch])] = $matches[2][$keyMatch];
-                  }
-                }
               }
               if ($field['selected'][$viewKey]) {
                 $orderedFields[$field['order'][$viewKey]] = $fieldKey;
@@ -486,7 +469,7 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibraryPlus exte
           $exp = strtolower(trim(substr($param, 0, $pos)));
           // If there is a dot, crypts the tag
           if (strpos($exp, '.') !== false) {
-            $exp = $this->cryptTag($exp);
+ //           $exp = $this->cryptTag($exp);
           }
           // Removes trailing spaces
           $configuration = htmlspecialchars(ltrim(substr($param, $pos+1)));

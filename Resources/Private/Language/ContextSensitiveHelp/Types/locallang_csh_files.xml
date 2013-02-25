@@ -7,41 +7,56 @@
 	</meta>
 	<data type="array">
 		<languageKey index="default" type="array">
+			<label index=".alttitle">SAV Library Kickstarter &gt; Types &gt; Files</label>		
+			<label index=".description">Attributes for the type Files</label>
+			<label index=".seeAlso">xEXT_sav_library_kickstarter_all:*,xEXT_sav_library_kickstarter_functions:*,xEXT_sav_library_kickstarter_general:*</label>
 
-			<label index="Files.description">Attributes for the type "Files"</label>
-			<label index="Files.seeAlso">sav_library_kickstarter_all:*,sav_library_kickstarter_functions:*,sav_library_kickstarter_general:*</label>
+			<label index="addIcon.alttitle">addIcon = 1;</label>
+			<label index="addIcon.description">Adds an icon in front of the hyperlink associated with the file.</label>
 
-			<label index="addIcon = 1;.description">Adds an icon in front of the hyperlink associated with the file.</label>
+			<label index="addLinkInEditMode.alttitle">addLinkInEditMode = 1;</label>
+			<label index="addLinkInEditMode.description">A hyperlink to the file will be added in the edit mode. &lt;b&gt;Only for "plus" library type.&lt;/b&gt;</label>
 
-			<label index="addLinkInEditMode = 1;.description">A hyperlink to the file will be added in the edit mode. &lt;b&gt;Only for "plus" library type.&lt;/b&gt;</label>
+			<label index="uploadFolder.alttitle">uploadFolder = string;</label>
+			<label index="uploadFolder.description">Sets the folder path where the file is stored. It overwrites the same attribute in the TCA.</label>
 
-			<label index="uploadFolder = string;.description">Sets the folder path where the file is stored. It overwrites the same attribute in the TCA.</label>
+			<label index="addToUploadFolder.alttitle">addToUploadFolder = string;</label>
+			<label index="addToUploadFolder.description">Adds a subpath to the UploadFolder path.</label>
 
-			<label index="addToUploadFolder = string;.description">Adds a subpath to the UploadFolder path.</label>
-
-			<label index="addToUploadFolderFromField = field_name;.description">Adds the content of the field whose name is given by "field_name" to the uploadFolder attribute. This information is separated with an underscore.
+			<label index="addToUploadFolderFromField.alttitle">addToUploadFolderFromField = field_name;</label>
+			<label index="addToUploadFolderFromField.description">Adds the content of the field whose name is given by "field_name" to the uploadFolder attribute. This information is separated with an underscore.
 Example : if the field_name is "my_field" and its contents is "123", then
 AddToUploadFolderFromField = my_field; will add "_123" to the uploadFolder name.</label>
 
-			<label index="size = integer;.description">Sets the size attribute. It overwrites the same attribute in the TCA.</label>
+			<label index="size.alttitle">size = integer;</label>
+			<label index="size.description">Sets the size attribute. It overwrites the same attribute in the TCA.</label>
 
-			<label index="iframe = 1;.description">Opens the image in an iframe.</label>
+			<label index="iframe.alttitle">iframe = 1;</label>
+			<label index="iframe.description">Opens the image in an iframe.</label>
 
-			<label index="width = integer;.description">Sets the width of an image or of the iframe.</label>
+			<label index="width.alttitle">width = integer;</label>
+			<label index="width.description">Sets the width of an image or of the iframe.</label>
 
-			<label index="height = integer;.description">Sets the height of an image or of the iframe.</label>
+			<label index="height.alttitle">height = integer;</label>
+			<label index="height.description">Sets the height of an image or of the iframe.</label>
 
-			<label index="message = string;.description">If the file is not an image, a hyperlink is created with the string.</label>
+			<label index="message.alttitle">message = string;</label>
+			<label index="message.description">If the file is not an image, a hyperlink is created with the string.</label>
 
-			<label index="fieldMessage = field_name;.description">Sets the attribute "message" with the content of the field whose name is given by field_name.</label>
+			<label index="fieldMessage.alttitle">fieldMessage = field_name;</label>
+			<label index="fieldMessage.description">Sets the attribute "message" with the content of the field whose name is given by field_name.</label>
 
-			<label index="alt = string;.description">Provides the HTML alt attribute for an image.</label>
+			<label index="alt.alttitle">alt = string;</label>
+			<label index="alt.description">Provides the HTML alt attribute for an image.</label>
 
-			<label index="fieldAlt = field_name;.description">Sets the "alt" attribute with the content of the field whose name is given by field_name.</label>
+			<label index="fieldAlt.alttitle">fieldAlt = field_name;</label>
+			<label index="fieldAlt.description">Sets the "alt" attribute with the content of the field whose name is given by field_name.</label>
 
-			<label index="default = string;.description">Defines the default image if the content of the field is null otherwise the default image is "unknown.gif" taken in the directory sav_library/res/images.</label>
+			<label index="default.alttitle">default = string;</label>
+			<label index="default.description">Defines the default image if the content of the field is null otherwise the default image is "unknown.gif" taken in the directory sav_library/res/images.</label>
 
-			<label index="tsProperties = string;.description">It makes it possible to use the graphic possibilities of TYPO3. If set, an IMAGE cObject is generated with the given TS properties.
+			<label index="tsProperties.alttitle">tsProperties = string;</label>
+			<label index="tsProperties.description">It makes it possible to use the graphic possibilities of TYPO3. If set, an IMAGE cObject is generated with the given TS properties.
 Do not forget that the configuration field is ended by a semi-column, therefore if you need a semi-column in your TS write it "\;"</label>
       
 		</languageKey>

@@ -1,27 +1,45 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2012-08-24T21:12:08Z" product-name="sav_library_kickstarter">
+	<file source-language="en" datatype="plaintext" original="messages" date="2013-02-25T13:21:18Z" product-name="sav_library_kickstarter">
 		<header/>
 		<body>
-			<trans-unit id="RelationOneToManyAsSelectorbox.description" xml:space="preserve">
+			<trans-unit id=".alttitle" xml:space="preserve">
+				<source>SAV Library Kickstarter &gt; Types &gt; Relation 1-n as selectorbox</source>
+			</trans-unit>
+			<trans-unit id=".description" xml:space="preserve">
 				<source>Attributes for the type &quot;Database one-to-many (1:n) relation as selectorbox&quot;</source>
 			</trans-unit>
-			<trans-unit id="RelationOneToManyAsSelectorbox.seeAlso" xml:space="preserve">
-				<source>sav_library_kickstarter_all:*,sav_library_kickstarter_functions:*,sav_library_kickstarter_general:*</source>
+			<trans-unit id=".seeAlso" xml:space="preserve">
+				<source>xEXT_sav_library_kickstarter_all:*,xEXT_sav_library_kickstarter_functions:*,xEXT_sav_library_kickstarter_general:*</source>
 			</trans-unit>
-			<trans-unit id="aliasSelect = field_name;.description" xml:space="preserve">
+			<trans-unit id="aliasSelect.alttitle" xml:space="preserve">
+				<source>aliasSelect = field_name;</source>
+			</trans-unit>
+			<trans-unit id="aliasSelect.description" xml:space="preserve">
 				<source>Defines an alias used in the SELECT query. markers ###fieldname### can be used, fieldname must be in the relation table.</source>
 			</trans-unit>
-			<trans-unit id="labelSelect = field_name;.description" xml:space="preserve">
+			<trans-unit id="labelSelect.alttitle" xml:space="preserve">
+				<source>labelSelect = field_name;</source>
+			</trans-unit>
+			<trans-unit id="labelSelect.description" xml:space="preserve">
 				<source>Defines the label from field_name for the selector.</source>
 			</trans-unit>
-			<trans-unit id="additionalTableSelect = comma-separated table names;.description" xml:space="preserve">
+			<trans-unit id="additionalTableSelect.alttitle" xml:space="preserve">
+				<source>additionalTableSelect = comma-separated table names;</source>
+			</trans-unit>
+			<trans-unit id="additionalTableSelect.description" xml:space="preserve">
 				<source>Adds the table names in the select query. It can be used when tables need to be joined.</source>
 			</trans-unit>
-			<trans-unit id="orderSelect = string;.description" xml:space="preserve">
+			<trans-unit id="orderSelect.alttitle" xml:space="preserve">
+				<source>orderSelect = string;</source>
+			</trans-unit>
+			<trans-unit id="orderSelect.description" xml:space="preserve">
 				<source>Defines the order clause for the selector. In general : field_name [desc].</source>
 			</trans-unit>
-			<trans-unit id="whereSelect=string;.description" xml:space="preserve">
+			<trans-unit id="whereSelect.alttitle" xml:space="preserve">
+				<source>whereSelect=string;</source>
+			</trans-unit>
+			<trans-unit id="whereSelect.description" xml:space="preserve">
 				<source>Defines the WHERE clause for the selector. It can be:
 . a conventional MySQL clause.
 - The marker ###user### can be used. It will be replaced by the user uid.
@@ -31,10 +49,16 @@
 . ###group_list = list_of_comma_separed_fe_groups###. To be used with a selector on fe_users. It checks if the user belongs to the group list.
 . ###group_list != list_of_comma_separed_fe_groups###. To be used with a selector on fe_users. It checks if the user does not belong to the group list.</source>
 			</trans-unit>
-			<trans-unit id="groupBySelect=string;.description" xml:space="preserve">
+			<trans-unit id="groupBySelect.alttitle" xml:space="preserve">
+				<source>groupBySelect=string;</source>
+			</trans-unit>
+			<trans-unit id="groupBySelect.description" xml:space="preserve">
 				<source>Defines the GROUP BY clause for the selector.</source>
 			</trans-unit>
-			<trans-unit id="content=SQL select statement;.description" xml:space="preserve">
+			<trans-unit id="content.alttitle" xml:space="preserve">
+				<source>content=SQL select statement;</source>
+			</trans-unit>
+			<trans-unit id="content.description" xml:space="preserve">
 				<source>SQL select statement must have an alias &quot;uid&quot; and an alias &quot;label&quot; which will be used as the value to display.
 Special markers can be used in the statement :
 . ###uid### will be replaced by the current record uid.
@@ -49,21 +73,42 @@ WHERE
   tx_mytable_rel_myfields_mm.uid_foreign=fe_users.uid
 ORDER BY label;</source>
 			</trans-unit>
-			<trans-unit id="separator = string;.description" xml:space="preserve">
+			<trans-unit id="separator.alttitle" xml:space="preserve">
+				<source>separator = string;</source>
+			</trans-unit>
+			<trans-unit id="separator.description" xml:space="preserve">
 				<source>It should be used when the max number of relations is greater than 1 (not true MM-relation) to replace the default &lt; br /&gt; separator between items in showAll or showSingle views.</source>
 			</trans-unit>
-			<trans-unit id="specialFields = comma-separated list of fields;.description" xml:space="preserve">
+			<trans-unit id="specialFields.alttitle" xml:space="preserve">
+				<source>specialFields = comma-separated list of fields;</source>
+			</trans-unit>
+			<trans-unit id="specialFields.description" xml:space="preserve">
 				<source>The value of the fields will be propagated in the ###special[fieldname]### marker when available.</source>
 			</trans-unit>
-			<trans-unit id="singleWindow = 1;.description" xml:space="preserve">
+			<trans-unit id="singleWindow.alttitle" xml:space="preserve">
+				<source>singleWindow = 1;</source>
+			</trans-unit>
+			<trans-unit id="singleWindow.description" xml:space="preserve">
 				<source>In case of a MM relation, a double window is used to select items. When this option is used, a single selectorbox in multiple mode is used.</source>
 			</trans-unit>
-			<trans-unit id="overrideEnableFields = 1;.description" xml:space="preserve">
+			<trans-unit id="overrideEnableFields.alttitle" xml:space="preserve">
+				<source>overrideEnableFields = 1;</source>
+			</trans-unit>
+			<trans-unit id="overrideEnableFields.description" xml:space="preserve">
 				<source>If set, the method enableFields of the class tslib_cObj which filters out records with start/end times or hidden/fe_groups fields is not applied to the query associated with the selectorbox.
 It may be used in specific cases when you needed to retreive all the records.</source>
 			</trans-unit>
-			<trans-unit id="overrideStartingPoint = 1;.description" xml:space="preserve">
+			<trans-unit id="overrideStartingPoint.alttitle" xml:space="preserve">
+				<source>overrideStartingPoint = 1;</source>
+			</trans-unit>
+			<trans-unit id="overrideStartingPoint.description" xml:space="preserve">
 				<source>By default, when starting points are provided, information associated with the selector is searched in these page. This property overrides the default behavior.</source>
+			</trans-unit>
+			<trans-unit id="applyFuncToRecords.alttitle" xml:space="preserve">
+				<source>applyFuncToRecords = 1;</source>
+			</trans-unit>
+			<trans-unit id="applyFuncToRecords.description" xml:space="preserve">
+				<source>If true the function defined by the &quot;func&quot; attribute is applied to each record of a double selector in the single view. &lt;b&gt;Only for &quot;plus&quot; library type.&lt;/b&gt;</source>
 			</trans-unit>
 		</body>
 	</file>

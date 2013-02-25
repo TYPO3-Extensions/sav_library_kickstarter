@@ -7,9 +7,9 @@
 	</meta>
 	<data type="array">
 		<languageKey index="default" type="array">
-
-			<label index="Integer.description">Attributes for the type "Integer"</label>
-			<label index="Integer.seeAlso">sav_library_kickstarter_all:*,sav_library_kickstarter_functions:*,sav_library_kickstarter_general:*</label>
+			<label index=".alttitle">SAV Library Kickstarter &gt; Types &gt; Integer</label>		
+			<label index=".description">Attributes for the type Integer</label>
+			<label index=".seeAlso">xEXT_sav_library_kickstarter_all:*,xEXT_sav_library_kickstarter_functions:*,xEXT_sav_library_kickstarter_general:*</label>
 
 		</languageKey>
 	</data>

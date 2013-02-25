@@ -17,8 +17,6 @@ $EM_CONF[$_EXTKEY] = array(
 	'author' => 'Laurent Foulloy',
 	'author_email' => 'yolf.typo3@orange.fr',
 	'shy' => '',
-	'dependencies' => 'extbase,fluid',
-	'conflicts' => '',
 	'priority' => '',
 	'module' => '',
 	'state' => 'stable',
@@ -32,6 +30,7 @@ $EM_CONF[$_EXTKEY] = array(
 	'version' => '0.2.2',
 	'constraints' => array(
 		'depends' => array(
+			'typo3' => '4.5.0-0.0.0',			
 			'extbase' => '',
 			'fluid' => '',
 		),

@@ -7,8 +7,8 @@
 	</meta>
 	<data type="array">
 		<languageKey index="default" type="array">
-		
-			<label index="LLL:EXT:sav_library_kickstarter/Resources/Private/Language/locallang.xml:kickstarter.formsSectionTitle.description">This section is used to specify the settings of your form.</label>
+			<label index=".alttitle">SAV Library Kickstarter &gt; Forms</label>
+			<label index=".description">This section is used to specify the settings of your form.</label>			
 			
 			<label index="LLL:EXT:sav_library_kickstarter/Resources/Private/Language/locallang.xml:kickstarter.formsItem.title.description">Sets the name of your form.</label>
 		

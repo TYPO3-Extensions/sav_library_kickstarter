@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2012-09-10T14:12:20Z" product-name="sav_library_kickstarter">
+	<file source-language="en" datatype="plaintext" original="messages" date="2013-02-25T11:05:19Z" product-name="sav_library_kickstarter">
 		<header/>
 		<body>
-			<trans-unit id="LLL:EXT:sav_library_kickstarter/Resources/Private/Language/locallang.xml:kickstarter.viewsSectionTitle.description" xml:space="preserve">
+			<trans-unit id=".alttitle" xml:space="preserve">
+				<source>SAV Library Kickstarter &gt; Views</source>
+			</trans-unit>
+			<trans-unit id=".description" xml:space="preserve">
 				<source>This section is used to specify the views associated with your extension.</source>
 			</trans-unit>
 			<trans-unit id="LLL:EXT:sav_library_kickstarter/Resources/Private/Language/locallang.xml:kickstarter.viewsItem.title.description" xml:space="preserve">

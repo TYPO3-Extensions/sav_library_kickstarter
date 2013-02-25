@@ -7,13 +7,15 @@
 	</meta>
 	<data type="array">
 		<languageKey index="default" type="array">
+			<label index=".alttitle">SAV Library Kickstarter &gt; Types &gt; Textarea</label>		
+			<label index=".description">Attributes for the type Textarea</label>
+			<label index=".seeAlso">xEXT_sav_library_kickstarter_all:*,xEXT_sav_library_kickstarter_functions:*,xEXT_sav_library_kickstarter_general:*</label>
 
-			<label index="Text.description">Attributes for the type "Textarea"</label>
-			<label index="Text.seeAlso">sav_library_kickstarter_all:*,sav_library_kickstarter_functions:*,sav_library_kickstarter_general:*</label>
+			<label index="cols.alttitle">cols = integer;</label>
+			<label index="cols.description">Defines the number of cols of the textarea. This attribute overwrites the same attribute in the TCA.</label>
 
-			<label index="cols = integer;.description">Defines the number of cols of the textarea. This attribute overwrites the same attribute in the TCA.</label>
-
-			<label index="rows = integer;.description">Defines the number of rows of the textarea. This attribute overwrites the same attribute in the TCA.</label>
+			<label index="rows.alttitle">rows = integer;</label>
+			<label index="rows.description">Defines the number of rows of the textarea. This attribute overwrites the same attribute in the TCA.</label>
 
 		</languageKey>
 	</data>

@@ -36,6 +36,9 @@
 			<trans-unit id="kickstarter.uninstallExtension" xml:space="preserve">
 				<source>Uninstall the extension</source>
 			</trans-unit>
+			<trans-unit id="kickstarter.downloadExtension" xml:space="preserve">
+				<source>Download the extension</source>
+			</trans-unit>      
 			<trans-unit id="kickstarter.generateExtension" xml:space="preserve">
 				<source>Generate the extension</source>
 			</trans-unit>
@@ -231,6 +234,9 @@
 			<trans-unit id="kickstarter.generalItem.pluginTitle" xml:space="preserve">
 				<source>Title for the plugin:</source>
 			</trans-unit>
+			<trans-unit id="kickstarter.generalItem.keepExtLocalConf" xml:space="preserve">
+				<source>Keep the file ext_localconf.php if it exists:</source>
+			</trans-unit>       
 			<trans-unit id="kickstarter.generalItem.debug" xml:space="preserve">
 				<source>Debug Queries (Use only for developments):</source>
 			</trans-unit>

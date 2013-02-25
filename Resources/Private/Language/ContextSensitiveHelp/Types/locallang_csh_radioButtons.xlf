@@ -1,24 +1,39 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2012-08-24T18:01:41Z" product-name="sav_library_kickstarter">
+	<file source-language="en" datatype="plaintext" original="messages" date="2013-02-25T13:20:43Z" product-name="sav_library_kickstarter">
 		<header/>
 		<body>
-			<trans-unit id="RadioButtons.description" xml:space="preserve">
-				<source>Attributes for the type &quot;RadioButtons&quot;</source>
+			<trans-unit id=".alttitle" xml:space="preserve">
+				<source>SAV Library Kickstarter &gt; Types &gt; Radiobuttons</source>
 			</trans-unit>
-			<trans-unit id="RadioButtons.seeAlso" xml:space="preserve">
-				<source>sav_library_kickstarter_all:*,sav_library_kickstarter_functions:*,sav_library_kickstarter_general:*</source>
+			<trans-unit id=".description" xml:space="preserve">
+				<source>Attributes for the type RadioButtons</source>
 			</trans-unit>
-			<trans-unit id="cols = integer;.description" xml:space="preserve">
+			<trans-unit id=".seeAlso" xml:space="preserve">
+				<source>xEXT_sav_library_kickstarter_all:*,xEXT_sav_library_kickstarter_functions:*,xEXT_sav_library_kickstarter_general:*</source>
+			</trans-unit>
+			<trans-unit id="cols.alttitle" xml:space="preserve">
+				<source>cols = integer;</source>
+			</trans-unit>
+			<trans-unit id="cols.description" xml:space="preserve">
 				<source>Number of columns to display.</source>
 			</trans-unit>
-			<trans-unit id="displayAsImage = 1;.description" xml:space="preserve">
+			<trans-unit id="displayAsImage.alttitle" xml:space="preserve">
+				<source>displayAsImage = 1;</source>
+			</trans-unit>
+			<trans-unit id="displayAsImage.description" xml:space="preserve">
 				<source>If set, the radio buttons are displayed as images instead of labels (default=0 for &quot;basic&quot; type library).</source>
 			</trans-unit>
-			<trans-unit id="default = integer;.description" xml:space="preserve">
+			<trans-unit id="default.alttitle" xml:space="preserve">
+				<source>default = integer;</source>
+			</trans-unit>
+			<trans-unit id="default.description" xml:space="preserve">
 				<source>Default value for the radio buttons.</source>
 			</trans-unit>
-			<trans-unit id="horizontalLayout = 1;.description" xml:space="preserve">
+			<trans-unit id="horizontalLayout.alttitle" xml:space="preserve">
+				<source>horizontalLayout = 1;</source>
+			</trans-unit>
+			<trans-unit id="horizontalLayout.description" xml:space="preserve">
 				<source>If set to 1, radio buttons are displayed horizontally in edit forms.</source>
 			</trans-unit>
 		</body>

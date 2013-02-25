@@ -7,17 +7,21 @@
 	</meta>
 	<data type="array">
 		<languageKey index="default" type="array">
-		
-			<label index="RadioButtons.description">Attributes for the type "RadioButtons"</label>
-			<label index="RadioButtons.seeAlso">sav_library_kickstarter_all:*,sav_library_kickstarter_functions:*,sav_library_kickstarter_general:*</label>
+			<label index=".alttitle">SAV Library Kickstarter &gt; Types &gt; Radiobuttons</label>				
+			<label index=".description">Attributes for the type RadioButtons</label>
+			<label index=".seeAlso">xEXT_sav_library_kickstarter_all:*,xEXT_sav_library_kickstarter_functions:*,xEXT_sav_library_kickstarter_general:*</label>
 			
-			<label index="cols = integer;.description">Number of columns to display.</label>
+			<label index="cols.alttitle">cols = integer;</label>
+			<label index="cols.description">Number of columns to display.</label>
 
-			<label index="displayAsImage = 1;.description">If set, the radio buttons are displayed as images instead of labels (default=0 for "basic" type library).</label>
+			<label index="displayAsImage.alttitle">displayAsImage = 1;</label>
+			<label index="displayAsImage.description">If set, the radio buttons are displayed as images instead of labels (default=0 for "basic" type library).</label>
 
-			<label index="default = integer;.description">Default value for the radio buttons.</label>
+			<label index="default.alttitle">default = integer;</label>
+			<label index="default.description">Default value for the radio buttons.</label>
 
-			<label index="horizontalLayout = 1;.description">If set to 1, radio buttons are displayed horizontally in edit forms.</label>
+			<label index="horizontalLayout.alttitle">horizontalLayout = 1;</label>
+			<label index="horizontalLayout.description">If set to 1, radio buttons are displayed horizontally in edit forms.</label>
 
 		</languageKey>
 	</data>

@@ -7,11 +7,12 @@
 	</meta>
 	<data type="array">
 		<languageKey index="default" type="array">
-
-			<label index="String.description">Attributes for the type "String input"</label>
-			<label index="String.seeAlso">sav_library_kickstarter_all:*,sav_library_kickstarter_functions:*,sav_library_kickstarter_general:*</label>
+			<label index=".alttitle">SAV Library Kickstarter &gt; Types &gt; String</label>		
+			<label index=".description">Attributes for the type String</label>
+			<label index=".seeAlso">xEXT_sav_library_kickstarter_all:*,xEXT_sav_library_kickstarter_functions:*,xEXT_sav_library_kickstarter_general:*</label>
 			
-			<label index="size = integer;.description">Size of the field.</label>
+			<label index="size.alttitle">size = integer;</label>
+			<label index="size.description">Size of the field.</label>
 
 		</languageKey>
 	</data>

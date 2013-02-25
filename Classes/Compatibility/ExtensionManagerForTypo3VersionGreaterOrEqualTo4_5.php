@@ -43,18 +43,40 @@ class Tx_SavLibraryKickstarter_Compatibility_ExtensionManager {
 	 */
 	protected $generalArguments;
 
+	/**
+	 * XML handling class for the TYPO3 Extension Manager
+	 *
+	 * @var tx_em_Tools_XmlHandler
+	 */
+	public $xmlHandler;
 
 	/**
 	 * Class for printing extension lists
 	 *
+	 * @var tx_em_Extensions_List
 	 */
 	public $extensionList;
 
 	/**
-	 * Class install
+	 * Class for extension details
 	 *
+	 * @var tx_em_Extensions_Details
+	 */
+	public $extensionDetails;
+
+	/**
+	 * Class for install
+	 *
+	 * @var tx_em_Install
 	 */
 	public $install;
+	
+	/**
+	 * Class for terConnection
+	 *
+	 * @var tx_em_Connection_Ter
+	 */
+	public $terConnection;
 		
 	/**
 	 * Constructor.
@@ -63,18 +85,12 @@ class Tx_SavLibraryKickstarter_Compatibility_ExtensionManager {
 	 */
 	public function __construct($extensionKey) {
 	  $this->extensionKey = $extensionKey;
-	  
-    $extensionManagerDirectory = PATH_typo3 . 'mod/tools/em/';
 
-    require_once($extensionManagerDirectory . 'class.em_index.php');
-    $extensionManager = t3lib_div::makeInstance('SC_mod_tools_em_index');
-
-    // Added property for a simpler compatibility processing
-    $extensionManager->typePaths = array (
-      'L' => 'typo3conf/ext/'
-		);
-    $this->install =& $extensionManager;
-    $this->extensionList =& $extensionManager;
+  	$this->xmlHandler = t3lib_div::makeInstance('tx_em_Tools_XmlHandler');
+  	$this->extensionList = t3lib_div::makeInstance('tx_em_Extensions_List', $this);
+  	$this->extensionDetails = t3lib_div::makeInstance('tx_em_Extensions_Details', $this);
+  	$this->install = t3lib_div::makeInstance('tx_em_Install', $this);
+  	$this->terConnection = t3lib_div::makeInstance('tx_em_Connection_Ter', $this);
 	}
 
 	/**
@@ -122,7 +138,7 @@ class Tx_SavLibraryKickstarter_Compatibility_ExtensionManager {
 				$newInstalledExtensions = $this->extensionList->addExtToList($extensionKey, $installedExtensions);
 				if ($newInstalledExtensions != -1) {
 					$this->install->writeNewExtensionList($newInstalledExtensions);
-          $this->install->refreshGlobalExtList();
+          tx_em_Tools::refreshGlobalExtList();
 					$this->install->forceDBupdates($extensionKey, $installedExtensions[$extensionKey]);
 				}
 			}
@@ -188,13 +204,11 @@ class Tx_SavLibraryKickstarter_Compatibility_ExtensionManager {
 		$installedExtensionInformation = $installedExtensions[$extensionKey];
 		
 		// Gets the upload array
-		$extensionDetails = t3lib_div::makeInstance('tx_em_Extensions_Details', $this);		
-		$uploadArray = $extensionDetails->makeUploadarray($extensionKey, $installedExtensionInformation);		
+		$uploadArray = $this->extensionDetails->makeUploadarray($extensionKey, $installedExtensionInformation);		
 
 		if (is_array($uploadArray)) {
 			// Gets the TER commection
-			$terConnection = t3lib_div::makeInstance('tx_em_Connection_Ter', $this);
-			$backUpData = $terConnection->makeUploadDataFromarray($uploadArray);
+			$backUpData = $this->terConnection->makeUploadDataFromarray($uploadArray);
 			$filename = 'T3X_' . $extensionKey . '-' . str_replace('.', '_', $installedExtensionInformation['EM_CONF']['version']) . '-z-' . date('YmdHi') . '.t3x';
 			t3lib_div::cleanOutputBuffers();
 			header('Content-Type: application/octet-stream');
@@ -202,7 +216,7 @@ class Tx_SavLibraryKickstarter_Compatibility_ExtensionManager {
 			echo $backUpData;
 			exit;   
 		}    
-  } 		
+  } 		  
   
 	/**
 	 * Checks the if database must be updated.
@@ -227,8 +241,8 @@ class Tx_SavLibraryKickstarter_Compatibility_ExtensionManager {
         $this->createHiddenTag(array('[general][itemKey]' => $this->generalArguments['itemKey'])).
         $this->createHiddenTag(array('[submitAction][updateDb]' => 1))
       ;
-
-      $updateMessage = '<form>' . $updateMessage . $additionalUpdateMessage . '</form>';
+      
+      $updateMessage = str_replace('</form>', $additionalUpdateMessage . '</form>', $updateMessage);
 
       // Adds the message
       $this->flashMessages->add($updateMessage);

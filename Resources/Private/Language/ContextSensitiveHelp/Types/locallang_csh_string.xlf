@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2012-08-24T18:03:51Z" product-name="sav_library_kickstarter">
+	<file source-language="en" datatype="plaintext" original="messages" date="2013-02-25T13:21:46Z" product-name="sav_library_kickstarter">
 		<header/>
 		<body>
-			<trans-unit id="String.description" xml:space="preserve">
-				<source>Attributes for the type &quot;String input&quot;</source>
+			<trans-unit id=".alttitle" xml:space="preserve">
+				<source>SAV Library Kickstarter &gt; Types &gt; String</source>
 			</trans-unit>
-			<trans-unit id="String.seeAlso" xml:space="preserve">
-				<source>sav_library_kickstarter_all:*,sav_library_kickstarter_functions:*,sav_library_kickstarter_general:*</source>
+			<trans-unit id=".description" xml:space="preserve">
+				<source>Attributes for the type String</source>
 			</trans-unit>
-			<trans-unit id="size = integer;.description" xml:space="preserve">
+			<trans-unit id=".seeAlso" xml:space="preserve">
+				<source>xEXT_sav_library_kickstarter_all:*,xEXT_sav_library_kickstarter_functions:*,xEXT_sav_library_kickstarter_general:*</source>
+			</trans-unit>
+			<trans-unit id="size.alttitle" xml:space="preserve">
+				<source>size = integer;</source>
+			</trans-unit>
+			<trans-unit id="size.description" xml:space="preserve">
 				<source>Size of the field.</source>
 			</trans-unit>
 		</body>

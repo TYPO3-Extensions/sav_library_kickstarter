@@ -1,18 +1,27 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2012-08-24T18:02:46Z" product-name="sav_library_kickstarter">
+	<file source-language="en" datatype="plaintext" original="messages" date="2013-02-25T13:21:24Z" product-name="sav_library_kickstarter">
 		<header/>
 		<body>
-			<trans-unit id="RichTextEditor.description" xml:space="preserve">
-				<source>Attributes for the type &quot;Rich Text Editor&quot;</source>
+			<trans-unit id=".alttitle" xml:space="preserve">
+				<source>SAV Library Kickstarter &gt; Types &gt; Rich Text Editor</source>
 			</trans-unit>
-			<trans-unit id="RichTextEditor.seeAlso" xml:space="preserve">
-				<source>sav_library_kickstarter_all:*,sav_library_kickstarter_functions:*,sav_library_kickstarter_general:*</source>
+			<trans-unit id=".description" xml:space="preserve">
+				<source>Attributes for the type Rich Text Editor</source>
 			</trans-unit>
-			<trans-unit id="height = integer;.description" xml:space="preserve">
+			<trans-unit id=".seeAlso" xml:space="preserve">
+				<source>xEXT_sav_library_kickstarter_all:*,xEXT_sav_library_kickstarter_functions:*,xEXT_sav_library_kickstarter_general:*</source>
+			</trans-unit>
+			<trans-unit id="height.alttitle" xml:space="preserve">
+				<source>height = integer;</source>
+			</trans-unit>
+			<trans-unit id="height.description" xml:space="preserve">
 				<source>Defines the height of the textarea. The integer value represents the height in pixels (45 pixels are automatically added).</source>
 			</trans-unit>
-			<trans-unit id="width = integer;.description" xml:space="preserve">
+			<trans-unit id="width.alttitle" xml:space="preserve">
+				<source>width = integer;</source>
+			</trans-unit>
+			<trans-unit id="width.description" xml:space="preserve">
 				<source>Defines the width of the textarea. The integer value represents the width in pixels.</source>
 			</trans-unit>
 		</body>

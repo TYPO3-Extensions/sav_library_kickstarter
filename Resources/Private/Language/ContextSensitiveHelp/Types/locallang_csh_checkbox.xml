@@ -7,19 +7,23 @@
 	</meta>
 	<data type="array">
 		<languageKey index="default" type="array">
-		
-			<label index="Checkbox.description">Attributes for the type "Checkbox"</label>
-			<label index="Checkbox.seeAlso">sav_library_kickstarter_all:*,sav_library_kickstarter_functions:*,sav_library_kickstarter_general:*</label>
+			<label index=".alttitle">SAV Library Kickstarter &gt; Types &gt; Checkbox</label>		
+			<label index=".description">Attributes for the type "Checkbox"</label>
+			<label index=".seeAlso">xEXT_sav_library_kickstarter_all:*,xEXT_sav_library_kickstarter_functions:*,xEXT_sav_library_kickstarter_general:*</label>
 			
-			<label index="checkboxSelectedImage=string;.description">The string is used as a file name which is searched in the icon directory.
+			<label index="checkboxSelectedImage.alttitle">checkboxSelectedImage=string;</label>
+			<label index="checkboxSelectedImage.description">The string is used as a file name which is searched in the icon directory.
 It replaces the default image for a selected checkbox. &lt;b&gt;Not available in "basic" type library.&lt;/b&gt;</label>
 
-			<label index="checkboxNotSelectedImage=string;.description">The string is used as a file name which is searched in the icon directory.
+			<label index="checkboxNotSelectedImage.alttitle">checkboxNotSelectedImage=string;</label>
+			<label index="checkboxNotSelectedImage.description">The string is used as a file name which is searched in the icon directory.
 It replaces the default image for an unselected checkbox. &lt;b&gt;Not available in "basic" type library.&lt;/b&gt;</label>
 
-			<label index="displayAsImage = 1;.description">If set, the check box is displayed as an image instead of a label (defaut=0 "basic" type library).</label>
+			<label index="displayAsImage.alttitle">displayAsImage = 1;</label>
+			<label index="displayAsImage.description">If set, the check box is displayed as an image instead of a label (defaut=0 "basic" type library).</label>
 
-			<label index="doNotDisplayIfNotChecked = 1;.description">Do not display the checkbox value if it is not checked (obviously it does not apply when in edit mode).</label>
+			<label index="doNotDisplayIfNotChecked.alttitle">doNotDisplayIfNotChecked = 1;</label>
+			<label index="doNotDisplayIfNotChecked.description">Do not display the checkbox value if it is not checked (obviously it does not apply when in edit mode).</label>
 
 		</languageKey>
 	</data>

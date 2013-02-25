@@ -17,6 +17,7 @@
 			<label index="kickstarter.copyExtension">Copy the extension</label>
 			<label index="kickstarter.installExtension">Install the extension</label>
 			<label index="kickstarter.uninstallExtension">Uninstall the extension</label>
+			<label index="kickstarter.downloadExtension">Download the extension</label>      
 			<label index="kickstarter.generateExtension">Generate the extension</label>
 			<label index="kickstarter.upgradeExtension">Upgrade the extension</label>
 			<label index="kickstarter.upgradeExtensions">Upgrade all extensions</label>			
@@ -82,6 +83,7 @@
 			<label index="kickstarter.generalItem.libraryType.1">plus</label>
 			<label index="kickstarter.generalItem.libraryType.2">mvc</label>
 			<label index="kickstarter.generalItem.pluginTitle">Title for the plugin:</label>
+			<label index="kickstarter.generalItem.keepExtLocalConf">Keep the file ext_localconf.php if it exists:</label>
 			<label index="kickstarter.generalItem.debug">Debug Queries (Use only for developments):</label>
 			<label index="kickstarter.generalItem.version">New version:</label>
 			<label index="kickstarter.viewsItem.title">Name:</label>
