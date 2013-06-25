@@ -176,6 +176,7 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibraryPlus exte
 
     // Generates views
     if (is_array($extension['views'])) {
+      $relationTable = array();    	
       foreach ($extension['views'] as $viewKey => $view) {
 
         // Generates the templates
@@ -336,15 +337,17 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibraryPlus exte
         }
 
         if (isset($showFolders)) {
-          $configTemp = array();
-          $relTable = array();
           foreach ($sortedFolders as $sortedFolderKey => $folderKey) {
-          	// Gets the folder
-						$folder = $showFolders[$folderKey];
-      
+          	$fieldConfiguration = array();
+
+          	// Gets the folder fields
+						$folderFields = $showFolders[$folderKey];
+     
             $folderName = $opt_showFolders[$folderKey]['label'];
+            $cryptedFolderName = $this->cryptTag($folderName);
+            
             // Gets the folder config parameter
-            $xmlArray['views'][$viewKey][$this->cryptTag($folderName)]['configuration'] = $this->getConfig($opt_showFolders[$folderKey]['configuration']) +
+            $xmlArray['views'][$viewKey][$cryptedFolderName]['configuration'] = $this->getConfig($opt_showFolders[$folderKey]['configuration']) +
               array ('label' => $folderName);
 
             // Generates the title
@@ -352,30 +355,37 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibraryPlus exte
               $title[$viewKey]['configuration']['field'] = $view['viewTitleBar'];
               $title[$viewKey]['configuration']['type'] = 'input';
             }
-            $xmlArray['views'][$viewKey][$this->cryptTag($folderName)]['title'] = $title[$viewKey];
+            $xmlArray['views'][$viewKey][$cryptedFolderName]['title'] = $title[$viewKey];
 
 
             // Generates the addPrintIcon information
             if ($view['addPrintIcon']) {
-              $xmlArray['views'][$viewKey][$this->cryptTag($folderName)]['addPrintIcon'] = $view['addPrintIcon'];
+              $xmlArray['views'][$viewKey][$cryptedFolderName]['addPrintIcon'] = $view['addPrintIcon'];
               if ($view['viewForPrintIcon']) {
-                $xmlArray['views'][$viewKey][$this->cryptTag($folderName)]['viewForPrintIcon'] = $view['viewForPrintIcon'];
+                $xmlArray['views'][$viewKey][$cryptedFolderName]['viewForPrintIcon'] = $view['viewForPrintIcon'];
               }
             }
 
             // Processes the folders
-            foreach($folder as $key => $value) {
-              $config = array();
-              $table = $extension[$value['wizArray']][$value['table']];
-              $field = $extension[$value['wizArray']][$value['table']]['fields'][$value['field']];
+            foreach($folderFields as $folderFieldKey => $folderField) {
+            	$config = array();
 
-              $fieldName = (($value['wizArray'] == 'existingTables' && $field['type'] != 'ShowOnly') ? 'tx_' . str_replace('_', '', $this->extensionKey) . '_' . $field['fieldname'] : $field['fieldname']);
-              $name = $value['tableName'] . '.' . $fieldName;
+              // Gets the field
+							$wizArrayKey = $folderField['wizArray'];
+							$tableKey = $folderField['table'];
+							$fieldKey = $folderField['field'];
+              $field = $extension[$wizArrayKey][$tableKey]['fields'][$fieldKey];
+              
+              $fieldName = (($wizArrayKey == 'existingTables' && $field['type'] != 'ShowOnly') ? 'tx_' . str_replace('_', '', $this->extensionKey) . '_' . $field['fieldname'] : $field['fieldname']);
+							$tableName = $folderField['tableName'];
+              $fullFieldName = $tableName . '.' . $fieldName;
+              $cryptedFullFieldName = $this->cryptTag($fullFieldName);
+
               // Generates the field
               if ($field['selected'][$viewKey]) {
 
                 // Sets the user configuration parameters
-                $config['tableName'] = $value['tableName'];
+              	$config['tableName'] = $tableName;
                 $config['fieldName'] = $fieldName;
                 $config['fieldType'] = $field['type'];
 
@@ -385,59 +395,52 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibraryPlus exte
                 }
                 
                 // Checks if it is a subform
-                if ($field['type'] == 'RelationManyToManyAsSubform') {
-                  $relTable[$field['conf_rel_table']] = $this->cryptTag($name);
+                if ($field['type'] == 'RelationManyToManyAsSubform') {            
+                	$relationTable[$viewKey][$field['conf_rel_table']] = $cryptedFullFieldName;                  
                 }
-
-                $config = $this->getConfig($field['configuration'][$viewKey]) + $config;
-                $configTemp[$this->cryptTag($name)] = array('label' => $folderName, 'configuration' => $config);
+                
+                // Checks if its a subform field
+                if (array_key_exists($tableName, $relationTable[$viewKey])) {
+                	$relationTableKey = $relationTable[$viewKey][$tableName];
+                	$subformConfiguration[$viewKey][$relationTableKey] = array_merge(
+                		(array)$subformConfiguration[$viewKey][$relationTableKey], 
+                		array(
+											$cryptedFullFieldName => array(
+												'configuration' => $this->getConfig($field['configuration'][$viewKey]) + $config
+											)
+										)
+									);		                	
+                } else {	                
+									$fieldConfiguration[$cryptedFullFieldName] = array(
+										'configuration' => $this->getConfig($field['configuration'][$viewKey]) + $config
+									);		
+                }					                
               }
             }
-          }
-
-          // Processes the $configTemp to take into account the subforms
-          unset($temp);
-          if(is_array($configTemp)) {
-
-            foreach($configTemp as $keyTemp => $valTemp) {
-
-              // Checks if the field is associated with a subform
-              $tableName = $valTemp['configuration']['tableName'];
-
-              if (array_key_exists($tableName, $relTable)) {
-
-                if (is_array($xmlArray['views'][$viewKey][$this->cryptTag($valTemp['label'])]['fields'][$relTable[$tableName]])) {
-                  $xmlArray['views'][$viewKey][$this->cryptTag($valTemp['label'])]['fields'][$relTable[$tableName]]['configuration'][$this->cryptTag('0')]['fields'][$keyTemp]['configuration'] = $valTemp['configuration'];
-                } else {
-                  // Checks if the folder is the same as the folder of the subform
-                  if ($valTemp['label'] == $configTemp[$relTable[$tableName]]['label']) {
-                    // Keeps the config for future use
-                    $temp[$keyTemp] = $valTemp['configuration'];
-                  } else {
-                    // Just sets the config
-                    $xmlArray['views'][$viewKey][$this->cryptTag($valTemp['label'])]['fields'][$keyTemp]['configuration'] = $valTemp['configuration'];
-                  }
-                }
-              } else {
-                $xmlArray['views'][$viewKey][$this->cryptTag($valTemp['label'])]['fields'][$keyTemp]['configuration'] = (array) $xmlArray['views'][$viewKey][$this->cryptTag($valTemp['label'])]['fields'][$keyTemp]['configuration'] + $valTemp['configuration'];
-                if (array_search($keyTemp, $relTable) && is_array($temp)) {
-                  foreach($temp as $key => $value) {
-                    if ($value['table'] == array_search($keyTemp, $relTable)) {
-                      $xmlArray['views'][$viewKey][$this->cryptTag($valTemp['label'])]['fields'][$relTable[$value['table']]]['configuration'][$this->cryptTag('0')]['fields'][$key]['configuration'] = $value;
-                      unset($temp[$key]);
-                    }
-                  }
-                }
-              }
-            }
-          }
+   
+          $xmlArray['views'][$viewKey][$cryptedFolderName]['fields'] = $fieldConfiguration;
+        
+          }          
         }
       }
+
+			// Adds the subform configuraition     
+      foreach ($extension['views'] as $viewKey => $view) {     
+      	if (is_array($subformConfiguration[$viewKey])) {
+      		foreach ($subformConfiguration[$viewKey] as $subformKey => $subform) {		
+						$arrayToAdd['configuration'][$this->cryptTag('0')]['fields'] = $subform;	
+						$this->addConfiguration($xmlArray['views'][$viewKey], $subformKey, $arrayToAdd);		      			
+      		}
+      	} 
+      }
+
     }
 
+//print('<pre>' . print_r($xmlArray,1) . '</pre>');	
+//die();	  
   return $xmlArray;
   }
-
+  
 	/**
 	 * Gets the configuration of a field.
 	 *
@@ -507,5 +510,49 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibraryPlus exte
     return $item;
   }
 
+	/**
+	 * Searches recursively a configuration if an aray, given à key
+	 *  
+	 * @param array $arrayToSearchIn
+	 * @param string $key
+	 * @return array or false
+	 */  
+  public function searchConfiguration($arrayToSearchIn, $key) {
+    foreach ($arrayToSearchIn as $itemKey => $item) {
+      if ($itemKey == $key) {
+        return $item;
+      } elseif (is_array($item)) {
+        $configuration = $this->searchConfiguration($item, $key);
+        if ($configuration != false) {
+          return $configuration;
+        }
+      }
+    }
+    return false;
+  }  
+
+	/**
+	 * Adds a configuration to the right palce after a recursive search, given à key
+	 *  
+	 * @param array $arrayToSearchIn
+	 * @param string $key
+	 * @param array $arrayToAdd
+	 * @return array or false
+	 */  
+  public function addConfiguration(&$arrayToSearchIn, $key, $arrayToAdd) {  	
+    foreach ($arrayToSearchIn as $itemKey => $item) {
+      if ($itemKey == $key) {
+				$x = $arrayToSearchIn[$itemKey];
+      	$arrayToSearchIn[$itemKey]['configuration'] = array_replace($arrayToSearchIn[$itemKey]['configuration'], $arrayToSearchIn[$itemKey]['configuration'] + $arrayToAdd['configuration']);
+      	return true;
+      } elseif (is_array($item)) {
+        $configuration = $this->addConfiguration($arrayToSearchIn[$itemKey], $key, $arrayToAdd);
+        if ($configuration != false) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }    
 }
 ?>

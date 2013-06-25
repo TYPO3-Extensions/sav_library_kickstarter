@@ -48,13 +48,13 @@ class Tx_SavLibraryKickstarter_ViewHelpers_BuildOrderbyClauseForRelationTableVie
 				// Checks if manual ordering is not set
 				if (empty($table['sorting'])) {
 					// Field-based ordering
-					$orderByClause = ' ORDER BY '. $realTableName. '.' . $table['sorting_field'];
+					$orderByClause = ' ORDER BY ' . $realTableName . '.' . $table['sorting_field'];
 					if (empty($table['sorting_desc']) === false) {
 						$orderByClause .= ' DESC';
 					}
 				} else {
 					// Manual ordering
-					$orderByClause .= 'sorting';
+					$orderByClause .= ' ORDER BY ' . $realTableName . '.sorting';
 				}
     		return $orderByClause;
     	}  

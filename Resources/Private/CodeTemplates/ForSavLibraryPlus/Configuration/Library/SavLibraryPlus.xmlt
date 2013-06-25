@@ -64,7 +64,7 @@
 				<exclude type="integer">1</exclude>
 				<label>LLL:EXT:{extension.extensionKey}/locallang_db.xml:{tableKey}.{field.fieldname}</label>
 				<config type="array">
-          <f:alias map="{TcaElements:\"{sav:render(partial:'../CodeTemplates/ForSavLibrary/Partials/TCA/{field.type}.phpt',arguments:{field:field,model:tableKey,extensionKey:extension.extensionKey})}\"}">
+          <f:alias map="{TcaElements:\"{sav:render(partial:'../CodeTemplates/ForSavLibraryPlus/Partials/TCA/{field.type}.phpt',arguments:{field:field,model:tableKey,extensionKey:extension.extensionKey})}\"}">
           {sav:TcaElementsToXml(TcaElements:TcaElements)}
           </f:alias>
  				</config>
@@ -101,22 +101,8 @@
 						<config type="array">
               <f:for each="{field.configuration}" as="configuration" key="configurationKey">
               <f:if condition="{configuration->sav:function(name:'isArray')}">
-                <f:then>
-              <subform type="array">
-                <{configurationKey} type="array">
-                  <fields type="array">
-                  <f:for each="{configuration.fields}" as="subformField" key="subformFieldKey">
-                    <{subformFieldKey} type="array">
-                      <config type="array">
-                      <f:for each="{subformField.configuration}" as="subformConfiguration" key="subformConfigurationKey">
-                        <{subformConfigurationKey}>{subformConfiguration}</{subformConfigurationKey}>
-                      </f:for>
-                      </config>
-                    </{subformFieldKey}>
-                  </f:for>
-                  </fields>
-                </{configurationKey}>
-              </subform>
+                <f:then> 
+          		<sav:render partial="../CodeTemplates/ForSavLibraryPlus/Configuration/Library/SavLibraryPlusSubform.xmlt" arguments="{configurationKey:configurationKey,configuration:configuration}" />
                 </f:then>
                 <f:else>
               <{configurationKey}{f:if(condition:'{configuration->sav:function(name:"isInteger")}',then:' type="integer"')}>{configuration}</{configurationKey}>
