@@ -12,7 +12,6 @@
         <el>
           <helpGeneral>
             <TCEforms>
-              <exclude>1</exclude>
               <config>
                 <type>user</type>
                 <userFunc>user_savlibraryPlusHelp</userFunc>
@@ -24,7 +23,6 @@
           </helpGeneral>
           <formId>
             <TCEforms>
-              <exclude>1</exclude>
               <label>LLL:EXT:sav_library_plus/Resources/Private/Language/locallang.xml:pi_flexform.formId</label>
               <config>
                 <type>select</type>
@@ -46,7 +44,6 @@
           </formId>
           <noFilterShowAll>
             <TCEforms>
-              <exclude>1</exclude>
               <label>LLL:EXT:sav_library_plus/Resources/Private/Language/locallang.xml:pi_flexform.noFilterShowAll</label>
               <config>
                 <type>check</type>
@@ -56,7 +53,6 @@
           </noFilterShowAll>
           <showNoAvailableInformation>
             <TCEforms>
-              <exclude>1</exclude>
               <label>LLL:EXT:sav_library_plus/Resources/Private/Language/locallang.xml:pi_flexform.showNoAvailableInformation</label>
               <config>
                 <type>select</type>
@@ -80,7 +76,6 @@
           </showNoAvailableInformation>
           <maxItems>
             <TCEforms>
-            <exclude>1</exclude>
             <label>LLL:EXT:sav_library_plus/Resources/Private/Language/locallang.xml:pi_flexform.maxItems</label>
               <config>
 								<type>input</type>
@@ -102,7 +97,6 @@
         <el>
           <helpInputControls>
             <TCEforms>
-              <exclude>1</exclude>
               <config>
                 <type>user</type>
                 <userFunc>user_savlibraryPlusHelp</userFunc>
@@ -114,7 +108,6 @@
           </helpInputControls>
           <inputIsAllowed>
             <TCEforms>
-              <exclude>1</exclude>
               <label>LLL:EXT:sav_library_plus/Resources/Private/Language/locallang.xml:pi_flexform.inputIsAllowed</label>
               <config>
                 <type>check</type>
@@ -124,7 +117,6 @@
           </inputIsAllowed>
           <allowedGroups>
             <TCEforms>
-              <exclude>1</exclude>
               <label>LLL:EXT:sav_library_plus/Resources/Private/Language/locallang.xml:pi_flexform.allowedGroups</label>
               <config>
                 <type>group</type>
@@ -139,7 +131,6 @@
           </allowedGroups>
           <inputAdminField>
             <TCEforms>
-              <exclude>1</exclude>
               <label>LLL:EXT:sav_library_plus/Resources/Private/Language/locallang.xml:pi_flexform.inputAdminField</label>
               <config>
                 <type>input</type>
@@ -149,7 +140,6 @@
           </inputAdminField>
           <noNewButton>
             <TCEforms>
-              <exclude>1</exclude>
               <label>LLL:EXT:sav_library_plus/Resources/Private/Language/locallang.xml:pi_flexform.noNewButton</label>
               <config>
 								<type>check</type>
@@ -159,7 +149,6 @@
           </noNewButton>
           <noEditButton>
             <TCEforms>
-              <exclude>1</exclude>
               <label>LLL:EXT:sav_library_plus/Resources/Private/Language/locallang.xml:pi_flexform.noEditButton</label>
               <config>
                 <type>check</type>
@@ -169,7 +158,6 @@
           </noEditButton>
           <noDeleteButton>
             <TCEforms>
-              <exclude>1</exclude>
               <label>LLL:EXT:sav_library_plus/Resources/Private/Language/locallang.xml:pi_flexform.noDeleteButton</label>
               <config>
                 <type>check</type>
@@ -179,7 +167,6 @@
           </noDeleteButton>
           <deleteButtonOnlyForCreationUser>
             <TCEforms>
-              <exclude>1</exclude>
               <label>LLL:EXT:sav_library_plus/Resources/Private/Language/locallang.xml:pi_flexform.deleteButtonOnlyForCreationUser</label>
               <config>
                 <type>check</type>
@@ -189,7 +176,6 @@
           </deleteButtonOnlyForCreationUser>
           <inputStartDate>
             <TCEforms>
-              <exclude>1</exclude>
               <label>LLL:EXT:sav_library_plus/Resources/Private/Language/locallang.xml:pi_flexform.inputStartDate</label>
               <config>
                 <type>input</type>
@@ -202,7 +188,6 @@
           </inputStartDate>
           <inputEndDate>
             <TCEforms>
-              <exclude>1</exclude>
               <label>LLL:EXT:sav_library_plus/Resources/Private/Language/locallang.xml:pi_flexform.inputEndDate</label>
               <config>
                 <type>input</type>
@@ -215,7 +200,6 @@
           </inputEndDate>
           <dateUserRestriction>
             <TCEforms>
-              <exclude>1</exclude>
               <label>LLL:EXT:sav_library_plus/Resources/Private/Language/locallang.xml:pi_flexform.dateUserRestriction</label>
               <config>
                 <type>select</type>
@@ -253,7 +237,6 @@
         <el>
           <helpAdvanced>
             <TCEforms>
-              <exclude>1</exclude>
               <config>
                 <type>user</type>
                 <userFunc>user_savlibraryPlusHelp</userFunc>
@@ -265,7 +248,6 @@
           </helpAdvanced>
           <permanentFilter>
             <TCEforms>
-              <exclude>1</exclude>
               <label>LLL:EXT:sav_library_plus/Resources/Private/Language/locallang.xml:pi_flexform.permanentFilter</label>
               <config>
                 <type>input</type>
@@ -275,7 +257,6 @@
           </permanentFilter>
           <addFragment>
             <TCEforms>
-              <exclude>1</exclude>
               <label>LLL:EXT:sav_library_plus/Resources/Private/Language/locallang.xml:pi_flexform.addFragment</label>
               <config>
                 <type>check</type>
@@ -285,7 +266,6 @@
           </addFragment>
           <allowQueryProperty>
             <TCEforms>
-              <exclude>1</exclude>
               <displayCond>HIDE_FOR_NON_ADMINS</displayCond>
               <label>LLL:EXT:sav_library_plus/Resources/Private/Language/locallang.xml:pi_flexform.allowQueryProperty</label>
               <config>
@@ -296,7 +276,6 @@
           </allowQueryProperty>
           <allowExec>
             <TCEforms>
-              <exclude>1</exclude>
               <displayCond>HIDE_FOR_NON_ADMINS</displayCond>
               <label>LLL:EXT:sav_library_plus/Resources/Private/Language/locallang.xml:pi_flexform.allowExec</label>
               <config>
@@ -307,7 +286,6 @@
           </allowExec>
           <storagePage>
             <TCEforms>
-              <exclude>1</exclude>
               <label>LLL:EXT:sav_library_plus/Resources/Private/Language/locallang.xml:pi_flexform.storagePage</label>
               <config>
                 <type>group</type>
@@ -332,7 +310,6 @@
         <el>
           <helpHelpPages>
             <TCEforms>
-              <exclude>1</exclude>
               <config>
                 <type>user</type>
                 <userFunc>user_savlibraryPlusHelp</userFunc>
@@ -344,7 +321,6 @@
           </helpHelpPages>
           <helpPageListView>
             <TCEforms>
-              <exclude>1</exclude>
               <label>LLL:EXT:sav_library_plus/Resources/Private/Language/locallang.xml:pi_flexform.helpPageListView</label>
               <config>
                 <type>group</type>
@@ -359,7 +335,6 @@
           </helpPageListView>
           <helpPageSingleView>
             <TCEforms>
-              <exclude>1</exclude>
               <label>LLL:EXT:sav_library_plus/Resources/Private/Language/locallang.xml:pi_flexform.helpPageSingleView</label>
               <config>
                 <type>group</type>
@@ -374,7 +349,6 @@
           </helpPageSingleView>
           <helpPageEditView>
             <TCEforms>
-              <exclude>1</exclude>
               <label>LLL:EXT:sav_library_plus/Resources/Private/Language/locallang.xml:pi_flexform.helpPageEditView</label>
               <config>
                 <type>group</type>

@@ -18,7 +18,7 @@
 </f:if>
 'size' => {f:if(condition:field.conf_relations_selsize,then:field.conf_relations_selsize,else:1)},
 'minitems' => 0,
-'maxitems' => {f:if(condition:field.conf_relations,then:field.conf_relations,else:1)},
+'maxitems' => {f:if(condition:field.conf_relations,then:field.conf_relations,else:100000)},
 <f:if condition="{field.conf_relations_mm}">
 'MM' => '{model}_{field.fieldname}_mm',
 </f:if>

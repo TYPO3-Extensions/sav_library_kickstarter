@@ -88,7 +88,7 @@ abstract class Tx_SavLibraryKickstarter_CodeGenerator_AbstractCodeGenerator {
 	 * @param array $extensionArray The extension array
 	 * return string The parsed file content
 	 */
-	public function generateFile($templateFilePath, $itemKey = NULL, $extensionArray = NULL) {
+	public function generateFile($templateFilePath, $itemKey = NULL, $extensionArray = NULL) {   
     $arguments = array(
       'extension' => ($extensionArray === NULL ? $this->sectionManager->getItemsAsArray() : $extensionArray)
     );

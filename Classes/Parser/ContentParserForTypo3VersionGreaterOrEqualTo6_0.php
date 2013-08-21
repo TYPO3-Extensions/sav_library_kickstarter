@@ -44,7 +44,7 @@ class Tx_SavLibraryKickstarter_Parser_ContentParser {
 	 * @return string The parsed content
 	 */
   public static function parse($content, $arguments = array(), $nameSpace = '{namespace sav=Tx_SavLibraryKickstarter_ViewHelpers}') {
-
+	
     $templateParser = Tx_SavLibraryKickstarter_Compatibility_TemplateParserBuilder::build();
 
     // Builds the rendering context
@@ -65,27 +65,22 @@ class Tx_SavLibraryKickstarter_Parser_ContentParser {
 		$objectManager = Tx_SavLibraryKickstarter_Compatibility_TemplateParserBuilder::getObjectManager(); 
 		
 		// Builds the variable container
-    $variableContainer = $objectManager->create('Tx_Fluid_Core_ViewHelper_TemplateVariableContainer', $arguments);
+    $variableContainer = $objectManager->get('Tx_Fluid_Core_ViewHelper_TemplateVariableContainer', $arguments);
 
 		// Builds the view helper variable container
-		$viewHelperVariableContainer = $objectManager->create('Tx_Fluid_Core_ViewHelper_ViewHelperVariableContainer');		
+		$viewHelperVariableContainer = $objectManager->get('Tx_Fluid_Core_ViewHelper_ViewHelperVariableContainer');		
 		
     // Builds the rendering context    
-		$renderingContext = $objectManager->create('Tx_Fluid_Core_Rendering_RenderingContext');
+		$renderingContext = $objectManager->get('Tx_Fluid_Core_Rendering_RenderingContext');
 
     // Adds the controller context
   	if (self::$controllerContext !== NULL) {
   		$renderingContext->setControllerContext(self::$controllerContext);
   	}
 		
-		//Sets or injects the variable and view helper variable containers
-		if (method_exists($renderingContext, 'setTemplateVariableContainer')) {
-			$renderingContext->setTemplateVariableContainer($variableContainer);
-			$renderingContext->setViewHelperVariableContainer($viewHelperVariableContainer);
-		} else {
-			$renderingContext->injectTemplateVariableContainer($variableContainer);
-			$renderingContext->injectViewHelperVariableContainer($viewHelperVariableContainer);
-		}
+		//Injects the variable and view helper variable containers
+		$renderingContext->injectTemplateVariableContainer($variableContainer);
+		$renderingContext->injectViewHelperVariableContainer($viewHelperVariableContainer);
 			
 		return $renderingContext;
 	}		

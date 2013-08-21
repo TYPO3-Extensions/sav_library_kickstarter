@@ -83,7 +83,7 @@ $tempColumns = array (
 	</sav:removeIfContainsDoNotCreate>
 	</f:for>
 );
-t3lib_div::loadTCA('{model}');
+Tx_SavLibraryPlus_Compatibility_Utility_GeneralUtility::loadTCA('{model}');
 t3lib_extMgm::addTCAcolumns('{model}',$tempColumns,1);
 t3lib_extMgm::addToAllTCAtypes('{model}',';;;;1-1-1<f:alias map="{RichTextEditor:'RichTextEditor',ShowOnly:'ShowOnly'}"><f:for each="{table.fields}" as="field"><f:if condition="{field.type} != {ShowOnly}">, {sav:buildTableName(shortName:field.fieldname, extensionKey:extension.general.1.extensionKey)}<f:if condition="{field.type} == {RichTextEditor}">;;;richtext[]:rte_transform[mode=ts]</f:if></f:if></f:for></f:alias>');
 
@@ -91,7 +91,7 @@ t3lib_extMgm::addToAllTCAtypes('{model}',';;;;1-1-1<f:alias map="{RichTextEditor
 </f:for>
 
 
-t3lib_div::loadTCA('tt_content');
+Tx_SavLibraryPlus_Compatibility_Utility_GeneralUtility::loadTCA('tt_content');
 $TCA['tt_content']['types']['list']['subtypes_excludelist'][$_EXTKEY . '_pi1'] = 'layout,select_key';
 
 // Adds flexform field to plugin option
