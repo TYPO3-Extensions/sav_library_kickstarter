@@ -90,7 +90,7 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibrary extends 
 		t3lib_div::writeFile($fileDirectory . 'class.tx_' . str_replace('_','', $this->extensionKey) . '_pi1.php', $fileContents);
 
 		// Generates the XML file
-		$fileContents = $this->generateFile('Configuration/SavLibrary/tx_extension_pi1.xmlt', null, $this->getXmlArray());
+		$fileContents = $this->generateFile('Configuration/SavLibrary/tx_extension_pi1.xmlt', NULL, $this->getXmlArray());
 		t3lib_div::writeFile($fileDirectory . 'tx_' . str_replace('_','', $this->extensionKey) . '_pi1.xml', $fileContents);
 
 		// Generates the res directory
@@ -231,9 +231,9 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibrary extends 
                 $table['fields'][$field] = $tempo[$field];
               }
               foreach ($table['fields'] as $fieldKey => $field) {
-                if ($field['folders'][$viewKey ]) {
+                if ($field['folders'][$viewKey]) {
                   if ($view['folders']) {
-                    $showFolders[$field['folders'][$viewKey ]][] = array('table' => $tableKey, 'field' => $fieldKey, 'wizArray' => 'newTables', 'tableName' => $tableName);
+                    $showFolders[$field['folders'][$viewKey]][] = array('table' => $tableKey, 'field' => $fieldKey, 'wizArray' => 'newTables', 'tableName' => $tableName);
                   } else {
                     $showFields[] = array('table' => $tableKey, 'field' => $fieldKey, 'wizArray' => 'newTables', 'tableName' => $tableName);
                     $extension['newTables'][$tableKey]['fields'][$fieldKey]['folders'][$viewKey] = 0;
@@ -337,7 +337,6 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibrary extends 
             }
             $xmlArray['views'][$viewKey][$this->cryptTag($folderName)]['title'] = $title[$viewKey];
 
-
             // Generates the addPrintIcon information
             if ($view['addPrintIcon']) {
               $xmlArray['views'][$viewKey][$this->cryptTag($folderName)]['addPrintIcon'] = $view['addPrintIcon'];
@@ -438,16 +437,16 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibrary extends 
       }
 
 		  if (trim($param)) {
-		    // Replaces the temporary tag by ;
+		    // Replaces the temporary tag by ";"
 		    $param = str_replace('###!!!!!!###', ';', $param);
 
   		  $pos = strpos($param, '=');
-  		  if ($pos === false) {
+  		  if ($pos === FALSE) {
   		    throw new RuntimeException('Missing equal sign in ' . $param);
         } else {
           $exp = strtolower(trim(substr($param, 0, $pos)));
           // If there is a dot, crypts the tag
-          if (strpos($exp, '.') !== false) {
+          if (strpos($exp, '.') !== FALSE) {
             $exp = $this->cryptTag($exp);
           }
           // Removes trailing spaces

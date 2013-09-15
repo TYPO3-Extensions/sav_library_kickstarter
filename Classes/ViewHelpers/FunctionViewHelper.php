@@ -97,14 +97,14 @@ class Tx_SavLibraryKickstarter_ViewHelpers_FunctionViewHelper extends Tx_Fluid_C
 	}
 
 	/**
-	 * Returns true if the arguments is null
+	 * Returns TRUE if the arguments is null
 	 *
 	 * @param mixed $argument The argument
 	 * @return mixed 
 	 */
 	private function setTrueIfNull($argument) {
     if (is_null($argument)) {
-      return true;
+      return TRUE;
     } else {
       return $argument;
     }
@@ -125,7 +125,7 @@ class Tx_SavLibraryKickstarter_ViewHelpers_FunctionViewHelper extends Tx_Fluid_C
 	}
 	
 	/**
-	 * Returns true if the arguments[index] in the argument[input] is an array of integer
+	 * Returns TRUE if the arguments[index] in the argument[input] is an array of integer
 	 *
 	 * @param array $arguments The argument array
 	 * @return boolean
@@ -140,11 +140,11 @@ class Tx_SavLibraryKickstarter_ViewHelpers_FunctionViewHelper extends Tx_Fluid_C
       	$notInteger += t3lib_div::testInt($value[$arguments['index']]) ? 0 : 1;
     	}
     }
-    return $notInteger ? false : true;
+    return $notInteger ? FALSE : TRUE;
 	}
 
 	/**
-	 * Returns true if the arguments[needle] is in the argument[haystack] 
+	 * Returns TRUE if the arguments[needle] is in the argument[haystack] 
 	 *
 	 * @param array $arguments The argument array
 	 * @return boolean
@@ -164,7 +164,7 @@ class Tx_SavLibraryKickstarter_ViewHelpers_FunctionViewHelper extends Tx_Fluid_C
 	}
 
 	/**
-	 * Returns true if the argument is an array
+	 * Returns TRUE if the argument is an array
 	 *
 	 * @param mixed $argument The argument
 	 * @return boolean
@@ -174,7 +174,7 @@ class Tx_SavLibraryKickstarter_ViewHelpers_FunctionViewHelper extends Tx_Fluid_C
 	}
 
 	/**
-	 * Returns true if the argument is an integer
+	 * Returns TRUE if the argument is an integer
 	 *
 	 * @param mixed $argument The argument
 	 * @return boolean
@@ -220,8 +220,9 @@ class Tx_SavLibraryKickstarter_ViewHelpers_FunctionViewHelper extends Tx_Fluid_C
 	 * @return string
 	 */
 	private function removeEmptyLines($string) {
-    $string = preg_replace('/([\t ]+[\r]?[\n])+/', '', $string);
-    $string = preg_replace('/\n\n\n+/', chr(10).chr(10), $string);
+    $string = preg_replace('/([\t ]+[\r\n])+/', '', $string);   
+    $string = preg_replace('/\n\n\n+/', chr(10) . chr(10), $string);
+
     return $string;
 	}
 	
@@ -263,7 +264,7 @@ class Tx_SavLibraryKickstarter_ViewHelpers_FunctionViewHelper extends Tx_Fluid_C
 	 * @return string
 	 */
 	private function logicalNot($argument) {
-    return $argument ? false : true;
+    return $argument ? FALSE : TRUE;
 	}
 
 	/**
@@ -273,7 +274,7 @@ class Tx_SavLibraryKickstarter_ViewHelpers_FunctionViewHelper extends Tx_Fluid_C
 	 * @return string
 	 */
 	private function logicalAnd($arguments) {
-	$result = true;
+	$result = TRUE;
 	foreach($arguments as $argument) {
 		$result = $result && $argument;
 	}
@@ -287,7 +288,7 @@ class Tx_SavLibraryKickstarter_ViewHelpers_FunctionViewHelper extends Tx_Fluid_C
 	 * @return string
 	 */
 	private function logicalOr($arguments) {
-	$result = false;
+	$result = FALSE;
 	foreach($arguments as $argument) {
 	  $result = $result || $argument;
 	}
@@ -301,7 +302,7 @@ class Tx_SavLibraryKickstarter_ViewHelpers_FunctionViewHelper extends Tx_Fluid_C
 	 * @return string
 	 */
 	private function not($arguments) {
-    return $arguments ? false : true;
+    return $arguments ? FALSE : TRUE;
 	}
 		
 	/**

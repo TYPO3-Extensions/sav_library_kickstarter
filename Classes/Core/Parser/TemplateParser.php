@@ -71,7 +71,6 @@ class Tx_SavLibraryKickstarter_Core_Parser_TemplateParser extends Tx_Fluid_Core_
 			)
 		}$/x';
 
-
 	/**
 	 * Handles the appearance of an object accessor (like {posts.author.email}).
 	 * Creates a new instance of Tx_Fluid_ObjectAccessorNode.
@@ -170,7 +169,6 @@ class Tx_SavLibraryKickstarter_Core_Parser_TemplateParser extends Tx_Fluid_Core_
 			throw new Tx_Fluid_Core_Parser_Exception('This exception should never be thrown, there is most likely some error in the regular expressions. Please post your template to the bugtracker at forge.typo3.org.', 1225136013);
 		}
 	}
-
 
 }
 ?>

@@ -66,5 +66,4 @@ class Tx_SavLibraryKickstarter_ViewHelpers_RenderViewHelper extends Tx_Fluid_Cor
 	}
 }
 
-
 ?>

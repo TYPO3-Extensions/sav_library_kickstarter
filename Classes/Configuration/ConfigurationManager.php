@@ -280,12 +280,12 @@ class Tx_SavLibraryKickstarter_Configuration_ConfigurationManager {
       $configuration = unserialize($wizardFormFileContent);
       // Checks if the extension was generated with sav_library
       if ($configuration['savext'][1]['generateForm']) {
-        return true;
+        return TRUE;
       } else {
-        return false;
+        return FALSE;
       }
     } else {
-      return false;
+      return FALSE;
     }
   }
 
@@ -296,7 +296,7 @@ class Tx_SavLibraryKickstarter_Configuration_ConfigurationManager {
 	 * @return boolean
 	 */
   public function configurationFileExists($extensionKey, $libraryName) {
-  	$extensionDirectory = self::getExtensionDir($extensionKey) ;
+  	$extensionDirectory = self::getExtensionDir($extensionKey);
     $configurationFileName = $extensionDirectory . self::CONFIGURATION_DIRECTORY . $libraryName. '/' . self::CONFIGURATION_FILE_NAME;
 
     return file_exists($configurationFileName);
@@ -326,7 +326,7 @@ class Tx_SavLibraryKickstarter_Configuration_ConfigurationManager {
     // Checks if the file exists
     if ($this->isSavLibraryKickstarterExtension()) {
       if ($this->getSectionManager()->count() == 0) {
-        $sections = json_decode(t3lib_div::getURL($this->getConfigurationFileName()), true);
+        $sections = json_decode(t3lib_div::getURL($this->getConfigurationFileName()), TRUE);
         if ($GLOBALS['LANG']->charSet == 'iso-8859-1') {
           array_walk_recursive($sections, 'Tx_SavLibraryKickstarter_Configuration_ConfigurationManager::utf8_decode');
         }
@@ -459,7 +459,7 @@ class Tx_SavLibraryKickstarter_Configuration_ConfigurationManager {
     if ($extensionKey === NULL) {
       $extensionKey = $this->extensionKey;
     }
-    $extensionDirectory = self::getExtensionDir($extensionKey) ;
+    $extensionDirectory = self::getExtensionDir($extensionKey);
     return $extensionDirectory . self::CONFIGURATION_DIRECTORY . self::LIBRARY_TYPE_FILE_NAME;
   }
 
@@ -493,7 +493,7 @@ class Tx_SavLibraryKickstarter_Configuration_ConfigurationManager {
       $extensionKey = $this->extensionKey;
     }
     $libraryName = trim(t3lib_div::getURL(self::getLibraryTypeFileName($extensionKey)));  
-    $extensionDirectory = self::getExtensionDir($extensionKey) ;
+    $extensionDirectory = self::getExtensionDir($extensionKey);
 
     return $extensionDirectory . self::CONFIGURATION_DIRECTORY . $libraryName. '/' . self::CONFIGURATION_FILE_NAME;
   }
@@ -521,28 +521,31 @@ class Tx_SavLibraryKickstarter_Configuration_ConfigurationManager {
       $this->loadConfiguration();
       $currentLibraryVersion =  t3lib_utility_VersionNumber::convertVersionNumberToInteger($this->getCurrentLibraryVersion());
       $currentLibraryName = $this->getCurrentLibraryName();
-      ksort($this->upgradeFiles[$currentLibraryName]);
-
-      foreach($this->upgradeFiles[$currentLibraryName] as $version => $fileInformation) {
-        $libraryVersion = t3lib_utility_VersionNumber::convertVersionNumberToInteger($this->getSectionManager()->getItem('general')->getItem(1)->getItem('libraryVersion'));
-        if ($libraryVersion < $currentLibraryVersion &&  $libraryVersion < $version) {
-            $this->upgradeExtension('To' . $currentLibraryName . $version);
-        }
-      }
+      
+      if (is_array($this->upgradeFiles[$currentLibraryName])) {
+	      ksort($this->upgradeFiles[$currentLibraryName]);
+	
+	      foreach($this->upgradeFiles[$currentLibraryName] as $version => $fileInformation) {
+	        $libraryVersion = t3lib_utility_VersionNumber::convertVersionNumberToInteger($this->getSectionManager()->getItem('general')->getItem(1)->getItem('libraryVersion'));
+	        if ($libraryVersion < $currentLibraryVersion &&  $libraryVersion < $version) {
+	            $this->upgradeExtension('To' . $currentLibraryName . $version);
+	        }
+	      }
+	    }
       
       // Upgrades the library version
       $this->getSectionManager()->getItem('general')->getItem(1)->replace(array('libraryVersion' => $this->getCurrentLibraryVersion()));
 
-      // Sets extensionMustbeUpgraded to true
-      $this->getSectionManager()->getItem('general')->getItem(1)->replace(array('extensionMustbeUpgraded' => true));
+      // Sets extensionMustbeUpgraded to TRUE
+      $this->getSectionManager()->getItem('general')->getItem(1)->replace(array('extensionMustbeUpgraded' => TRUE));
 
       $this->saveConfiguration();
     } elseif ($this->isKickstarterExtension()) {
       $version = 'FromKickstarter';
       $this->upgradeExtension($version);
 
-      // Sets extensionMustbeUpgraded to true
-      $this->getSectionManager()->getItem('general')->getItem(1)->replace(array('extensionMustbeUpgraded' => true));
+      // Sets extensionMustbeUpgraded to TRUE
+      $this->getSectionManager()->getItem('general')->getItem(1)->replace(array('extensionMustbeUpgraded' => TRUE));
 
       $this->saveConfiguration();
     }

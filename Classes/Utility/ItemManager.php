@@ -161,7 +161,6 @@ class Tx_SavLibraryKickstarter_Utility_ItemManager extends ArrayObject {
     return $result;
   }
 
-
 	/**
 	 * Replaces an item.
 	 *

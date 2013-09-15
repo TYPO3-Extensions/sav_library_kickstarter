@@ -44,7 +44,7 @@ class Tx_SavLibraryKickstarter_ViewHelpers_RemoveIfContainsDoNotCreateViewHelper
     if ($string === NULL) {
 		  $string = $this->renderChildren();
     }
-    if (strpos($string, 'DO NOT CREATE') === false) {
+    if (strpos($string, 'DO NOT CREATE') === FALSE) {
 		  return $string;
     } else {
       return '';

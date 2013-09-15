@@ -79,7 +79,7 @@ class Tx_SavLibraryKickstarter_ViewHelpers_AliasViewHelper extends Tx_Fluid_Core
         }
         $patterns[$patternKey] = $templateParser->parseTemplate($pattern, $arguments);
       }
-      $template = $patterns[$index -1 ];
+      $template = $patterns[$index -1];
     }
     
     return $template;

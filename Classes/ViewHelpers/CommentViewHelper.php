@@ -34,7 +34,7 @@ class Tx_SavLibraryKickstarter_ViewHelpers_CommentViewHelper extends Tx_Fluid_Co
 
 	/**
 	 *
-	 * @param boolean If true the comment should be displayed
+	 * @param boolean If TRUE the comment should be displayed
    * @return string Either the comment or a null string
 	 * @author Laurent Foulloy <yolf.typo3@orange.fr>
 	 */

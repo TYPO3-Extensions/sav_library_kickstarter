@@ -52,5 +52,4 @@ class Tx_SavLibraryKickstarter_Compatibility_TemplateParserBuilder {
 	}
 }
 
-
 ?>

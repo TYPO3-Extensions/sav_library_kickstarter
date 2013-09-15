@@ -32,7 +32,6 @@
  */
 class Tx_SavLibraryKickstarter_ViewHelpers_Form_SelectViewHelper extends Tx_Fluid_ViewHelpers_Form_SelectViewHelper {
 
-
 	/**
 	 * Render one option tag
 	 *

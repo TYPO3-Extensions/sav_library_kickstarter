@@ -34,8 +34,6 @@ class Tx_SavLibraryKickstarter_Core_Parser_TemplateParser extends Tx_Fluid_Core_
 	 * {object.some.value->f:bla.blubb()->f:bla.blubb2()}
 	 *
 	 * THIS IS ALMOST THE SAME AS IN $SCAN_PATTERN_SHORTHANDSYNTAX_ARRAYS
-
-
 	 */
 	static public $SCAN_PATTERN_SHORTHANDSYNTAX_OBJECTACCESSORS = '/
 		^{                                                      # Start of shorthand syntax
@@ -119,8 +117,6 @@ class Tx_SavLibraryKickstarter_Core_Parser_TemplateParser extends Tx_Fluid_Core_
 //			$node = $this->objectManager->get('TYPO3\\CMS\\Fluid\\Core\\Parser\\SyntaxTree\\ObjectAccessorNode', $objectAccessorString);
 			$node = $this->objectManager->get('Tx_SavLibraryKickstarter_Core_Parser_SyntaxTree_ObjectAccessorNode', $objectAccessorString);
 			$this->callInterceptor($node, \TYPO3\CMS\Fluid\Core\Parser\InterceptorInterface::INTERCEPT_OBJECTACCESSOR, $state);
-
-
 
 			$state->getNodeFromStack()->addChildNode($node);
 		}

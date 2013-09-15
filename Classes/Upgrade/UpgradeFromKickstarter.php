@@ -34,7 +34,6 @@
  */
 class Tx_SavLibraryKickstarter_Upgrade_UpgradeFromKickstarter extends Tx_SavLibraryKickstarter_Upgrade_AbstractUpgradeManager {
 
-
 	/**
 	 * Pre processing of the extension.
 	 *
@@ -126,7 +125,6 @@ class Tx_SavLibraryKickstarter_Upgrade_UpgradeFromKickstarter extends Tx_SavLibr
     
     // Sets the debug flag to 0
     $newConfiguration[1]['debug'] = 0;
-
 
     return $newConfiguration;
   }

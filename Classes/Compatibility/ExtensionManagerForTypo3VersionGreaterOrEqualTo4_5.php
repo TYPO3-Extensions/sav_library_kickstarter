@@ -220,7 +220,7 @@ class Tx_SavLibraryKickstarter_Compatibility_ExtensionManager {
   
 	/**
 	 * Checks the if database must be updated.
-	 * If true a flash message is added.
+	 * If TRUE a flash message is added.
 	 *
 	 * @param string $extensionKey
 	 * return none
@@ -239,8 +239,7 @@ class Tx_SavLibraryKickstarter_Compatibility_ExtensionManager {
       $additionalUpdateMessage =
         $this->createHiddenTag(array('[general][section]' => $this->generalArguments['section'])) .
         $this->createHiddenTag(array('[general][itemKey]' => $this->generalArguments['itemKey'])).
-        $this->createHiddenTag(array('[submitAction][updateDb]' => 1))
-      ;
+        $this->createHiddenTag(array('[submitAction][updateDb]' => 1));
       
       $updateMessage = str_replace('</form>', $additionalUpdateMessage . '</form>', $updateMessage);
 
@@ -251,7 +250,7 @@ class Tx_SavLibraryKickstarter_Compatibility_ExtensionManager {
 
 	/**
 	 * Checks the if database must be updated.
-	 * If true a flash message is added.
+	 * If TRUE a flash message is added.
 	 *
 	 * @param array $argument
 	 * return none

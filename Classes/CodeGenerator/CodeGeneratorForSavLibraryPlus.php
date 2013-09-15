@@ -89,7 +89,7 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibraryPlus exte
 		t3lib_div::mkdir_deep($this->extensionDirectory, 'Configuration/Library');
 		$fileDirectory = $this->extensionDirectory . 'Configuration/Library/';
 		
-		$fileContents = $this->generateFile('Configuration/Library/SavLibraryPlus.xmlt', null, $this->getXmlArray());
+		$fileContents = $this->generateFile('Configuration/Library/SavLibraryPlus.xmlt', NULL, $this->getXmlArray());
 		t3lib_div::writeFile($fileDirectory . 'SavLibraryPlus.xml', $fileContents);
 
 		// Generates the Resources/Private/Language directory
@@ -153,12 +153,14 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibraryPlus exte
       
       // Processes the viewsWithCondition field
       foreach($xmlArray['forms'] as $formKey => $form) {
-        foreach($form['viewsWithCondition'] as $viewsWithConditionKey => $viewsWithCondition) {
-          // Processes each view
-          foreach($viewsWithCondition as $viewWithConditionKey => $viewWithCondition) {
-            $xmlArray['forms'][$formKey]['viewsWithCondition'][$viewsWithConditionKey][$viewWithConditionKey] += array('config' => $this->getConfig($viewWithCondition['condition']));
-          }
-        }
+      	if (is_array($form['viewsWithCondition'])) {
+	        foreach($form['viewsWithCondition'] as $viewsWithConditionKey => $viewsWithCondition) {
+	          // Processes each view
+	          foreach($viewsWithCondition as $viewWithConditionKey => $viewWithCondition) {
+	            $xmlArray['forms'][$formKey]['viewsWithCondition'][$viewsWithConditionKey][$viewWithConditionKey] += array('config' => $this->getConfig($viewWithCondition['condition']));
+	          }
+	        }
+      	}
       }
     }
 
@@ -256,9 +258,9 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibraryPlus exte
                 $table['fields'][$field] = $tempo[$field];
               }
               foreach ($table['fields'] as $fieldKey => $field) {
-                if ($field['folders'][$viewKey ]) {
+                if ($field['folders'][$viewKey]) {
                   if ($view['folders']) {
-                    $showFolders[$field['folders'][$viewKey ]][] = array('table' => $tableKey, 'field' => $fieldKey, 'wizArray' => 'newTables', 'tableName' => $tableName);
+                    $showFolders[$field['folders'][$viewKey]][] = array('table' => $tableKey, 'field' => $fieldKey, 'wizArray' => 'newTables', 'tableName' => $tableName);
                   } else {
                     $showFields[] = array('table' => $tableKey, 'field' => $fieldKey, 'wizArray' => 'newTables', 'tableName' => $tableName);
                     $extension['newTables'][$tableKey]['fields'][$fieldKey]['folders'][$viewKey] = 0;
@@ -357,7 +359,6 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibraryPlus exte
             }
             $xmlArray['views'][$viewKey][$cryptedFolderName]['title'] = $title[$viewKey];
 
-
             // Generates the addPrintIcon information
             if ($view['addPrintIcon']) {
               $xmlArray['views'][$viewKey][$cryptedFolderName]['addPrintIcon'] = $view['addPrintIcon'];
@@ -400,7 +401,7 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibraryPlus exte
                 }
                 
                 // Checks if its a subform field
-                if (array_key_exists($tableName, $relationTable[$viewKey])) {
+                if (is_array($relationTable[$viewKey]) && array_key_exists($tableName, $relationTable[$viewKey])) {
                 	$relationTableKey = $relationTable[$viewKey][$tableName];
                 	$subformConfiguration[$viewKey][$relationTableKey] = array_merge(
                 		(array)$subformConfiguration[$viewKey][$relationTableKey], 
@@ -435,9 +436,7 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibraryPlus exte
       }
 
     }
-
-//print('<pre>' . print_r($xmlArray,1) . '</pre>');	
-//die();	  
+  
   return $xmlArray;
   }
   
@@ -462,16 +461,16 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibraryPlus exte
       }
 
 		  if (trim($param)) {
-		    // Replaces the temporary tag by ;
+		    // Replaces the temporary tag by ";"
 		    $param = str_replace('###!!!!!!###', ';', $param);
 
   		  $pos = strpos($param, '=');
-  		  if ($pos === false) {
+  		  if ($pos === FALSE) {
   		    throw new RuntimeException('Missing equal sign in ' . $param);
         } else {
           $exp = strtolower(trim(substr($param, 0, $pos)));
           // If there is a dot, crypts the tag
-          if (strpos($exp, '.') !== false) {
+          if (strpos($exp, '.') !== FALSE) {
  //           $exp = $this->cryptTag($exp);
           }
           // Removes trailing spaces
@@ -515,7 +514,7 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibraryPlus exte
 	 *  
 	 * @param array $arrayToSearchIn
 	 * @param string $key
-	 * @return array or false
+	 * @return array or FALSE
 	 */  
   public function searchConfiguration($arrayToSearchIn, $key) {
     foreach ($arrayToSearchIn as $itemKey => $item) {
@@ -523,12 +522,12 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibraryPlus exte
         return $item;
       } elseif (is_array($item)) {
         $configuration = $this->searchConfiguration($item, $key);
-        if ($configuration != false) {
+        if ($configuration != FALSE) {
           return $configuration;
         }
       }
     }
-    return false;
+    return FALSE;
   }  
 
 	/**
@@ -537,22 +536,22 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibraryPlus exte
 	 * @param array $arrayToSearchIn
 	 * @param string $key
 	 * @param array $arrayToAdd
-	 * @return array or false
+	 * @return array or FALSE
 	 */  
   public function addConfiguration(&$arrayToSearchIn, $key, $arrayToAdd) {  	
     foreach ($arrayToSearchIn as $itemKey => $item) {
       if ($itemKey == $key) {
 				$x = $arrayToSearchIn[$itemKey];
       	$arrayToSearchIn[$itemKey]['configuration'] = array_replace($arrayToSearchIn[$itemKey]['configuration'], $arrayToSearchIn[$itemKey]['configuration'] + $arrayToAdd['configuration']);
-      	return true;
+      	return TRUE;
       } elseif (is_array($item)) {
         $configuration = $this->addConfiguration($arrayToSearchIn[$itemKey], $key, $arrayToAdd);
-        if ($configuration != false) {
-          return true;
+        if ($configuration != FALSE) {
+          return TRUE;
         }
       }
     }
-    return false;
+    return FALSE;
   }    
 }
 ?>

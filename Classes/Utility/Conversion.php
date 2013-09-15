@@ -35,7 +35,6 @@
  */
 class Tx_SavLibraryKickstarter_Utility_Conversion {
 
-
 	/**
 	 * Converts a string to upperCamel
 	 *
@@ -50,7 +49,6 @@ class Tx_SavLibraryKickstarter_Utility_Conversion {
     }
     return $output;
 	}
-
 
 	/**
 	 * Converts a string to lowerCamel

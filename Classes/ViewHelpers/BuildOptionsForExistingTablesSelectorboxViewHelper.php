@@ -57,7 +57,6 @@ class Tx_SavLibraryKickstarter_ViewHelpers_BuildOptionsForExistingTablesSelector
     return $options;
 	}
 
-
 }
 ?>
 

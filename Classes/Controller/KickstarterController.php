@@ -36,7 +36,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
 	/**
 	 * @var boolean
 	 */
-  protected $extensionsNeedTobeUpgraded = false;
+  protected $extensionsNeedTobeUpgraded = FALSE;
 
 	/**
 	 * Inializes the view, by injecting a template parser which takes into
@@ -134,7 +134,6 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
     $this->redirect('extensionList');
 	}
 
-
 	/**
 	 * downloadExtension action for this controller.
 	 *
@@ -177,7 +176,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
     $configurationManager->injectFlashMessages($this->flashMessages);
     $configurationManager->getCodeGenerator()->buildExtension();
     $configurationManager->getExtensionManager()->checkDbUpdate();
-    $configurationManager->getSectionManager()->getItem('general')->getItem(1)->replace(array('extensionMustbeUpgraded' => false));
+    $configurationManager->getSectionManager()->getItem('general')->getItem(1)->replace(array('extensionMustbeUpgraded' => FALSE));
     $configurationManager->saveConfiguration();
     $this->redirect('extensionList');
 	}
@@ -201,7 +200,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
         	$configurationManager->injectFlashMessages($this->flashMessages);
     			$configurationManager->getCodeGenerator()->buildExtension();
     			$configurationManager->getExtensionManager()->checkDbUpdate();
-    			$configurationManager->getSectionManager()->getItem('general')->getItem(1)->replace(array('extensionMustbeUpgraded' => false));
+    			$configurationManager->getSectionManager()->getItem('general')->getItem(1)->replace(array('extensionMustbeUpgraded' => FALSE));
     			$configurationManager->saveConfiguration();
     			$this->redirect('upgradeExtensions');    			
         }
@@ -278,10 +277,10 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
 	 * @param integer $fieldKey The key of the field to edit
 	 * @param integer $viewKey The key of the view
 	 * @param integer $folderKey The key of the folder
-	 * @param boolean $showFieldConfiguration Displays the field definition if true
+	 * @param boolean $showFieldConfiguration Displays the field definition if TRUE
 	 * @return string The rendered view
 	 */
-	public function newTablesEditSectionAction($extKey, $section, $itemKey, $fieldKey = NULL, $viewKey = NULL, $folderKey = NULL, $showFieldConfiguration = false) {
+	public function newTablesEditSectionAction($extKey, $section, $itemKey, $fieldKey = NULL, $viewKey = NULL, $folderKey = NULL, $showFieldConfiguration = FALSE) {
 
     // Loads the configuration and gets the section manager
     $configurationManager = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Configuration_ConfigurationManager', $extKey);
@@ -363,10 +362,10 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
 	 * @param integer $fieldKey The key of the field to edit
 	 * @param integer $viewKey The key of the view
 	 * @param integer $folderKey The key of the folder
-	 * @param boolean $showFieldConfiguration Displays the field definition if true
+	 * @param boolean $showFieldConfiguration Displays the field definition if TRUE
 	 * @return string The rendered view
 	 */
-	public function existingTablesEditSectionAction($extKey, $section, $itemKey, $fieldKey = NULL, $viewKey = NULL, $folderKey = NULL, $showFieldConfiguration = false) {
+	public function existingTablesEditSectionAction($extKey, $section, $itemKey, $fieldKey = NULL, $viewKey = NULL, $folderKey = NULL, $showFieldConfiguration = FALSE) {
     // Loads the configuration and gets the section manager
     $configurationManager = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Configuration_ConfigurationManager', $extKey);
     $configurationManager->loadConfiguration();
@@ -656,7 +655,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
 	 * @return none
 	 */
   protected function overwriteSubmitAction() {
-    $this->saveSubmitAction(false);
+    $this->saveSubmitAction(FALSE);
   }
 	
 	/**
@@ -665,7 +664,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
 	 * @param boolean $checkLibraryType
 	 * @return none
 	 */
-  protected function saveSubmitAction($chekLibraryType = true) {
+  protected function saveSubmitAction($chekLibraryType = TRUE) {
     // Gets arguments
     $arguments = $this->request->getArguments();
     $extKey = $arguments['extKey'];
@@ -709,7 +708,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
 
     // Checks if the library type has been changed
     if ($section == 'emconf') {
-    	if($checkLibraryType === true) {
+    	if($checkLibraryType === TRUE) {
 	    	if ($currentLibraryType != $libraryType) {
 		    	// Builds the new directory if needed 
 	    		$configurationManager->buildConfigurationDirectory($extKey, $libraryType);	
@@ -1071,7 +1070,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
     $configurationManager->loadConfiguration();
     $configurationManager->getSectionManager()->getItem($section)->getItem($itemKey)->addItem('activeFields')->replace(array($viewKey => array($folderKey => $fieldKey)));
     $configurationManager->saveConfiguration();		
-    $this->redirect($section . 'EditSection', NULL, NULL, array('extKey' => $extKey, 'section' => $section, 'itemKey' => $itemKey, 'fieldKey' => $fieldKey, 'viewKey' => $viewKey, 'folderKey' => $folderKey, 'showFieldConfiguration' => true));
+    $this->redirect($section . 'EditSection', NULL, NULL, array('extKey' => $extKey, 'section' => $section, 'itemKey' => $itemKey, 'fieldKey' => $fieldKey, 'viewKey' => $viewKey, 'folderKey' => $folderKey, 'showFieldConfiguration' => TRUE));
 	}
 
 	/**
@@ -1094,10 +1093,10 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
 
 		// Gets the folder key if it exits
 		$folderKeys = $item->getItem('folderKeys');
-		if (is_null($folderKeys) === false) {
+		if (is_null($folderKeys) === FALSE) {
 			$folderKey = $folderKeys->getItem($viewKey);
 		} else {
-			$folderKey = null;
+			$folderKey = NULL;
 		}
      
     // Gets the fields in the view
@@ -1165,10 +1164,10 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
     
 			// Gets the folder key if it exits
 		$folderKeys = $item->getItem('folderKeys');
-		if (is_null($folderKeys) === false) {
+		if (is_null($folderKeys) === FALSE) {
 			$folderKey = $folderKeys->getItem($viewKey);
 		} else {
-			$folderKey = null;
+			$folderKey = NULL;
 		}
 		   
     // Gets the fields in the view
@@ -1259,7 +1258,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
     }
     // Saves the configuration and redirects to the section
     $configurationManager->saveConfiguration();
-    $this->redirect($section . 'EditSection', NULL, NULL, array('extKey' => $extKey, 'section' => $section, 'itemKey' => $itemKey, 'fieldKey' => $fieldKey, 'showFieldConfiguration' => true));
+    $this->redirect($section . 'EditSection', NULL, NULL, array('extKey' => $extKey, 'section' => $section, 'itemKey' => $itemKey, 'fieldKey' => $fieldKey, 'showFieldConfiguration' => TRUE));
   }
 
 	/**
@@ -1569,7 +1568,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
     }
     // Saves the configuration and redirects to the section
     $configurationManager->saveConfiguration();
-    $this->redirect($section . 'EditSection', NULL, NULL, array('extKey' => $extKey, 'section' => $section, 'itemKey' => $itemKey, 'fieldKey' => $fieldKey, 'showFieldConfiguration' => true));
+    $this->redirect($section . 'EditSection', NULL, NULL, array('extKey' => $extKey, 'section' => $section, 'itemKey' => $itemKey, 'fieldKey' => $fieldKey, 'showFieldConfiguration' => TRUE));
   }
 
 	/**
@@ -1595,7 +1594,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
     }
     // Saves the configuration and redirects to the section
     $configurationManager->saveConfiguration();
-    $this->redirect($section . 'EditSection', NULL, NULL, array('extKey' => $extKey, 'section' => $section, 'itemKey' => $itemKey, 'fieldKey' => $fieldKey, 'showFieldConfiguration' => true));
+    $this->redirect($section . 'EditSection', NULL, NULL, array('extKey' => $extKey, 'section' => $section, 'itemKey' => $itemKey, 'fieldKey' => $fieldKey, 'showFieldConfiguration' => TRUE));
   }
 
 	/**
@@ -1630,7 +1629,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
 	 */
   public function getConfigurationList() {
     $extensionList = array();
-    $this->extensionsNeedTobeUpgraded = false;
+    $this->extensionsNeedTobeUpgraded = FALSE;
     foreach (t3lib_div::get_dirs(PATH_typo3conf . 'ext/') as $extensionKey) {
       $configurationManager = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Configuration_ConfigurationManager', $extensionKey);
 
@@ -1651,8 +1650,8 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
         
         // Checks if the extension must be upgraded
         if ($configurationManager->getCurrentLibraryVersion() != $configurationManager->getSectionManager()->getItem('general')->getItem(1)->getItem('libraryVersion')) {
-          $configurationManager->getSectionManager()->getItem('general')->getItem(1)->replace(array('extensionMustbeUpgraded' => true));
-          $this->extensionsNeedTobeUpgraded = true;
+          $configurationManager->getSectionManager()->getItem('general')->getItem(1)->replace(array('extensionMustbeUpgraded' => TRUE));
+          $this->extensionsNeedTobeUpgraded = TRUE;
         }
         $extensionList[] = $configurationManager->getConfiguration();
       }

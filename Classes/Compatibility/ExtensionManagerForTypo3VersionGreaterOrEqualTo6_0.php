@@ -133,7 +133,7 @@ class Tx_SavLibraryKickstarter_Compatibility_ExtensionManager {
   
 	/**
 	 * Checks the if database must be updated.
-	 * If true a flash message is added.
+	 * If TRUE a flash message is added.
 	 *
 	 * @param string $extensionKey
 	 * return none
@@ -149,7 +149,7 @@ class Tx_SavLibraryKickstarter_Compatibility_ExtensionManager {
 
 	/**
 	 * Checks the if database must be updated.
-	 * If true a flash message is added.
+	 * If TRUE a flash message is added.
 	 *
 	 * @param array $argument
 	 * return none

@@ -48,7 +48,7 @@ class Tx_SavLibraryKickstarter_ViewHelpers_TcaElementsToXmlViewHelper extends Tx
 		  $TcaElements = $this->renderChildren();
     }
     eval('$out = array(' . $TcaElements . ');');
-    $this->isFirstTag = true;
+    $this->isFirstTag = TRUE;
     return substr($this->convetToXml($out, $indent), 0, -1);
 	}
 
@@ -67,7 +67,7 @@ class Tx_SavLibraryKickstarter_ViewHelpers_TcaElementsToXmlViewHelper extends Tx
 
       if ($this->isFirstTag) {
         $prefix = '';
-        $this->isFirstTag = false;
+        $this->isFirstTag = FALSE;
       } else {
         $prefix = str_repeat(chr(9), $indent);
       }

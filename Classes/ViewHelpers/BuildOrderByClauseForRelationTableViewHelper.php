@@ -49,7 +49,7 @@ class Tx_SavLibraryKickstarter_ViewHelpers_BuildOrderbyClauseForRelationTableVie
 				if (empty($table['sorting'])) {
 					// Field-based ordering
 					$orderByClause = ' ORDER BY ' . $realTableName . '.' . $table['sorting_field'];
-					if (empty($table['sorting_desc']) === false) {
+					if (empty($table['sorting_desc']) === FALSE) {
 						$orderByClause .= ' DESC';
 					}
 				} else {
@@ -64,9 +64,9 @@ class Tx_SavLibraryKickstarter_ViewHelpers_BuildOrderbyClauseForRelationTableVie
 		foreach($GLOBALS['TCA'] as $tableKey => $table) {
 			if ($tableKey == $tableName) {		
 				// Checks if there is a default ordering
-				if (empty($table['default_sortby']) === false) {
+				if (empty($table['default_sortby']) === FALSE) {
 					return ' ORDER BY '. $table['default_sortby'];
-				} elseif (empty($table['sortby']) === false)  {
+				} elseif (empty($table['sortby']) === FALSE)  {
 					return ' ORDER BY '. $table['sortby'];
 				}
 			}	

@@ -27,7 +27,6 @@
  */
 class Tx_SavLibraryKickstarter_ViewHelpers_ParseViewHelper extends Tx_Fluid_Core_ViewHelper_AbstractViewHelper {
 
-
 	/**
 	 *
 	 * @param string $string
