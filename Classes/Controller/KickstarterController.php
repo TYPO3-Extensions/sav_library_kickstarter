@@ -288,29 +288,31 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
     $sectionManager = $configurationManager->getSectionManager();
 
     foreach ($sectionManager->getItem($section) as $tableKey => $table) {
-
-      foreach ($table->getItem('fields') as $key => $field) {
-        $item = $sectionManager->getItem($section)->getItem($tableKey)->addItem('fields')->addItem($key)->addItem('order');
-        if ($sectionManager->getItem('views')->count() > 0) {
-          foreach ($sectionManager->getItem('views') as $viewKeyLocal => $view) {
-            if (!$item->itemExists(viewKeyLocal)) {
-              $item->addItem(array(viewKeyLocal => $key));
-            } elseif ($sectionManager->getItem($section)->getItem($tableKey)->getItem('fields')->getItem($key)->getItem('viewKey') == 0) {
-              $sectionManager->getItem($section)->getItem($tableKey)->getItem('fields')->getItem($key)->addItem(array('viewKey' => 1));
-            }     
-          }
-        } else {
-          if (!$item->itemExists(0)) {
-            $item->addItem(array(0 => $key));
-          }
-          $sectionManager->getItem($section)->getItem($tableKey)->getItem('fields')->getItem($key)->addItem(array('viewKey' => 0));
-        }     
-      }
-      if ($sectionManager->getItem('views')->count() == 0) {
-        $sectionManager->getItem($section)->getItem($tableKey)->addItem(array('viewKey' => 0));
-      } elseif ($sectionManager->getItem($section)->getItem($tableKey)->getItem('viewKey') == 0) {
-        $sectionManager->getItem($section)->getItem($tableKey)->addItem(array('viewKey' => 1));
-      }      
+    	$fields = $table->getItem('fields');
+			if (is_array($fields)) {
+	      foreach ($fields as $key => $field) {
+	        $item = $sectionManager->getItem($section)->getItem($tableKey)->addItem('fields')->addItem($key)->addItem('order');
+	        if ($sectionManager->getItem('views')->count() > 0) {
+	          foreach ($sectionManager->getItem('views') as $viewKeyLocal => $view) {
+	            if (!$item->itemExists(viewKeyLocal)) {
+	              $item->addItem(array(viewKeyLocal => $key));
+	            } elseif ($sectionManager->getItem($section)->getItem($tableKey)->getItem('fields')->getItem($key)->getItem('viewKey') == 0) {
+	              $sectionManager->getItem($section)->getItem($tableKey)->getItem('fields')->getItem($key)->addItem(array('viewKey' => 1));
+	            }     
+	          }
+	        } else {
+	          if (!$item->itemExists(0)) {
+	            $item->addItem(array(0 => $key));
+	          }
+	          $sectionManager->getItem($section)->getItem($tableKey)->getItem('fields')->getItem($key)->addItem(array('viewKey' => 0));
+	        }     
+	      }
+	      if ($sectionManager->getItem('views')->count() == 0) {
+	        $sectionManager->getItem($section)->getItem($tableKey)->addItem(array('viewKey' => 0));
+	      } elseif ($sectionManager->getItem($section)->getItem($tableKey)->getItem('viewKey') == 0) {
+	        $sectionManager->getItem($section)->getItem($tableKey)->addItem(array('viewKey' => 1));
+	      }      
+	    }
     }
 
     // Changes the view if any provided
@@ -372,28 +374,32 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
     $sectionManager = $configurationManager->getSectionManager();
 
     foreach ($sectionManager->getItem($section) as $tableKey => $table) {
-      foreach ($table->getItem('fields') as $key => $field) {
-        $item = $sectionManager->getItem($section)->getItem($tableKey)->addItem('fields')->addItem($key)->addItem('order');
-        if ($sectionManager->getItem('views')->count() > 0) {
-          foreach ($sectionManager->getItem('views') as $viewKeyLocal => $view) {
-            if (!$item->itemExists($viewKeyLocal)) {
-              $item->addItem(array($viewKeyLocal => $key));
-            } elseif ($sectionManager->getItem($section)->getItem($tableKey)->getItem('fields')->getItem($key)->getItem('viewKey') == 0) {
-              $sectionManager->getItem($section)->getItem($tableKey)->getItem('fields')->getItem($key)->addItem(array('viewKey' => 1));
-            }
-          }
-        } else {
-          if (!$item->itemExists(0)) {
-            $item->addItem(array(0 => $key));
-          }
-          $sectionManager->getItem($section)->getItem($tableKey)->getItem('fields')->getItem($key)->addItem(array('viewKey' => 0));
-        }
-      }
-      if ($sectionManager->getItem('views')->count() == 0) {
-        $sectionManager->getItem($section)->getItem($tableKey)->addItem(array('viewKey' => 0));
-      } elseif ($sectionManager->getItem($section)->getItem($tableKey)->getItem('viewKey') == 0) {
-        $sectionManager->getItem($section)->getItem($tableKey)->addItem(array('viewKey' => 1));
-      }
+
+    	$fields = $table->getItem('fields');
+    	if (is_array($fields)) {
+	      foreach ($fields as $key => $field) {
+	        $item = $sectionManager->getItem($section)->getItem($tableKey)->addItem('fields')->addItem($key)->addItem('order');
+	        if ($sectionManager->getItem('views')->count() > 0) {
+	          foreach ($sectionManager->getItem('views') as $viewKeyLocal => $view) {
+	            if (!$item->itemExists($viewKeyLocal)) {
+	              $item->addItem(array($viewKeyLocal => $key));
+	            } elseif ($sectionManager->getItem($section)->getItem($tableKey)->getItem('fields')->getItem($key)->getItem('viewKey') == 0) {
+	              $sectionManager->getItem($section)->getItem($tableKey)->getItem('fields')->getItem($key)->addItem(array('viewKey' => 1));
+	            }
+	          }
+	        } else {
+	          if (!$item->itemExists(0)) {
+	            $item->addItem(array(0 => $key));
+	          }
+	          $sectionManager->getItem($section)->getItem($tableKey)->getItem('fields')->getItem($key)->addItem(array('viewKey' => 0));
+	        }
+	      }
+	      if ($sectionManager->getItem('views')->count() == 0) {
+	        $sectionManager->getItem($section)->getItem($tableKey)->addItem(array('viewKey' => 0));
+	      } elseif ($sectionManager->getItem($section)->getItem($tableKey)->getItem('viewKey') == 0) {
+	        $sectionManager->getItem($section)->getItem($tableKey)->addItem(array('viewKey' => 1));
+	      }
+	    }
     }
 
     $configurationManager->saveConfiguration();
