@@ -16,6 +16,7 @@ $versionTemplateCompiler = (version_compare(TYPO3_version, '6.0', '>=') ? 'ForTy
 $versionExtensionManager = '';
 $versionExtensionManager = (version_compare(TYPO3_version, '4.5', '>=') ? 'ForTypo3VersionGreaterOrEqualTo4_5' : $versionExtensionManager);
 $versionExtensionManager = (version_compare(TYPO3_version, '6.0', '>=') ? 'ForTypo3VersionGreaterOrEqualTo6_0' : $versionExtensionManager);
+$versionExtensionManager = (version_compare(TYPO3_version, '6.2', '>=') ? 'ForTypo3VersionGreaterOrEqualTo6_2' : $versionExtensionManager);
 // Version for the Content parser
 $versionContentParser = '';
 $versionContentParser = (version_compare(TYPO3_version, '6.0', '>=') ? 'ForTypo3VersionGreaterOrEqualTo6_0' : $versionContentParser);

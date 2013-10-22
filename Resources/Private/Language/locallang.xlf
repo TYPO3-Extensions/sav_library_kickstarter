@@ -486,6 +486,9 @@
 			<trans-unit id="kickstarter.field.fieldType.Checkboxes" xml:space="preserve">
 				<source>Checkboxes</source>
 			</trans-unit>
+			<trans-unit id="kickstarter.field.fieldType.Currency" xml:space="preserve">
+				<source>Currency</source>
+			</trans-unit>
 			<trans-unit id="kickstarter.field.fieldType.Date" xml:space="preserve">
 				<source>Date</source>
 			</trans-unit>

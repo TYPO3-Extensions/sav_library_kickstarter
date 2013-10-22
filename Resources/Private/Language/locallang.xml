@@ -167,6 +167,7 @@
 			<label index="kickstarter.field.fieldType.Unknown">Unknown</label>
 			<label index="kickstarter.field.fieldType.Checkbox">Checkbox</label>
 			<label index="kickstarter.field.fieldType.Checkboxes">Checkboxes</label>
+			<label index="kickstarter.field.fieldType.Currency">Currency</label>
 			<label index="kickstarter.field.fieldType.Date">Date</label>
 			<label index="kickstarter.field.fieldType.DateTime">Date and time</label>
 			<label index="kickstarter.field.fieldType.Files">Files</label>
