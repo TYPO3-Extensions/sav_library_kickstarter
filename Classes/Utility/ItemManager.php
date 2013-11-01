@@ -344,10 +344,10 @@ class Tx_SavLibraryKickstarter_Utility_ItemManager extends ArrayObject {
 
     foreach($items as $key => $item) {
       if ($item instanceof ArrayObject) {
-        return $this->walkItem($functionName, $arguments, $item);
+        $items[$key] = $this->walkItem($functionName, $arguments, $item);        
       } elseif (is_array($item)) {
         foreach($item as $keySubItem => $subItem) {
-          $item[$keySubItem] = call_user_func($functionName, $subItem, $keySubItem, $arguments);
+          $item[$keySubItem] = $this->walkItem($functionName, $arguments, $subItem);
         }
         $items[$key] = $item;
       } else {

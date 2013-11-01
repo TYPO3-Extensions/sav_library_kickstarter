@@ -894,6 +894,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
     // Sets the new extension key
     $newExtKey = $arguments['newExtKey'];
     $configurationManager->setExtensionKey($newExtKey);
+      
     // Replaces the table name by its new name in all fields
     foreach($sectionManager->getItems() as $walkSectionKey => $walkSection) {
       $walkSection->walkItem('Tx_SavLibraryKickstarter_Controller_KickstarterController::changeTableNames', array('newExtensionKey' => $newExtKey, 'oldExtensionKey' => $extKey));
@@ -961,9 +962,12 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
 	 * @return string The rendered view
 	 */
   public static function changeTableNames($item, $key, $arguments) {
-    $item = preg_replace('/'. $arguments['oldExtensionKey'] . '/m', $arguments['newExtensionKey'], $item);
-    // Adds the domain to existing tables with "short table names".
-    $item = preg_replace('/'. str_replace('_', '', $arguments['oldExtensionKey']) . '/m', str_replace('_', '', $arguments['newExtensionKey']), $item);
+    // Replaces the old extension name by the new one if it is not preceeded by '_'
+    $item = preg_replace('/(?<!_)'. $arguments['oldExtensionKey'] . '/m', $arguments['newExtensionKey'], $item);
+
+    // Adds the domain to existing tables with "short table names". 
+    $item = preg_replace('/_'. str_replace('_', '', $arguments['oldExtensionKey']) . '_/m', '_' . str_replace('_', '', $arguments['newExtensionKey']) . '_', $item);
+
     return $item;
   }
 
