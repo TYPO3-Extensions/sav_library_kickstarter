@@ -272,7 +272,7 @@ class Tx_SavLibraryKickstarter_Configuration_ConfigurationManager {
     if ($extensionKey === NULL) {
       $extensionKey = $this->extensionKey;
     }
-    $extensionDirectory = Tx_SavLibraryKickstarter_Configuration_ConfigurationManager::getExtensionDir($extensionKey);
+    $extensionDirectory = self::getExtensionDir($extensionKey);
 
     if (file_exists($extensionDirectory . 'doc/wizard_form.dat')) {
       $wizardFormFileName = $extensionDirectory . 'doc/wizard_form.dat';
@@ -473,12 +473,12 @@ class Tx_SavLibraryKickstarter_Configuration_ConfigurationManager {
   public function buildConfigurationDirectory($extensionKey, $libraryType) {
   	
 	  // Builds the new configuration directory  
-		$extensionDirectory = Tx_SavLibraryKickstarter_Configuration_ConfigurationManager::getExtensionDir($extensionKey);  
-		$libraryName = Tx_SavLibraryKickstarter_Configuration_ConfigurationManager::getLibraryName($libraryType);  
-		$configurationDirectory =  $extensionDirectory . Tx_SavLibraryKickstarter_Configuration_ConfigurationManager::CONFIGURATION_DIRECTORY . $libraryName . '/';
+		$extensionDirectory = self::getExtensionDir($extensionKey);  
+		$libraryName = self::getLibraryName($libraryType);  
+		$configurationDirectory =  $extensionDirectory . self::CONFIGURATION_DIRECTORY . $libraryName . '/';
 
 		if (!is_dir($configurationDirectory)) {
-		   t3lib_div::mkdir_deep(Tx_SavLibraryKickstarter_Configuration_ConfigurationManager::getExtensionsRootDir(), $extensionKey . '/' . Tx_SavLibraryKickstarter_Configuration_ConfigurationManager::CONFIGURATION_DIRECTORY . $libraryName . '/');
+		   t3lib_div::mkdir_deep(self::getExtensionsRootDir(), $extensionKey . '/' . self::CONFIGURATION_DIRECTORY . $libraryName . '/');
 		}
   }  
   
@@ -527,7 +527,7 @@ class Tx_SavLibraryKickstarter_Configuration_ConfigurationManager {
 	
 	      foreach($this->upgradeFiles[$currentLibraryName] as $version => $fileInformation) {
 	        $libraryVersion = t3lib_utility_VersionNumber::convertVersionNumberToInteger($this->getSectionManager()->getItem('general')->getItem(1)->getItem('libraryVersion'));
-	        if ($libraryVersion < $currentLibraryVersion &&  $libraryVersion < $version) {
+	        if ($libraryVersion < $currentLibraryVersion && $libraryVersion < $version) {
 	            $this->upgradeExtension('To' . $currentLibraryName . $version);
 	        }
 	      }

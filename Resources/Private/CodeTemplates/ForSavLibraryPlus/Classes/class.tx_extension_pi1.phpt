@@ -22,33 +22,22 @@
 *
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
-/**
- * [CLASS/FUNCTION INDEX of SCRIPT]
- *
- * Hint: use extdeveval to insert/update function index above.
- */
-
-require_once(t3lib_extMgm::extPath('sav_library_plus').'Classes/Controller/Controller.php');
-
 <f:alias map="{extensionName: '{sav:function(name:\'removeUnderscore\', arguments:\'{extension.general.1.extensionKey}\')}'}">
 /**
  * Plugin '{extension.emconf.1.title}' for the '{extension.general.1.extensionKey}' extension.
  *
- * @author	{extension.emconf.1.author} <{extension.emconf.1.author_email}>
- * @package	TYPO3
- * @subpackage	tx_{extensionName}
+ * @author {extension.emconf.1.author} <{extension.emconf.1.author_email}>
+ * @package TYPO3
+ * @subpackage tx_{extensionName}
  */
 class tx_{extensionName}_pi1 extends tslib_pibase {
+
 	public $prefixId = 'tx_{extensionName}_pi1';		// Same as class name
 	public $scriptRelPath = 'Classes/class.tx_{extensionName}_pi1.php';	// Path to this script relative to the extension dir.
 	public $extKey = '{extension.general.1.extensionKey}';	// The extension key.
 	            
-	public function main($content,$conf) {
-	  			
-	  // Initialisation
-	  $this->pi_setPiVarDefaults();
-	  $this->pi_loadLL();
-	          
+	public function main($content, $conf) {
+
 	  // Creates the SavLibraryPlus controller
 	  $controller = t3lib_div::makeInstance('Tx_SavLibraryPlus_Controller_Controller');
 
@@ -58,7 +47,7 @@ class tx_{extensionName}_pi1 extends tslib_pibase {
 	  // Injects the extension in the extension configuration manager
 	  $extensionConfigurationManager->injectExtension($this);
 
-	  // Injects the typoScript configuration in  the extension configuration manager
+	  // Injects the typoScript configuration in the extension configuration manager
 	  $extensionConfigurationManager->injectTypoScriptConfiguration($conf);
 
 	  // Sets the debug variable. Use debug ONLY for development

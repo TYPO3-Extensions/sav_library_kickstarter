@@ -30,7 +30,7 @@ $EM_CONF[$_EXTKEY] = array(
 	'version' => '{extension.emconf.1.version}',
 	'constraints' => array(
 		'depends' => array(
-			'typo3' => '4.5.0-6.1.99',	
+			'typo3' => '4.5.0-6.2.99',	
 {sav:buildConstraintsForExtensionManager(dependencies:extension.emconf.1.dependencies)}	
 		),
 		'conflicts' => array(

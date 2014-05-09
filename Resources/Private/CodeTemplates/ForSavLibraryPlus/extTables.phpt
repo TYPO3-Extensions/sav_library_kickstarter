@@ -1,6 +1,6 @@
 <?php
-if (!defined ('TYPO3_MODE')) die ('Access denied.');
 <sav:function name="removeEmptyLines">
+if (!defined ('TYPO3_MODE')) die ('Access denied.');
 <f:for each="{extension.newTables}" as="table">
 <f:alias map="{
   model: '{sav:buildTableName(shortName:table.tablename, extensionKey:extension.general.1.extensionKey)}'
@@ -26,7 +26,7 @@ $TCA['{model}'] = array (
 		</f:if>
     <f:if condition="{table.versioning}">
 		'origUid' => 't3_origuid',
-		'versioningWS' => true,
+		'versioningWS' => TRUE,
 		</f:if>
     <f:if condition="{table.localization}">
 		'languageField' => 'sys_language_uid',
@@ -103,7 +103,6 @@ t3lib_extMgm::addPiFlexFormValue($_EXTKEY . '_pi1', 'FILE:EXT:' . $_EXTKEY . '/C
 t3lib_extMgm::addPlugin(array(
 	'LLL:EXT:{extension.general.1.extensionKey}/Resources/Private/Language/locallang_db.xml:tt_content.list_type_pi1',
 	$_EXTKEY . '_pi1',
-),'list_type');
-
+), 'list_type');
 </sav:function>
 ?>

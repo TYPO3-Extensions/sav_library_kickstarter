@@ -269,7 +269,7 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibrary extends 
 
                 // Generates the title
                 if (preg_match('/###(' . $field['fieldname'] . ')(?(?=[:]):([^#]+))###/', $view['viewTitleBar'], $matches)) {
-                  $title[$viewKey]['configuration']['field'] = str_replace($matches[0], '###' . $tableName . '.' . $field['fieldname'] . '###',$title[$viewKey]['configuration']['field']);
+                  $title[$viewKey]['configuration']['field'] = str_replace($matches[0], '###' . $tableName . '.' . $field['fieldname'] . '###', $title[$viewKey]['configuration']['field']);
                 }
 
                 if (preg_match_all('/([^=]+)=([^;#]+);?/', $matches[2], $matches)) {

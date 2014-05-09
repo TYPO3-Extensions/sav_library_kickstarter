@@ -5,6 +5,9 @@
 BODY,SELECT,INPUT,TEXTAREA {font-family: Verdana,Arial,Helvetica,sans-serif;font-size: 10px;margin:0px;color: black;}
 A {text-decoration:none;color:black;}
 A IMG{border:none;}
+div#savLibraryKickstarter {float:left;width:1400px;}
+div#savLibraryKickstarter INPUT {padding: 0 3px; vertical-align: middle;}
+div#savLibraryKickstarter LABEL {line-height: 12px; min-height: 12px; vertical-align: middle;}
 
 /* Useful classes */
 .bold {font-weight:bold;}
@@ -36,7 +39,7 @@ A IMG{border:none;}
 /* Tabs */
 DIV.viewTabs {float:left;width:100%;background:url(./Images/folderTabBorder.gif) repeat-x bottom;margin-top:3px; padding:0px;}
 DIV.viewTabs DIV.buttons {margin-bottom:10px;}
-DIV.viewTabs UL.folderTabs {float:left;margin:0px;padding:0px;list-style:none;}
+DIV.viewTabs UL.viewTabs {float:left;margin:0px;padding:0px;list-style:none;}
 DIV.viewTabs LI {display:inline;margin:0px;padding:0px;}
 DIV.viewTabs LI A {float:left;background:url(./Images/folderTabRight.gif) no-repeat right top;border-bottom:1px solid #84B0C7;text-decoration:none;font-weight:bold;}
 DIV.viewTabs LI A SPAN {display:block;background:url(./Images/folderTabLeft.gif) no-repeat left top;padding:5px 9px;white-space:nowrap;}

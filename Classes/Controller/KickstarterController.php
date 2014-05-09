@@ -34,22 +34,18 @@
 class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extbase_MVC_Controller_ActionController {
 
 	/**
+	 * The default view object to use if none of the resolved views can render
+	 * a response for the current request.
+	 *
+	 * @var string
+	 * @api
+	 */
+	protected $defaultViewObjectName = 'Tx_SavLibraryKickstarter_Compatibility_TemplateView';
+		
+	/**
 	 * @var boolean
 	 */
   protected $extensionsNeedTobeUpgraded = FALSE;
-
-	/**
-	 * Inializes the view, by injecting a template parser which takes into
-	 * account accessors containing accessors.
-	 *
-	 * @return none
-	 */
-	protected function initializeView(Tx_Extbase_MVC_View_ViewInterface $view) {
-    $view->injectTemplateParser(Tx_SavLibraryKickstarter_Compatibility_TemplateParserBuilder::build());
-    if (version_compare(TYPO3_version, '4.6', '>=')) {
-    	$view->injectTemplateCompiler($this->objectManager->get('Tx_SavLibraryKickstarter_Core_Compiler_TemplateCompiler'));
-    }
-	}
 
 	/**
 	 * extensionList action for this controller.
@@ -404,11 +400,12 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
 
     $configurationManager->saveConfiguration();
 
+	  // Orders the section item according to the view
     if ($sectionManager->getItem($section)->getItem($itemKey)->addItem('fields')->count() > 0) {
       $viewKey = $sectionManager->getItem($section)->getItem($itemKey)->getItem('viewKey');
-      $sectionManager->getItem($section)->getItem($itemKey)->getItem('fields')->sortby(array('order' => $viewKey));
+      $sectionManager->getItem($section)->getItem($itemKey)->getItem('fields')->reIndex(array('order' => $viewKey));
     }
-    
+        
     // Changes the view if any provided
     if ($viewKey !== NULL) {
     	$sectionManager->getItem($section)->getItem($itemKey)->addItem(array('viewKey' => $viewKey));

@@ -50,7 +50,7 @@ class Tx_SavLibraryKickstarter_ViewHelpers_BuildConstraintsForExtensionManagerVi
 			$dependenciesArray[] = $default;
 		}
     foreach ($dependenciesArray as $dependency) {
-    	$constraints .= chr(9) . chr(9) . chr(9) . '\'' . $dependency . '\' => \'\',' . chr(10);
+    	$constraints .= chr(9) . chr(9) . chr(9) . '\'' . trim($dependency) . '\' => \'\',' . chr(10);
     }
     // Removes last new line
     $constraints = substr($constraints, 0, -1);

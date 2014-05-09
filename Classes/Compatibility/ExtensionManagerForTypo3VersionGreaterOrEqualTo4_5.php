@@ -123,7 +123,7 @@ class Tx_SavLibraryKickstarter_Compatibility_ExtensionManager {
     }
 
     // Gets the installed extension
-		list($installedExtensions,) = $this->extensionList->getInstalledExtensions();
+		list($installedExtensions) = $this->extensionList->getInstalledExtensions();
 
 		// check if it is already installed and loaded with sufficient version
 		if (isset($installedExtensions[$extensionKey])) {
@@ -150,7 +150,7 @@ class Tx_SavLibraryKickstarter_Compatibility_ExtensionManager {
     // Clears the caches
 		$tce = t3lib_div::makeInstance('t3lib_TCEmain');
 		$tce->stripslashes_values = 0;
-		$tce->start(Array(),Array());
+		$tce->start(array(), array());
 		$tce->clear_cacheCmd('all');
     t3lib_extMgm::removeCacheFiles();
 		$GLOBALS['BE_USER']->writelog(5, 1, 0, 0, 'Extension list has been changed, extension %s has been installed', array($extensionKey));
@@ -168,7 +168,7 @@ class Tx_SavLibraryKickstarter_Compatibility_ExtensionManager {
     }
 
 		// Removes the extension from the installed extensions
-		list($installedExtensions,) = $this->extensionList->getInstalledExtensions();
+		list($installedExtensions) = $this->extensionList->getInstalledExtensions();
 		if (array_key_exists($extensionKey, $installedExtensions)) {
       $newInstalledExtensions = $this->extensionList->removeExtFromList($extensionKey, $installedExtensions);
       if ($newInstalledExtensions != -1) {
@@ -177,7 +177,7 @@ class Tx_SavLibraryKickstarter_Compatibility_ExtensionManager {
         t3lib_extMgm::removeCacheFiles();
 				$tce = t3lib_div::makeInstance('t3lib_TCEmain');
 				$tce->stripslashes_values = 0;
-				$tce->start(Array(),Array());
+				$tce->start(array(), array());
 				$tce->clear_cacheCmd('all');
 				$GLOBALS['BE_USER']->writelog(5, 1, 0, 0, 'Extension list has been changed, extension %s has been removed', array($extensionKey));
       } else {
@@ -198,7 +198,7 @@ class Tx_SavLibraryKickstarter_Compatibility_ExtensionManager {
     }
 
     // Gets the installed extensions
-		list($installedExtensions,) = $this->extensionList->getInstalledExtensions();
+		list($installedExtensions) = $this->extensionList->getInstalledExtensions();
 		
 		// Gets the installed extension information
 		$installedExtensionInformation = $installedExtensions[$extensionKey];
@@ -231,7 +231,7 @@ class Tx_SavLibraryKickstarter_Compatibility_ExtensionManager {
     }
 
     // Gets the installed extensions and gets the updates form.
-		list($installedExtensions,) = $this->extensionList->getInstalledExtensions();
+		list($installedExtensions) = $this->extensionList->getInstalledExtensions();
     $updateMessage = $this->install->updatesForm($extensionKey, $installedExtensions[$extensionKey]);
 
     if ($updateMessage) {

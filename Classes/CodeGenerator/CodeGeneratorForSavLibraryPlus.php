@@ -55,7 +55,7 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibraryPlus exte
 		t3lib_div::writeFile($fileDirectory . 'ext_emconf.php', $fileContents);
 
 		// Generates ext_localconf.php
-		if ( !$this->sectionManager->getItem('general')->getItem(1)->getItem('keepExtLocalConf') || 
+		if (!$this->sectionManager->getItem('general')->getItem(1)->getItem('keepExtLocalConf') ||
 				($this->sectionManager->getItem('general')->getItem(1)->getItem('keepExtLocalConf') && !file_exists($this->extensionDirectory . 'ext_localconf.php'))) {
 			$fileContents = $this->generateFile('extLocalconf.phpt');
 			t3lib_div::writeFile($fileDirectory . 'ext_localconf.php', $fileContents);
@@ -120,7 +120,7 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibraryPlus exte
 		
 		// Generates the pi file
 		$fileContents = $this->generateFile('Classes/class.tx_extension_pi1.phpt');
-		t3lib_div::writeFile($fileDirectory . 'class.tx_' . str_replace('_','', $this->extensionKey) . '_pi1.php', $fileContents);
+		t3lib_div::writeFile($fileDirectory . 'class.tx_' . str_replace('_', '', $this->extensionKey) . '_pi1.php', $fileContents);
 
 	}
 
@@ -469,12 +469,8 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibraryPlus exte
   		    throw new RuntimeException('Missing equal sign in ' . $param);
         } else {
           $exp = strtolower(trim(substr($param, 0, $pos)));
-          // If there is a dot, crypts the tag
-          if (strpos($exp, '.') !== FALSE) {
- //           $exp = $this->cryptTag($exp);
-          }
           // Removes trailing spaces
-          $configuration = htmlspecialchars(ltrim(substr($param, $pos+1)));
+          $configuration = htmlspecialchars(ltrim(substr($param, $pos + 1)));
           $configuration  = preg_replace('/\s+([\n\r])/', '$1', $configuration );
           $config[$exp] = $configuration;
         }
