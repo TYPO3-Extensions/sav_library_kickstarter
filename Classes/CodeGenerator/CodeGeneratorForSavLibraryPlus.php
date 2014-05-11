@@ -165,8 +165,9 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibraryPlus exte
     }
 
     // Generates queries
-    if (is_array($extension['queries'])) {
-      foreach ($extension['queries'] as $queryKey => $query) {
+    $queries = $extension['queries'];
+    if (is_array($queries)) {
+      foreach($queries as $queryKey => $query) {
         $xmlArray['queries'][$queryKey] = $query;
         if ($query['whereTags']) {
           foreach($query['whereTags'] as $whereTagKey => $whereTag) {
@@ -177,9 +178,10 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibraryPlus exte
     }
 
     // Generates views
-    if (is_array($extension['views'])) {
+    $views = $extension['views'];
+    if (is_array($views)) {
       $relationTable = array();    	
-      foreach ($extension['views'] as $viewKey => $view) {
+      foreach ($views as $viewKey => $view) {
 
         // Generates the templates
         if ($view['type'] == 'list' || $view['type'] == 'special' ) {
@@ -231,9 +233,10 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibraryPlus exte
         // Gets the list of the fields organized by folders
         unset($showFolders);
         unset($showFields);
-        if (isset($extension['newTables'])) {
+        $newTables = $extension['newTables'];
+        if (is_array($newTables)) {
           $title[$viewKey]['configuration']['field'] = $view['viewTitleBar'];
-          foreach($extension['newTables'] as $tableKey => $table) {
+          foreach($newTables as $tableKey => $table) {
             $tableRootName = 'tx_' . str_replace('_', '', $this->extensionKey);
             $tableName = $tableRootName . ($table['tablename'] ? '_' . $table['tablename'] : '');
 
@@ -242,20 +245,21 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibraryPlus exte
 							$xmlArray['general']['saveAndNew'][$tableName] = 1;
 						}
             // Puts the fields in the right order for the view
-            $tempo = $table['fields'];
-            unset($orderedFields);
-            foreach ($tempo as $fieldKey => $field) {
-         
-              if ($field['selected'][$viewKey]) {
-                $orderedFields[$field['order'][$viewKey]] = $fieldKey;
-              }
+            unset($orderedFields);            
+            $fields = $table['fields'];
+            if (is_array($fields)) {
+	            foreach ($fields as $fieldKey => $field) {
+	              if ($field['selected'][$viewKey]) {
+	                $orderedFields[$field['order'][$viewKey]] = $fieldKey;
+	              }
+	            }
             }
 
-            if (isset($orderedFields)) {
+            if (is_array($orderedFields)) {
               ksort($orderedFields);
               unset($table['fields']);
               foreach ($orderedFields as $fieldKey => $field) {
-                $table['fields'][$field] = $tempo[$field];
+                $table['fields'][$field] = $fields[$field];
               }
               foreach ($table['fields'] as $fieldKey => $field) {
                 if ($field['folders'][$viewKey]) {
@@ -273,38 +277,40 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibraryPlus exte
           }
         }
 
-        if (isset($extension['existingTables'])) {
+        $existingTables = $extension['existingTables'];
+        if (is_array($existingTables)) {
           if (!$title[$viewKey]['configuration']['field']) {
             $title[$viewKey]['configuration']['field'] = $view['viewTitleBar'];
           }
-          foreach($extension['existingTables'] as $tableKey => $table) {
+          foreach($existingTables as $tableKey => $table) {
             $tableName = $table['tablename'];
 
             // Puts the fields in the right order for the view
-            $tempo = $table['fields'];
-            unset($orderedFields);
-
-            foreach ($tempo as $fieldKey => $field) {
-
-              if ($field['type'] != 'ShowOnly') {
-
-                // Generates the additional TCA information
-                $prefix = 'tx_' . str_replace('_', '', $this->extensionKey) . '_';
-                  $column = $field;
-                  $column['fieldname'] = $prefix . $field['fieldname'];
-                  $columns[$prefix . $field['fieldname']] = $column;
-
-              }
-              if ($field['selected'][$viewKey]) {
-                $orderedFields[$field['order'][$viewKey]] = $fieldKey;
-              }
+            unset($orderedFields);            
+            $fields = $table['fields'];
+            if (is_array($fields)) {
+	            foreach ($fields as $fieldKey => $field) {
+	
+	              if ($field['type'] != 'ShowOnly') {
+	
+	                // Generates the additional TCA information
+	                $prefix = 'tx_' . str_replace('_', '', $this->extensionKey) . '_';
+	                  $column = $field;
+	                  $column['fieldname'] = $prefix . $field['fieldname'];
+	                  $columns[$prefix . $field['fieldname']] = $column;
+	
+	              }
+	              if ($field['selected'][$viewKey]) {
+	                $orderedFields[$field['order'][$viewKey]] = $fieldKey;
+	              }
+	            }
             }
 
-            if (isset($orderedFields)) {
+            if (is_array($orderedFields)) {
               ksort($orderedFields);
               unset($table['fields']);
               foreach ($orderedFields as $fieldKey => $field) {
-                $table['fields'][$field] = $tempo[$field];
+                $table['fields'][$field] = $fields[$field];
               }
               foreach ($table['fields'] as $fieldKey => $field) {
                 if ($field['folders'][$viewKey]) {
@@ -419,21 +425,23 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibraryPlus exte
               }
             }
    
-          $xmlArray['views'][$viewKey][$cryptedFolderName]['fields'] = $fieldConfiguration;
-        
+          $xmlArray['views'][$viewKey][$cryptedFolderName]['fields'] = $fieldConfiguration;        
           }          
         }
       }
 
-			// Adds the subform configuraition     
-      foreach ($extension['views'] as $viewKey => $view) {     
-      	if (is_array($subformConfiguration[$viewKey])) {
-      		foreach ($subformConfiguration[$viewKey] as $subformKey => $subform) {		
-						$arrayToAdd['configuration'][$this->cryptTag('0')]['fields'] = $subform;	
-						$this->addConfiguration($xmlArray['views'][$viewKey], $subformKey, $arrayToAdd);		      			
-      		}
-      	} 
-      }
+			// Adds the subform configuration   
+			$views = $extension['views'];
+			if (is_array($views)) {
+	      foreach ($views as $viewKey => $view) {     
+	      	if (is_array($subformConfiguration[$viewKey])) {
+	      		foreach ($subformConfiguration[$viewKey] as $subformKey => $subform) {		
+							$arrayToAdd['configuration'][$this->cryptTag('0')]['fields'] = $subform;	
+							$this->addConfiguration($xmlArray['views'][$viewKey], $subformKey, $arrayToAdd);		      			
+	      		}
+	      	} 
+	      }
+			}
 
     }
   

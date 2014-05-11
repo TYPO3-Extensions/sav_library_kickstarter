@@ -41,24 +41,27 @@ class Tx_SavLibraryKickstarter_ViewHelpers_BuildOrderbyClauseForRelationTableVie
 	public function render($arguments, $tableName) {
 
 		// Searches the table name in new tables
-    foreach ($arguments['newTables'] as $tableKey => $table) {
-    	$realTableName = 'tx_' . str_replace('_', '', $arguments['general'][1]['extensionKey']) . '_' . $table['tablename'];
-  	
-    	if ($realTableName == $tableName) {
-				// Checks if manual ordering is not set
-				if (empty($table['sorting'])) {
-					// Field-based ordering
-					$orderByClause = ' ORDER BY ' . $realTableName . '.' . $table['sorting_field'];
-					if (empty($table['sorting_desc']) === FALSE) {
-						$orderByClause .= ' DESC';
+		$newTables = $arguments['newTables'];
+		if (is_array($newTables)) {
+	    foreach ($newTables as $tableKey => $table) {
+	    	$realTableName = 'tx_' . str_replace('_', '', $arguments['general'][1]['extensionKey']) . '_' . $table['tablename'];
+	  	
+	    	if ($realTableName == $tableName) {
+					// Checks if manual ordering is not set
+					if (empty($table['sorting'])) {
+						// Field-based ordering
+						$orderByClause = ' ORDER BY ' . $realTableName . '.' . $table['sorting_field'];
+						if (empty($table['sorting_desc']) === FALSE) {
+							$orderByClause .= ' DESC';
+						}
+					} else {
+						// Manual ordering
+						$orderByClause .= ' ORDER BY ' . $realTableName . '.sorting';
 					}
-				} else {
-					// Manual ordering
-					$orderByClause .= ' ORDER BY ' . $realTableName . '.sorting';
-				}
-    		return $orderByClause;
-    	}  
-    }	
+	    		return $orderByClause;
+	    	}  
+	    }	
+		}
     
     // Searches the table name in existing tables
 		foreach($GLOBALS['TCA'] as $tableKey => $table) {

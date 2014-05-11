@@ -302,7 +302,6 @@ class Tx_SavLibraryKickstarter_Configuration_ConfigurationManager {
     return file_exists($configurationFileName);
   }
   
-  
 	/**
 	 * Checks if the extension is loaded.
 	 *

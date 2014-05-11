@@ -38,10 +38,12 @@ class Tx_SavLibraryKickstarter_ViewHelpers_BuildOptionsForFieldSelectorboxViewHe
 	 * @author Laurent Foulloy <yolf.typo3@orange.fr>
 	 */
 	public function render($fields, $options = array()) {
-
-    foreach ($fields as $field) {
-      $options = array_merge($options, array ($field['fieldname'] => $field['fieldname']));
-    }
+		
+		if (is_array($fields)) {
+	    foreach ($fields as $field) {
+	      $options = array_merge($options, array ($field['fieldname'] => $field['fieldname']));
+	    }
+		}
 
     return $options;
 	}

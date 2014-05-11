@@ -160,7 +160,11 @@ class Tx_SavLibraryKickstarter_ViewHelpers_FunctionViewHelper extends Tx_Fluid_C
 	 * @return mixed
 	 */
 	private function current($argument) {
-    return current($argument);
+		if (is_array($argument)) {
+    	return current($argument);
+		} else {
+			return FALSE;
+		}
 	}
 
 	/**

@@ -569,12 +569,18 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
     $options['single'][0] = ' ';
     $options['edit'][0] = ' ';
     $options['special'][0] = ' ';
-    foreach($configuration['views'] as $key => $view) {
-      $options[$view['type']][$key] = $view['title'];
+    $views = $configuration['views'];
+    if (is_array($views)) {
+	    foreach($views as $viewKey => $view) {
+	      $options[$view['type']][$viewKey] = $view['title'];
+	    }
     }
     $options['query'][0] = ' ';
-    foreach($configuration['queries'] as $key => $query) {
-      $options['query'][$key] = $query['title'];
+    $queries = $configuration['queries'];
+    if (is_array($queries)) {
+	    foreach($queries as $queryKey => $query) {
+	      $options['query'][$queryKey] = $query['title'];
+	    }
     }
     $this->view->assign('options', $options);
 	}
@@ -744,10 +750,12 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
     
     // Processes the subforms
     $subforms = $arguments['subforms'];
-    foreach ($subforms as $relationTableKey => $subform) {
-    	$sectionManager->getItem(key($subform))->getItem($relationTableKey)->replace(current($subform));
+    if (is_array($subforms)) {
+	    foreach ($subforms as $relationTableKey => $subform) {
+	    	$sectionManager->getItem(key($subform))->getItem($relationTableKey)->replace(current($subform));
+	    }
     }
-
+    
     // Processes the section fields
     $sectionManager->getItem($section)->getItem($itemKey)->replace($arguments[$section]);
 
@@ -1110,11 +1118,13 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
     $fields = $item->getItem('fields');
     $fieldsInView = array();
     $keyList = array();
-    foreach($fields as $key => $field) {
-    	if (is_null($folderKey) || $field->getItem('folders')->getItem($viewKey) == $folderKey) {
-    		$fieldsInView[$key] = $field;
-    		$fieldKeysInView[] = $key;
-    	}
+    if (is_array($fields)) {
+	    foreach($fields as $fieldKey => $field) {
+	    	if (is_null($folderKey) || $field->getItem('folders')->getItem($viewKey) == $folderKey) {
+	    		$fieldsInView[$fieldKey] = $field;
+	    		$fieldKeysInView[] = $fieldKey;
+	    	}
+	    }
     }
 
 		// Gets the from position and the from item
@@ -1181,11 +1191,13 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
     $fields = $item->getItem('fields');
     $fieldsInView = array();
     $keyList = array();
-    foreach($fields as $key => $field) {
-    	if (is_null($folderKey) || $field->getItem('folders')->getItem($viewKey) == $folderKey) {
-    		$fieldsInView[$key] = $field;
-    		$fieldKeysInView[] = $key;
-    	}
+    if (is_array($fields)) {
+	    foreach($fields as $fieldKey => $field) {
+	    	if (is_null($folderKey) || $field->getItem('folders')->getItem($viewKey) == $folderKey) {
+	    		$fieldsInView[$fieldKey] = $field;
+	    		$fieldKeysInView[] = $fieldKey;
+	    	}
+	    }
     }
 		
 		// Gets the from position and the from item

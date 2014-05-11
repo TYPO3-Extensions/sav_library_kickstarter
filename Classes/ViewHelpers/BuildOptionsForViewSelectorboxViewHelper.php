@@ -39,8 +39,10 @@ class Tx_SavLibraryKickstarter_ViewHelpers_BuildOptionsForViewSelectorboxViewHel
 	public function render($views) {
 
     $options = array(0 => '');
-    foreach ($views as $viewKey => $view) {
-      $options = array_merge($options, array ($viewKey => $view['title'] . '###class=' . $view['type'] . '###'));
+    if (is_array($views)) {
+	    foreach ($views as $viewKey => $view) {
+	      $options = array_merge($options, array ($viewKey => $view['title'] . '###class=' . $view['type'] . '###'));
+	    }
     }
 
     return $options;
