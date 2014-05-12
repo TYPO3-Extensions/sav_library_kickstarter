@@ -1118,13 +1118,11 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
     $fields = $item->getItem('fields');
     $fieldsInView = array();
     $keyList = array();
-    if (is_array($fields)) {
-	    foreach($fields as $fieldKey => $field) {
-	    	if (is_null($folderKey) || $field->getItem('folders')->getItem($viewKey) == $folderKey) {
-	    		$fieldsInView[$fieldKey] = $field;
-	    		$fieldKeysInView[] = $fieldKey;
-	    	}
-	    }
+    foreach($fields as $key => $field) {
+    	if (is_null($folderKey) || $field->getItem('folders')->getItem($viewKey) == $folderKey) {
+    		$fieldsInView[$key] = $field;
+    		$fieldKeysInView[] = $key;
+    	}
     }
 
 		// Gets the from position and the from item
@@ -1191,13 +1189,11 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
     $fields = $item->getItem('fields');
     $fieldsInView = array();
     $keyList = array();
-    if (is_array($fields)) {
-	    foreach($fields as $fieldKey => $field) {
-	    	if (is_null($folderKey) || $field->getItem('folders')->getItem($viewKey) == $folderKey) {
-	    		$fieldsInView[$fieldKey] = $field;
-	    		$fieldKeysInView[] = $fieldKey;
-	    	}
-	    }
+    foreach($fields as $key => $field) {
+    	if (is_null($folderKey) || $field->getItem('folders')->getItem($viewKey) == $folderKey) {
+    		$fieldsInView[$key] = $field;
+    		$fieldKeysInView[] = $key;
+    	}
     }
 		
 		// Gets the from position and the from item
@@ -1250,6 +1246,14 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
     $configurationManager = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Configuration_ConfigurationManager', $extKey);
     $configurationManager->loadConfiguration();
     $sectionManager = $configurationManager->getSectionManager();
+   
+    // A new field can be added if at least one view is defined
+    $views = $sectionManager->getItem('views');
+    if ($views->count() == 0) {
+    	$this->flashMessageContainer->add(Tx_Extbase_Utility_Localization::translate('kickstarter.noViewBeforeAddingField', 'sav_library_kickstarter'));	
+    	$this->redirect($section . 'EditSection', NULL, NULL, array('extKey' => $extKey, 'section' => $section, 'itemKey' => $itemKey, 'fieldKey' => $fieldKey));    	
+    } 
+ 
     // Adds the item at the end if no field key is provided
     if ($fieldKey === NULL) {
       // Adds the field and gets its key
@@ -1261,18 +1265,21 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
         'type' => 'Unknown',
         )
       );
+
+      // Sets the first view as the default view by default if not already set
+			$tableViewKey = $sectionManager->getItem($section)->getItem($itemKey)->getItem('viewKey');
+			if (empty($tableViewKey)) {
+				$sectionManager->getItem($section)->getItem($itemKey)->addItem(array('viewKey' => 1));
+			}
+
       // Sets the view key
       $viewKey = $sectionManager->getItem($section)->getItem($itemKey)->getItemAndSetToZeroIfNull('viewKey');
       $sectionManager->getItem($section)->getItem($itemKey)->getItem('fields')->getItem($fieldKey)->addItem(array('viewKey' => $viewKey));
       // Adds the order in each view if any
       $views = $sectionManager->getItem('views');
       $count = $sectionManager->getItem($section)->getItem($itemKey)->getItem('fields')->count();
-      if ($views->count() > 0) {
-        foreach ($views as $viewKey => $view) {
-         $sectionManager->getItem($section)->getItem($itemKey)->getItem('fields')->getItem($fieldKey)->addItem('order')->addItem(array($viewKey => $count));
-        }
-      } else {
-         $sectionManager->getItem($section)->getItem($itemKey)->getItem('fields')->getItem($fieldKey)->addItem('order')->addItem(array($viewKey => $count));
+      foreach ($views as $viewKey => $view) {
+        $sectionManager->getItem($section)->getItem($itemKey)->getItem('fields')->getItem($fieldKey)->addItem('order')->addItem(array($viewKey => $count));
       }
     }
     // Saves the configuration and redirects to the section

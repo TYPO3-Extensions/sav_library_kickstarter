@@ -325,7 +325,7 @@ class Tx_SavLibraryKickstarter_ViewHelpers_FunctionViewHelper extends Tx_Fluid_C
     } else {
       $destinationExtensionDirectory = Tx_SavLibraryKickstarter_Configuration_ConfigurationManager::getExtensionDir('sav_library_kickstarter');
     }
-    if (! copy($sourceExtensionDirectory . $arguments['source'], $destinationExtensionDirectory . $arguments['destination'])) {
+    if (!@copy($sourceExtensionDirectory . $arguments['source'], $destinationExtensionDirectory . $arguments['destination'])) {
       throw new RuntimeException('Copy failed.');
     }
   }

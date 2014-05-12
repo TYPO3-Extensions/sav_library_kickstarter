@@ -233,7 +233,9 @@ class Tx_SavLibraryKickstarter_Utility_ItemManager extends ArrayObject {
     foreach($this as $keyField => $field) {
       $fieldValue = $this->searchFieldValue($field, $searchKey);
 
-			if (array_key_exists($fieldValue, $sortedKeys)) {
+      if ($fieldValue === FALSE) {
+      	$sortedKeys = array();
+      } elseif (array_key_exists($fieldValue, $sortedKeys)) {
 				// It should not happen
 				$existingKeys[] = $keyField;
 			} else {
@@ -251,7 +253,9 @@ class Tx_SavLibraryKickstarter_Utility_ItemManager extends ArrayObject {
     }
 
     // Replaces the item
-    $this->exchangeArray($item);
+    if (!empty($item)) {
+    	$this->exchangeArray($item);
+    }
     return $this;
   }
 
@@ -266,11 +270,17 @@ class Tx_SavLibraryKickstarter_Utility_ItemManager extends ArrayObject {
   protected function searchFieldValue($field, $searchKey) {
     if (is_array($searchKey)) {
       $fieldValue = $field;
+      $lastKey = FALSE;
+
       foreach($searchKey as $key => $value) {
         $fieldValue = $fieldValue[$key];
         $lastKey = $value;
       }
-      return $fieldValue[$lastKey];
+      if (empty($lastKey)) {
+      	return FALSE;
+      } else {
+      	return $fieldValue[$lastKey];
+      }
     } else {
       return $field[$searchKey];
     }

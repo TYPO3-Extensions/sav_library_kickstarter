@@ -54,6 +54,7 @@
 			<label index="kickstarter.overwrite">Overwrite</label>	
 			<label index="kickstarter.overwriteRequired">The library type was not changed. Use overwrite to change the library type.</label>	
 			<label index="kickstarter.noConfigurationFile">The library type was not changed. No configuration file was found.</label>	
+			<label index="kickstarter.noViewBeforeAddingField">At least one view is required before adding a new field.</label>				
 			<label index="kickstarter.generate">Generate</label>
 			<label index="kickstarter.extensionList.extensionName">Extension name</label>
 			<label index="kickstarter.extensionList.extensionVersion">Extension version</label>

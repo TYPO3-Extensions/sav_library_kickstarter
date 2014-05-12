@@ -147,6 +147,9 @@
 			<trans-unit id="kickstarter.noConfigurationFile" xml:space="preserve">
 				<source>The library type was not changed. No configuration file was found.</source>
 			</trans-unit>
+			<trans-unit id="kickstarter.noViewBeforeAddingField" xml:space="preserve">
+				<source>At least one view is required before adding a new field.</source>
+			</trans-unit>
 			<trans-unit id="kickstarter.generate" xml:space="preserve">
 				<source>Generate</source>
 			</trans-unit>

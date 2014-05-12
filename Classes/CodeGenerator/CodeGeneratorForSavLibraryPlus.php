@@ -291,14 +291,12 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibraryPlus exte
             if (is_array($fields)) {
 	            foreach ($fields as $fieldKey => $field) {
 	
-	              if ($field['type'] != 'ShowOnly') {
-	
+	              if ($field['type'] != 'ShowOnly') {	
 	                // Generates the additional TCA information
 	                $prefix = 'tx_' . str_replace('_', '', $this->extensionKey) . '_';
 	                  $column = $field;
 	                  $column['fieldname'] = $prefix . $field['fieldname'];
 	                  $columns[$prefix . $field['fieldname']] = $column;
-	
 	              }
 	              if ($field['selected'][$viewKey]) {
 	                $orderedFields[$field['order'][$viewKey]] = $fieldKey;
@@ -334,7 +332,7 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibraryPlus exte
         }
 
         // Generates the views
-        if (isset($showFolders)) {
+        if (is_array($showFolders)) {
           ksort($showFolders);
         } else {
           if (isset($showFields)) {
@@ -344,7 +342,7 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibraryPlus exte
           }
         }
 
-        if (isset($showFolders)) {
+        if (is_array($showFolders)) {
           foreach ($sortedFolders as $sortedFolderKey => $folderKey) {
           	$fieldConfiguration = array();
 
