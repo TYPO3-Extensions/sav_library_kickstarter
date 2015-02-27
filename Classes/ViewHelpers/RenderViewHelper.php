@@ -1,5 +1,5 @@
 <?php
-
+namespace SAV\SavLibraryKickstarter\ViewHelpers;
 /***************************************************************
 *  Copyright notice
 *
@@ -31,7 +31,7 @@
  * @author Laurent Foulloy <yolf.typo3@orange.fr>
  * @version     SVN: $Id$
  */
-class Tx_SavLibraryKickstarter_ViewHelpers_RenderViewHelper extends Tx_Fluid_Core_ViewHelper_AbstractViewHelper {
+class RenderViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
 
   const PARTIALS_DIRECTORY = 'Resources/Private/Partials/';
 
@@ -49,19 +49,19 @@ class Tx_SavLibraryKickstarter_ViewHelpers_RenderViewHelper extends Tx_Fluid_Cor
     if ($directory === NULL) {
       $directory = self::PARTIALS_DIRECTORY;
     }
-		$fileContent = @file_get_contents(t3lib_extMgm::extPath('sav_library_kickstarter'). $directory . $partial);
+		$fileContent = @file_get_contents(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('sav_library_kickstarter'). $directory . $partial);
 
     if ($fileContent === FALSE && $useDefault !== '') {
       $partial = preg_replace('/([\w]+)(\.[\w]+)$/', $useDefault . '$2', $partial);
-		  $fileContent = @file_get_contents(t3lib_extMgm::extPath('sav_library_kickstarter'). $directory . $partial);
+		  $fileContent = @file_get_contents(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('sav_library_kickstarter'). $directory . $partial);
     }
       
     if ($fileContent === FALSE) {
-      throw new RuntimeException('Unknown file name: "'. $directory . $partial . '".');
+      throw new \RuntimeException('Unknown file name: "'. $directory . $partial . '".');
     }
 
-    Tx_SavLibraryKickstarter_Parser_ContentParser::setControllerContext($this->controllerContext);
-    return Tx_SavLibraryKickstarter_Parser_ContentParser::parse($fileContent, $arguments);
+    \SAV\SavLibraryKickstarter\Parser\ContentParser::setControllerContext($this->controllerContext);
+    return \SAV\SavLibraryKickstarter\Parser\ContentParser::parse($fileContent, $arguments);
 
 	}
 }

@@ -1,5 +1,5 @@
 <?php
-
+namespace SAV\SavLibraryKickstarter\ViewHelpers\Be;
 /*                                                                        *
  * This script is part of the TYPO3 project - inspiring people to share!  *
  *                                                                        *
@@ -31,7 +31,7 @@
  * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
  * @scope prototype
  */
-class Tx_SavLibraryKickstarter_ViewHelpers_Be_HelpWindowViewHelper extends Tx_Fluid_Core_ViewHelper_AbstractTagBasedViewHelper {
+class HelpWindowViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractTagBasedViewHelper {
 
 	/**
 	 * @var string
@@ -56,15 +56,17 @@ class Tx_SavLibraryKickstarter_ViewHelpers_Be_HelpWindowViewHelper extends Tx_Fl
 	 * @author Bastian Waidelich <bastian@typo3.org>
 	 */
 	public function render($cshTag) {
+  
+    $tag = 'xEXT_sav_library_kickstarter_' . \TYPO3\CMS\Core\Utility\GeneralUtility::lcfirst($cshTag) . '.*';  
 		$this->tag->addAttribute('href', '#');
-  	if (t3lib_utility_VersionNumber::convertVersionNumberToInteger(TYPO3_version)	< 6000000) {
-			$helpUrl = 'view_help.php?';
+  	if (version_compare(TYPO3_version, '6.0', '>=')) {
+    	$helpUrl = \TYPO3\CMS\Backend\Utility\BackendUtility::getModuleUrl('help_cshmanual', array('tfID' => $tag));			
 		}	else {
-			$helpUrl = 'mod.php?M=help_cshmanual&';			
+			$helpUrl = 'view_help.php?tfID=' . $tag;    
 		}				
-		$this->tag->addAttribute('onclick', 'vHWin=window.open(\'' . $helpUrl . 'tfID=xEXT_sav_library_kickstarter_' . t3lib_div::lcfirst($cshTag) . '.*\',\'viewFieldHelp\',\'height=400,width=600,status=0,menubar=0,scrollbars=1\');vHWin.focus();return FALSE;');
-		$skinnedIcon = t3lib_iconWorks::skinImg($GLOBALS['BACK_PATH'], 'gfx/helpbubble.gif', '');
-		$this->tag->setContent('<img'.$skinnedIcon.' class="typo3-csh-icon" alt="' . t3lib_div::lcfirst($cshTag) . '" height="16" hspace="2" width="16">');
+		$this->tag->addAttribute('onclick', 'vHWin=window.open(\'' . $helpUrl . '\',\'viewFieldHelp\',\'height=400,width=600,status=0,menubar=0,scrollbars=1\');vHWin.focus();return FALSE;');
+		$skinnedIcon = \TYPO3\CMS\Backend\Utility\IconUtility::skinImg($GLOBALS['BACK_PATH'], 'gfx/helpbubble.gif', '');
+		$this->tag->setContent('<img'.$skinnedIcon.' class="typo3-csh-icon" alt="' . \TYPO3\CMS\Core\Utility\GeneralUtility::lcfirst($cshTag) . '" height="16" hspace="2" width="16">');
 
 		return $this->tag->render();
 	}

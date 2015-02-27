@@ -1,9 +1,9 @@
-{namespace sav=Tx_SavLibraryKickstarter_ViewHelpers}
+{namespace sav=SAV\SavLibraryKickstarter\ViewHelpers}
 <f:layout name="KickstarterExtensionListLayout.html" />
 
 <f:section name="content">
 <div id="extensionList">
-  <f:form method="post" action="createExtension" >
+  <f:form name="extensionList" method="post" action="changeExtensionVersion" >
 
     <div class="title">
       <ul>
@@ -11,6 +11,7 @@
         <li class="extensionVersion">{f:translate(key:'kickstarter.extensionList.extensionVersion')}</li>
         <li class="libraryVersion">{f:translate(key:'kickstarter.extensionList.libraryVersion')}</li>
         <li class="libraryType">{f:translate(key:'kickstarter.extensionList.libraryType')}</li>
+        <li class="compatibility">{f:translate(key:'kickstarter.extensionList.compatibility')}</li>
         <li class="forms">{f:translate(key:'kickstarter.extensionList.forms')}</li>
         <li class="cache">{f:translate(key:'kickstarter.extensionList.cache')}</li>
         <li class="debugQueries">{f:translate(key:'kickstarter.extensionList.debugQueries')}</li>
@@ -27,13 +28,24 @@
       </ul>
     </div>
     
-    <div class="body">
+    <div class="body">   
       <f:for each="{extensionList}" as="extension">
       <ul>
         <li class="extensionName"><f:link.action action="editExtension" arguments="{extKey:extension.general.1.extensionKey}">{extension.general.1.extensionKey}</f:link.action></li>
-        <li class="extensionVersion">{extension.emconf.1.version}</li>
+        <f:if condition="{0:showExtensionVersionSelector} == {0:extension.general.1.extensionKey}">
+          <f:then>
+          <li class="{sav:buildClassForExtensionVersion(extensionKey:extension.general.1.extensionKey, extensionVersion:extension.emconf.1.version)}"> 
+            <f:form.select name="extensionVersion" options="{sav:buildOptionsForExtensionVersionSelectorbox(extensionKey:extension.general.1.extensionKey)}" value="{extension.emconf.1.version}" additionalAttributes="{onchange: 'extensionList.submit()'}" />
+            <f:form.hidden name="extensionKey" value="{extension.general.1.extensionKey}" />
+          </li>
+          </f:then>
+          <f:else>
+          <li class="{sav:buildClassForExtensionVersion(extensionKey:extension.general.1.extensionKey, extensionVersion:extension.emconf.1.version)}"><f:link.action action="selectExtensionVersion" arguments="{extKey:extension.general.1.extensionKey}">{extension.emconf.1.version}</f:link.action></li>
+          </f:else>
+        </f:if> 
         <li class="libraryVersion {f:if(condition:'{extension.general.1.currentLibraryVersion} != {extension.general.1.libraryVersion}',then:'wrongVersion')}">{extension.general.1.libraryVersion}</li>
         <li class="libraryType">{f:translate(key:'kickstarter.generalItem.libraryType.{extension.general.1.libraryType}')}</li>
+        <li class="compatibility {f:if(condition:extension.general.1.wrongCompatibility,then:'wrongCompatibility')}">{f:translate(key:'kickstarter.generalItem.compatibility.{extension.general.1.compatibility}')}</li>
         <li class="forms">
           <ul>
           <f:for each="{extension.forms}" as="form">

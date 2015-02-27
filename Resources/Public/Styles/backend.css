@@ -31,8 +31,8 @@ div#savLibraryKickstarter LABEL {line-height: 12px; min-height: 12px; vertical-a
 
 /* Header */
 #header DIV.logo {text-align:center;margin:10px 0px 20px 0px;}
-#header DIV.logo DIV.kickstarterTitle {font-size:40px;color:orange;height:40px;}
-#header DIV.logo DIV.extensionTitle {font-size:20px;color:orange;}
+#header DIV.logo DIV.kickstarterTitle {font-size:40px;color:orange;height:40px;line-height:14px;}
+#header DIV.logo DIV.extensionTitle {font-size:20px;color:orange;line-height:14px;}
 #header DIV.logo DIV.extensionTitle SPAN.debugQueryOn {color:red;}
 #header DIV.logo DIV.extensionTitle SPAN.extensionNotLoaded {color:red;}
 
@@ -109,8 +109,13 @@ DIV.folderTabs LI.currentTab A SPAN {background-position:0% -150px;padding-botto
 #extensionList DIV LI.libraryVersion {width:60px;}
 #extensionList DIV.body LI.libraryVersion {color:green;}
 #extensionList DIV.body LI.wrongVersion {color:red;font-weight:bold;}
+#extensionList DIV.body LI.extensionVersion A{color:green;}
+#extensionList DIV.body LI.NotLatest A{color:red;font-weight:bold;}
 #extensionList DIV LI.libraryType {width:60px;}
 #extensionList DIV LI.libraryType DIV.icon {height:15px;}
+#extensionList DIV LI.compatibility {width:90px;}
+#extensionList DIV.body LI.compatibility {color:green;}
+#extensionList DIV.body LI.wrongCompatibility {color:red;font-weight:bold;}
 #extensionList DIV.title LI.forms {width:150px;}
 #extensionList DIV.title LI.cache {width:60px;}
 #extensionList DIV.title LI.buttons {width:150px;text-align:left;}

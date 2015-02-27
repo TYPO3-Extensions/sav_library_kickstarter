@@ -1,0 +1,27 @@
+{namespace sav=Tx_SavLibraryKickstarter_ViewHelpers}
+<li class="section">
+  <div class="icon">
+  <f:link.action action="addItem" arguments="{extKey:extKey, section:section}">
+    <sav:be.icon icon="add" alt="{f:translate(key:'kickstarter.new')}" title="{f:translate(key:'kickstarter.new')}" />
+  </f:link.action>
+  </div>
+  <div class="title"><f:translate key="kickstarter.{section}SectionTitle" /></div>
+  <ul>
+  <f:for each="{sectionItems}" as="item" key="itemKey">
+    <f:alias map="{currentItem:'{section}_{itemKey}'}">
+    <li class="item {f:if(condition:'{selectedItem} == {currentItem}',then:'selected')}">
+      <div class="icon">
+      <f:link.action action="deleteItem" arguments="{extKey:extKey, section:section, itemKey:itemKey}">
+        <sav:be.icon icon="garbage" alt="{f:translate(key:'kickstarter.delete')}" title="{f:translate(key:'kickstarter.delete')}" />
+      </f:link.action>
+      </div>
+      <div class="title">
+      <f:link.action class="{item.type}" action="{section}EditSection" arguments="{extKey:extKey, section:section, itemKey:itemKey, fieldKey:fieldKey}">
+        {item.title}
+      </f:link.action>
+      </div>
+    </li>
+    </f:alias>
+  </f:for>
+  </ul>
+</li>

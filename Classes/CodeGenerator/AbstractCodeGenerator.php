@@ -1,4 +1,5 @@
 <?php
+namespace SAV\SavLibraryKickstarter\CodeGenerator;
 /***************************************************************
 *  Copyright notice
 *
@@ -31,12 +32,12 @@
  * @package SavLibraryKickstarter
  * @version $ID:$
  */
-abstract class Tx_SavLibraryKickstarter_CodeGenerator_AbstractCodeGenerator {
+abstract class AbstractCodeGenerator {
 
   protected $codeTemplatesDirectory = 'Resources/Private/CodeTemplates/ForSavLibrary/';
 
 	/**
-	 * @var Tx_SavLibraryKickstarter_Configuration_SectionManager
+	 * @var \SAV\SavLibraryKickstarter\Configuration\SectionManager
 	 */
 	protected $sectionManager;
 
@@ -76,7 +77,7 @@ abstract class Tx_SavLibraryKickstarter_CodeGenerator_AbstractCodeGenerator {
 	 * return string The file content
 	 */
 	public function getFileContent($templateFilePath) {
-    $fileContent = file_get_contents(t3lib_extMgm::extPath('sav_library_kickstarter') . $this->codeTemplatesDirectory . $templateFilePath);
+    $fileContent = file_get_contents(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('sav_library_kickstarter') . $this->codeTemplatesDirectory . $templateFilePath);
 		return $fileContent;
   }
 
@@ -101,7 +102,8 @@ abstract class Tx_SavLibraryKickstarter_CodeGenerator_AbstractCodeGenerator {
       );
     }
     $fileContent = $this->getFileContent($templateFilePath);
-    return Tx_SavLibraryKickstarter_Parser_ContentParser::parse($fileContent, $arguments);
+
+    return \SAV\SavLibraryKickstarter\Parser\ContentParser::parse($fileContent, $arguments);
   }
 
 }

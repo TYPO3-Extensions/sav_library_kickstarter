@@ -1,5 +1,5 @@
 <?php
-
+namespace SAV\SavLibraryKickstarter\ViewHelpers\Form;
 /*                                                                        *
  * This script belongs to the FLOW3 package "Fluid".                      *
  *                                                                        *
@@ -30,7 +30,7 @@
  * @api
  * @scope prototype
  */
-class Tx_SavLibraryKickstarter_ViewHelpers_Form_SelectViewHelper extends Tx_Fluid_ViewHelpers_Form_SelectViewHelper {
+class SelectViewHelper extends \TYPO3\CMS\Fluid\ViewHelpers\Form\SelectViewHelper {
 
 	/**
 	 * Render one option tag

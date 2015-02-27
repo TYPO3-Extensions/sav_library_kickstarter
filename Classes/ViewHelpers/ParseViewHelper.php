@@ -1,5 +1,5 @@
 <?php
-
+namespace SAV\SavLibraryKickstarter\ViewHelpers;
 /*                                                                        *
  * This script is part of the TYPO3 project - inspiring people to share!  *
  *                                                                        *
@@ -25,7 +25,7 @@
  * @author Laurent Foulloy <yolf.typo3@orange.fr>
  * @version $Id:
  */
-class Tx_SavLibraryKickstarter_ViewHelpers_ParseViewHelper extends Tx_Fluid_Core_ViewHelper_AbstractViewHelper {
+class ParseViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
 
 	/**
 	 *
@@ -57,7 +57,7 @@ class Tx_SavLibraryKickstarter_ViewHelpers_ParseViewHelper extends Tx_Fluid_Core
 	 * @author Laurent Foulloy <yolf.typo3@orange.fr>
 	 */
 	protected function parseValue($template, $arguments) {
-    $templateParser = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Parser_TemplateParser');
+    $templateParser = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SAV\\SavLibraryKickstarter\\Parser\\TemplateParser');
     $content = $template;
     while (preg_match('/([^\{]*)(\{[^\{]+?\})/', $content, $match)) {
       if ($match[1]) {

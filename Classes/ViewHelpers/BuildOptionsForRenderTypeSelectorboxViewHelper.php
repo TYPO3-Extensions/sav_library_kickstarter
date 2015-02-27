@@ -1,5 +1,5 @@
 <?php
-
+namespace SAV\SavLibraryKickstarter\ViewHelpers;
 /*                                                                        *
  * This script is part of the TYPO3 project - inspiring people to share!  *
  *                                                                        *
@@ -28,7 +28,7 @@
  * @package SavLibraryKickstarter
  * @subpackage ViewHelpers
  */
-class Tx_SavLibraryKickstarter_ViewHelpers_BuildOptionsForRenderTypeSelectorboxViewHelper extends Tx_Fluid_Core_ViewHelper_AbstractViewHelper {
+class BuildOptionsForRenderTypeSelectorboxViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
 
 	/**
 	 *
@@ -38,22 +38,22 @@ class Tx_SavLibraryKickstarter_ViewHelpers_BuildOptionsForRenderTypeSelectorboxV
 	public function render() {
 	
     $options = array (
-      'String' => Tx_Extbase_Utility_Localization::translate('kickstarter.field.fieldType.String', 'sav_library_kickstarter'),
-      'Checkbox' => Tx_Extbase_Utility_Localization::translate('kickstarter.field.fieldType.Checkbox', 'sav_library_kickstarter'),
-      'Checkboxes' => Tx_Extbase_Utility_Localization::translate('kickstarter.field.fieldType.Checkboxes', 'sav_library_kickstarter'),
-      'Date' => Tx_Extbase_Utility_Localization::translate('kickstarter.field.fieldType.Date', 'sav_library_kickstarter'),
-      'DateTime' => Tx_Extbase_Utility_Localization::translate('kickstarter.field.fieldType.DateTime', 'sav_library_kickstarter'),
-      'Files' => Tx_Extbase_Utility_Localization::translate('kickstarter.field.fieldType.Files', 'sav_library_kickstarter'),
-      'Graph' => Tx_Extbase_Utility_Localization::translate('kickstarter.field.fieldType.Graph', 'sav_library_kickstarter'),
-      'Integer' => Tx_Extbase_Utility_Localization::translate('kickstarter.field.fieldType.Integer', 'sav_library_kickstarter'),
-      'Link' => Tx_Extbase_Utility_Localization::translate('kickstarter.field.fieldType.Link', 'sav_library_kickstarter'),
-      'RadioButtons' => Tx_Extbase_Utility_Localization::translate('kickstarter.field.fieldType.RadioButtons', 'sav_library_kickstarter'),
-      'RelationOneToManyAsSelectorbox' => Tx_Extbase_Utility_Localization::translate('kickstarter.field.fieldType.RelationOneToManyAsSelectorbox', 'sav_library_kickstarter'),
-      'RelationManyToManyAsDoubleSelectorbox' => Tx_Extbase_Utility_Localization::translate('kickstarter.field.fieldType.RelationManyToManyAsDoubleSelectorbox', 'sav_library_kickstarter'),
-      'RelationManyToManyAsSubform' => Tx_Extbase_Utility_Localization::translate('kickstarter.field.fieldType.RelationManyToManyAsSubform', 'sav_library_kickstarter'),
-      'RichTextEditor' => Tx_Extbase_Utility_Localization::translate('kickstarter.field.fieldType.RichTextEditor', 'sav_library_kickstarter'),
-      'Selectorbox' => Tx_Extbase_Utility_Localization::translate('kickstarter.field.fieldType.Selectorbox', 'sav_library_kickstarter'),
-      'Text' => Tx_Extbase_Utility_Localization::translate('kickstarter.field.fieldType.Text', 'sav_library_kickstarter'),
+      'String' => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('kickstarter.field.fieldType.String', 'sav_library_kickstarter'),
+      'Checkbox' => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('kickstarter.field.fieldType.Checkbox', 'sav_library_kickstarter'),
+      'Checkboxes' => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('kickstarter.field.fieldType.Checkboxes', 'sav_library_kickstarter'),
+      'Date' => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('kickstarter.field.fieldType.Date', 'sav_library_kickstarter'),
+      'DateTime' => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('kickstarter.field.fieldType.DateTime', 'sav_library_kickstarter'),
+      'Files' => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('kickstarter.field.fieldType.Files', 'sav_library_kickstarter'),
+      'Graph' => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('kickstarter.field.fieldType.Graph', 'sav_library_kickstarter'),
+      'Integer' => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('kickstarter.field.fieldType.Integer', 'sav_library_kickstarter'),
+      'Link' => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('kickstarter.field.fieldType.Link', 'sav_library_kickstarter'),
+      'RadioButtons' => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('kickstarter.field.fieldType.RadioButtons', 'sav_library_kickstarter'),
+      'RelationOneToManyAsSelectorbox' => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('kickstarter.field.fieldType.RelationOneToManyAsSelectorbox', 'sav_library_kickstarter'),
+      'RelationManyToManyAsDoubleSelectorbox' => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('kickstarter.field.fieldType.RelationManyToManyAsDoubleSelectorbox', 'sav_library_kickstarter'),
+      'RelationManyToManyAsSubform' => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('kickstarter.field.fieldType.RelationManyToManyAsSubform', 'sav_library_kickstarter'),
+      'RichTextEditor' => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('kickstarter.field.fieldType.RichTextEditor', 'sav_library_kickstarter'),
+      'Selectorbox' => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('kickstarter.field.fieldType.Selectorbox', 'sav_library_kickstarter'),
+      'Text' => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('kickstarter.field.fieldType.Text', 'sav_library_kickstarter'),
     );
     return $options;
 	}

@@ -42,14 +42,14 @@ class Tx_SavLibraryKickstarter_Upgrade_UpgradeFromKickstarter extends Tx_SavLibr
   public function preProcessing() {
 
     $extensionKey = $this->getExtensionKey();
-    $extensionDirectory = Tx_SavLibraryKickstarter_Configuration_ConfigurationManager::getExtensionDir($extensionKey);
+    $extensionDirectory = \SAV\SavLibraryKickstarter\Configuration\ConfigurationManager::getExtensionDir($extensionKey);
 
     $wizardFormFileName = $extensionDirectory . 'doc/wizard_form.dat';
-    $wizardFormFileContent = t3lib_div::getURL($wizardFormFileName);
+    $wizardFormFileContent = \TYPO3\CMS\Core\Utility\GeneralUtility::getURL($wizardFormFileName);
     $configuration = unserialize($wizardFormFileContent);
     
     // Converts each field in utf8 (required by json_encode)
-    array_walk_recursive($configuration, 'Tx_SavLibraryKickstarter_Configuration_ConfigurationManager::utf8_encode');
+    array_walk_recursive($configuration, '\SAV\SavLibraryKickstarter\Configuration\ConfigurationManager::utf8_encode');
 
     // Changes the name to 'general' and remove the array
     $newConfiguration['general'] = $configuration['savext'];
@@ -85,17 +85,17 @@ class Tx_SavLibraryKickstarter_Upgrade_UpgradeFromKickstarter extends Tx_SavLibr
     $libraryType = 'SavLibrary';
 
     // Creates the configuration directory if needed
-    $configurationDirectory =  $extensionDirectory . Tx_SavLibraryKickstarter_Configuration_ConfigurationManager::CONFIGURATION_DIRECTORY . $libraryType . '/';
+    $configurationDirectory =  $extensionDirectory . \SAV\SavLibraryKickstarter\Configuration\ConfigurationManager::CONFIGURATION_DIRECTORY . $libraryType . '/';
     if (!is_dir($configurationDirectory)) {
-      t3lib_div::mkdir_deep(Tx_SavLibraryKickstarter_Configuration_ConfigurationManager::getExtensionsRootDir(), $extensionKey . '/' . Tx_SavLibraryKickstarter_Configuration_ConfigurationManager::CONFIGURATION_DIRECTORY . $libraryType . '/');
+      \TYPO3\CMS\Core\Utility\GeneralUtility::mkdir_deep(\SAV\SavLibraryKickstarter\Configuration\ConfigurationManager::getExtensionsRootDir(), $extensionKey . '/' . \SAV\SavLibraryKickstarter\Configuration\ConfigurationManager::CONFIGURATION_DIRECTORY . $libraryType . '/');
     }
     
     // Saves the library type
-    t3lib_div::writeFile(Tx_SavLibraryKickstarter_Configuration_ConfigurationManager::getLibraryTypeFileName($extensionKey), $libraryType);
+    \TYPO3\CMS\Core\Utility\GeneralUtility::writeFile(\SAV\SavLibraryKickstarter\Configuration\ConfigurationManager::getLibraryTypeFileName($extensionKey), $libraryType);
 
     // Saves the file to the JSON format
     $jsonContent = json_encode($newConfiguration);
-    t3lib_div::writeFile(Tx_SavLibraryKickstarter_Configuration_ConfigurationManager::getConfigurationFileName($extensionKey), $jsonContent);
+    \TYPO3\CMS\Core\Utility\GeneralUtility::writeFile(\SAV\SavLibraryKickstarter\Configuration\ConfigurationManager::getConfigurationFileName($extensionKey), $jsonContent);
   }
   
 	/**
@@ -118,7 +118,7 @@ class Tx_SavLibraryKickstarter_Upgrade_UpgradeFromKickstarter extends Tx_SavLibr
     $newConfiguration[1]['extensionKey'] = $this->getExtensionKey();
     
     // Adds the library type
-    $newConfiguration[1]['libraryType'] = Tx_SavLibraryKickstarter_Configuration_ConfigurationManager::TYPE_SAV_LIBRARY;
+    $newConfiguration[1]['libraryType'] = \SAV\SavLibraryKickstarter\Configuration\ConfigurationManager::TYPE_SAV_LIBRARY;
 
     // Changes the library version name
     $newConfiguration[1]['libraryVersion'] = '3.1.3';

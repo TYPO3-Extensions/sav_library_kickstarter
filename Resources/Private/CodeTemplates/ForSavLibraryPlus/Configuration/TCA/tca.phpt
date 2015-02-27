@@ -16,28 +16,28 @@ $TCA['{model}'] = array (
     <f:if condition="{newTable.localization}">
 		'sys_language_uid' => array (
 			'exclude' => 1,
-			'label' => 'LLL:EXT:lang/locallang_general.php:LGL.language',
+			'label' => 'LLL:EXT:lang/locallang_general.xml:LGL.language',
 			'config' => array (
 				'type' => 'select',
 				'foreign_table' => 'sys_language',
 				'foreign_table_where' => 'ORDER BY sys_language.title',
 				'items' => array (
-					array('LLL:EXT:lang/locallang_general.php:LGL.allLanguages',-1),
-					array('LLL:EXT:lang/locallang_general.php:LGL.default_value',0)
+					array('LLL:EXT:lang/locallang_general.xml:LGL.allLanguages',-1),
+					array('LLL:EXT:lang/locallang_general.xml:LGL.default_value',0)
 				)
 			)
 		),
 		'l18n_parent' => array (
 			'displayCond' => 'FIELD:sys_language_uid:>:0',
 			'exclude' => 1,
-			'label' => 'LLL:EXT:lang/locallang_general.php:LGL.l18n_parent',
+			'label' => 'LLL:EXT:lang/locallang_general.xml:LGL.l18n_parent',
 			'config' => array (
 				'type' => 'select',
 				'items' => array (
 					array ('', 0),
 				),
-				'foreign_table' => 'tt_news',
-				'foreign_table_where' => 'AND tt_news.uid=###REC_FIELD_l18n_parent### AND tt_news.sys_language_uid IN (-1,0)', // TODO
+				'foreign_table' => '{model}',
+				'foreign_table_where' => 'AND {model}.uid=###CURRENT_PID### AND {model}.sys_language_uid IN (-1,0)', 
 			)
 		),
 		'l18n_diffsource' => array (
@@ -46,7 +46,7 @@ $TCA['{model}'] = array (
 		),
 		't3ver_label' => array (
 			'displayCond' => 'FIELD:t3ver_label:REQ:true',
-			'label' => 'LLL:EXT:lang/locallang_general.php:LGL.versionLabel',
+			'label' => 'LLL:EXT:lang/locallang_general.xml:LGL.versionLabel',
 			'config' => array (
 				'type'=>'none',
 				'cols' => 27
@@ -124,7 +124,7 @@ $TCA['{model}'] = array (
 		</f:for>
 	),
 	'types' => array (
-		'0' => array('showitem' => '<f:if condition="{newTable.add_hidden}">hidden;;1;;1-1-1</f:if><f:for each="{newTable.fields}" as="field">, {field.fieldname}<f:alias map="{RichTextEditor:'RichTextEditor'}"><f:if condition="{field.type} == {RichTextEditor}">;;;richtext[]:rte_transform[mode=ts]</f:if></f:alias></f:for>')
+		'0' => array('showitem' => '<sav:function name="substr" arguments="2"><f:if condition="{newTable.add_hidden}">, hidden</f:if><f:if condition="{newTable.add_access}">, fe_group</f:if><f:if condition="{newTable.add_starttime}">, starttime </f:if><f:if condition="{newTable.add_endtime}">, endtime </f:if><f:for each="{newTable.fields}" as="field">, {field.fieldname}<f:alias map="{RichTextEditor:'RichTextEditor'}"><f:if condition="{field.type} == {RichTextEditor}">;;;richtext[]:rte_transform[mode=ts]</f:if></f:alias></f:for></sav:function>')
 	),
   'palettes' => array (
 		'1' => array('showitem' => '')

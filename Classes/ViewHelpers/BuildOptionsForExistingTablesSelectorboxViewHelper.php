@@ -1,5 +1,5 @@
 <?php
-
+namespace SAV\SavLibraryKickstarter\ViewHelpers;
 /*                                                                        *
  * This script is part of the TYPO3 project - inspiring people to share!  *
  *                                                                        *
@@ -28,7 +28,7 @@
  * @package SavLibraryKickstarter
  * @subpackage ViewHelpers
  */
-class Tx_SavLibraryKickstarter_ViewHelpers_BuildOptionsForExistingTablesSelectorboxViewHelper extends Tx_Fluid_Core_ViewHelper_AbstractViewHelper {
+class BuildOptionsForExistingTablesSelectorboxViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
 
 	/**
 	 *
@@ -39,12 +39,12 @@ class Tx_SavLibraryKickstarter_ViewHelpers_BuildOptionsForExistingTablesSelector
 	
     $options = array (
       '' => '',
-      'tt_content' => Tx_Extbase_Utility_Localization::translate('kickstarter.existingTablesItem.tablename.tt_content', 'sav_library_kickstarter'),
-      'fe_users' => Tx_Extbase_Utility_Localization::translate('kickstarter.existingTablesItem.tablename.fe_users', 'sav_library_kickstarter'),
-      'fe_groups' => Tx_Extbase_Utility_Localization::translate('kickstarter.existingTablesItem.tablename.fe_groups', 'sav_library_kickstarter'),
-      'be_users' => Tx_Extbase_Utility_Localization::translate('kickstarter.existingTablesItem.tablename.be_users', 'sav_library_kickstarter'),
-      'be_groups' => Tx_Extbase_Utility_Localization::translate('kickstarter.existingTablesItem.tablename.be_groups', 'sav_library_kickstarter'),
-      'pages' => Tx_Extbase_Utility_Localization::translate('kickstarter.existingTablesItem.tablename.pages', 'sav_library_kickstarter'),
+      'tt_content' => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('kickstarter.existingTablesItem.tablename.tt_content', 'sav_library_kickstarter'),
+      'fe_users' => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('kickstarter.existingTablesItem.tablename.fe_users', 'sav_library_kickstarter'),
+      'fe_groups' => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('kickstarter.existingTablesItem.tablename.fe_groups', 'sav_library_kickstarter'),
+      'be_users' => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('kickstarter.existingTablesItem.tablename.be_users', 'sav_library_kickstarter'),
+      'be_groups' => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('kickstarter.existingTablesItem.tablename.be_groups', 'sav_library_kickstarter'),
+      'pages' => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('kickstarter.existingTablesItem.tablename.pages', 'sav_library_kickstarter'),
     );
 
 		foreach($GLOBALS['TCA'] as $tableKey => $table) {

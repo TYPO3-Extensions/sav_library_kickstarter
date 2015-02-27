@@ -1,5 +1,5 @@
 <?php
-
+namespace SAV\SavLibraryKickstarter\ViewHelpers;
 /*                                                                        *
  * This script is part of the TYPO3 project - inspiring people to share!  *
  *                                                                        *
@@ -32,7 +32,7 @@
  * @author Laurent Foulloy <yolf.typo3@orange.fr>
  * @version $Id: 
  */
-class Tx_SavLibraryKickstarter_ViewHelpers_RemoveIfContainsDoNotCreateViewHelper extends Tx_Fluid_Core_ViewHelper_AbstractViewHelper {
+class RemoveIfContainsDoNotCreateViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
 
 	/**
 	 *

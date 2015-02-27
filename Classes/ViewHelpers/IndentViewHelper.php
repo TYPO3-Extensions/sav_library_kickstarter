@@ -1,4 +1,5 @@
 <?php
+namespace SAV\SavLibraryKickstarter\ViewHelpers;
 /*                                                                        *
  * This script belongs to the FLOW3 package "Kickstart".                  *
  *                                                                        *
@@ -26,7 +27,7 @@
  * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
  * @scope prototype
  */
-class Tx_SavLibraryKickstarter_ViewHelpers_IndentViewHelper extends Tx_Fluid_Core_ViewHelper_AbstractViewHelper {
+class IndentViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
 
 	/**
 	 *

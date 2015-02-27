@@ -1,4 +1,5 @@
 <?php
+namespace SAV\SavLibraryKickstarter\CodeGenerator;
 /***************************************************************
 *  Copyright notice
 *
@@ -31,8 +32,13 @@
  * @package SavLibraryKickstarter
  * @version $ID:$
  */
-class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibrary extends Tx_SavLibraryKickstarter_CodeGenerator_AbstractCodeGenerator {
+class CodeGeneratorForSavLibrary extends AbstractCodeGenerator {
 
+  /**
+   * The code templates directory
+   *
+   * @var string
+   */    
   protected $codeTemplatesDirectory = 'Resources/Private/CodeTemplates/ForSavLibrary/';
 
 	/**
@@ -49,52 +55,52 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibrary extends 
 
 		// Generates ext_emconf.php
 		$fileContents = $this->generateFile('extEmconf.phpt');
-		t3lib_div::writeFile($fileDirectory . 'ext_emconf.php', $fileContents);
+		\TYPO3\CMS\Core\Utility\GeneralUtility::writeFile($fileDirectory . 'ext_emconf.php', $fileContents);
 
 		// Generates ext_localconf.php
 		$fileContents = $this->generateFile('extLocalconf.phpt');
-		t3lib_div::writeFile($fileDirectory . 'ext_localconf.php', $fileContents);
+		\TYPO3\CMS\Core\Utility\GeneralUtility::writeFile($fileDirectory . 'ext_localconf.php', $fileContents);
 
 		// Generates ext_tables.php
 		$fileContents = $this->generateFile('extTables.phpt');
-		t3lib_div::writeFile($fileDirectory . 'ext_tables.php', $fileContents);
+		\TYPO3\CMS\Core\Utility\GeneralUtility::writeFile($fileDirectory . 'ext_tables.php', $fileContents);
 
 		// Generates ext_tables.sql
 		$fileContents = $this->generateFile('extTables.sqlt');
-		t3lib_div::writeFile($fileDirectory . 'ext_tables.sql', $fileContents);
+		\TYPO3\CMS\Core\Utility\GeneralUtility::writeFile($fileDirectory . 'ext_tables.sql', $fileContents);
 
 		// Generates flexforms
 		$fileContents = $this->generateFile('Configuration/Flexforms/ExtensionFlexform.xmlt');
-		t3lib_div::writeFile($fileDirectory . 'flexform_ds_pi1.xml', $fileContents);
+		\TYPO3\CMS\Core\Utility\GeneralUtility::writeFile($fileDirectory . 'flexform_ds_pi1.xml', $fileContents);
 
 		// Generates TCA
 		$fileContents = $this->generateFile('Configuration/TCA/tca.phpt');
-		t3lib_div::writeFile($fileDirectory . 'tca.php', $fileContents);
+		\TYPO3\CMS\Core\Utility\GeneralUtility::writeFile($fileDirectory . 'tca.php', $fileContents);
 
 		// Generates locallang_db.xml file
 		$fileContents = $this->generateFile('Resources/Private/Language/locallang_db.xmlt');
-		t3lib_div::writeFile($fileDirectory . 'locallang_db.xml', $fileContents);
+		\TYPO3\CMS\Core\Utility\GeneralUtility::writeFile($fileDirectory . 'locallang_db.xml', $fileContents);
 
 		// Generates the pi1 directory
-		t3lib_div::mkdir_deep($this->extensionDirectory, 'pi1');
+		\TYPO3\CMS\Core\Utility\GeneralUtility::mkdir_deep($this->extensionDirectory, 'pi1');
 		$fileDirectory = $this->extensionDirectory . 'pi1/';
 
 		// Generate locallang.xml file if it does not exist
 		if (!file_exists($fileDirectory . 'locallang.xml')) {
 		  $fileContents = $this->generateFile('Resources/Private/Language/locallang.xmlt');
-		  t3lib_div::writeFile($fileDirectory . 'locallang.xml', $fileContents);
+		  \TYPO3\CMS\Core\Utility\GeneralUtility::writeFile($fileDirectory . 'locallang.xml', $fileContents);
     }
 
 		// Generates the pi file
 		$fileContents = $this->generateFile('Classes/class.tx_extension_pi1.phpt');
-		t3lib_div::writeFile($fileDirectory . 'class.tx_' . str_replace('_','', $this->extensionKey) . '_pi1.php', $fileContents);
+		\TYPO3\CMS\Core\Utility\GeneralUtility::writeFile($fileDirectory . 'class.tx_' . str_replace('_','', $this->extensionKey) . '_pi1.php', $fileContents);
 
 		// Generates the XML file
 		$fileContents = $this->generateFile('Configuration/SavLibrary/tx_extension_pi1.xmlt', NULL, $this->getXmlArray());
-		t3lib_div::writeFile($fileDirectory . 'tx_' . str_replace('_','', $this->extensionKey) . '_pi1.xml', $fileContents);
+		\TYPO3\CMS\Core\Utility\GeneralUtility::writeFile($fileDirectory . 'tx_' . str_replace('_','', $this->extensionKey) . '_pi1.xml', $fileContents);
 
 		// Generates the res directory
-		t3lib_div::mkdir_deep($this->extensionDirectory, 'res');
+		\TYPO3\CMS\Core\Utility\GeneralUtility::mkdir_deep($this->extensionDirectory, 'res');
 		$fileDirectory = $this->extensionDirectory . 'res/';
 
 	}
@@ -111,7 +117,7 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibrary extends 
     $extension = $this->sectionManager->getItemsAsArray();
 
     // Converts special characters
-    array_walk_recursive($extension, 'Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibrary::htmlspecialchars');
+    array_walk_recursive($extension, 'self::htmlspecialchars');
 
     // Generates the version
     $xmlArray['version'] = $GLOBALS[TYPO3_CONF_VARS]['EXTCONF']['sav_library']['version'];

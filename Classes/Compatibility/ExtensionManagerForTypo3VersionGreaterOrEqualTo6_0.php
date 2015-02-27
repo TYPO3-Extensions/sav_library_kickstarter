@@ -1,4 +1,5 @@
 <?php
+namespace SAV\SavLibraryKickstarter\Compatibility;
 /***************************************************************
 *  Copyright notice
 *
@@ -31,12 +32,7 @@
  * @package SavLibraryKickstarter
  * @version $ID:$
  */
-class Tx_SavLibraryKickstarter_Compatibility_ExtensionManager {
-
-	/**
-	 * @var Tx_Extbase_MVC_Controller_FlashMessages
-	 */
-	protected $flashMessages;
+class ExtensionManager {
 
 	/**
 	 * @var array
@@ -67,7 +63,8 @@ class Tx_SavLibraryKickstarter_Compatibility_ExtensionManager {
 		$this->installUtility = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extensionmanager\\Utility\\InstallUtility');	   
 	  $listUtility = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extensionmanager\\Utility\\ListUtility');	   
 		$this->installUtility->injectListUtility($listUtility);
-	  $this->fileHandlingUtility = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extensionmanager\\Utility\\FileHandlingUtility');	   	
+	  $this->fileHandlingUtility = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extensionmanager\\Utility\\FileHandlingUtility');
+    $this->installUtility->injectFileHandlingUtility($this->fileHandlingUtility);	   	
 	}
 
 	/**
@@ -77,15 +74,6 @@ class Tx_SavLibraryKickstarter_Compatibility_ExtensionManager {
 	 */
 	public function injectGeneralArguments($generalArguments) {
     $this->generalArguments = $generalArguments;
-	}
-	
-	/**
-	 * Sets flash Messages.
-	 *
-	 * return none
-	 */
-	public function injectFlashMessages($flashMessages) {
-    $this->flashMessages = $flashMessages;
 	}
 	
 	/**

@@ -41,7 +41,7 @@ class ux_SC_view_help extends SC_view_help {
 			
 		parent::init();
 
-		$TBE_TEMPLATE->getPageRenderer()->addCssFile(t3lib_extMgm::extRelPath('sav_library_kickstarter') . 'Resources/Public/Styles/help.css');
+		$TBE_TEMPLATE->getPageRenderer()->addCssFile(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('sav_library_kickstarter') . 'Resources/Public/Styles/help.css');
 	}
 
 	/**
@@ -119,7 +119,7 @@ class ux_SC_view_help extends SC_view_help {
 		}
 
 			// Load table TCA
-		t3lib_div::loadTCA($key);
+		\TYPO3\CMS\Core\Utility\GeneralUtility::loadTCA($key);
 
 			// Load descriptions for table $table
 		$LANG->loadSingleTableDescription($key);
@@ -193,7 +193,7 @@ class ux_SC_view_help extends SC_view_help {
 		$out = '';
 
 			// Load full table definition in $TCA
-		t3lib_div::loadTCA($key);
+		\TYPO3\CMS\Core\Utility\GeneralUtility::loadTCA($key);
 
 		if ($key && (!$field || is_array($TCA_DESCR[$key]['columns'][$field])))	{
 				// Make seeAlso references.

@@ -17,20 +17,15 @@ $EM_CONF[$_EXTKEY] = array(
 	'author' => '{sav:function(name:"addSlashes", arguments:"{extension.emconf.1.author}")}',
 	'author_email' => '{sav:function(name:"addSlashes", arguments:"{extension.emconf.1.author_email}")}',
 	'author_company' => '',
-	'shy' => '',
-	'priority' => '',
-	'module' => '',
 	'state' => '{extension.emconf.1.state}',
 	'internal' => '',
 	'uploadfolder' => 0,
 	'createDirs' => '',
-	'modify_tables' => '',
 	'clearCacheOnLoad' => 0,
-	'lockType' => '',
 	'version' => '{extension.emconf.1.version}',
 	'constraints' => array(
 		'depends' => array(
-			'typo3' => '4.5.0-6.2.99',	
+			'typo3' => '{f:if(condition:'{extension.general.1.compatibility}==0',then:'6.0.0',else:'4.5.0')}-{f:if(condition:'{extension.general.1.compatibility}==1',then:'4.5.99',else:'7.9.99')}',	
 {sav:buildConstraintsForExtensionManager(dependencies:extension.emconf.1.dependencies)}	
 		),
 		'conflicts' => array(

@@ -165,6 +165,9 @@
 			<trans-unit id="kickstarter.extensionList.libraryType" xml:space="preserve">
 				<source>Library type</source>
 			</trans-unit>
+			<trans-unit id="kickstarter.extensionList.compatibility" xml:space="preserve">
+				<source>Compatibility</source>
+			</trans-unit>			
 			<trans-unit id="kickstarter.extensionList.forms" xml:space="preserve">
 				<source>Forms</source>
 			</trans-unit>
@@ -237,10 +240,22 @@
 			<trans-unit id="kickstarter.generalItem.pluginTitle" xml:space="preserve">
 				<source>Title for the plugin:</source>
 			</trans-unit>
+			<trans-unit id="kickstarter.generalItem.compatibility" xml:space="preserve">
+				<source>Compatibility:</source>
+			</trans-unit> 							
+			<trans-unit id="kickstarter.generalItem.compatibility.0" xml:space="preserve">
+				<source>TYPO3 6x-7x</source>
+			</trans-unit> 						
+			<trans-unit id="kickstarter.generalItem.compatibility.1" xml:space="preserve">
+				<source>TYPO3 4x</source>
+			</trans-unit> 						
+			<trans-unit id="kickstarter.generalItem.compatibility.2" xml:space="preserve">
+				<source>TYPO3 4x-7x</source>
+			</trans-unit> 				
 			<trans-unit id="kickstarter.generalItem.keepExtLocalConf" xml:space="preserve">
 				<source>Keep the file ext_localconf.php if it exists:</source>
 			</trans-unit>       
-			<trans-unit id="kickstarter.generalItem.debug" xml:space="preserve">
+ 			<trans-unit id="kickstarter.generalItem.debug" xml:space="preserve">
 				<source>Debug Queries (Use only for developments):</source>
 			</trans-unit>
 			<trans-unit id="kickstarter.generalItem.version" xml:space="preserve">
@@ -447,6 +462,9 @@
 			<trans-unit id="kickstarter.existingTablesItem.tablename" xml:space="preserve">
 				<source>Table Name:</source>
 			</trans-unit>
+			<trans-unit id="kickstarter.existingTablesItem.overrideLocalization" xml:space="preserve">
+				<source>Override the localization:</source>
+			</trans-unit>			
 			<trans-unit id="kickstarter.existingTablesItem.tablename.tt_content" xml:space="preserve">
 				<source>tt_content (Content)</source>
 			</trans-unit>

@@ -1,4 +1,5 @@
 <?php
+namespace SAV\SavLibraryKickstarter\Utility;
 /***************************************************************
 *  Copyright notice
 *
@@ -33,7 +34,7 @@
  * @author Laurent Foulloy <yolf.typo3@orange.fr>
  * @version $Id:
  */
-class Tx_SavLibraryKickstarter_Utility_ItemManager extends ArrayObject {
+class ItemManager extends \ArrayObject {
 
 	/**
 	 * @var mixed
@@ -44,12 +45,12 @@ class Tx_SavLibraryKickstarter_Utility_ItemManager extends ArrayObject {
 	 * Adds an item.
 	 *
 	 * @param mixed $item The item to add.
-   * return Tx_SavLibraryMvc_Kickstarter_Configuration_Item
+   * return \SAV\SavLibraryKickstarter\Utility\ItemManager
 	 */
   public function addItem($item) {
   
     if ($item === NULL) {
-      $itemManager = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Utility_ItemManager');
+      $itemManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SAV\\SavLibraryKickstarter\\Utility\\ItemManager');
       $count = $this->count();
       if ($count > 0) {
         $iterator = $this->getIterator();
@@ -63,7 +64,7 @@ class Tx_SavLibraryKickstarter_Utility_ItemManager extends ArrayObject {
       return $this[$index];
     } elseif (is_numeric($item) || is_string($item)) {
       if (!$this->itemExists($item) || $this[$item] === NULL) {
-        $itemManager = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Utility_ItemManager');
+        $itemManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SAV\\SavLibraryKickstarter\\Utility\\ItemManager');
         $itemManager->parentIndex = $item;
         $this[$item] = $itemManager;
       }
@@ -71,7 +72,7 @@ class Tx_SavLibraryKickstarter_Utility_ItemManager extends ArrayObject {
     } else {
       foreach($item as $key => $value) {
         if ($value instanceof stdClass || is_array($value)) {
-          $itemManager = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Utility_ItemManager');
+          $itemManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SAV\\SavLibraryKickstarter\\Utility\\ItemManager');
           $this[$key] = $itemManager->addItem($value);
         } else {
           $this[$key] = $value;
@@ -94,7 +95,7 @@ class Tx_SavLibraryKickstarter_Utility_ItemManager extends ArrayObject {
 	 * Gets an item.
 	 *
 	 * @param mixed $itemKey The key of the item.
-   * return Tx_SavLibraryKickstarter_Utility_ItemManager
+   * return \SAV\SavLibraryKickstarter\Utility\ItemManager
 	 */
   public function getItem($itemKey) {
     return $this[$itemKey];
@@ -104,7 +105,7 @@ class Tx_SavLibraryKickstarter_Utility_ItemManager extends ArrayObject {
 	 * Gets an item.
 	 *
 	 * @param mixed $itemKey The key of the item.
-   * return Tx_SavLibraryKickstarter_Utility_ItemManager
+   * return \SAV\SavLibraryKickstarter\Utility\ItemManager
 	 */
   public function getItemAndSetToZeroIfNull($itemKey) {
     $itemValue = $this->getItem($itemKey);
@@ -119,7 +120,7 @@ class Tx_SavLibraryKickstarter_Utility_ItemManager extends ArrayObject {
 	 * Checks if an item exists.
 	 *
 	 * @param mixed $itemKey The key of the item.
-   * return Tx_SavLibraryKickstarter_Utility_ItemManager
+   * return \SAV\SavLibraryKickstarter\Utility\ItemManager
 	 */
   public function itemExists($itemKey) {
     return $this->offsetExists($itemKey);
@@ -128,7 +129,7 @@ class Tx_SavLibraryKickstarter_Utility_ItemManager extends ArrayObject {
 	/**
 	 * Gets all items.
 	 *
-   * return Tx_SavLibraryKickstarter_Utility_ItemManager
+   * return \SAV\SavLibraryKickstarter\Utility\ItemManager
 	 */
   public function getItems() {
     return $this;
@@ -147,12 +148,12 @@ class Tx_SavLibraryKickstarter_Utility_ItemManager extends ArrayObject {
 	/**
 	 * Gets all items in an Array.
 	 *
-   * return Tx_SavLibraryKickstarter_Utility_ItemManager
+   * return \SAV\SavLibraryKickstarter\Utility\ItemManager
 	 */
     public function getItemsAsArray() {
   
     foreach($this->getItems() as $key => $item) {
-      if ($item instanceof ArrayObject) {
+      if ($item instanceof \ArrayObject) {
         $result[$key] = $item->getItemsAsArray();
       } else {
         $result[$key] = $item;
@@ -206,7 +207,7 @@ class Tx_SavLibraryKickstarter_Utility_ItemManager extends ArrayObject {
 	 *
 	 * @param mixed $searchKey The search key
 	 * @param mixed $value Value to find
-   * return Tx_SavLibraryKickstarter_Utility_ItemManager
+   * return \SAV\SavLibraryKickstarter\Utility\ItemManager
 	 */
   public function find($searchKey, $value) {
 
@@ -223,7 +224,7 @@ class Tx_SavLibraryKickstarter_Utility_ItemManager extends ArrayObject {
 	 * Sorts the items by a search key.
 	 *
 	 * @param mixed $searchKey The search key
-   * return Tx_SavLibraryKickstarter_Utility_ItemManager
+   * return \SAV\SavLibraryKickstarter\Utility\ItemManager
 	 */
   public function sortBy($searchKey) {
 
@@ -262,7 +263,7 @@ class Tx_SavLibraryKickstarter_Utility_ItemManager extends ArrayObject {
 	/**
 	 * Returns the item associated with a search key
 	 *
-	 * @param Tx_SavLibraryKickstarter_Utility_ItemManager $field The field to be searched
+	 * @param \SAV\SavLibraryKickstarter\Utility\ItemManager $field The field to be searched
 	 * @param mixed $searchKey The search key
 	 *
 	 * return mixed The searched item
@@ -342,7 +343,7 @@ class Tx_SavLibraryKickstarter_Utility_ItemManager extends ArrayObject {
   
     // Checks if the function is callable
     if (!is_callable($functionName)) {
-      throw new RuntimeException('The function "'. $functionName . '" is not callable !');
+      throw new \RuntimeException('The function "'. $functionName . '" is not callable !');
     }
 
     // Sets the $items variable
@@ -353,7 +354,7 @@ class Tx_SavLibraryKickstarter_Utility_ItemManager extends ArrayObject {
     }
 
     foreach($items as $key => $item) {
-      if ($item instanceof ArrayObject) {
+      if ($item instanceof \ArrayObject) {
         $items[$key] = $this->walkItem($functionName, $arguments, $item);        
       } elseif (is_array($item)) {
         foreach($item as $keySubItem => $subItem) {

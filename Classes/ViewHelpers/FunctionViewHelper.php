@@ -1,5 +1,5 @@
 <?php
-
+namespace SAV\SavLibraryKickstarter\ViewHelpers;
 /*                                                                        *
  * This script is part of the TYPO3 project - inspiring people to share!  *
  *                                                                        *
@@ -30,7 +30,7 @@
  * @author Laurent Foulloy <yolf.typo3@orange.fr>
  * @version $Id:
  */
-class Tx_SavLibraryKickstarter_ViewHelpers_FunctionViewHelper extends Tx_Fluid_Core_ViewHelper_AbstractViewHelper {
+class FunctionViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
 
 	/**
 	 *
@@ -45,24 +45,24 @@ class Tx_SavLibraryKickstarter_ViewHelpers_FunctionViewHelper extends Tx_Fluid_C
     $children = $this->renderChildren();
     if (!empty($children)){
       if (method_exists($this, $name)) {
-        $method = new ReflectionMethod('Tx_SavLibraryKickstarter_ViewHelpers_FunctionViewHelper', $name);
+        $method = new \ReflectionMethod('SAV\\SavLibraryKickstarter\\ViewHelpers\\FunctionViewHelper', $name);
         if (!$method->isPrivate()) {
-          throw new RuntimeException('Only private method can be called. The method "'. $name . '" is not private !');
+          throw new \RuntimeException('Only private method can be called. The method "'. $name . '" is not private !');
         } else {
           return $this->$name($children, $arguments);
         }
       } else {
-        throw new RuntimeException('The function "'. $name . '" does not exist !');
+        throw new \RuntimeException('The function "'. $name . '" does not exist !');
       }
     } elseif (method_exists($this, $name)) {
-      $method = new ReflectionMethod('Tx_SavLibraryKickstarter_ViewHelpers_FunctionViewHelper', $name);
+      $method = new \ReflectionMethod('SAV\\SavLibraryKickstarter\\ViewHelpers\\FunctionViewHelper', $name);
       if (!$method->isPrivate()) {
-        throw new RuntimeException('Only private method can be called. The method "'. $name . '" is not private !');
+        throw new \RuntimeException('Only private method can be called. The method "'. $name . '" is not private !');
       } else {
         return $this->$name($arguments);
       }
     } else {
-      throw new RuntimeException('The function "'. $name . '" does not exist !');
+      throw new \RuntimeException('The function "'. $name . '" does not exist !');
     }
 	}
 
@@ -73,7 +73,7 @@ class Tx_SavLibraryKickstarter_ViewHelpers_FunctionViewHelper extends Tx_Fluid_C
 	 * @return string The string in utf8
 	 */
 	private function stringToUtf8($string) {
-    return Tx_SavLibraryKickstarter_Utility_Conversion::stringToUtf8($string);
+    return \SAV\SavLibraryKickstarter\Utility\Conversion::stringToUtf8($string);
   }
 
 	/**
@@ -83,7 +83,7 @@ class Tx_SavLibraryKickstarter_ViewHelpers_FunctionViewHelper extends Tx_Fluid_C
 	 * @return string The string in upper Camel case
 	 */
 	private function upperCamel($string) {
-    return Tx_SavLibraryKickstarter_Utility_Conversion::upperCamel($string);
+    return \SAV\SavLibraryKickstarter\Utility\Conversion::upperCamel($string);
 	}
 
 	/**
@@ -93,7 +93,7 @@ class Tx_SavLibraryKickstarter_ViewHelpers_FunctionViewHelper extends Tx_Fluid_C
 	 * @return string The string in lower Camel case
 	 */
 	private function lowerCamel($string) {
-    return Tx_SavLibraryKickstarter_Utility_Conversion::lowerCamel($string);
+    return \SAV\SavLibraryKickstarter\Utility\Conversion::lowerCamel($string);
 	}
 
 	/**
@@ -133,11 +133,11 @@ class Tx_SavLibraryKickstarter_ViewHelpers_FunctionViewHelper extends Tx_Fluid_C
 	private function isArrayOfInteger($arguments) {
     $notInteger = 0;
     foreach ($arguments['input'] as $key => $value) {
-    	// For compatiblity : t3lib_div::testInt deprecated since TYPO3 4.6
-    	if (method_exists('t3lib_utility_Math', 'canBeInterpretedAsInteger')) {
-      	$notInteger += t3lib_utility_Math::canBeInterpretedAsInteger($value[$arguments['index']]) ? 0 : 1;
+    	// For compatiblity : \TYPO3\CMS\Core\Utility\GeneralUtility::testInt deprecated since TYPO3 4.6
+    	if (method_exists('TYPO3\\CMS\\Core\\Utility\\MathUtility', 'canBeInterpretedAsInteger')) {
+      	$notInteger += \TYPO3\CMS\Core\Utility\MathUtility::canBeInterpretedAsInteger($value[$arguments['index']]) ? 0 : 1;
     	} else {
-      	$notInteger += t3lib_div::testInt($value[$arguments['index']]) ? 0 : 1;
+      	$notInteger += \TYPO3\CMS\Core\Utility\GeneralUtility::testInt($value[$arguments['index']]) ? 0 : 1;
     	}
     }
     return $notInteger ? FALSE : TRUE;
@@ -194,7 +194,7 @@ class Tx_SavLibraryKickstarter_ViewHelpers_FunctionViewHelper extends Tx_Fluid_C
 	 * @return integer
 	 */
 	private function md5int($string) {
-    return t3lib_div::md5int($string);
+    return \TYPO3\CMS\Core\Utility\GeneralUtility::md5int($string);
 	}
 
 	/**
@@ -288,7 +288,7 @@ class Tx_SavLibraryKickstarter_ViewHelpers_FunctionViewHelper extends Tx_Fluid_C
 	/**
 	 * Returns the or of the arguments
 	 *
-	 * @param mixed $argument The argument
+	 * @param mixed $arguments The argument
 	 * @return string
 	 */
 	private function logicalOr($arguments) {
@@ -316,14 +316,14 @@ class Tx_SavLibraryKickstarter_ViewHelpers_FunctionViewHelper extends Tx_Fluid_C
 	 */
 	private function copyFile($arguments) {
     if ($arguments['sourceExtension']) {
-      $sourceExtensionDirectory = Tx_SavLibraryKickstarter_Configuration_ConfigurationManager::getExtensionDir($arguments['sourceExtension']);
+      $sourceExtensionDirectory = \SAV\SavLibraryKickstarter\Configuration\ConfigurationManager::getExtensionDir($arguments['sourceExtension']);
     } else {
-      $sourceExtensionDirectory = Tx_SavLibraryKickstarter_Configuration_ConfigurationManager::getExtensionDir('sav_library_kickstarter');
+      $sourceExtensionDirectory = \SAV\SavLibraryKickstarter\Configuration\ConfigurationManager::getExtensionDir('sav_library_kickstarter');
     }
     if ($arguments['destinationExtension']) {
-      $destinationExtensionDirectory = Tx_SavLibraryKickstarter_Configuration_ConfigurationManager::getExtensionDir($arguments['destinationExtension']);
+      $destinationExtensionDirectory = \SAV\SavLibraryKickstarter\Configuration\ConfigurationManager::getExtensionDir($arguments['destinationExtension']);
     } else {
-      $destinationExtensionDirectory = Tx_SavLibraryKickstarter_Configuration_ConfigurationManager::getExtensionDir('sav_library_kickstarter');
+      $destinationExtensionDirectory = \SAV\SavLibraryKickstarter\Configuration\ConfigurationManager::getExtensionDir('sav_library_kickstarter');
     }
     if (!@copy($sourceExtensionDirectory . $arguments['source'], $destinationExtensionDirectory . $arguments['destination'])) {
       throw new RuntimeException('Copy failed.');
@@ -338,7 +338,19 @@ class Tx_SavLibraryKickstarter_ViewHelpers_FunctionViewHelper extends Tx_Fluid_C
 	private function time() {
     return time();
 	}  
-  
+
+	/**
+	 * Returns the substring
+	 * 
+	 * @param string $string The string
+	 * @param integer $arguments The start argument
+	 *
+	 * @return string
+	 */
+	private function substr($string, $arguments) {
+    return substr($string, $arguments);
+	}  
+ 	
 }
 ?>
 

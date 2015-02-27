@@ -1,5 +1,5 @@
 <?php
-
+namespace SAV\SavLibraryKickstarter\ViewHelpers;
 /*                                                                        *
  * This script is part of the TYPO3 project - inspiring people to share!  *
  *                                                                        *
@@ -23,7 +23,7 @@
  * @package SavLibraryKickstarter
  * @subpackage ViewHelpers
  */
-class Tx_SavLibraryKickstarter_ViewHelpers_AliasViewHelper extends Tx_Fluid_Core_ViewHelper_AbstractViewHelper {
+class AliasViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
 
 	/**
 	 *
@@ -72,7 +72,7 @@ class Tx_SavLibraryKickstarter_ViewHelpers_AliasViewHelper extends Tx_Fluid_Core
 
     // Processes the paterns
     if ($index > 0) {
-      $templateParser = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Parser_TemplateParser');
+      $templateParser = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('Tx_SavLibraryKickstarter_Parser_TemplateParser');
       foreach ($patterns as $patternKey => $pattern) {
         while (preg_match('/#([0-9]+)#/', $pattern, $match)) {
           $pattern = str_replace($match[0], $patterns[$match[1]], $pattern);

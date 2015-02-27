@@ -1,0 +1,110 @@
+{namespace sav=Tx_SavLibraryKickstarter_ViewHelpers}
+<f:layout name="KickstarterExtensionListLayout.html" />
+
+<f:section name="content">
+<div id="extensionList">
+  <f:form name="extensionList" method="post" action="changeExtensionVersion" >
+
+    <div class="title">
+      <ul>
+        <li class="extensionName">{f:translate(key:'kickstarter.extensionList.extensionName')}</li>
+        <li class="extensionVersion">{f:translate(key:'kickstarter.extensionList.extensionVersion')}</li>
+        <li class="libraryVersion">{f:translate(key:'kickstarter.extensionList.libraryVersion')}</li>
+        <li class="libraryType">{f:translate(key:'kickstarter.extensionList.libraryType')}</li>
+        <li class="compatibility">{f:translate(key:'kickstarter.extensionList.compatibility')}</li>
+        <li class="forms">{f:translate(key:'kickstarter.extensionList.forms')}</li>
+        <li class="cache">{f:translate(key:'kickstarter.extensionList.cache')}</li>
+        <li class="debugQueries">{f:translate(key:'kickstarter.extensionList.debugQueries')}</li>
+        <li class="buttons">
+          <f:link.action action="createExtension">
+          <sav:be.icon class="createExtension" icon="add" alt="{f:translate(key:'kickstarter.createExtension')}" title="{f:translate(key:'kickstarter.createExtension')}" />
+          </f:link.action>
+          <f:if condition="{extensionsNeedTobeUpgraded}">
+          <f:link.action action="upgradeExtensions">
+            <sav:be.icon class="upgradeExtensions" icon="refresh" alt="{f:translate(key:'kickstarter.upgradeExtensions')}" title="{f:translate(key:'kickstarter.upgradeExtensions')}" />
+          </f:link.action> 
+          </f:if>         
+        </li>
+      </ul>
+    </div>
+    
+    <div class="body">   
+      <f:for each="{extensionList}" as="extension">
+      <ul>
+        <li class="extensionName"><f:link.action action="editExtension" arguments="{extKey:extension.general.1.extensionKey}">{extension.general.1.extensionKey}</f:link.action></li>
+        <f:if condition="{0:showExtensionVersionSelector} == {0:extension.general.1.extensionKey}">
+          <f:then>
+          <li class="{sav:buildClassForExtensionVersion(extensionKey:extension.general.1.extensionKey, extensionVersion:extension.emconf.1.version)}"> 
+            <f:form.select name="extensionVersion" options="{sav:buildOptionsForExtensionVersionSelectorbox(extensionKey:extension.general.1.extensionKey)}" value="{extension.emconf.1.version}" additionalAttributes="{onchange: 'extensionList.submit()'}" />
+            <f:form.hidden name="extensionKey" value="{extension.general.1.extensionKey}" />
+          </li>
+          </f:then>
+          <f:else>
+          <li class="{sav:buildClassForExtensionVersion(extensionKey:extension.general.1.extensionKey, extensionVersion:extension.emconf.1.version)}"><f:link.action action="selectExtensionVersion" arguments="{extKey:extension.general.1.extensionKey}">{extension.emconf.1.version}</f:link.action></li>
+          </f:else>
+        </f:if> 
+        <li class="libraryVersion {f:if(condition:'{extension.general.1.currentLibraryVersion} != {extension.general.1.libraryVersion}',then:'wrongVersion')}">{extension.general.1.libraryVersion}</li>
+        <li class="libraryType">{f:translate(key:'kickstarter.generalItem.libraryType.{extension.general.1.libraryType}')}</li>
+        <li class="compatibility {f:if(condition:extension.general.1.wrongCompatibility,then:'wrongCompatibility')}">{f:translate(key:'kickstarter.generalItem.compatibility.{extension.general.1.compatibility}')}</li>
+        <li class="forms">
+          <ul>
+          <f:for each="{extension.forms}" as="form">
+            <li>
+              <div class="formName">{form.title}</div>
+              <div class="cache">
+              <f:if condition="{form.userPlugin} == 1">
+                <sav:be.icon class="cacheChecked" icon="icon_ok" alt="{f:translate(key:'kickstarter.checked')}" title="{f:translate(key:'kickstarter.checked')}" />
+              </f:if>
+              </div>
+            </li>
+          </f:for>
+          </ul>
+        </li>
+        <li class="debugQueries">
+        <f:if condition="{extension.general.1.debug}">
+          <sav:be.icon class="debugQueriesChecked" icon="icon_warning2" alt="{f:translate(key:'kickstarter.checked')}" title="{f:translate(key:'kickstarter.checked')}" />
+        </f:if>
+        </li>     
+        <li class="buttons">
+        <sav:comment><!-- Edit extension --></sav:comment>
+        <f:link.action action="editExtension" arguments="{extKey:extension.general.1.extensionKey}">
+          <sav:be.icon class="editExtension" icon="edit" alt="{f:translate(key:'kickstarter.editExtension')}" title="{f:translate(key:'kickstarter.editExtension')}" />
+        </f:link.action>
+        <sav:comment><!-- Generate extension --></sav:comment>
+        <f:link.action action="generateExtension" arguments="{extKey:extension.general.1.extensionKey}">
+          <sav:be.icon class="installExtension" icon="refresh_n" alt="{f:translate(key:'kickstarter.generateExtension')}" title="{f:translate(key:'kickstarter.generateExtension')}" />
+        </f:link.action>
+        <sav:comment><!-- Copy extension --></sav:comment>
+        <f:link.action action="copyExtension" arguments="{extKey:extension.general.1.extensionKey}">
+          <sav:be.icon class="copyExtension" icon="copymode_s" alt="{f:translate(key:'kickstarter.copyExtension')}" title="{f:translate(key:'kickstarter.copyExtension')}" />
+        </f:link.action>
+        <sav:comment><!-- install/uninstall extension --></sav:comment>
+        <f:if condition="{extension.general.1.isLoadedExtension} == 1">
+          <f:then>
+          <f:link.action action="uninstallExtension" arguments="{extKey:extension.general.1.extensionKey}">
+            <sav:be.icon class="uninstallExtension" icon="system-extension-uninstall" type="png" dir="sysext/t3skin/images/icons/actions/" alt="{f:translate(key:'kickstarter.uninstallExtension')}" title="{f:translate(key:'kickstarter.uninstallExtension')}" />
+          </f:link.action>
+          </f:then>
+          <f:else>
+          <f:link.action action="installExtension" arguments="{extKey:extension.general.1.extensionKey}">
+            <sav:be.icon class="installExtension" icon="system-extension-install" type="png" dir="sysext/t3skin/images/icons/actions/" alt="{f:translate(key:'kickstarter.installExtension')}" title="{f:translate(key:'kickstarter.installExtension')}" />
+          </f:link.action>
+          </f:else>
+        </f:if>
+        <sav:comment><!-- Download extension --></sav:comment>
+        <f:link.action action="downloadExtension" arguments="{extKey:extension.general.1.extensionKey}">
+          <sav:be.icon class="downloadExtension" icon="system-extension-download" type="png" dir="sysext/t3skin/images/icons/actions/" alt="{f:translate(key:'kickstarter.downloadExtension')}" title="{f:translate(key:'kickstarter.downloadExtension')}" />
+        </f:link.action>          
+        <sav:comment><!-- Upgrade the extension --></sav:comment>
+        <f:if condition="{extension.general.1.extensionMustbeUpgraded}">
+        <f:link.action action="upgradeExtension" arguments="{extKey:extension.general.1.extensionKey}">
+          <sav:be.icon class="upgradeExtension" icon="refresh" alt="{f:translate(key:'kickstarter.upgradeExtension')}" title="{f:translate(key:'kickstarter.upgradeExtension')}" />
+        </f:link.action>      
+        </f:if>
+        </li>
+      </ul>
+      </f:for>
+    </div>
+  </f:form>
+</div>
+</f:section>

@@ -1,4 +1,5 @@
 <?php
+use \TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /***************************************************************
 *  Copyright notice
@@ -27,19 +28,43 @@
  * Plugin '{extension.emconf.1.title}' for the '{extension.general.1.extensionKey}' extension.
  *
  * @author {extension.emconf.1.author} <{extension.emconf.1.author_email}>
- * @package TYPO3
- * @subpackage tx_{extensionName}
+ * @package {extensionName}
  */
-class tx_{extensionName}_pi1 extends tslib_pibase {
+class tx_{extensionName}_pi1 extends \TYPO3\CMS\Frontend\Plugin\AbstractPlugin {
 
-	public $prefixId = 'tx_{extensionName}_pi1';		// Same as class name
-	public $scriptRelPath = 'Classes/class.tx_{extensionName}_pi1.php';	// Path to this script relative to the extension dir.
-	public $extKey = '{extension.general.1.extensionKey}';	// The extension key.
-	            
-	public function main($content, $conf) {
+	/**
+	 * Should be same as classname of the plugin, used for CSS classes, variables
+	 *
+	 * @var string
+	 */
+	public $prefixId = 'tx_{extensionName}_pi1';
+
+	/**
+	 * Path to the plugin class script relative to extension directory
+	 *
+	 * @var string
+	 */
+	public $scriptRelPath = 'Classes/class.tx_{extensionName}_pi1.php';
+
+	/**
+	 * Extension key.
+	 *
+	 * @var string
+	 */
+	public $extKey = '{extension.general.1.extensionKey}';
+	
+	/**
+	 * The main function
+	 *
+	 * @param string $content
+	 * @param array $configuration
+	 *
+	 * @return string the plugin content
+	 */            
+	public function main($content, $configuration) {
 
 	  // Creates the SavLibraryPlus controller
-	  $controller = t3lib_div::makeInstance('Tx_SavLibraryPlus_Controller_Controller');
+	  $controller = GeneralUtility::makeInstance('SAV\\SavLibraryPlus\\Controller\\Controller');
 
 	  // Gets the extension configuration manager
 	  $extensionConfigurationManager = $controller->getExtensionConfigurationManager();
@@ -48,21 +73,16 @@ class tx_{extensionName}_pi1 extends tslib_pibase {
 	  $extensionConfigurationManager->injectExtension($this);
 
 	  // Injects the typoScript configuration in the extension configuration manager
-	  $extensionConfigurationManager->injectTypoScriptConfiguration($conf);
+	  $extensionConfigurationManager->injectTypoScriptConfiguration($configuration);
 
 	  // Sets the debug variable. Use debug ONLY for development
-	  $controller->setDebug({f:if(condition:extension.general.1.debug, then:extension.general.1.debug, else:0)});
+	  $controller->setDebug({f:if(condition:extension.general.debug, then:extension.general.debug, else:0)});
 
 	  // Renders the form
 	  $out = $controller->render();
 	          
 	  return $out;
 	}
-
-}
-
-if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/{extension.general.1.extensionKey}/Classes/class.tx_{extensionName}_pi1.php'])	{
-	include_once($TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/{extension.general.1.extensionKey}/Classes/class.tx_{extensionName}_pi1.php']);
 }
 </f:alias>
 ?>

@@ -1,4 +1,4 @@
-{namespace sav=Tx_SavLibraryKickstarter_ViewHelpers}
+{namespace sav=SAV\SavLibraryKickstarter\ViewHelpers}
 
 <f:alias map="{section:'existingTables'}">
 <f:alias map="{sectionItem:'{extension.{section}.{itemKey}}'}">
@@ -30,6 +30,11 @@
         <label for="tablename"><f:translate key="kickstarter.{section}Item.tablename" /></label>
   		  <f:form.select id="tablename" name="{section}[tablename]" value="{sectionItem.tablename}" options="{sav:buildOptionsForExistingTablesSelectorbox()}" />
         </div> 
+        
+        <sav:comment><!-- Override the localization --></sav:comment>
+        <label for="overrideLocalization"><f:translate key="kickstarter.{section}Item.overrideLocalization" /></label>       
+        <f:form.hidden class="hidden" name="{section}[overrideLocalization]" value="0"/>
+        <f:form.checkbox id="overrideLocalization" class="checkbox clearNone" name="{section}[overrideLocalization]" value="1" checked="{sectionItem.overrideLocalization}"/>     
         
         <sav:comment><!-- Import fields --></sav:comment>
         <f:if condition="{sectionItem.tablename}">

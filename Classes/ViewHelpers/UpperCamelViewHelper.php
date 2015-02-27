@@ -1,5 +1,5 @@
 <?php
-
+namespace SAV\SavLibraryKickstarter\ViewHelpers;
 /*                                                                        *
  * This script is part of the TYPO3 project - inspiring people to share!  *
  *                                                                        *
@@ -30,7 +30,7 @@
  * @author Laurent Foulloy <yolf.typo3@orange.fr>
  * @version $Id:
  */
-class Tx_SavLibraryKickstarter_ViewHelpers_UpperCamelViewHelper extends Tx_Fluid_Core_ViewHelper_AbstractViewHelper {
+class UpperCamelViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
 
 	/**
 	 *
@@ -43,7 +43,7 @@ class Tx_SavLibraryKickstarter_ViewHelpers_UpperCamelViewHelper extends Tx_Fluid
     if ($string === NULL) {
 		  $string = $this->renderChildren();
     }
-    return Tx_SavLibraryKickstarter_Utility_Conversion::upperCamel($string);
+    return \SAV\SavLibraryKickstarter\Utility\Conversion::upperCamel($string);
 	}
 
 }

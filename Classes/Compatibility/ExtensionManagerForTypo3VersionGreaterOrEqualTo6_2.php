@@ -1,4 +1,5 @@
 <?php
+namespace SAV\SavLibraryKickstarter\Compatibility;
 /***************************************************************
 *  Copyright notice
 *
@@ -31,17 +32,12 @@
  * @package SavLibraryKickstarter
  * @version $ID:$
  */
-class Tx_SavLibraryKickstarter_Compatibility_ExtensionManager {
+class ExtensionManager {
 
 	/**
 	 * @var \TYPO3\CMS\Extbase\Object\ObjectManager
 	 */
 	protected $objectManager;	
-	
-	/**
-	 * @var Tx_Extbase_MVC_Controller_FlashMessages
-	 */
-	protected $flashMessages;
 
 	/**
 	 * @var array

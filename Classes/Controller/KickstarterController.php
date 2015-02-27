@@ -1,4 +1,5 @@
 <?php
+namespace SAV\SavLibraryKickstarter\Controller;
 /***************************************************************
 *  Copyright notice
 *
@@ -31,42 +32,71 @@
  * @package     SavLibraryKickstarter
  * @author      Laurent Foulloy <yolf.typo3@orange.fr>
  */
-class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extbase_MVC_Controller_ActionController {
-
-	/**
-	 * The default view object to use if none of the resolved views can render
-	 * a response for the current request.
-	 *
-	 * @var string
-	 * @api
-	 */
-	protected $defaultViewObjectName = 'Tx_SavLibraryKickstarter_Compatibility_TemplateView';
-		
+class KickstarterController extends KickstarterControllerRootPath {
+	
 	/**
 	 * @var boolean
 	 */
   protected $extensionsNeedTobeUpgraded = FALSE;
-
+	  
 	/**
 	 * extensionList action for this controller.
 	 *
+	 * @param string $showExtensionVersionSelector
 	 * @return string The rendered view
 	 */
-	public function extensionListAction() {
+	public function extensionListAction($showExtensionVersionSelector = NULL) {
     $this->view->assign('extensionList', $this->getConfigurationList());
+    $this->view->assign('showExtensionVersionSelector', $showExtensionVersionSelector);		
     $this->view->assign('extensionsNeedTobeUpgraded', $this->extensionsNeedTobeUpgraded);    
-    $this->view->assign('savLibraryKickstarterVersion', Tx_SavLibraryKickstarter_Configuration_ConfigurationManager::getSavLibraryKickstarterVersion());
+    $this->view->assign('savLibraryKickstarterVersion', \SAV\SavLibraryKickstarter\Configuration\ConfigurationManager::getSavLibraryKickstarterVersion());
   }
 
+  /**
+	 * selectExtensionVersion action for this controller.
+	 *
+	 * @param string $extKey
+	 * @return string The rendered view
+	 */
+	public function selectExtensionVersionAction($extKey) {	
+    $this->redirect('extensionList', NULL, NULL, array('showExtensionVersionSelector' => $extKey)) ;    	
+	}
+
+  /**
+	 * changeExtensionVersion action for this controller.
+	 *
+	 * @param string $extKey
+	 * @return string The rendered view
+	 */
+	public function changeExtensionVersionAction($extKey = NULL) {	
+    $arguments = $this->request->getArguments();
+    $extKey = $arguments['extensionKey'];
+    $version = $arguments['extensionVersion'];
+
+    $configurationManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SAV\\SavLibraryKickstarter\\Configuration\\ConfigurationManager', $extKey);
+    $configurationManager->loadConfiguration($version);
+		// Saves the working configuration		
+    $configurationManager->saveConfigurationVersion();	
+    $section = $configurationManager->getSectionManager()->getItem('general')->getItem(1)->getItem('section');
+    if (!empty($section)) {
+      $itemKey = $configurationManager->getSectionManager()->getItem('general')->getItem(1)->getItem('itemKey');
+    } else {
+      $section = 'emconf';
+      $itemKey = 1;
+    }
+    
+    $this->redirect($section . 'EditSection', NULL, NULL, array('extKey' => $extKey, 'section' => $section, 'itemKey' => $itemKey)); 
+	}	
+	
 	/**
 	 * createExtension action for this controller.
 	 *
 	 * @param none
 	 * @return string The rendered view
 	 */
-	public function createExtensionAction() {
+	public function createExtensionAction() {	
     $this->view->assign('extensionList', $this->getConfigurationList());
-    $this->view->assign('savLibraryKickstarterVersion', Tx_SavLibraryKickstarter_Configuration_ConfigurationManager::getSavLibraryKickstarterVersion());
+    $this->view->assign('savLibraryKickstarterVersion', \SAV\SavLibraryKickstarter\Configuration\ConfigurationManager::getSavLibraryKickstarterVersion());
     $this->view->assign('itemKey', 1);
   }
 
@@ -78,7 +108,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
 	 */
 	public function copyExtensionAction($extKey) {
     $this->view->assign('extensionList', $this->getConfigurationList());
-    $this->view->assign('savLibraryKickstarterVersion', Tx_SavLibraryKickstarter_Configuration_ConfigurationManager::getSavLibraryKickstarterVersion());
+    $this->view->assign('savLibraryKickstarterVersion', \SAV\SavLibraryKickstarter\Configuration\ConfigurationManager::getSavLibraryKickstarterVersion());
     $this->view->assign('extKey', $extKey);
     $this->view->assign('itemKey', 1);
 	}
@@ -90,7 +120,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
 	 * @return string The rendered view
 	 */
 	public function editExtensionAction($extKey) {
-    $configurationManager = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Configuration_ConfigurationManager', $extKey);
+    $configurationManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SAV\\SavLibraryKickstarter\\Configuration\\ConfigurationManager', $extKey);
     $configurationManager->loadConfiguration();
     $section = $configurationManager->getSectionManager()->getItem('general')->getItem(1)->getItem('section');
     if (!empty($section)) {
@@ -109,9 +139,8 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
 	 * @return string The rendered view
 	 */
 	public function installExtensionAction($extKey) {
-    $configurationManager = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Configuration_ConfigurationManager', $extKey);
+    $configurationManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SAV\\SavLibraryKickstarter\\Configuration\\ConfigurationManager', $extKey);
     $configurationManager->loadConfiguration();
-    $configurationManager->injectFlashMessages($this->flashMessages);
     $configurationManager->getExtensionManager()->installExtension();
     $this->redirect('extensionList');
 	}
@@ -123,9 +152,8 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
 	 * @return string The rendered view
 	 */
 	public function uninstallExtensionAction($extKey) {
-    $configurationManager = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Configuration_ConfigurationManager', $extKey);
+    $configurationManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SAV\\SavLibraryKickstarter\\Configuration\\ConfigurationManager', $extKey);
     $configurationManager->loadConfiguration();
-    $configurationManager->injectFlashMessages($this->flashMessages);
     $configurationManager->getExtensionManager()->uninstallExtension();
     $this->redirect('extensionList');
 	}
@@ -137,9 +165,8 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
 	 * @return string The rendered view
 	 */
 	public function downloadExtensionAction($extKey) {
-    $configurationManager = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Configuration_ConfigurationManager', $extKey);
+    $configurationManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SAV\\SavLibraryKickstarter\\Configuration\\ConfigurationManager', $extKey);
     $configurationManager->loadConfiguration();
-    $configurationManager->injectFlashMessages($this->flashMessages);
     $configurationManager->getExtensionManager()->downloadExtension();
     $this->redirect('extensionList');
 	}
@@ -150,12 +177,12 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
 	 * @param string $extKey
 	 * @return string The rendered view
 	 */
-	public function generateExtensionAction($extKey) {
-    $configurationManager = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Configuration_ConfigurationManager', $extKey);
+	public function generateExtensionAction($extKey) { 
+    $configurationManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SAV\\SavLibraryKickstarter\\Configuration\\ConfigurationManager', $extKey);
     $configurationManager->loadConfiguration();
-    $configurationManager->injectFlashMessages($this->flashMessages);
     $configurationManager->getCodeGenerator()->buildExtension();
     $configurationManager->getExtensionManager()->checkDbUpdate();
+		$configurationManager->saveConfiguration();	
     $this->redirect('extensionList');
 	}
 
@@ -166,10 +193,15 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
 	 * @return string The rendered view
 	 */
 	public function upgradeExtensionAction($extKey) {
-    $configurationManager = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Configuration_ConfigurationManager', $extKey);
+    $configurationManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SAV\\SavLibraryKickstarter\\Configuration\\ConfigurationManager', $extKey);
     $configurationManager->loadConfiguration();
+    // Sets the compatibilty if not already done
+    $compatibility = $configurationManager->getSectionManager()->getItem('general')->getItem(1)->getItem('compatibility');
+    if (is_null($compatibility)){           
+      $compatibility = \SAV\SavLibraryKickstarter\CodeGenerator\CodeGeneratorForSavLibraryPlus::COMPATIBILITY_TYPO3_4x_7x;
+      $configurationManager->getSectionManager()->getItem('general')->getItem(1)->replace(array('compatibility' => $compatibility));          
+    }       
     $configurationManager->checkForUpgrade();
-    $configurationManager->injectFlashMessages($this->flashMessages);
     $configurationManager->getCodeGenerator()->buildExtension();
     $configurationManager->getExtensionManager()->checkDbUpdate();
     $configurationManager->getSectionManager()->getItem('general')->getItem(1)->replace(array('extensionMustbeUpgraded' => FALSE));
@@ -185,15 +217,14 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
 	 */
 	public function upgradeExtensionsAction() {
 	
-    foreach (t3lib_div::get_dirs(PATH_typo3conf . 'ext/') as $extensionKey) {
-      $configurationManager = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Configuration_ConfigurationManager', $extensionKey);
+    foreach (\TYPO3\CMS\Core\Utility\GeneralUtility::get_dirs(PATH_typo3conf . 'ext/') as $extensionKey) {
+      $configurationManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SAV\\SavLibraryKickstarter\\Configuration\\ConfigurationManager', $extensionKey);
 
       if ($configurationManager->isSavLibraryKickstarterExtension()) {    	
         // Checks if the extension must be upgraded
         $configurationManager->loadConfiguration();
         if ($configurationManager->getCurrentLibraryVersion() != $configurationManager->getSectionManager()->getItem('general')->getItem(1)->getItem('libraryVersion')) {
         	$configurationManager->checkForUpgrade();       
-        	$configurationManager->injectFlashMessages($this->flashMessages);
     			$configurationManager->getCodeGenerator()->buildExtension();
     			$configurationManager->getExtensionManager()->checkDbUpdate();
     			$configurationManager->getSectionManager()->getItem('general')->getItem(1)->replace(array('extensionMustbeUpgraded' => FALSE));
@@ -213,13 +244,13 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
 	 * @return string The rendered view
 	 */
 	public function addItemAction($extKey, $section) {
-    $configurationManager = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Configuration_ConfigurationManager', $extKey);
+    $configurationManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SAV\\SavLibraryKickstarter\\Configuration\\ConfigurationManager', $extKey);
     $configurationManager->loadConfiguration();
     $itemKey = $configurationManager
       ->getSectionManager()
       ->addItem($section)
       ->addItem(NULL)
-      ->addItem(array('title' =>  Tx_Extbase_Utility_Localization::translate('kickstarter.new', 'sav_library_kickstarter')))
+      ->addItem(array('title' =>  \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('kickstarter.new', 'sav_library_kickstarter')))
       ->getItemIndex();
     $configurationManager->saveConfiguration();
     $this->redirect($section . 'EditSection', NULL, NULL, array('extKey' => $extKey, 'section' => $section, 'itemKey' => $itemKey));
@@ -234,7 +265,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
 	 * @return string The rendered view
 	 */
 	public function deleteItemAction($extKey, $section, $itemKey) {
-    $configurationManager = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Configuration_ConfigurationManager', $extKey);
+    $configurationManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SAV\\SavLibraryKickstarter\\Configuration\\ConfigurationManager', $extKey);
     $configurationManager->loadConfiguration();
     $configurationManager->getSectionManager()->getItem($section)->deleteItem($itemKey);
     $configurationManager->getSectionManager()->getItem('general')->getItem(1)->deleteItem('section');
@@ -253,11 +284,11 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
 	 */
 	public function emconfEditSectionAction($extKey = NULL, $section = NULL, $itemKey = NULL) {
     // Loads the configuration
-    $configurationManager = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Configuration_ConfigurationManager', $extKey);
+    $configurationManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SAV\\SavLibraryKickstarter\\Configuration\\ConfigurationManager', $extKey);
 
     $configurationManager->loadConfiguration();
     // Assigns view variables
-    $this->view->assign('savLibraryKickstarterVersion', Tx_SavLibraryKickstarter_Configuration_ConfigurationManager::getSavLibraryKickstarterVersion());
+    $this->view->assign('savLibraryKickstarterVersion', \SAV\SavLibraryKickstarter\Configuration\ConfigurationManager::getSavLibraryKickstarterVersion());
     $this->view->assign('extensionNotLoaded', !$configurationManager->isLoadedExtension());
     $this->view->assign('extKey', $extKey);
     $this->view->assign('itemKey', $itemKey);
@@ -279,7 +310,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
 	public function newTablesEditSectionAction($extKey, $section, $itemKey, $fieldKey = NULL, $viewKey = NULL, $folderKey = NULL, $showFieldConfiguration = FALSE) {
 
     // Loads the configuration and gets the section manager
-    $configurationManager = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Configuration_ConfigurationManager', $extKey);
+    $configurationManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SAV\\SavLibraryKickstarter\\Configuration\\ConfigurationManager', $extKey);
     $configurationManager->loadConfiguration();
     $sectionManager = $configurationManager->getSectionManager();
 
@@ -341,7 +372,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
     }
     $configuration = $configurationManager->getConfiguration();
 
-    $this->view->assign('savLibraryKickstarterVersion', Tx_SavLibraryKickstarter_Configuration_ConfigurationManager::getSavLibraryKickstarterVersion());
+    $this->view->assign('savLibraryKickstarterVersion', \SAV\SavLibraryKickstarter\Configuration\ConfigurationManager::getSavLibraryKickstarterVersion());
     $this->view->assign('extensionNotLoaded', !$configurationManager->isLoadedExtension());
     $this->view->assign('extKey', $extKey);
     $this->view->assign('itemKey', $itemKey);
@@ -365,7 +396,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
 	 */
 	public function existingTablesEditSectionAction($extKey, $section, $itemKey, $fieldKey = NULL, $viewKey = NULL, $folderKey = NULL, $showFieldConfiguration = FALSE) {
     // Loads the configuration and gets the section manager
-    $configurationManager = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Configuration_ConfigurationManager', $extKey);
+    $configurationManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SAV\\SavLibraryKickstarter\\Configuration\\ConfigurationManager', $extKey);
     $configurationManager->loadConfiguration();
     $sectionManager = $configurationManager->getSectionManager();
 
@@ -427,7 +458,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
     }
 
     $configuration = $configurationManager->getConfiguration();
-    $this->view->assign('savLibraryKickstarterVersion', Tx_SavLibraryKickstarter_Configuration_ConfigurationManager::getSavLibraryKickstarterVersion());
+    $this->view->assign('savLibraryKickstarterVersion', \SAV\SavLibraryKickstarter\Configuration\ConfigurationManager::getSavLibraryKickstarterVersion());
     $this->view->assign('extensionNotLoaded', !$configurationManager->isLoadedExtension());
     $this->view->assign('extKey', $extKey);
     $this->view->assign('itemKey', $itemKey);
@@ -447,12 +478,17 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
 	 */
 	public function existingTablesImportFieldsAction($extKey, $section, $itemKey) {
     // Loads the configuration and gets the section manager
-    $configurationManager = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Configuration_ConfigurationManager', $extKey);
+    $configurationManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SAV\\SavLibraryKickstarter\\Configuration\\ConfigurationManager', $extKey);
     $configurationManager->loadConfiguration();
     $sectionManager = $configurationManager->getSectionManager();
 
     $tableName = $sectionManager->getItem($section)->getItem($itemKey)->getItem('tablename');
+
+	  if (version_compare(TYPO3_version, '6.1', '<')) { 
+      \TYPO3\CMS\Core\Utility\GeneralUtility::loadTCA($tableName);	
+    }
     $columns = $GLOBALS['TCA'][$tableName]['columns'];
+
     if (is_array($columns)) {
       foreach ($columns as $columnKey => $column) {
         $item = $sectionManager->getItem($section)->getItem($itemKey)->addItem('fields')->addItem(NULL);
@@ -482,7 +518,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
     }
 
     $configuration = $configurationManager->getConfiguration();
-    $this->view->assign('savLibraryKickstarterVersion', Tx_SavLibraryKickstarter_Configuration_ConfigurationManager::getSavLibraryKickstarterVersion());
+    $this->view->assign('savLibraryKickstarterVersion', \SAV\SavLibraryKickstarter\Configuration\ConfigurationManager::getSavLibraryKickstarterVersion());
     $this->view->assign('extensionNotLoaded', !$configurationManager->isLoadedExtension());
     $this->view->assign('extKey', $extKey);
     $this->view->assign('itemKey', $itemKey);
@@ -501,7 +537,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
 	 * @return string The rendered view
 	 */
 	public function viewsEditSectionAction($extKey, $section, $itemKey) {
-    $configurationManager = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Configuration_ConfigurationManager', $extKey);
+    $configurationManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SAV\\SavLibraryKickstarter\\Configuration\\ConfigurationManager', $extKey);
     $configurationManager->loadConfiguration();
     // Sorts the folders if any
     if ($configurationManager->getSectionManager()->getItem($section)->getItem($itemKey)->addItem('folders')->count() > 0) {
@@ -509,7 +545,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
     }
     $configuration = $configurationManager->getConfiguration();
 
-    $this->view->assign('savLibraryKickstarterVersion', Tx_SavLibraryKickstarter_Configuration_ConfigurationManager::getSavLibraryKickstarterVersion());
+    $this->view->assign('savLibraryKickstarterVersion', \SAV\SavLibraryKickstarter\Configuration\ConfigurationManager::getSavLibraryKickstarterVersion());
     $this->view->assign('extensionNotLoaded', !$configurationManager->isLoadedExtension());
     $this->view->assign('extKey', $extKey);
     $this->view->assign('itemKey', $itemKey);
@@ -535,10 +571,10 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
 	 * @return string The rendered view
 	 */
 	public function queriesEditSectionAction($extKey, $section, $itemKey) {
-    $configurationManager = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Configuration_ConfigurationManager', $extKey);
+    $configurationManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SAV\\SavLibraryKickstarter\\Configuration\\ConfigurationManager', $extKey);
     $configurationManager->loadConfiguration();
     $configuration = $configurationManager->getConfiguration();
-    $this->view->assign('savLibraryKickstarterVersion', Tx_SavLibraryKickstarter_Configuration_ConfigurationManager::getSavLibraryKickstarterVersion());
+    $this->view->assign('savLibraryKickstarterVersion', \SAV\SavLibraryKickstarter\Configuration\ConfigurationManager::getSavLibraryKickstarterVersion());
     $this->view->assign('extensionNotLoaded', !$configurationManager->isLoadedExtension());
     $this->view->assign('extKey', $extKey);
     $this->view->assign('itemKey', $itemKey);
@@ -554,10 +590,10 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
 	 * @return string The rendered view
 	 */
 	public function formsEditSectionAction($extKey, $section, $itemKey) {
-    $configurationManager = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Configuration_ConfigurationManager', $extKey);
+    $configurationManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SAV\\SavLibraryKickstarter\\Configuration\\ConfigurationManager', $extKey);
     $configurationManager->loadConfiguration();
     $configuration = $configurationManager->getConfiguration();
-    $this->view->assign('savLibraryKickstarterVersion', Tx_SavLibraryKickstarter_Configuration_ConfigurationManager::getSavLibraryKickstarterVersion());
+    $this->view->assign('savLibraryKickstarterVersion', \SAV\SavLibraryKickstarter\Configuration\ConfigurationManager::getSavLibraryKickstarterVersion());
     $this->view->assign('extensionNotLoaded', !$configurationManager->isLoadedExtension());
     $this->view->assign('extKey', $extKey);
     $this->view->assign('itemKey', $itemKey);
@@ -595,7 +631,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
 	 * @return string The rendered view
 	 */
 	public function changeViewAction($extKey, $section, $itemKey, $viewKey) {
-    $configurationManager = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Configuration_ConfigurationManager', $extKey);
+    $configurationManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SAV\\SavLibraryKickstarter\\Configuration\\ConfigurationManager', $extKey);
     $configurationManager->loadConfiguration();
     $configurationManager->getSectionManager()->getItem($section)->getItem($itemKey)->replace(array('viewKey' => $viewKey));
     $configurationManager->getSectionManager()->getItem($section)->getItem($itemKey)->getItem('fields')->replaceAll((array('viewKey' => $viewKey)));
@@ -614,7 +650,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
 	 * @return string The rendered view
 	 */
 	public function changeFolderAction($extKey, $section, $itemKey, $viewKey, $folderKey) {
-    $configurationManager = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Configuration_ConfigurationManager', $extKey);
+    $configurationManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SAV\\SavLibraryKickstarter\\Configuration\\ConfigurationManager', $extKey);
     $configurationManager->loadConfiguration();
     $configurationManager->getSectionManager()->getItem($section)->getItem($itemKey)->replace(array('folderKeys' => array($viewKey => $folderKey)));
     $configurationManager->saveConfiguration();
@@ -632,7 +668,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
 	 * @return string The rendered view
 	 */
 	public function changeConfigurationViewAction($extKey, $section, $itemKey, $fieldKey, $viewKey) {
-    $configurationManager = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Configuration_ConfigurationManager', $extKey);
+    $configurationManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SAV\\SavLibraryKickstarter\\Configuration\\ConfigurationManager', $extKey);
     $configurationManager->loadConfiguration();
     $configurationManager->getSectionManager()->getItem($section)->getItem($itemKey)->getItem('fields')->getItem($fieldKey)->replace(array('viewKey' => $viewKey));
     $configurationManager->saveConfiguration();
@@ -684,13 +720,13 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
 		$libraryType = $arguments['general']['libraryType'];
 
     // Gets the configuration and the section managers
-    $configurationManager = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Configuration_ConfigurationManager', $extKey);
+    $configurationManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SAV\\SavLibraryKickstarter\\Configuration\\ConfigurationManager', $extKey);
     $configurationManager->loadConfiguration();
     $sectionManager = $configurationManager->getSectionManager();
 
     // Special processing for the title of existing tables
     if (is_array($arguments['existingTables'])) {
-      $options = Tx_SavLibraryKickstarter_ViewHelpers_BuildOptionsForExistingTablesSelectorboxViewHelper::render();
+      $options = \SAV\SavLibraryKickstarter\ViewHelpers\uildOptionsForExistingTablesSelectorboxViewHelper::render();
       $arguments['existingTables']['title'] = $options[$arguments['existingTables']['tablename']];
     }
     // Special processing for new version
@@ -723,17 +759,17 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
 	    		$configurationManager->buildConfigurationDirectory($extKey, $libraryType);	
 	    		    	
 	    		// Gets the library name
-		    	$libraryName = Tx_SavLibraryKickstarter_Configuration_ConfigurationManager::getLibraryName($libraryType);  
+		    	$libraryName = \SAV\SavLibraryKickstarter\Configuration\ConfigurationManager::getLibraryName($libraryType);  
     	
 		    	// Checks if a configuration already exists
 		    	if ($configurationManager->configurationFileExists($extKey, $libraryName)) {
 		    		// The type is unchanged, overload must be used
-		    		$this->flashMessageContainer->add(Tx_Extbase_Utility_Localization::translate('kickstarter.overwriteRequired', 'sav_library_kickstarter'));
+		    		$this->flashMessageContainer->add(\TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('kickstarter.overwriteRequired', 'sav_library_kickstarter'));
 		    		unset($arguments['general']['libraryType']);
 		    	} else {
 		 	   		// Changes the library type file
-		 	   		$libraryName = Tx_SavLibraryKickstarter_Configuration_ConfigurationManager::getLibraryName($libraryType);  
-		    		t3lib_div::writeFile(Tx_SavLibraryKickstarter_Configuration_ConfigurationManager::getLibraryTypeFileName($extKey), $libraryName);   		
+		 	   		$libraryName = \SAV\SavLibraryKickstarter\Configuration\ConfigurationManager::getLibraryName($libraryType);  
+		    		\TYPO3\CMS\Core\Utility\GeneralUtility::writeFile(\SAV\SavLibraryKickstarter\Configuration\ConfigurationManager::getLibraryTypeFileName($extKey), $libraryName);   		
 		    	}
 	    	}
 	    } else {
@@ -741,8 +777,8 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
 	    	$configurationManager->buildConfigurationDirectory($extKey, $libraryType);
 
 	    	// Changes the library type file
-		 	  $libraryName = Tx_SavLibraryKickstarter_Configuration_ConfigurationManager::getLibraryName($libraryType);  
-	    	t3lib_div::writeFile(Tx_SavLibraryKickstarter_Configuration_ConfigurationManager::getLibraryTypeFileName($extKey), $libraryName);   			    	
+		 	  $libraryName = \SAV\SavLibraryKickstarter\Configuration\ConfigurationManager::getLibraryName($libraryType);  
+	    	\TYPO3\CMS\Core\Utility\GeneralUtility::writeFile(\SAV\SavLibraryKickstarter\Configuration\ConfigurationManager::getLibraryTypeFileName($extKey), $libraryName);   			    	
 	    }
     }
   
@@ -759,7 +795,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
     // Processes the section fields
     $sectionManager->getItem($section)->getItem($itemKey)->replace($arguments[$section]);
 
-    // Saves he configuration
+    // Saves the configuration
     $configurationManager->saveConfiguration();
 
     // Redirects to the section action
@@ -781,17 +817,17 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
     $showFieldConfiguration = $arguments['general']['showFieldConfiguration'];
             
     // Gets the configuration manager
-    $configurationManager = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Configuration_ConfigurationManager', $extKey);
+    $configurationManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SAV\\SavLibraryKickstarter\\Configuration\\ConfigurationManager', $extKey);
     
-	  $libraryName = Tx_SavLibraryKickstarter_Configuration_ConfigurationManager::getLibraryName($arguments['general']['libraryType']);  
+	  $libraryName = \SAV\SavLibraryKickstarter\Configuration\ConfigurationManager::getLibraryName($arguments['general']['libraryType']);  
         	
 	  // Checks if a configuration already exists
 	  if ($configurationManager->configurationFileExists($extKey, $libraryName)) {
 	 	  // Changes the library type file
-	    t3lib_div::writeFile(Tx_SavLibraryKickstarter_Configuration_ConfigurationManager::getLibraryTypeFileName($extKey), $libraryName);   		
+	    \TYPO3\CMS\Core\Utility\GeneralUtility::writeFile(\SAV\SavLibraryKickstarter\Configuration\ConfigurationManager::getLibraryTypeFileName($extKey), $libraryName);   		
 	  } else {
 	  	// The type is unchanged : no configuration file
-	    $this->flashMessageContainer->add(Tx_Extbase_Utility_Localization::translate('kickstarter.noConfigurationFile', 'sav_library_kickstarter'));	
+	    $this->flashMessageContainer->add(\TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('kickstarter.noConfigurationFile', 'sav_library_kickstarter'));	
 		}
 	
     // Redirects to the section action
@@ -811,7 +847,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
     $itemKey = $arguments['general']['itemKey'];
 
     // Gets the configuration and the section managers
-    $configurationManager = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Configuration_ConfigurationManager', $extKey);
+    $configurationManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SAV\\SavLibraryKickstarter\\Configuration\\ConfigurationManager', $extKey);
     $configurationManager->loadConfiguration();
     $sectionManager = $configurationManager->getSectionManager();
 
@@ -852,7 +888,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
     $showFieldConfiguration = $arguments['general']['showFieldConfiguration'];
 
     // Gets the configuration and the section managers
-    $configurationManager = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Configuration_ConfigurationManager', $extKey);
+    $configurationManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SAV\\SavLibraryKickstarter\\Configuration\\ConfigurationManager', $extKey);
     $configurationManager->loadConfiguration();
     $sectionManager = $configurationManager->getSectionManager();
 
@@ -866,14 +902,13 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
     $configurationManager->saveConfiguration();
 
     // Buids the extension
-    $configurationManager->injectFlashMessages($this->flashMessages);
     $configurationManager->getCodeGenerator()->buildExtension();
     $sectionManager->getItem('general')->getItem(1)->addItem(array('isGeneratedExtension' => 1));
     $configurationManager->getExtensionManager()->injectGeneralArguments($arguments['general']);
     $configurationManager->getExtensionManager()->checkDbUpdate();
     
     // Clears the cache
-    t3lib_extMgm::removeCacheFiles();
+    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::removeCacheFiles();
 
     // Redirects to the section action
     $this->redirect($section . 'EditSection', NULL, NULL, array('extKey' => $extKey, 'section' => $section, 'itemKey' => $itemKey, 'fieldKey' => ($fieldKey ? $fieldKey : NULL), 'showFieldConfiguration' => $showFieldConfiguration));
@@ -892,7 +927,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
     $itemKey = $arguments['general']['itemKey'];
 
     // Gets the configuration and the section managers
-    $configurationManager = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Configuration_ConfigurationManager', $extKey);
+    $configurationManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SAV\\SavLibraryKickstarter\\Configuration\\ConfigurationManager', $extKey);
     $configurationManager->loadConfiguration();
     $sectionManager = $configurationManager->getSectionManager();
 
@@ -902,12 +937,11 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
       
     // Replaces the table name by its new name in all fields
     foreach($sectionManager->getItems() as $walkSectionKey => $walkSection) {
-      $walkSection->walkItem('Tx_SavLibraryKickstarter_Controller_KickstarterController::changeTableNames', array('newExtensionKey' => $newExtKey, 'oldExtensionKey' => $extKey));
+      $walkSection->walkItem('KickstarterController::changeTableNames', array('newExtensionKey' => $newExtKey, 'oldExtensionKey' => $extKey));
     }
     // Creates the configuration directory and generates the extension
     $configurationManager->createConfigurationDir($newExtKey);
     $configurationManager->saveConfiguration();
-    $configurationManager->injectFlashMessages($this->flashMessages);
     $configurationManager->getCodeGenerator()->buildExtension();
 
     // Redirects to the new section action
@@ -929,7 +963,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
     $itemKey = $arguments['general']['itemKey'];	
     	
     // Gets the configuration manager		
-    $configurationManager = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Configuration_ConfigurationManager', $extKey);
+    $configurationManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SAV\\SavLibraryKickstarter\\Configuration\\ConfigurationManager', $extKey);
     $configurationManager->loadConfiguration();
     $configurationManager->getSectionManager()->getItem($section)->getItem($itemKey)->replace(array('showAllFields' => 1));
     $configurationManager->saveConfiguration();
@@ -951,7 +985,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
     $itemKey = $arguments['general']['itemKey'];	
     	
     // Gets the configuration manager		
-    $configurationManager = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Configuration_ConfigurationManager', $extKey);
+    $configurationManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SAV\\SavLibraryKickstarter\\Configuration\\ConfigurationManager', $extKey);
     $configurationManager->loadConfiguration();
     $configurationManager->getSectionManager()->getItem($section)->getItem($itemKey)->replace(array('showAllFields' => 0));
     $configurationManager->saveConfiguration();
@@ -989,7 +1023,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
     $itemKey = $arguments['general']['itemKey'];
 
     // Gets the configuration and the section managers
-    $configurationManager = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Configuration_ConfigurationManager', $extKey);
+    $configurationManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SAV\\SavLibraryKickstarter\\Configuration\\ConfigurationManager', $extKey);
     $configurationManager->loadConfiguration();
     $sectionManager = $configurationManager->getSectionManager();
 
@@ -1023,7 +1057,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
     $itemKey = $arguments['general']['itemKey'];
 
     // Gets the configuration and the section managers
-    $configurationManager = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Configuration_ConfigurationManager', $extKey);
+    $configurationManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SAV\\SavLibraryKickstarter\\Configuration\\ConfigurationManager', $extKey);
     $configurationManager->loadConfiguration();
     $sectionManager = $configurationManager->getSectionManager();
 
@@ -1057,7 +1091,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
     $itemKey = $arguments['general']['itemKey'];
 
     // Gets the configuration and the section managers
-    $configurationManager = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Configuration_ConfigurationManager', $extKey);
+    $configurationManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SAV\\SavLibraryKickstarter\\Configuration\\ConfigurationManager', $extKey);
     $configurationManager->loadConfiguration();
     $sectionManager = $configurationManager->getSectionManager();
 
@@ -1081,7 +1115,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
 	 * @return string The rendered view
 	 */
 	public function editFieldConfigurationAction($extKey, $section, $itemKey, $viewKey, $folderKey=0, $fieldKey) {		
-    $configurationManager = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Configuration_ConfigurationManager', $extKey);
+    $configurationManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SAV\\SavLibraryKickstarter\\Configuration\\ConfigurationManager', $extKey);
     $configurationManager->loadConfiguration();
     $configurationManager->getSectionManager()->getItem($section)->getItem($itemKey)->addItem('activeFields')->replace(array($viewKey => array($folderKey => $fieldKey)));
     $configurationManager->saveConfiguration();		
@@ -1098,7 +1132,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
 	 * @return string The rendered view
 	 */
 	public function moveUpFieldAction($extKey, $section, $itemKey, $fieldKey) {
-    $configurationManager = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Configuration_ConfigurationManager', $extKey);
+    $configurationManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SAV\\SavLibraryKickstarter\\Configuration\\ConfigurationManager', $extKey);
     $configurationManager->loadConfiguration();
     $sectionManager = $configurationManager->getSectionManager();
 
@@ -1170,7 +1204,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
 	 * @return string The rendered view
 	 */
 	public function moveDownFieldAction($extKey, $section, $itemKey, $fieldKey) {
-	  $configurationManager = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Configuration_ConfigurationManager', $extKey);
+	  $configurationManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SAV\\SavLibraryKickstarter\\Configuration\\ConfigurationManager', $extKey);
     $configurationManager->loadConfiguration();
     $sectionManager = $configurationManager->getSectionManager();
     // Gets the item
@@ -1243,14 +1277,14 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
 	 */
 	public function addNewFieldAction($extKey, $section, $itemKey, $fieldKey = NULL) {
     // Loads the configuration and gets the section manager
-    $configurationManager = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Configuration_ConfigurationManager', $extKey);
+    $configurationManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SAV\\SavLibraryKickstarter\\Configuration\\ConfigurationManager', $extKey);
     $configurationManager->loadConfiguration();
     $sectionManager = $configurationManager->getSectionManager();
    
     // A new field can be added if at least one view is defined
     $views = $sectionManager->getItem('views');
     if ($views->count() == 0) {
-    	$this->flashMessageContainer->add(Tx_Extbase_Utility_Localization::translate('kickstarter.noViewBeforeAddingField', 'sav_library_kickstarter'));	
+    	$this->flashMessageContainer->add(\TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('kickstarter.noViewBeforeAddingField', 'sav_library_kickstarter'));	
     	$this->redirect($section . 'EditSection', NULL, NULL, array('extKey' => $extKey, 'section' => $section, 'itemKey' => $itemKey, 'fieldKey' => $fieldKey));    	
     } 
  
@@ -1260,8 +1294,8 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
       $fieldKey = $sectionManager->getItem($section)->getItem($itemKey)->addItem('fields')->addItem($fieldKey)->getItemIndex();
       // Sets the default values
       $sectionManager->getItem($section)->getItem($itemKey)->getItem('fields')->getItem($fieldKey)->addItem(array(
-        'fieldname' => Tx_Extbase_Utility_Localization::translate('kickstarter.new', 'sav_library_kickstarter'),
-        'title' => Tx_Extbase_Utility_Localization::translate('kickstarter.new', 'sav_library_kickstarter'),
+        'fieldname' => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('kickstarter.new', 'sav_library_kickstarter'),
+        'title' => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('kickstarter.new', 'sav_library_kickstarter'),
         'type' => 'Unknown',
         )
       );
@@ -1298,7 +1332,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
 	 */
 	public function deleteFieldAction($extKey, $section, $itemKey, $fieldKey = NULL) {
     // Loads the configuration and gets the section manager
-    $configurationManager = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Configuration_ConfigurationManager', $extKey);
+    $configurationManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SAV\\SavLibraryKickstarter\\Configuration\\ConfigurationManager', $extKey);
     $configurationManager->loadConfiguration();
     $sectionManager = $configurationManager->getSectionManager();
 
@@ -1349,7 +1383,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
 	 */
 	public function addNewViewWithConditionAction($extKey, $section, $itemKey, $viewType, $viewWithConditionKey = NULL) {
     // Loads the configuration and gets the section manager
-    $configurationManager = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Configuration_ConfigurationManager', $extKey);
+    $configurationManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SAV\\SavLibraryKickstarter\\Configuration\\ConfigurationManager', $extKey);
     $configurationManager->loadConfiguration();
     $sectionManager = $configurationManager->getSectionManager();
     // Adds the folder at the end if no key is provided
@@ -1374,7 +1408,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
 	 */
 	public function deleteViewWithConditionAction($extKey, $section, $itemKey, $viewType, $viewWithConditionKey) {
     // Loads the configuration and gets the section manager
-    $configurationManager = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Configuration_ConfigurationManager', $extKey);
+    $configurationManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SAV\\SavLibraryKickstarter\\Configuration\\ConfigurationManager', $extKey);
     $configurationManager->loadConfiguration();
     $sectionManager = $configurationManager->getSectionManager();
     // Deletes the field
@@ -1396,7 +1430,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
 	 */
 	public function addNewFolderAction($extKey, $section, $itemKey, $folderKey = NULL) {
     // Loads the configuration and gets the section manager
-    $configurationManager = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Configuration_ConfigurationManager', $extKey);
+    $configurationManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SAV\\SavLibraryKickstarter\\Configuration\\ConfigurationManager', $extKey);
     $configurationManager->loadConfiguration();
     $sectionManager = $configurationManager->getSectionManager();
     // Adds the folder at the end if no key is provided
@@ -1419,7 +1453,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
 	 * @return string The rendered view
 	 */
 	public function moveUpFolderAction($extKey, $section, $itemKey, $folderKey) {
-    $configurationManager = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Configuration_ConfigurationManager', $extKey);
+    $configurationManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SAV\\SavLibraryKickstarter\\Configuration\\ConfigurationManager', $extKey);
     $configurationManager->loadConfiguration();
     $sectionManager = $configurationManager->getSectionManager();
     $fromItem = $sectionManager->getItem($section)->getItem($itemKey)->getItem('folders')->getItem($folderKey);
@@ -1450,7 +1484,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
 	 * @return string The rendered view
 	 */
 	public function moveDownFolderAction($extKey, $section, $itemKey, $folderKey) {
-    $configurationManager = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Configuration_ConfigurationManager', $extKey);
+    $configurationManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SAV\\SavLibraryKickstarter\\Configuration\\ConfigurationManager', $extKey);
     $configurationManager->loadConfiguration();
     $sectionManager = $configurationManager->getSectionManager();
     $fromItem = $sectionManager->getItem($section)->getItem($itemKey)->getItem('folders')->getItem($folderKey);
@@ -1483,7 +1517,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
 	 */
 	public function deleteFolderAction($extKey, $section, $itemKey, $folderKey) {
     // Loads the configuration and gets the section manager
-    $configurationManager = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Configuration_ConfigurationManager', $extKey);
+    $configurationManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SAV\\SavLibraryKickstarter\\Configuration\\ConfigurationManager', $extKey);
     $configurationManager->loadConfiguration();
     $sectionManager = $configurationManager->getSectionManager();
 
@@ -1538,7 +1572,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
 	 */
 	public function addNewWhereTagAction($extKey, $section, $itemKey, $whereTagKey = NULL) {
     // Loads the configuration and gets the section manager
-    $configurationManager = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Configuration_ConfigurationManager', $extKey);
+    $configurationManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SAV\\SavLibraryKickstarter\\Configuration\\ConfigurationManager', $extKey);
     $configurationManager->loadConfiguration();
     $sectionManager = $configurationManager->getSectionManager();
     // Adds the folder at the end if no key is provided
@@ -1562,7 +1596,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
 	 */
 	public function deleteWhereTagAction($extKey, $section, $itemKey, $whereTagKey) {
     // Loads the configuration and gets the section manager
-    $configurationManager = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Configuration_ConfigurationManager', $extKey);
+    $configurationManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SAV\\SavLibraryKickstarter\\Configuration\\ConfigurationManager', $extKey);
     $configurationManager->loadConfiguration();
     $sectionManager = $configurationManager->getSectionManager();
     // Deletes the whereTag
@@ -1584,7 +1618,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
 	 */
 	public function addNewBoxItemAction($extKey, $section, $itemKey, $fieldKey, $boxItemKey = NULL) {
     // Loads the configuration and gets the section manager
-    $configurationManager = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Configuration_ConfigurationManager', $extKey);
+    $configurationManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SAV\\SavLibraryKickstarter\\Configuration\\ConfigurationManager', $extKey);
     $configurationManager->loadConfiguration();
     $sectionManager = $configurationManager->getSectionManager();
     // Adds the boxItem at the end if no key is provided
@@ -1609,7 +1643,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
 	 */
 	public function deleteBoxItemAction($extKey, $section, $itemKey, $fieldKey, $boxItemKey) {
     // Loads the configuration and gets the section manager
-    $configurationManager = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Configuration_ConfigurationManager', $extKey);
+    $configurationManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SAV\\SavLibraryKickstarter\\Configuration\\ConfigurationManager', $extKey);
     $configurationManager->loadConfiguration();
     $sectionManager = $configurationManager->getSectionManager();
     // Deletes the field
@@ -1632,7 +1666,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
 	 * @return string The rendered view
 	 */
 	protected function assignForEditItemAction($extKey, $section, $itemKey) {
-    $configurationManager = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Configuration_ConfigurationManager', $extKey);
+    $configurationManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SAV\\SavLibraryKickstarter\\Configuration\\ConfigurationManager', $extKey);
     $configurationManager->loadConfiguration();
     $sectionManager = $configurationManager->getSectionManager();
     $viewKey = $sectionManager->getItem($section)->getItem($itemKey)->getItem('viewKey');
@@ -1640,7 +1674,7 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
       $sectionManager->getItem($section)->getItem($itemKey)->getItem('fields')->sortby(array('order' => $viewKey));
     }
     $configuration = $configurationManager->getConfiguration();
-    $this->view->assign('savLibraryKickstarterVersion', Tx_SavLibraryKickstarter_Configuration_ConfigurationManager::getSavLibraryKickstarterVersion());
+    $this->view->assign('savLibraryKickstarterVersion', \SAV\SavLibraryKickstarter\Configuration\ConfigurationManager::getSavLibraryKickstarterVersion());
     $this->view->assign('extKey', $extKey);
     $this->view->assign('itemKey', $itemKey);
     $this->view->assign('extension', $configuration);
@@ -1656,29 +1690,58 @@ class Tx_SavLibraryKickstarter_Controller_KickstarterController extends Tx_Extba
   public function getConfigurationList() {
     $extensionList = array();
     $this->extensionsNeedTobeUpgraded = FALSE;
-    foreach (t3lib_div::get_dirs(PATH_typo3conf . 'ext/') as $extensionKey) {
-      $configurationManager = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Configuration_ConfigurationManager', $extensionKey);
+    foreach (\TYPO3\CMS\Core\Utility\GeneralUtility::get_dirs(PATH_typo3conf . 'ext/') as $extensionKey) {
+
+      $configurationManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SAV\\SavLibraryKickstarter\\Configuration\\ConfigurationManager', $extensionKey);
 
       if (!$configurationManager->isSavLibraryKickstarterExtension()) {
         $configurationManager->checkForUpgrade();
       }
       if ($configurationManager->isSavLibraryKickstarterExtension()) {
-        $configurationManager->loadConfiguration();
+    		$extensionVersion = $configurationManager->getExtensionVersion($extensionKey);
+    		$fileName = $configurationManager->getConfigurationFileName($extensionKey, $extensionVersion);
+
+    		if (file_exists($fileName)) {
+					$configurationManager->loadConfiguration($extensionVersion);
+				 	// Saves the working configuration		
+				  $configurationManager->saveConfigurationVersion();	   			   			 
+    		} else {   		      	
+        	$configurationManager->loadConfiguration();
+    		}
         $configurationManager->getSectionManager()->getItem('general')->getItem(1)->addItem(array('isLoadedExtension' => $configurationManager->isLoadedExtension()));
         $configurationManager->getSectionManager()->getItem('general')->getItem(1)->addItem(array('currentLibraryVersion' => $configurationManager->getCurrentLibraryVersion()));
       
     		// Changes the extension version if needed
-    		$extensionVersion = $configurationManager->getExtensionVersion($extensionKey);
     		if ($configurationManager->getSectionManager()->getItem('emconf')->getItem(1)->getItem('version') != $extensionVersion) {
 		    	$configurationManager->getSectionManager()->getItem('emconf')->getItem(1)->replace(array('version' => $extensionVersion));
         	$configurationManager->saveConfiguration();	
-    		}	    	
-        
+    		}	    	 
+    
         // Checks if the extension must be upgraded
         if ($configurationManager->getCurrentLibraryVersion() != $configurationManager->getSectionManager()->getItem('general')->getItem(1)->getItem('libraryVersion')) {
           $configurationManager->getSectionManager()->getItem('general')->getItem(1)->replace(array('extensionMustbeUpgraded' => TRUE));
           $this->extensionsNeedTobeUpgraded = TRUE;
         }
+        
+        // Checks the compatibillity
+        $compatibility = $configurationManager->getSectionManager()->getItem('general')->getItem(1)->getItem('compatibility');
+        if (is_null($compatibility)){
+          $configurationManager->getSectionManager()->getItem('general')->getItem(1)->replace(array('extensionMustbeUpgraded' => TRUE));
+          $this->extensionsNeedTobeUpgraded = TRUE;
+        }
+        if (version_compare(TYPO3_version, '6.0', '>=')) {
+          $wrongCompatibility = !in_array($compatibility, array(
+            \SAV\SavLibraryKickstarter\CodeGenerator\CodeGeneratorForSavLibraryPlus::COMPATIBILITY_TYPO3_6x_7x,          
+            \SAV\SavLibraryKickstarter\CodeGenerator\CodeGeneratorForSavLibraryPlus::COMPATIBILITY_TYPO3_4x_7x,
+           ));
+        } else {
+          $wrongCompatibility = !in_array($compatibility, array(
+            \SAV\SavLibraryKickstarter\CodeGenerator\CodeGeneratorForSavLibraryPlus::COMPATIBILITY_TYPO3_4x,          
+            \SAV\SavLibraryKickstarter\CodeGenerator\CodeGeneratorForSavLibraryPlus::COMPATIBILITY_TYPO3_4x_7x,
+           ));          
+        }
+        $configurationManager->getSectionManager()->getItem('general')->getItem(1)->replace(array('wrongCompatibility' => $wrongCompatibility));  
+        
         $extensionList[] = $configurationManager->getConfiguration();
       }
     }

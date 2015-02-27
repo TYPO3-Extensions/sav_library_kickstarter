@@ -1,5 +1,5 @@
 <?php
-
+namespace SAV\SavLibraryKickstarter\ViewHelpers\Link;
 /*                                                                        *
  * This script is part of the TYPO3 project - inspiring people to share!  *
  *                                                                        *
@@ -27,7 +27,7 @@
  * @package SavLibraryKickstarter
  * @subpackage ViewHelpers
  */
-class Tx_SavLibraryKickstarter_ViewHelpers_Link_EmptyViewHelper extends Tx_Fluid_Core_ViewHelper_AbstractViewHelper {
+class EmptyViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
 
 	/**
 	 * @param string $key target page. See TypoLink destination
@@ -36,7 +36,7 @@ class Tx_SavLibraryKickstarter_ViewHelpers_Link_EmptyViewHelper extends Tx_Fluid
 	 */
 	public function render($key) {
 
-		$output = '<a name="' . t3lib_div::md5int($key) . '"></a>';
+		$output = '<a name="' . \TYPO3\CMS\Core\Utility\GeneralUtility::md5int($key) . '"></a>';
 
 		return $output;
 	}

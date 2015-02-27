@@ -1,4 +1,5 @@
 <?php
+namespace SAV\SavLibraryKickstarter\ViewHelpers\Be;
 /*                                                                        *
  * This script belongs to the FLOW3 package "Fluid".                      *
  *                                                                        *
@@ -39,7 +40,7 @@
  * @version     SVN: $Id:
  *
  */
-class Tx_SavLibraryKickstarter_ViewHelpers_Be_IconViewHelper extends Tx_Fluid_ViewHelpers_Be_AbstractBackendViewHelper {
+class IconViewHelper extends \TYPO3\CMS\Fluid\ViewHelpers\Be\AbstractBackendViewHelper {
 
 	/**
 	 * Renders an icon link as known from the TYPO3 backend
@@ -53,7 +54,7 @@ class Tx_SavLibraryKickstarter_ViewHelpers_Be_IconViewHelper extends Tx_Fluid_Vi
 	 * @return string the rendered icon link
 	 */
 	public function render($icon = 'closedok', $title = '', $alt = '', $class = '', $dir = 'gfx/', $type = 'gif') {
-		$skinnedIcon = t3lib_iconWorks::skinImg($GLOBALS['BACK_PATH'], $dir . $icon . '.' . $type, '');
+		$skinnedIcon = \TYPO3\CMS\Backend\Utility\IconUtility::skinImg($GLOBALS['BACK_PATH'], $dir . $icon . '.' . $type, '');
 		$class = ($class ? ' class="' . $class . '"' : '');
 		return '<img' . $class . $skinnedIcon . '" title="' . htmlspecialchars($title) . '" alt="' . htmlspecialchars($alt) . '" />';
 	}

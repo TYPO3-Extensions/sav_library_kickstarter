@@ -4,6 +4,11 @@
 <SavLibraryPlus>
 	<general type="array">
 		<version>{extension.general.version}</version>
+		<overridedTablesForLocalization>{extension.general.overridedTablesForLocalization}
+			<f:for each="{extension.general.overridedTablesForLocalization}" as="overridedTable" key="overridedTableKey">	
+				<{overridedTableKey}>{overridedTable}</{overridedTableKey}>
+			</f:for>		
+		</overridedTablesForLocalization>
 		<saveAndNew type="array">
 		<f:for each="{extension.general.saveAndNew}" as="saveAndNew" key="saveAndNewKey">	
 			<numIndex index="{saveAndNewKey}">{saveAndNew}</numIndex>

@@ -1,4 +1,4 @@
-{namespace sav=Tx_SavLibraryKickstarter_ViewHelpers}
+{namespace sav=SAV\SavLibraryKickstarter\ViewHelpers}
 
 <f:alias map="{section:'emconf'}">
 <f:alias map="{sectionItem:'{extension.{section}.{itemKey}}'}">
@@ -61,19 +61,30 @@
           1:'{f:translate(key:\'kickstarter.generalItem.libraryType.1\')}'}"
         value="{extension.general.1.libraryType}"/>
         <f:form.submit class="submit" name="submitAction[load]" value="{f:translate(key:'kickstarter.load')}" />
-        <f:form.submit class="submit" name="submitAction[overwrite]" value="{f:translate(key:'kickstarter.overwrite')}" />       
+        <f:form.submit class="submit" name="submitAction[overwrite]" value="{f:translate(key:'kickstarter.overwrite')}" />      
+         
+        <sav:comment><!-- Compatibility  --></sav:comment>
+      	<label for="compatibility"><f:translate key="kickstarter.generalItem.compatibility" /></label>
+        <f:form.hidden name="general[compatibility]" value="0"/>
+      	<f:form.select id="compatibility" name="general[compatibility]" options="{
+          0:'{f:translate(key:\'kickstarter.generalItem.compatibility.0\')}',
+          1:'{f:translate(key:\'kickstarter.generalItem.compatibility.1\')}',
+          2:'{f:translate(key:\'kickstarter.generalItem.compatibility.2\')}'
+          }"
+        value="{extension.general.1.compatibility}"/>        
+
 
         <sav:comment><!-- keepExtLocalConf flag --></sav:comment>
         <label for="keepExtLocalConf"><f:translate key="kickstarter.generalItem.keepExtLocalConf" /></label>
         <f:form.hidden name="general[keepExtLocalConf]" value="0"/>
         <f:form.checkbox class="checkbox" id="keepExtLocalConf" name="general[keepExtLocalConf]" value="1" checked="{extension.general.1.keepExtLocalConf}" />
         
-        <sav:comment><!--Debug Query flag --></sav:comment>
+        <sav:comment><!-- Debug Query flag --></sav:comment>
       	<label for="debug"><f:translate key="kickstarter.generalItem.debug" /></label>
         <f:form.hidden name="general[debug]" value="0"/>
         <f:form.checkbox class="checkbox" id="debug" name="general[debug]" value="1" checked="{extension.general.1.debug}" />
 
-        <sav:comment><!--Version --></sav:comment>
+        <sav:comment><!-- Version --></sav:comment>
         <label for="debug"><f:translate key="kickstarter.generalItem.version" /></label>
         <span class="left clearLeft">x</span><f:form.checkbox class="version" name="general[version][x]" value="1" />
         <span class="left">.y</span><f:form.checkbox class="version" name="general[version][y]" value="1" />

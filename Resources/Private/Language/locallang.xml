@@ -60,6 +60,7 @@
 			<label index="kickstarter.extensionList.extensionVersion">Extension version</label>
 			<label index="kickstarter.extensionList.libraryVersion">Library version</label>
 			<label index="kickstarter.extensionList.libraryType">Library type</label>
+			<label index="kickstarter.extensionList.compatibility">Compatibility</label>					
 			<label index="kickstarter.extensionList.forms">Forms</label>
 			<label index="kickstarter.extensionList.cache">Cache</label>
 			<label index="kickstarter.extensionList.debugQueries">Debug queries</label>
@@ -84,6 +85,10 @@
 			<label index="kickstarter.generalItem.libraryType.1">plus</label>
 			<label index="kickstarter.generalItem.libraryType.2">mvc</label>
 			<label index="kickstarter.generalItem.pluginTitle">Title for the plugin:</label>
+			<label index="kickstarter.generalItem.compatibility">Compatibility:</label>			
+			<label index="kickstarter.generalItem.compatibility.0">TYPO3 6x-7x</label>	
+			<label index="kickstarter.generalItem.compatibility.1">TYPO3 4x</label>		
+			<label index="kickstarter.generalItem.compatibility.2">TYPO3 4x-7x</label>																	
 			<label index="kickstarter.generalItem.keepExtLocalConf">Keep the file ext_localconf.php if it exists:</label>
 			<label index="kickstarter.generalItem.debug">Debug Queries (Use only for developments):</label>
 			<label index="kickstarter.generalItem.version">New version:</label>
@@ -154,6 +159,7 @@
 			<label index="kickstarter.newTablesItem.type_field">Type-field, if any:</label>
 			<label index="kickstarter.newTablesItem.header_field">Label-field:</label>
 			<label index="kickstarter.existingTablesItem.tablename">Table Name:</label>
+			<label index="kickstarter.existingTablesItem.overrideLocalization">Override the localization:</label>			
 			<label index="kickstarter.existingTablesItem.tablename.tt_content">tt_content (Content)</label>
 			<label index="kickstarter.existingTablesItem.tablename.fe_users">fe_users (Frontend Users)</label>
 			<label index="kickstarter.existingTablesItem.tablename.fe_groups">fe_groups (Frontend Groups)</label>

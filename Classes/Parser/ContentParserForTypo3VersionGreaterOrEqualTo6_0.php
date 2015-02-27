@@ -1,4 +1,5 @@
 <?php
+namespace SAV\SavLibraryKickstarter\Parser;
 /***************************************************************
 *  Copyright notice
 *
@@ -28,7 +29,7 @@
  * @package     SavLibraryKickstarter
  * @subpackage  Parser
  */
-class Tx_SavLibraryKickstarter_Parser_ContentParser {
+class ContentParser {
 
 	/**
 	 * @var Tx_Extbase_MVC_Controller_ControllerContext
@@ -43,9 +44,9 @@ class Tx_SavLibraryKickstarter_Parser_ContentParser {
 	 * @param string $nameSpace The name space.
 	 * @return string The parsed content
 	 */
-  public static function parse($content, $arguments = array(), $nameSpace = '{namespace sav=Tx_SavLibraryKickstarter_ViewHelpers}') {
+  public static function parse($content, $arguments = array(), $nameSpace = '{namespace sav=SAV\\SavLibraryKickstarter\\ViewHelpers}') {
 	
-    $templateParser = Tx_SavLibraryKickstarter_Compatibility_TemplateParserBuilder::build();
+    $templateParser = \SAV\SavLibraryKickstarter\Compatibility\TemplateParserBuilder::build();
 
     // Builds the rendering context
 		$renderingContext = self::buildRenderingContext($arguments);

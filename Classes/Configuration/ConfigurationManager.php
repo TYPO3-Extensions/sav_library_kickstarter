@@ -1,4 +1,5 @@
 <?php
+namespace SAV\SavLibraryKickstarter\Configuration;
 /***************************************************************
 *  Copyright notice
 *
@@ -31,7 +32,7 @@
  * @package     Kickstarter
  * @subpackage  Configuration
  */
-class Tx_SavLibraryKickstarter_Configuration_ConfigurationManager {
+class ConfigurationManager {
 
   /**
    * Constants
@@ -45,29 +46,24 @@ class Tx_SavLibraryKickstarter_Configuration_ConfigurationManager {
   const TYPE_SAV_LIBRARY = 0;
   const TYPE_SAV_LIBRARY_PLUS = 1;
   const TYPE_SAV_LIBRARY_MVC = 2;
-
+  
 	/**
 	 * @var string
 	 */
   protected $extensionKey;
-  
-	/**
-	 * @var Tx_Extbase_MVC_Controller_FlashMessages
-	 */
-	protected $flashMessages;
 
   /**
-	 * @var Tx_SavLibraryKickstarter_Configuration_SectionManager
+	 * @var \SAV\SavLibraryKickstarter\Configuration\SectionManager
 	 */
   protected $sectionManager;
   
   /**
-	 * @var Tx_SavLibraryKickstarter_CodeGenerator_AbstractCodeGenerator
+	 * @var \SAV\SavLibraryKickstarter\CodeGenerator\AbstractCodeGenerator
 	 */
 	protected $codeGenerator = NULL;
 	
 		/**
-	 * @var Tx_SavLibraryKickstarter_Compatibility_ExtensionManager
+	 * @var \SAV\SavLibraryKickstarter\Compatibility\ExtensionManager
 	 */
 	protected $extensionManager = NULL;
 	
@@ -83,7 +79,7 @@ class Tx_SavLibraryKickstarter_Configuration_ConfigurationManager {
 	 */
   public function __construct($extensionKey) {
     $this->extensionKey = $extensionKey;
-    $this->sectionManager = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Utility_ItemManager');
+    $this->sectionManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SAV\\SavLibraryKickstarter\\Utility\\ItemManager');
   }
 
 	/**
@@ -97,20 +93,10 @@ class Tx_SavLibraryKickstarter_Configuration_ConfigurationManager {
   }
 
 	/**
-	 * Sets flash Messages.
-	 *
-	 * @param Tx_Extbase_MVC_Controller_FlashMessages $flashMessages
-	 * @return none
-	 */
-	public function injectFlashMessages($flashMessages) {
-    $this->flashMessages = $flashMessages;
-	}
-
-	/**
 	 * Gets the section manager.
 	 *
 	 * @param none
-	 * @return Tx_SavLibraryKickstarter_Configuration_SectionManager
+	 * @return \SAV\SavLibraryKickstarter\Configuration\SectionManager
 	 */
   public function getSectionManager() {
     return $this->sectionManager;
@@ -120,12 +106,12 @@ class Tx_SavLibraryKickstarter_Configuration_ConfigurationManager {
 	 * Gets the code generator.
 	 *
 	 * @param none
-	 * @return Tx_SavLibraryKickstarter_CodeGenerator
+	 * @return \SAV\SavLibraryKickstarter\CodeGenerator
 	 */
   public function getCodeGenerator() {
     if ($this->codeGenerator === NULL) {
       $type = 'CodeGeneratorFor' . $this->getCurrentLibraryName();
-      $this->codeGenerator = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_CodeGenerator_' . $type, $this->getSectionManager());
+      $this->codeGenerator = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SAV\\SavLibraryKickstarter\\CodeGenerator\\' . $type, $this->getSectionManager());
     }
     return $this->codeGenerator;
   }
@@ -134,12 +120,11 @@ class Tx_SavLibraryKickstarter_Configuration_ConfigurationManager {
 	 * Gets the code generator.
 	 *
 	 * @param none
-	 * @return Tx_SavLibraryKickstarter_CodeGenerator
+	 * @return \SAV\SavLibraryKickstarter\Compatibility\ExtensionManager
 	 */
   public function getExtensionManager() {
     if ($this->extensionManager === NULL) {
-      $this->extensionManager = t3lib_div::makeInstance('Tx_SavLibraryKickstarter_Compatibility_ExtensionManager', $this->extensionKey);
-      $this->extensionManager->injectFlashMessages($this->flashMessages);
+      $this->extensionManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('SAV\\SavLibraryKickstarter\\Compatibility\\ExtensionManager', $this->extensionKey);
     }
     return $this->extensionManager;
   }
@@ -178,7 +163,7 @@ class Tx_SavLibraryKickstarter_Configuration_ConfigurationManager {
 	 *
 	 * @return string The SAV Library  Version
 	 */
-  public static function getSavLibraryPlusVersion() {
+  public static function getSavLibraryPlusVersion() {   
     return $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['sav_library_plus']['version'];
   }
 
@@ -211,8 +196,8 @@ class Tx_SavLibraryKickstarter_Configuration_ConfigurationManager {
   	if (empty($extensionKey)) {
   		return NULL;  		
  		} else {
- 			if (t3lib_extMgm::isLoaded($extensionKey)) {
- 				$extensionConfigurationFileName = t3lib_extMgm::extPath($extensionKey) . 'ext_emconf.php';
+ 			if (\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded($extensionKey)) {
+ 				$extensionConfigurationFileName = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($extensionKey) . 'ext_emconf.php';
  			} else {
  				// Tries a default name
  				$extensionConfigurationFileName = self::getExtensionsRootDir(). $extensionKey . '/ext_emconf.php'; 				
@@ -248,7 +233,7 @@ class Tx_SavLibraryKickstarter_Configuration_ConfigurationManager {
   public static function createConfigurationDir($extensionKey) {
     $configurationDirectory = self::getExtensionDir($extensionKey) . self::CONFIGURATION_DIRECTORY;
     if (!is_dir($configurationDirectory)) {
-      t3lib_div::mkdir_deep(self::getExtensionsRootDir(), $extensionKey . '/' . self::CONFIGURATION_DIRECTORY);
+      \TYPO3\CMS\Core\Utility\GeneralUtility::mkdir_deep(self::getExtensionsRootDir(), $extensionKey . '/' . self::CONFIGURATION_DIRECTORY);
     }
   }
 
@@ -258,7 +243,7 @@ class Tx_SavLibraryKickstarter_Configuration_ConfigurationManager {
 	 * @param none
 	 * @return boolean
 	 */
-  public function isSavLibraryKickstarterExtension() {
+  public function isSavLibraryKickstarterExtension() { 	
     return file_exists($this->getConfigurationFileName());
   }
 
@@ -276,7 +261,7 @@ class Tx_SavLibraryKickstarter_Configuration_ConfigurationManager {
 
     if (file_exists($extensionDirectory . 'doc/wizard_form.dat')) {
       $wizardFormFileName = $extensionDirectory . 'doc/wizard_form.dat';
-      $wizardFormFileContent = t3lib_div::getURL($wizardFormFileName);
+      $wizardFormFileContent = \TYPO3\CMS\Core\Utility\GeneralUtility::getURL($wizardFormFileName);
       $configuration = unserialize($wizardFormFileContent);
       // Checks if the extension was generated with sav_library
       if ($configuration['savext'][1]['generateForm']) {
@@ -289,6 +274,7 @@ class Tx_SavLibraryKickstarter_Configuration_ConfigurationManager {
     }
   }
 
+  
 	/**
 	 * Checks if the configuration file exists for a given extension and a given library type.
 	 *
@@ -312,7 +298,7 @@ class Tx_SavLibraryKickstarter_Configuration_ConfigurationManager {
     if ($extensionKey === NULL) {
       $extensionKey = $this->extensionKey;
     }
-    return t3lib_extMgm::isLoaded($extensionKey);
+    return \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded($extensionKey);
   }
   
 	/**
@@ -321,13 +307,17 @@ class Tx_SavLibraryKickstarter_Configuration_ConfigurationManager {
 	 * @param none
 	 * @return none
 	 */
-  public function loadConfiguration() {
+  public function loadConfiguration($version = '') {
     // Checks if the file exists
     if ($this->isSavLibraryKickstarterExtension()) {
       if ($this->getSectionManager()->count() == 0) {
-        $sections = json_decode(t3lib_div::getURL($this->getConfigurationFileName()), TRUE);
+      	if ($version != '') {
+        	$sections = json_decode(\TYPO3\CMS\Core\Utility\GeneralUtility::getURL($this->getConfigurationFileName($this->extensionKey, $version)), TRUE);
+      	} else {
+        	$sections = json_decode(\TYPO3\CMS\Core\Utility\GeneralUtility::getURL($this->getConfigurationFileName()), TRUE);
+      	}
         if ($GLOBALS['LANG']->charSet == 'iso-8859-1') {
-          array_walk_recursive($sections, 'Tx_SavLibraryKickstarter_Configuration_ConfigurationManager::utf8_decode');
+          array_walk_recursive($sections, 'self::utf8_decode');
         }
 
         foreach($sections as $key => $section) {
@@ -348,14 +338,11 @@ class Tx_SavLibraryKickstarter_Configuration_ConfigurationManager {
 	 * @return none
 	 */
   public function saveConfiguration() {
-    $configuration = $this->getConfiguration();
-    if ($GLOBALS['LANG']->charSet == 'iso-8859-1') {
-      array_walk_recursive($configuration, 'Tx_SavLibraryKickstarter_Configuration_ConfigurationManager::utf8_encode');
-    }
-    $jsonContent = json_encode($configuration);
-    $fileName = $this->getConfigurationFileName($this->extensionKey);
- 
-    t3lib_div::writeFile($fileName, $jsonContent);
+  	$version = $this->getSectionManager()->getItem('emconf')->getItem(1)->getItem('version');
+		// Saves the configuration with a version
+		$this->saveConfigurationVersion($version);
+		// Saves the working configuration	
+		$this->saveConfigurationVersion();				
   }
 
 	/**
@@ -390,11 +377,14 @@ class Tx_SavLibraryKickstarter_Configuration_ConfigurationManager {
 	 * @param string The version
 	 * @return none
 	 */
-  public function saveConfigurationVersion($version) {
-    $jsonContent = json_encode($this->getConfiguration());
-    $fileName = $this->getConfigurationFileName($this->extensionKey);
-    $fileName = preg_replace('/^([^.]+)/', '$1'. $version, $fileName);
-    t3lib_div::writeFile($fileName, $jsonContent);
+  public function saveConfigurationVersion($version = '') {
+    $configuration = $this->getConfiguration();
+    if ($GLOBALS['LANG']->charSet == 'iso-8859-1') {
+      array_walk_recursive($configuration, 'self::utf8_encode');
+    }
+    $jsonContent = json_encode($configuration);
+    $fileName = $this->getConfigurationFileName($this->extensionKey, $version);
+    \TYPO3\CMS\Core\Utility\GeneralUtility::writeFile($fileName, $jsonContent);
   }
 
 	/**
@@ -404,7 +394,7 @@ class Tx_SavLibraryKickstarter_Configuration_ConfigurationManager {
 	 * @return integer The library version
 	 */
   public function getCurrentLibraryVersion() {
-    $libraryType = $this->getSectionManager()->getItem('general')->getItem(1)->getItem('libraryType');
+    $libraryType = $this->getSectionManager()->getItem('general')->getItem(1)->getItem('libraryType');      
     switch($libraryType) {
       case self::TYPE_SAV_LIBRARY:
         return self::getSavLibraryVersion();
@@ -444,7 +434,7 @@ class Tx_SavLibraryKickstarter_Configuration_ConfigurationManager {
       case self::TYPE_SAV_LIBRARY_MVC:
         return 'SavLibraryMvc';
       default:
-        throw new RuntimeException('The library type "' . $libraryType . '" is not known !');
+        throw new \RuntimeException('The library type "' . $libraryType . '" is not known !');
     }
   }  
   
@@ -461,7 +451,7 @@ class Tx_SavLibraryKickstarter_Configuration_ConfigurationManager {
     $extensionDirectory = self::getExtensionDir($extensionKey);
     return $extensionDirectory . self::CONFIGURATION_DIRECTORY . self::LIBRARY_TYPE_FILE_NAME;
   }
-
+  
 	/**
 	 * Builds the configuration directory if needed.
 	 *
@@ -477,7 +467,7 @@ class Tx_SavLibraryKickstarter_Configuration_ConfigurationManager {
 		$configurationDirectory =  $extensionDirectory . self::CONFIGURATION_DIRECTORY . $libraryName . '/';
 
 		if (!is_dir($configurationDirectory)) {
-		   t3lib_div::mkdir_deep(self::getExtensionsRootDir(), $extensionKey . '/' . self::CONFIGURATION_DIRECTORY . $libraryName . '/');
+		   \TYPO3\CMS\Core\Utility\GeneralUtility::mkdir_deep(self::getExtensionsRootDir(), $extensionKey . '/' . self::CONFIGURATION_DIRECTORY . $libraryName . '/');
 		}
   }  
   
@@ -487,16 +477,26 @@ class Tx_SavLibraryKickstarter_Configuration_ConfigurationManager {
 	 * @param string $extensionKey The extension key
 	 * @return string The configuration file name
 	 */
-  public function getConfigurationFileName($extensionKey = NULL) {
+  public function getConfigurationFileName($extensionKey = NULL, $version = '') {
+
     if ($extensionKey === NULL) {
       $extensionKey = $this->extensionKey;
     }
-    $libraryName = trim(t3lib_div::getURL(self::getLibraryTypeFileName($extensionKey)));  
     $extensionDirectory = self::getExtensionDir($extensionKey);
+    $libraryName = trim(\TYPO3\CMS\Core\Utility\GeneralUtility::getURL(self::getLibraryTypeFileName($extensionKey)));  
 
-    return $extensionDirectory . self::CONFIGURATION_DIRECTORY . $libraryName. '/' . self::CONFIGURATION_FILE_NAME;
+    // Builds the version if any
+    if ($version != '') {
+			$version = '_' . str_replace('.', '_', $version);    	
+    }
+    
+    // Builds the file name
+    $configurationFileNameParts = pathinfo(self::CONFIGURATION_FILE_NAME);
+    $fileName = $configurationFileNameParts['filename'] . $version . '.' . $configurationFileNameParts['extension'];    
+  
+    return $extensionDirectory . self::CONFIGURATION_DIRECTORY . $libraryName. '/' . $fileName;
   }
-
+ 
 	/**
 	 * Checks if an extension should be upgraded.
 	 *
@@ -508,7 +508,7 @@ class Tx_SavLibraryKickstarter_Configuration_ConfigurationManager {
     if ($this->isSavLibraryKickstarterExtension()) {
       // Gets the files
       if ($this->upgradeFiles === NULL) {
-        $files = t3lib_div::getFilesInDir(self::getExtensionDir('sav_library_kickstarter') . self::UGRADE_DIRECTORY);
+        $files = \TYPO3\CMS\Core\Utility\GeneralUtility::getFilesInDir(self::getExtensionDir('sav_library_kickstarter') . self::UGRADE_DIRECTORY);
         foreach($files as $file) {
           if (preg_match('/^UpgradeTo([A-Za-z]+)([0-9]+)\.php$/', $file, $match)) {
             $version = $match[2];
@@ -518,14 +518,14 @@ class Tx_SavLibraryKickstarter_Configuration_ConfigurationManager {
       }
       
       $this->loadConfiguration();
-      $currentLibraryVersion =  t3lib_utility_VersionNumber::convertVersionNumberToInteger($this->getCurrentLibraryVersion());
+      $currentLibraryVersion =  \TYPO3\CMS\Core\Utility\VersionNumberUtility::convertVersionNumberToInteger($this->getCurrentLibraryVersion());
       $currentLibraryName = $this->getCurrentLibraryName();
       
       if (is_array($this->upgradeFiles[$currentLibraryName])) {
 	      ksort($this->upgradeFiles[$currentLibraryName]);
 	
 	      foreach($this->upgradeFiles[$currentLibraryName] as $version => $fileInformation) {
-	        $libraryVersion = t3lib_utility_VersionNumber::convertVersionNumberToInteger($this->getSectionManager()->getItem('general')->getItem(1)->getItem('libraryVersion'));
+	        $libraryVersion = \TYPO3\CMS\Core\Utility\VersionNumberUtility::convertVersionNumberToInteger($this->getSectionManager()->getItem('general')->getItem(1)->getItem('libraryVersion'));
 	        if ($libraryVersion < $currentLibraryVersion && $libraryVersion < $version) {
 	            $this->upgradeExtension('To' . $currentLibraryName . $version);
 	        }
@@ -557,7 +557,7 @@ class Tx_SavLibraryKickstarter_Configuration_ConfigurationManager {
 	 * @return none
 	 */
   public function upgradeExtension($version) {
-    $upgradeManager = t3lib_div::makeInstance(self::UPGRADE_ROOT_CLASS_NAME . $version, $this->extensionKey);
+    $upgradeManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(self::UPGRADE_ROOT_CLASS_NAME . $version, $this->extensionKey);
     $upgradeManager->preProcessing();
 
     if ($this->isSavLibraryKickstarterExtension()) {

@@ -1,5 +1,5 @@
 <?php
-
+namespace SAV\SavLibraryKickstarter\ViewHelpers;
 /*                                                                        *
  * This script belongs to the FLOW3 package "Fluid".                      *
  *                                                                        *
@@ -46,7 +46,7 @@
  * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
  * @scope prototype
  */
-class Tx_SavLibraryKickstarter_ViewHelpers_FlashHtmlMessagesViewHelper extends Tx_Fluid_ViewHelpers_FlashMessagesViewHelper {
+class FlashHtmlMessagesViewHelper extends \TYPO3\CMS\Fluid\ViewHelpers\FlashMessagesViewHelper {
 
 	/**
 	 * Renders the flash messages as unordered list 

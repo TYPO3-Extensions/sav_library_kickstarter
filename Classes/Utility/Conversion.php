@@ -1,4 +1,5 @@
 <?php
+namespace SAV\SavLibraryKickstarter\Utility;
 /***************************************************************
 *  Copyright notice
 *
@@ -33,7 +34,7 @@
  * @author Laurent Foulloy <yolf.typo3@orange.fr>
  * @version $Id:
  */
-class Tx_SavLibraryKickstarter_Utility_Conversion {
+class Conversion {
 
 	/**
 	 * Converts a string to upperCamel

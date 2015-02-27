@@ -1,0 +1,16 @@
+{namespace sav=Tx_SavLibraryKickstarter_ViewHelpers}
+<f:layout name="KickstarterSectionLayout.html" />
+
+
+<f:section name="menu">
+<f:render partial="Menus/Menu" arguments="{extKey:extKey, extension:extension, selectedItem:'views_{itemKey}'}" />
+</f:section>
+
+<f:section name="content">
+<f:alias map="{directory:'{0:\'ForSavLibrary\',1:\'ForSavLibraryPlus\',2:\'ForSavLibraryMvc\'}'}">
+<f:render partial="{directory.{extension.general.1.libraryType}}/ViewsSection" arguments="{
+  extKey:extKey, extension:extension, itemKey:itemKey, options:options
+}" />
+</f:alias>
+</f:section>
+

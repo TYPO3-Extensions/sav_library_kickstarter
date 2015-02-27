@@ -1,5 +1,5 @@
 <?php
-
+namespace SAV\SavLibraryKickstarter\ViewHelpers;
 /*                                                                        *
  * This script is part of the TYPO3 project - inspiring people to share!  *
  *                                                                        *
@@ -30,7 +30,7 @@
  * @author Laurent Foulloy <yolf.typo3@orange.fr>
  * @version $Id: 
  */
-class Tx_SavLibraryKickstarter_ViewHelpers_BuildOptionsForRelationTableSelectorboxViewHelper extends Tx_Fluid_Core_ViewHelper_AbstractViewHelper {
+class BuildOptionsForRelationTableSelectorboxViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
 
 	/**
 	 * @param array $arguments
@@ -40,21 +40,21 @@ class Tx_SavLibraryKickstarter_ViewHelpers_BuildOptionsForRelationTableSelectorb
 	public function render($arguments) {
 
     $options = array (
-      'pages' => Tx_Extbase_Utility_Localization::translate('kickstarter.field.conf_rel_table.pages', 'sav_library_kickstarter'),
-      'fe_users' => Tx_Extbase_Utility_Localization::translate('kickstarter.field.conf_rel_table.fe_users', 'sav_library_kickstarter'),
-      'fe_groups' => Tx_Extbase_Utility_Localization::translate('kickstarter.field.conf_rel_table.fe_groups', 'sav_library_kickstarter'),
-      'tt_content' => Tx_Extbase_Utility_Localization::translate('kickstarter.field.conf_rel_table.tt_content', 'sav_library_kickstarter'),
+      'pages' => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('kickstarter.field.conf_rel_table.pages', 'sav_library_kickstarter'),
+      'fe_users' => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('kickstarter.field.conf_rel_table.fe_users', 'sav_library_kickstarter'),
+      'fe_groups' => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('kickstarter.field.conf_rel_table.fe_groups', 'sav_library_kickstarter'),
+      'tt_content' => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('kickstarter.field.conf_rel_table.tt_content', 'sav_library_kickstarter'),
     );
 
     $newTables = $arguments['newTables'];
     if (is_array($newTables)) {   
 	    foreach ($newTables as $table) {
 	      switch($arguments['general'][1]['libraryType']) {
-	        case Tx_SavLibraryKickstarter_Configuration_ConfigurationManager::TYPE_SAV_LIBRARY:
-	        case Tx_SavLibraryKickstarter_Configuration_ConfigurationManager::TYPE_SAV_LIBRARY_PLUS:
+	        case \SAV\SavLibraryKickstarter\Configuration\ConfigurationManager::TYPE_SAV_LIBRARY:
+	        case \SAV\SavLibraryKickstarter\Configuration\ConfigurationManager::TYPE_SAV_LIBRARY_PLUS:
 	          $tableName = 'tx_'  . str_replace('_', '', $arguments['general'][1]['extensionKey']) . ($table['tablename'] ? '_' . $table['tablename'] : '');
 	          break;
-	        case Tx_SavLibraryKickstarter_Configuration_ConfigurationManager::TYPE_SAV_LIBRARY_MVC:
+	        case \SAV\SavLibraryKickstarter\Configuration\ConfigurationManager::TYPE_SAV_LIBRARY_MVC:
 	          $tableName = 'tx_'  . str_replace('_', '', $arguments['general'][1]['extensionKey']) . '_domain_model_' .($table['tablename'] ? $table['tablename'] : 'default');
 	          break;
 	      }
@@ -65,7 +65,7 @@ class Tx_SavLibraryKickstarter_ViewHelpers_BuildOptionsForRelationTableSelectorb
 	    }
     }
     $options = array_merge($options, array (
-      '_CUSTOM' => Tx_Extbase_Utility_Localization::translate('kickstarter.field.conf_rel_table.custom', 'sav_library_kickstarter'),
+      '_CUSTOM' => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('kickstarter.field.conf_rel_table.custom', 'sav_library_kickstarter'),
       )
     );
 

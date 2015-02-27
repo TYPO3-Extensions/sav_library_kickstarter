@@ -1,4 +1,5 @@
 <?php
+namespace SAV\SavLibraryKickstarter\CodeGenerator;
 /***************************************************************
 *  Copyright notice
 *
@@ -31,97 +32,142 @@
  * @package SavLibraryKickstarter
  * @version $ID:$
  */
-class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibraryPlus extends Tx_SavLibraryKickstarter_CodeGenerator_AbstractCodeGenerator {
+class CodeGeneratorForSavLibraryPlus extends AbstractCodeGenerator {
 
+  const TYPO3_6x7x_VERSION_DIRECTORY = 'TYPO6x7x';
+  const TYPO3_4x_VERSION_DIRECTORY = 'TYPO4x';
+
+  const COMPATIBILITY_TYPO3_6x_7x = 0;
+  const COMPATIBILITY_TYPO3_4x = 1;  
+  const COMPATIBILITY_TYPO3_4x_7x = 2;      
+  /**
+   * The code templates directory
+   *
+   * @var string
+   */  
   protected $codeTemplatesDirectory = 'Resources/Private/CodeTemplates/ForSavLibraryPlus/';
 
+  /**
+   * The xml array
+   *
+   * @var array
+   */  
+  protected $xmlArray = array();
+
+  /**
+   * The compatibility flag
+   *
+   * @var integer
+   */  
+  protected $compatibility = self::COMPATIBILITY_TYPO3_4x_7x;
+
+	/**
+	 * Gets the version directory.
+	 *
+	 * return string
+	 */  
+  protected function getVersionDirectory() {
+    switch ($this->compatibility) {
+      case self::COMPATIBILITY_TYPO3_4x:
+        return self::TYPO3_4x_VERSION_DIRECTORY;
+      case self::COMPATIBILITY_TYPO3_6x_7x:
+        return self::TYPO3_6x7x_VERSION_DIRECTORY;
+    }
+  }
+  
 	/**
 	 * Builds all the file for the extension.
 	 *
 	 * return none
 	 */
 	public function buildExtension() {
-    // Sets the file directory for the root files
-    $fileDirectory = $this->extensionDirectory;
+	  
+	  // Generates the xml array
+	  $this->setXmlArray();
 
 		// Generates the Configuration/TCA directory
-		t3lib_div::mkdir_deep($this->extensionDirectory, 'Resources/Private/Icons');
+		\TYPO3\CMS\Core\Utility\GeneralUtility::mkdir_deep($this->extensionDirectory, 'Resources/Private/Icons');
 		
     // Generates the icons
  		$this->generateFile('icons.t');
 
 		// Generates ext_emconf.php
 		$fileContents = $this->generateFile('extEmconf.phpt');
-		t3lib_div::writeFile($fileDirectory . 'ext_emconf.php', $fileContents);
+		\TYPO3\CMS\Core\Utility\GeneralUtility::writeFile($this->extensionDirectory . 'ext_emconf.php', $fileContents);
 
 		// Generates ext_localconf.php
 		if (!$this->sectionManager->getItem('general')->getItem(1)->getItem('keepExtLocalConf') ||
 				($this->sectionManager->getItem('general')->getItem(1)->getItem('keepExtLocalConf') && !file_exists($this->extensionDirectory . 'ext_localconf.php'))) {
-			$fileContents = $this->generateFile('extLocalconf.phpt');
-			t3lib_div::writeFile($fileDirectory . 'ext_localconf.php', $fileContents);
+			$fileContents = $this->generateFile('Configuration/ExtLocalconf/extLocalconf.phpt');
+			\TYPO3\CMS\Core\Utility\GeneralUtility::writeFile($this->extensionDirectory . 'ext_localconf.php', $fileContents);
 		}
 
 		// Generates ext_tables.php
-		$fileContents = $this->generateFile('extTables.phpt');
-		t3lib_div::writeFile($fileDirectory . 'ext_tables.php', $fileContents);
+		if($this->compatibility == self::COMPATIBILITY_TYPO3_4x_7x) {
+		  // Creates the directories
+		  \TYPO3\CMS\Core\Utility\GeneralUtility::mkdir_deep($this->extensionDirectory, 'Configuration/ExtTables/' . self::TYPO3_4x_VERSION_DIRECTORY);
+		  // Creates the generic ext_tables.php files
+		  $fileContents = $this->generateFile('Configuration/ExtTables/extTables.phpt');
+		  \TYPO3\CMS\Core\Utility\GeneralUtility::writeFile($this->extensionDirectory . 'ext_tables.php', $fileContents);
+		  // Creates the specific ext_tables.php file for each directory
+		  $fileContents = $this->generateFile('Configuration/ExtTables/' . self::TYPO3_4x_VERSION_DIRECTORY . '/extTables.phpt');
+		  \TYPO3\CMS\Core\Utility\GeneralUtility::writeFile($this->extensionDirectory . 'Configuration/ExtTables/' . self::TYPO3_4x_VERSION_DIRECTORY . '/ext_tables.php', $fileContents);		  
+		  $fileContents = $this->generateFile('Configuration/ExtTables/' . self::TYPO3_6x7x_VERSION_DIRECTORY . '/extTables.phpt');
+		  \TYPO3\CMS\Core\Utility\GeneralUtility::writeFile($this->extensionDirectory . 'Configuration/ExtTables/ext_tables.php', $fileContents);		  
+		} else {
+		  // Creates the ext_tables depending on the requested compatibility
+  		$fileContents = $this->generateFile('Configuration/ExtTables/' . $this->getVersionDirectory() .'/extTables.phpt');
+  		\TYPO3\CMS\Core\Utility\GeneralUtility::writeFile($this->extensionDirectory . 'ext_tables.php', $fileContents);
+		}
 
 		// Generates ext_tables.sql
 		$fileContents = $this->generateFile('extTables.sqlt');
-		t3lib_div::writeFile($fileDirectory . 'ext_tables.sql', $fileContents);
+		\TYPO3\CMS\Core\Utility\GeneralUtility::writeFile($this->extensionDirectory . 'ext_tables.sql', $fileContents);
 
-		// Generates the Configuration/TCA directory
-		t3lib_div::mkdir_deep($this->extensionDirectory, 'Configuration/TCA');
-		$fileDirectory = $this->extensionDirectory . 'Configuration/TCA/';
-
-		// Generates TCA
-		$fileContents = $this->generateFile('Configuration/TCA/tca.phpt');
-		t3lib_div::writeFile($fileDirectory . 'tca.php', $fileContents);
+		// Generates the Configuration/TCA/tca.php file
+		\TYPO3\CMS\Core\Utility\GeneralUtility::mkdir_deep($this->extensionDirectory, 'Configuration/TCA');
+  	$fileContents = $this->generateFile('Configuration/TCA/tca.phpt');
+  	\TYPO3\CMS\Core\Utility\GeneralUtility::writeFile($this->extensionDirectory . 'Configuration/TCA/tca.php', $fileContents);
 
 		// Generates the Configuration/Flexforms directory
-		t3lib_div::mkdir_deep($this->extensionDirectory, 'Configuration/Flexforms');
-		$fileDirectory = $this->extensionDirectory . 'Configuration/Flexforms/';
+		\TYPO3\CMS\Core\Utility\GeneralUtility::mkdir_deep($this->extensionDirectory, 'Configuration/Flexforms');
 		
 		// Generates flexforms
 		$fileContents = $this->generateFile('Configuration/Flexforms/ExtensionFlexform.xmlt');
-		t3lib_div::writeFile($fileDirectory . 'ExtensionFlexform.xml', $fileContents);
+		\TYPO3\CMS\Core\Utility\GeneralUtility::writeFile($this->extensionDirectory . 'Configuration/Flexforms/ExtensionFlexform.xml', $fileContents);
 		
 		// Generates the Configuration/SavLibraryPlus directory
-		t3lib_div::mkdir_deep($this->extensionDirectory, 'Configuration/Library');
-		$fileDirectory = $this->extensionDirectory . 'Configuration/Library/';
-		
-		$fileContents = $this->generateFile('Configuration/Library/SavLibraryPlus.xmlt', NULL, $this->getXmlArray());
-		t3lib_div::writeFile($fileDirectory . 'SavLibraryPlus.xml', $fileContents);
+		\TYPO3\CMS\Core\Utility\GeneralUtility::mkdir_deep($this->extensionDirectory, 'Configuration/Library');
+
+		// Generates the configuration file		
+		$fileContents = $this->generateFile('Configuration/Library/SavLibraryPlus.xmlt', NULL, $this->xmlArray);
+		\TYPO3\CMS\Core\Utility\GeneralUtility::writeFile($this->extensionDirectory . 'Configuration/Library/SavLibraryPlus.xml', $fileContents);
 
 		// Generates the Resources/Private/Language directory
-		t3lib_div::mkdir_deep($this->extensionDirectory, 'Resources/Private/Language');
-		$fileDirectory = $this->extensionDirectory . 'Resources/Private/Language/';
+		\TYPO3\CMS\Core\Utility\GeneralUtility::mkdir_deep($this->extensionDirectory, 'Resources/Private/Language');
 		
 		// Generate locallang.xml file if it does not exist
-		if (!file_exists($fileDirectory . 'locallang.xml')) {
+		if (!file_exists($this->extensionDirectory . 'Resources/Private/Language/locallang.xml')) {
 		  $fileContents = $this->generateFile('Resources/Private/Language/locallang.xmlt');
-		  t3lib_div::writeFile($fileDirectory . 'locallang.xml', $fileContents);
+		  \TYPO3\CMS\Core\Utility\GeneralUtility::writeFile($this->extensionDirectory . 'Resources/Private/Language/locallang.xml', $fileContents);
     }
 			// Generate locallang.xlf file if it does not exist
-		if (!file_exists($fileDirectory . 'locallang.xlf')) {
+		if (!file_exists($this->extensionDirectory . 'Resources/Private/Language/locallang.xlf')) {
 		  $fileContents = $this->generateFile('Resources/Private/Language/locallang.xlft');
-		  t3lib_div::writeFile($fileDirectory . 'locallang.xlf', $fileContents);
+		  \TYPO3\CMS\Core\Utility\GeneralUtility::writeFile($this->extensionDirectory . 'Resources/Private/Language/locallang.xlf', $fileContents);
     }
     
 		// Generates locallang_db.xml file
 		$fileContents = $this->generateFile('Resources/Private/Language/locallang_db.xmlt');
-		t3lib_div::writeFile($fileDirectory . 'locallang_db.xml', $fileContents);
+		\TYPO3\CMS\Core\Utility\GeneralUtility::writeFile($this->extensionDirectory . 'Resources/Private/Language/locallang_db.xml', $fileContents);
 		// Generates locallang_db.xlf file
 		$fileContents = $this->generateFile('Resources/Private/Language/locallang_db.xlft');
-		t3lib_div::writeFile($fileDirectory . 'locallang_db.xlf', $fileContents);
+		\TYPO3\CMS\Core\Utility\GeneralUtility::writeFile($this->extensionDirectory . 'Resources/Private/Language/locallang_db.xlf', $fileContents);
 		
-		// Generates the pi1 directory
-		t3lib_div::mkdir_deep($this->extensionDirectory, 'Classes');
-		$fileDirectory = $this->extensionDirectory . 'Classes/';
-		
-		// Generates the pi file
-		$fileContents = $this->generateFile('Classes/class.tx_extension_pi1.phpt');
-		t3lib_div::writeFile($fileDirectory . 'class.tx_' . str_replace('_', '', $this->extensionKey) . '_pi1.php', $fileContents);
-
+		// Generates the plugin file
+		$fileName = 'class.tx_' . str_replace('_','', $this->extensionKey) . '_pi1.php';  	  	
+  	$fileContents = $this->generateFile('Classes/class.tx_extension_pi1.phpt');
+  	\TYPO3\CMS\Core\Utility\GeneralUtility::writeFile($this->extensionDirectory . 'Classes/' . $fileName, $fileContents);		  	 	
 	}
 
 	/**
@@ -131,33 +177,36 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibraryPlus exte
 	 *
 	 * return array The array
 	 */
-  protected function getXmlArray() {
+  protected function setXmlArray() {
 
     $extension = $this->sectionManager->getItemsAsArray();
+ 
+	  // Checks if compatiblity if required
+    $this->compatibility = $extension['general'][1]['compatibility'];
 
     // Converts special characters
-    array_walk_recursive($extension, 'Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibrary::htmlspecialchars');
+    array_walk_recursive($extension, 'SAV\\SavLibraryKickstarter\\CodeGenerator\\CodeGeneratorForSavLibraryPlus::htmlspecialchars');
 
     // Generates the version
-    $xmlArray['general'] = array();
-    $xmlArray['general']['version'] = $GLOBALS[TYPO3_CONF_VARS]['EXTCONF']['sav_library_plus']['version'];
+    $this->xmlArray['general'] = array();
+    $this->xmlArray['general']['version'] = $GLOBALS[TYPO3_CONF_VARS]['EXTCONF']['sav_library_plus']['version'];
 
     // Generates the extension key
-    $xmlArray['general']['extensionKey'] = $this->extensionKey;
+    $this->xmlArray['general']['extensionKey'] = $this->extensionKey;
 
     // Generates forms
     if (is_array($extension['forms'])) {
 
       // Copies the forms array and unset the viewsWithCondition field
-      $xmlArray['forms'] = $extension['forms'];
-      
+      $this->xmlArray['forms'] = $extension['forms'];
+     
       // Processes the viewsWithCondition field
-      foreach($xmlArray['forms'] as $formKey => $form) {
+      foreach($this->xmlArray['forms'] as $formKey => $form) {
       	if (is_array($form['viewsWithCondition'])) {
 	        foreach($form['viewsWithCondition'] as $viewsWithConditionKey => $viewsWithCondition) {
 	          // Processes each view
 	          foreach($viewsWithCondition as $viewWithConditionKey => $viewWithCondition) {
-	            $xmlArray['forms'][$formKey]['viewsWithCondition'][$viewsWithConditionKey][$viewWithConditionKey] += array('config' => $this->getConfig($viewWithCondition['condition']));
+	            $this->xmlArray['forms'][$formKey]['viewsWithCondition'][$viewsWithConditionKey][$viewWithConditionKey] += array('config' => $this->getConfig($viewWithCondition['condition']));
 	          }
 	        }
       	}
@@ -168,10 +217,10 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibraryPlus exte
     $queries = $extension['queries'];
     if (is_array($queries)) {
       foreach($queries as $queryKey => $query) {
-        $xmlArray['queries'][$queryKey] = $query;
+        $this->xmlArray['queries'][$queryKey] = $query;
         if ($query['whereTags']) {
           foreach($query['whereTags'] as $whereTagKey => $whereTag) {
-            $xmlArray['queries'][$queryKey]['whereTags'][$whereTagKey]['title'] = $this->cryptTag($whereTag['title']);
+            $this->xmlArray['queries'][$queryKey]['whereTags'][$whereTagKey]['title'] = $this->cryptTag($whereTag['title']);
           }
         }
       }
@@ -186,20 +235,20 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibraryPlus exte
         // Generates the templates
         if ($view['type'] == 'list' || $view['type'] == 'special' ) {
           if($view['itemTemplate']) {
-            $xmlArray['templates'][$viewKey]['itemTemplate'] = $view['itemTemplate'];
+            $this->xmlArray['templates'][$viewKey]['itemTemplate'] = $view['itemTemplate'];
           }
           if($view['viewTemplate']) {
-            $xmlArray['templates'][$viewKey]['viewTemplate'] = $view['viewTemplate'];
+            $this->xmlArray['templates'][$viewKey]['viewTemplate'] = $view['viewTemplate'];
           }
         }
 
         // Checks if it's a print view
         if ($view['type'] == 'special' && $view['subtype'] == 'print') {
           if($view['itemsBeforePageBreak']) {
-            $xmlArray['templates'][$viewKey]['itemsBeforePageBreak'] = $view['itemsBeforePageBreak'];
+            $this->xmlArray['templates'][$viewKey]['itemsBeforePageBreak'] = $view['itemsBeforePageBreak'];
           }
           if($view['itemsBeforeFirstPageBreak']) {
-            $xmlArray['templates'][$viewKey]['itemsBeforeFirstPageBreak'] = $view['itemsBeforeFirstPageBreak'];
+            $this->xmlArray['templates'][$viewKey]['itemsBeforeFirstPageBreak'] = $view['itemsBeforeFirstPageBreak'];
           }
         }
 
@@ -208,8 +257,8 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibraryPlus exte
         if ($view['type'] == 'special' && $view['subtype'] == 'form') {
           foreach ($extension['forms'] as $keyForm => $form) {
             if ($form['specialView'] == $viewKey) {
-              $xmlArray['forms'][$keyForm]['formView'] = $viewKey;
-              $xmlArray['forms'][$keyForm]['specialView'] = 0;
+              $this->xmlArray['forms'][$keyForm]['formView'] = $viewKey;
+              $this->xmlArray['forms'][$keyForm]['specialView'] = 0;
               break;
             }
           }
@@ -242,7 +291,7 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibraryPlus exte
 
 						// Adds save and new in the general configuration
 						if ($table['save_and_new']) {
-							$xmlArray['general']['saveAndNew'][$tableName] = 1;
+							$this->xmlArray['general']['saveAndNew'][$tableName] = 1;
 						}
             // Puts the fields in the right order for the view
             unset($orderedFields);            
@@ -284,6 +333,11 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibraryPlus exte
           }
           foreach($existingTables as $tableKey => $table) {
             $tableName = $table['tablename'];
+            
+            // Checks if the localization must be overrided
+            if ($table['overrideLocalization']) {
+            	$this->xmlArray['general']['overridedTablesForLocalization'][$tableName] = TRUE;
+            }
 
             // Puts the fields in the right order for the view
             unset($orderedFields);            
@@ -326,7 +380,7 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibraryPlus exte
 
             // Generates the TCA
             if ($columns) {
-              $xmlArray['TCA'][$tableName] = $columns;
+              $this->xmlArray['TCA'][$tableName] = $columns;
             }
           }
         }
@@ -353,7 +407,7 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibraryPlus exte
             $cryptedFolderName = $this->cryptTag($folderName);
             
             // Gets the folder config parameter
-            $xmlArray['views'][$viewKey][$cryptedFolderName]['configuration'] = $this->getConfig($opt_showFolders[$folderKey]['configuration']) +
+            $this->xmlArray['views'][$viewKey][$cryptedFolderName]['configuration'] = $this->getConfig($opt_showFolders[$folderKey]['configuration']) +
               array ('label' => $folderName);
 
             // Generates the title
@@ -361,13 +415,13 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibraryPlus exte
               $title[$viewKey]['configuration']['field'] = $view['viewTitleBar'];
               $title[$viewKey]['configuration']['type'] = 'input';
             }
-            $xmlArray['views'][$viewKey][$cryptedFolderName]['title'] = $title[$viewKey];
+            $this->xmlArray['views'][$viewKey][$cryptedFolderName]['title'] = $title[$viewKey];
 
             // Generates the addPrintIcon information
             if ($view['addPrintIcon']) {
-              $xmlArray['views'][$viewKey][$cryptedFolderName]['addPrintIcon'] = $view['addPrintIcon'];
+              $this->xmlArray['views'][$viewKey][$cryptedFolderName]['addPrintIcon'] = $view['addPrintIcon'];
               if ($view['viewForPrintIcon']) {
-                $xmlArray['views'][$viewKey][$cryptedFolderName]['viewForPrintIcon'] = $view['viewForPrintIcon'];
+                $this->xmlArray['views'][$viewKey][$cryptedFolderName]['viewForPrintIcon'] = $view['viewForPrintIcon'];
               }
             }
 
@@ -423,7 +477,7 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibraryPlus exte
               }
             }
    
-          $xmlArray['views'][$viewKey][$cryptedFolderName]['fields'] = $fieldConfiguration;        
+          $this->xmlArray['views'][$viewKey][$cryptedFolderName]['fields'] = $fieldConfiguration;        
           }          
         }
       }
@@ -435,15 +489,13 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibraryPlus exte
 	      	if (is_array($subformConfiguration[$viewKey])) {
 	      		foreach ($subformConfiguration[$viewKey] as $subformKey => $subform) {		
 							$arrayToAdd['configuration'][$this->cryptTag('0')]['fields'] = $subform;	
-							$this->addConfiguration($xmlArray['views'][$viewKey], $subformKey, $arrayToAdd);		      			
+							$this->addConfiguration($this->xmlArray['views'][$viewKey], $subformKey, $arrayToAdd);		      			
 	      		}
 	      	} 
 	      }
 			}
-
     }
-  
-  return $xmlArray;
+
   }
   
 	/**
@@ -472,7 +524,7 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibraryPlus exte
 
   		  $pos = strpos($param, '=');
   		  if ($pos === FALSE) {
-  		    throw new RuntimeException('Missing equal sign in ' . $param);
+  		    throw new \RuntimeException('Missing equal sign in ' . $param);
         } else {
           $exp = strtolower(trim(substr($param, 0, $pos)));
           // Removes trailing spaces
@@ -494,7 +546,7 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibraryPlus exte
 	 */
   protected function cryptTag($tag) {
 //    return 'a' . md5($tag);
-    return 'a' . t3lib_div::md5int($tag);
+    return 'a' . \TYPO3\CMS\Core\Utility\GeneralUtility::md5int($tag);
   }
 
 	/**
@@ -533,7 +585,7 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibraryPlus exte
   }  
 
 	/**
-	 * Adds a configuration to the right palce after a recursive search, given à key
+	 * Adds a configuration to the right place after a recursive search, given à key
 	 *  
 	 * @param array $arrayToSearchIn
 	 * @param string $key
@@ -554,6 +606,7 @@ class Tx_SavLibraryKickstarter_CodeGenerator_CodeGeneratorForSavLibraryPlus exte
       }
     }
     return FALSE;
-  }    
+  } 
+ 
 }
 ?>
