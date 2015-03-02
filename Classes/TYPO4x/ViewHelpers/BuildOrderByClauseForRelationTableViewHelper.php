@@ -30,9 +30,9 @@
  * @author Laurent Foulloy <yolf.typo3@orange.fr>
  * @version $Id: 
  */
-require_once(t3lib_extMgm::extPath('sav_library_kickstarter') . 'Classes/ViewHelpers/BuildOrderbyClauseForRelationTableViewHelper.php');
+require_once(t3lib_extMgm::extPath('sav_library_kickstarter') . 'Classes/ViewHelpers/BuildOrderByClauseForRelationTableViewHelper.php');
 
-class Tx_SavLibraryKickstarter_ViewHelpers_BuildOrderbyClauseForRelationTableViewHelper extends \SAV\SavLibraryKickstarter\ViewHelpers\BuildOrderbyClauseForRelationTableViewHelper {
+class Tx_SavLibraryKickstarter_ViewHelpers_BuildOrderByClauseForRelationTableViewHelper extends \SAV\SavLibraryKickstarter\ViewHelpers\BuildOrderByClauseForRelationTableViewHelper {
 }
 ?>
 

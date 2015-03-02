@@ -27,7 +27,7 @@ Version  Changes
          - Extension versions are kept and can be managed easily. 
          - Generation of  the "types" field in tca.php for extensions using starttime, 
            endtime or access group  fields corrected.
-         - Compatibility to TYPO3 7.x.x added
+         - Compatibility with TYPO3 7.x.x added
 
 0.4.1    - Code slighly modified in accordance to the TYPO3 coding guidelines.
          - Compatibility with TYPO3 6.2 improved.

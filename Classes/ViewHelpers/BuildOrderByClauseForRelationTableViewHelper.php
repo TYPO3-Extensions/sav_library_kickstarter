@@ -30,7 +30,7 @@ namespace SAV\SavLibraryKickstarter\ViewHelpers;
  * @author Laurent Foulloy <yolf.typo3@orange.fr>
  * @version $Id: 
  */
-class BuildOrderbyClauseForRelationTableViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
+class BuildOrderByClauseForRelationTableViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
 
 	/**
 	 * @param array $arguments
