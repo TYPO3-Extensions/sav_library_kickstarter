@@ -165,6 +165,7 @@ class CodeGeneratorForSavLibraryPlus extends AbstractCodeGenerator {
 		\TYPO3\CMS\Core\Utility\GeneralUtility::writeFile($this->extensionDirectory . 'Resources/Private/Language/locallang_db.xlf', $fileContents);
 		
 		// Generates the plugin file
+		\TYPO3\CMS\Core\Utility\GeneralUtility::mkdir_deep($this->extensionDirectory, 'Classes');		
 		$fileName = 'class.tx_' . str_replace('_','', $this->extensionKey) . '_pi1.php';  	  	
   	$fileContents = $this->generateFile('Classes/class.tx_extension_pi1.phpt');
   	\TYPO3\CMS\Core\Utility\GeneralUtility::writeFile($this->extensionDirectory . 'Classes/' . $fileName, $fileContents);		  	 	
