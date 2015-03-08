@@ -52,10 +52,11 @@ class Tx_SavLibraryKickstarter_Utility_Autoloader {
   	'SAV\\SavLibraryKickstarter\\Compatibility\\TemplateView' => 'Tx_SavLibraryKickstarter_Compatibility_TemplateView', 	 
 		'SAV\\SavLibraryKickstarter\\Configuration\\ConfigurationManager' => 'Tx_SavLibraryKickstarter_Configuration_ConfigurationManager',
   	'SAV\\SavLibraryKickstarter\\Controller\\KickstarterControllerRootPath' => 'Tx_SavLibraryKickstarter_Controller_KickstarterControllerRootPath',
-		'SAV\SavLibraryKickstarter\Compatibility\ExtensionManager' => 'Tx_SavLibraryKickstarter_Compatibility_ExtensionManager',
-  	'SAV\SavLibraryKickstarter\Parser\ContentParser' => 'Tx_SavLibraryKickstarter_Parser_ContentParser',
+		'SAV\\SavLibraryKickstarter\\Compatibility\\ExtensionManager' => 'Tx_SavLibraryKickstarter_Compatibility_ExtensionManager',
+  	'SAV\\SavLibraryKickstarter\\Parser\\ContentParser' => 'Tx_SavLibraryKickstarter_Parser_ContentParser',
   	'SAV\\SavLibraryKickstarter\\Utility\\Conversion' => 'Tx_SavLibraryKickstarter_Utility_Conversion',
   	'SAV\\SavLibraryKickstarter\\Utility\\ItemManager' => 'Tx_SavLibraryKickstarter_Utility_ItemManager',
+  	'SAV\\SavLibraryKickstarter\\ViewHelpers\\BuildOptionsForExtensionVersionSelectorboxViewHelper' => 'Tx_SavLibraryKickstarter_ViewHelpers_BuildOptionsForExtensionVersionSelectorboxViewHelper',
   );
   
   static public function register() {

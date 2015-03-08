@@ -2,6 +2,10 @@
 
 $extensionClassesPath = t3lib_extMgm::extPath('sav_library_kickstarter') . 'Classes/';	
 
+// Version for the Template View
+$versionTemplateView = 'ForTypo3VersionGreaterOrEqualTo4_5';
+$versionTemplateView = (version_compare(TYPO3_version, '4.6', '>=') ? 'ForTypo3VersionGreaterOrEqualTo4_6' : $versionTemplateView);
+
 // Version for Object Accessor Node
 $versionObjectAccessorNode = 'ForTypo3VersionGreaterOrEqualTo4_5';
 $versionObjectAccessorNode = (version_compare(TYPO3_version, '4.6', '>=') ? 'ForTypo3VersionGreaterOrEqualTo4_6' : $versionObjectAccessorNode);
@@ -21,14 +25,14 @@ $classMap = array(
 
   'tx_savlibrarykickstarter_compatibility_extensionmanager' => $extensionClassesPath . 'TYPO4x/Compatibility/ExtensionManager.php',
 	'tx_savlibrarykickstarter_compatibility_templateparserbuilder' => $extensionClassesPath . 'TYPO4x/Compatibility/TemplateParserBuilder.php',
-	'tx_savlibrarykickstarter_compatibility_templateview' => $extensionClassesPath . 'TYPO4x/Compatibility/TemplateView.php',
+	'tx_savlibrarykickstarter_compatibility_templateview' => $extensionClassesPath . 'TYPO4x/Compatibility/TemplateView' . $versionTemplateView . '.php',
 
 	'tx_savlibrarykickstarter_configuration_configurationmanager' =>  $extensionClassesPath . 'Configuration/ConfigurationManager.php',
 
 	'tx_savlibrarykickstarter_controller_kickstartercontroller' =>  $extensionClassesPath . 'TYPO4x/Controller/KickstarterController.php',
 	'tx_savlibrarykickstarter_controller_kickstartercontrollerrootpath' =>  $extensionClassesPath . 'TYPO4x/Controller/KickstarterControllerRootPath.php',
 
-	'tx_savlibrarykickstarter_core_compiler_templatecompiler' => $extensionClassesPath . 'Core/Compiler/TemplateCompiler' . $versionTemplateCompiler . '.php',
+	'tx_savlibrarykickstarter_core_compiler_templatecompiler' => $extensionClassesPath . 'TYPO4x/Core/Compiler/TemplateCompiler' . $versionTemplateCompiler . '.php',
 
 	'tx_savlibrarykickstarter_core_parser_syntaxtree_objectaccessornode' => $extensionClassesPath . 'TYPO4x/Core/Parser/SyntaxTree/ObjectAccessorNode' . $versionObjectAccessorNode . '.php',
 	'tx_savlibrarykickstarter_core_parser_templateparser' => $extensionClassesPath . 'TYPO4x/Core/Parser/TemplateParser' . $versionTemplateParser . '.php',
