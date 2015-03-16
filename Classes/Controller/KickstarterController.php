@@ -726,7 +726,7 @@ class KickstarterController extends KickstarterControllerRootPath {
 
     // Special processing for the title of existing tables
     if (is_array($arguments['existingTables'])) {
-      $options = \SAV\SavLibraryKickstarter\ViewHelpers\uildOptionsForExistingTablesSelectorboxViewHelper::render();
+      $options = \SAV\SavLibraryKickstarter\ViewHelpers\BuildOptionsForExistingTablesSelectorboxViewHelper::render();
       $arguments['existingTables']['title'] = $options[$arguments['existingTables']['tablename']];
     }
     // Special processing for new version

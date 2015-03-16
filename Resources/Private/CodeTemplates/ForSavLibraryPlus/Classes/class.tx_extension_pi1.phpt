@@ -76,7 +76,7 @@ class tx_{extensionName}_pi1 extends \TYPO3\CMS\Frontend\Plugin\AbstractPlugin {
 	  $extensionConfigurationManager->injectTypoScriptConfiguration($configuration);
 
 	  // Sets the debug variable. Use debug ONLY for development
-	  $controller->setDebug({f:if(condition:extension.general.debug, then:extension.general.debug, else:0)});
+	  $controller->setDebug({f:if(condition:extension.general.1.debug, then:extension.general.1.debug, else:0)});
 
 	  // Renders the form
 	  $out = $controller->render();
