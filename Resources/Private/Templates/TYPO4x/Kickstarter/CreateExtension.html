@@ -78,6 +78,25 @@
           1:'{f:translate(key:\'kickstarter.generalItem.libraryType.1\')}',
           0:'{f:translate(key:\'kickstarter.generalItem.libraryType.0\')}'}"
         value="{extension.general.1.libraryType}"/>
+        
+        <sav:comment><!-- Compatibility  --></sav:comment>
+      	<label for="compatibility"><f:translate key="kickstarter.generalItem.compatibility" /></label>
+        <f:form.hidden name="general[compatibility]" value="0"/>
+      	<f:form.select id="compatibility" name="general[compatibility]" options="{
+          0:'{f:translate(key:\'kickstarter.generalItem.compatibility.0\')}',
+          1:'{f:translate(key:\'kickstarter.generalItem.compatibility.1\')}',
+          2:'{f:translate(key:\'kickstarter.generalItem.compatibility.2\')}'
+          }"
+        value="{extension.general.1.compatibility}"/>        
+
+        <sav:comment><!-- keepExtLocalConf flag --></sav:comment>
+        <label for="keepExtLocalConf"><f:translate key="kickstarter.generalItem.keepExtLocalConf" /></label>
+        <f:form.hidden name="general[keepExtLocalConf]" value="0"/>
+        <f:form.checkbox class="checkbox" id="keepExtLocalConf" name="general[keepExtLocalConf]" value="1" checked="{extension.general.1.keepExtLocalConf}" />        
+
+        <sav:comment><!-- Version --></sav:comment>
+        <f:form.hidden name="general[version]" value="0.0.0"/>   
+                
     	</div>
     </div>
   </f:form>
